@@ -1,0 +1,40 @@
+﻿<div ng-show="model.show">
+    <style type="text/css">
+        .modal-backdrop {
+            background: rgba(0,0,0,0.7);
+        }
+    </style>
+    <div class="modal-backdrop" style="height: 995px;"></div>
+    <div class="modal fade in" aria-hidden="false" role="dialog" style="display: block; overflow:scroll;">
+        <div class="modal-dialog modal-lg modal-xlg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Provider Details</h3>
+                    <button type="button" class="close btn btn-default" aria-label="Close" ng-click="model.clickOk()"><i class="fa fa-close"></i></button>
+                </div>
+                <div class="modal-body pad-no">
+                    <div class="container-fluid pad-no">
+                        <div class="row">
+                            <div class="col-xs-offset-1">
+                                <div class="col-xs-4">
+                                    <p><strong>Provider Name: </strong>Provider A</p>
+                                </div>
+
+                                <div class="col-xs-4">
+                                    <p><strong>Primary Phone#</strong> 654-263-7890</p>
+                                </div>
+                                <div class="col-xs-4">
+                                    <p><strong>Provider ID# </strong>12312412412414 </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default pull-right" type="button" ng-click="model.clickOk()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿<style> 
+    .errorDialog{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 99999;
+        border-radius: 25px;
+    }
+    .errorHeader{
+        background-color:#a94442;
+        font-weight: bold;
+        height: 50px;
+    }
+    .errorPanel
+    {
+        height: 100px;
+        text-align: center;
+        vertical-align: middle;           
+    }
+    
+    
+</style>
+<div class="modal-dialog errorDialog" ng-style="{'-moz-opacity':model.opacity, '-webkit-opacity': model.opacity, 'opacity': model.opacity}" ng-show="model.msg">
+    <!--ng-style="{'-webkit-opacity': model.opacity; '-moz-opacity': model.opacity; 'opacity': model.opacity;}" >-->
+    <div class="modal-content">
+        <div class="modal-header errorHeader" data-dismiss="alert" aria-label="close">
+            <button type="button" class="close" ng-click="model.updateMessage()">&times;</button>
+            <h4 class="modal-title">Error</h4>
+        </div>
+        <div class="modal-body errorPanel">
+            <h3 class="errorText">{{model.msg}}</h3>
+        </div>              
+    </div>
+</div>
+
+

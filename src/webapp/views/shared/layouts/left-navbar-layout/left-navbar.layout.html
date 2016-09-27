@@ -1,0 +1,44 @@
+﻿<style type="text/css">
+    #container:not(.mainnav-sm) #mainnav-menu-wrap>.nano>.nano-content,
+    #container:not(.mainnav-sm) #mainnav-menu {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    #mainnav-menu .menu-title,
+    #mainnav-menu .menu-icon:before {
+        font-size : 120%;
+    }
+    #mainnav-menu .menu-icon {
+        padding-right: 5px;
+    }
+</style>
+
+<div class="boxed">
+    <div id="content-container" ng-transclude="body-panel" style="background-color:#bcbec1; min-height: 100vh; position: relative;">
+        <!-- Body Content-->
+    </div>
+    <nav id="mainnav-container">
+        <div id="mainnav">
+            <!--Menu-->
+            <!--================================-->
+            <div id="mainnav-menu-wrap">
+                <div class="nano has-scrollbar">
+                    <div class="nano-content" tabindex="0" style="right: -17px;">
+                        <ul id="mainnav-menu" class="list-group">
+                            <li>
+                                <a href="#" class="mainnav-toggle" >
+                                    <span class="fa fa-navicon menu-icon"></span>
+                                </a>
+                            </li>
+                            <ng-transclude ng-transclude="aside-panel"></ng-transclude>
+                        </ul>
+                    </div>
+                    <div class="nano-pane" style="display: none;"><div class="nano-slider" style="height: 2177px; transform: translate(0px, 0px);"></div></div>
+                </div>
+            </div>
+            <!--================================-->
+            <!--End menu-->
+        </div>
+    </nav>
+</div>

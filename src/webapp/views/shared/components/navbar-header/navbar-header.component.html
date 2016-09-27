@@ -1,0 +1,42 @@
+﻿<link rel='stylesheet' type="text/css" href="views/shared/components/navbar-header/navbar-header.component.css" />
+
+<!-- Fixed navbar -->
+<header id="navbar">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>-->
+                <a ng-link="['Home']" class="navbar-brand">{{model.brandName}}</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+                <!-- Fixed navbar -->
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a ng-link="['Home']" class="navbar-brand">{{model.brandName}}</a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <div class="navbar-content clearfix" ng-show="model.showNavMenu === true">
+                                <ul class="nav navbar-top-links pull-left" ng-repeat="menuItem in menuItems">
+                                    <li ng-class="{open: model.activeClass('{{menuItem.path}}')}"><a ng-link="{{menuItem.link}}">{{menuItem.name}}</a></li>
+                                </ul>
+                            </div>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </nav>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</header>

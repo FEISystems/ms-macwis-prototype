@@ -1,0 +1,39 @@
+﻿<style>
+    .modal-outer
+    {
+        z-index: 10000;
+        background-color: gray;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow: hidden;
+        opacity: .6;
+    }
+    .modal-loading
+    {
+        z-index: 10001;
+        width: 75px;
+        height: 75px;        
+        margin-left:auto;
+        margin-right:auto;   
+        display:center;
+        opacity: 1;
+    }
+    
+    .modal-loading-content
+    {
+        padding-top: 10px;        
+    }
+</style>
+<div class="modal-outer" ng-show="model.showModal">
+    <div class="modal-dialog row-fluid pull-middle modal-loading" ng-show="model.showModal">
+        <div class="modal-content modal-loading-content">
+            <div class="centering text-center">
+                <img src="/Images/ajax-loading.gif">
+                <h4>Loading</h4>
+            </div>          
+        </div>
+    </div>
+</div>
