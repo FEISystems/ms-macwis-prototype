@@ -5,17 +5,20 @@
             <thead ng-hide="true">
             </thead>
             <tbody>
-                <tr class="panel row bord-all">
-                    <td class="col-xs-7 mar-no result-section-1"">
-                        <div class="col-xs-4" style="font-size:180%;line-height:3em;"><strong>Provider A</strong></div>
-                        <div class="col-xs-4" style="font-size:110%;padding-top:15px;"><strong>Sample Data: </div>
-                        <div class="col-xs-4" style="font-size:110%;padding-top:15px;"><strong>Sample Data</div>
+                <tr class="panel row bord-all" ng-repeat="provider in filterdProviders|orderBy:sortField:reverse">
+                    <td class="col-xs-6 mar-no result-section-1">
+                        <div class="col-xs-4" style="font-size:180%;line-height:3em;" ><strong>{{ProviderName}}</strong></div>
+                        <div class="col-xs-4" style="font-size:110%;padding-top:15px;"><strong>Type:</strong>{{ProviderTypeDescription}}</div> 
                     </td>
-                    <td class="col-xs-3 mar-no result-section-2">
-                        <div class="text-semibold text-dark" style="padding-top:7px;">Sample Data</div>
+                    <td class="col-xs-2 mar-no result-section-2">
+                        <div class="text-semibold text-dark" style="padding-top: 7px;"><strong>Phone:</strong>{{PhoneNumber}}<br/>
+                            <strong>City: </strong>{{PhysicalCity}}<br/><strong>County: </strong>{{CountyName}}</div>
                     </td>
                     <td class="col-xs-2 mar-no result-section-3">
-                        <a ng-click="model.showDetails()">Provider Details</a>
+                        {{QualityRating}}
+                    </td>
+                    <td class="col-xs-2 mar-no result-section-4">
+                        <a ng-click="model.showDetails(provider)">Provider Details</a>
                     </td>
                 </tr>
 

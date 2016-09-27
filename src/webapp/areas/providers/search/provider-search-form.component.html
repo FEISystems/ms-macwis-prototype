@@ -6,35 +6,57 @@
         <div class="panel-body" style="padding-top: 0;">
             <div class="form-group">
                 <label class="">Provider Name:</label>
-                <input type="text" class="form-control" placeholder="Provider Name">
+                <input type="text" class="form-control" ng-model="Criteria.ProviderName">
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6 form-group date">
-                    <label class="" title="Service From Date">From Date:</label>
-                    <input type="text" class="form-control" placeholder="07/01/2016">
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 form-group date">
-                    <label class="" title="Service To Date">To Date:</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6 form-group">
-                    <label>Sample Field:</label>
-                    <select class="form-control">
-                    </select>
-                </div>
+            <div class="form-group">
+                <label class="">Provider Type:</label>
+                <select class="form-control" ng-model="Criteria.ProviderType"
+                    ng-options="providerType.Id as providerType.Name for providerType in ProviderTypes">
+                </select>
             </div>
 
+            <div class="form-group">
+                <label class="">City:</label>
+                <select class="form-control" ng-model="Criteria.City"
+                    ng-options=" city in Cities">
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="">County:</label>
+                <select class="form-control" ng-model="Criteria.County"
+                    ng-options="county.Id as county.Name for providerType in Counties">
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="">Rate:</label>
+                <select class="form-control" ng-model="Criteria.Rate">
+                    <option>Select One</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+
+                </select>
+            </div>
 
         </div>
         <div class="panel-footer">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="pull-right">
-                        <button class="btn btn-default">Clear</button>
-                        <button class="btn btn-success" type="button">Search</button>
+                        <button class="btn btn-success" type="button" ng-click="model.search()">Search</button>
+                        <button class="btn btn-default" ng-click="model.clear()">Reset</button>
                     </div>
+                </div>
+            </div>
+            <div class=" pull-right">
+                <div class="form-group">
+                    <label class="">Sort By:</label>
+                    <select class="form-control" ng-model="sortField"
+                            ng-options="sortBy.Id as sortBy.Name for providerType in SortByes">
+                    </select>
+                    <button class="btn btn-default" >Up or Down</button>
                 </div>
             </div>
         </div>

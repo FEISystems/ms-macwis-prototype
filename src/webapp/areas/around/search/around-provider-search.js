@@ -7,9 +7,16 @@
             return lists.slice(start);
         };
     });
-    var controller = function ($scope, $rootScope, providerService) {
+    var controller = function ($scope, $rootScope, providerService, googleMapService) {
         //init start
-        $scope.title = "Provider Search";
+        $scope.location = {
+            lat: 32.3546679,
+            lng: -89.3985283,
+            distince: 5,
+            address:"Mississippi"
+        };
+
+        $scope.title = "Find Around Provider";
         $scope.Criteria = {};
         $scope.sortData = { up: true };
         $scope.provider = {};
@@ -438,68 +445,60 @@
         $scope.search = function () {
             $scope.filterdProviders = [];
             $scope.sortData = { up: true };
-            if (!$scope.Criteria || $scope.Criteria.ProviderName ||
-                $scope.Criteria.ProviderType || $scope.Criteria.City || $scope.Criteria.County || ($scope.Criteria.Rate || $scope.Criteria.Rate === 0)) {
-                angular.forEach($scope.AllProviders, function (provider) {
-                    if ((!$scope.Criteria.ProviderName || ($scope.Criteria.ProviderName && $scope.Criteria.ProviderName === provider.ProviderName)) &&
-                    (!$scope.Criteria.ProviderType || ($scope.Criteria.ProviderType && $scope.Criteria.ProviderType === provider.ProviderType)) &&
-                    (!$scope.Criteria.City || ($scope.Criteria.City && $scope.Criteria.City === provider.PhysicalCity)) &&
-                    (!$scope.Criteria.County || ($scope.Criteria.County && $scope.Criteria.County === provider.CountyNumber)) &&
-                    ($scope.Criteria.Rate === undefined || $scope.Criteria.Rate === provider.QualityRating)) {
-                        $scope.filterdProviders.push(provider);
+            
+            googleMapService.getCoordinateByAddress($scope.location.address,function(coordinate) {
+                $scope.filterdProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, $scope.location.distince);
+
+                if ($scope.filterdProviders.length > 0)
+                    $(".result-pagination").show();
+                $scope.currentPage = 0;
+                $scope.listsPerPage = $scope.ItemsPerPageList[0];
+                $scope.providersCount = $scope.filterdProviders.length;
+                if ($("#selectPerPage option:selected").text()) {
+                    $scope.currentPage = 0;
+                    $scope.pages = Math.ceil($scope.providersCount / $("#selectPerPage option:selected").text());
+                } else
+                    $scope.pages = Math.ceil($scope.providersCount / $scope.listsPerPage);
+                $scope.pageNum = [];
+                $scope.InitPages();
+                $scope.setPage = function (num) {
+                    if (num == -1) {
+                        if (isNaN($("#GoPage").val()))
+                            num = 0;
+                        else if ($("#GoPage").val() <= $scope.pages)
+                            num = $("#GoPage").val() - 1;
+                        else num = $scope.pages - 1;
                     }
-                });
-            } else {
-                $scope.filterdProviders = $scope.AllProviders;
-            };
-
-            if ($scope.filterdProviders.length > 0)
-                $(".result-pagination").show();
-            $scope.currentPage = 0;
-            $scope.listsPerPage = $scope.ItemsPerPageList[0];
-            $scope.providersCount = $scope.filterdProviders.length;
-            if ($("#selectPerPage option:selected").text()) {
-                $scope.currentPage = 0;
-                $scope.pages = Math.ceil($scope.providersCount / $("#selectPerPage option:selected").text());
-            } else
-                $scope.pages = Math.ceil($scope.providersCount / $scope.listsPerPage);
-            $scope.pageNum = [];
-            $scope.InitPages();
-            $scope.setPage = function (num) {
-                if (num == -1) {
-                    if (isNaN($("#GoPage").val()))
+                    if (num < 0)
                         num = 0;
-                    else if ($("#GoPage").val() <= $scope.pages)
-                        num = $("#GoPage").val() - 1;
-                    else num = $scope.pages - 1;
-                }
-                if (num < 0)
-                    num = 0;
-                $scope.currentPage = num;
-                $scope.InitPages();
-            };
+                    $scope.currentPage = num;
+                    $scope.InitPages();
+                };
 
-            $scope.prevPage = function () {
-                if ($scope.currentPage > 0) {
-                    $scope.currentPage--;
-                }
-                $scope.InitPages();
-            };
-            $scope.nextPage = function () {
-                if ($scope.currentPage < $scope.pages - 1) {
-                    $scope.currentPage++;
-                }
-                $scope.InitPages();
-            };
-            $scope.firstPage = function () {
-                $scope.currentPage = 0;
-                $scope.InitPages();
-            };
+                $scope.prevPage = function () {
+                    if ($scope.currentPage > 0) {
+                        $scope.currentPage--;
+                    }
+                    $scope.InitPages();
+                };
+                $scope.nextPage = function () {
+                    if ($scope.currentPage < $scope.pages - 1) {
+                        $scope.currentPage++;
+                    }
+                    $scope.InitPages();
+                };
+                $scope.firstPage = function () {
+                    $scope.currentPage = 0;
+                    $scope.InitPages();
+                };
 
-            $scope.lastPage = function () {
-                $scope.currentPage = $scope.pages - 1;
-                $scope.InitPages();
-            };
+                $scope.lastPage = function () {
+                    $scope.currentPage = $scope.pages - 1;
+                    $scope.InitPages();
+                };
+            },function(error) {
+                alert(error);
+            });
         };
         $scope.InitPages = function () {
             $scope.pageNum = [];
@@ -549,9 +548,9 @@
         };
     };
 
-    module.component("providerSearch", {
-        templateUrl: "Areas/providers/search/provider-search.html",
+    module.component("aroundProviderSearch", {
+        templateUrl: "Areas/around/search/around-provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService", controller]
+        controller: ["$scope", "$scope", "providerService", "googleMapService", controller]
     });
 }())

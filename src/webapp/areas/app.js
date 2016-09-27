@@ -23,7 +23,9 @@
         $routeConfig: [
             { path: '/home', component: 'home', name: 'Home' },
             { path: '/providers', redirectTo: ['ProviderSearch'], name: 'Providers' },
-                { path: '/providers/search', component: 'providerSearch', name: 'ProviderSearch' },
+            { path: '/providers/search', component: 'providerSearch', name: 'ProviderSearch' },
+            { path: '/around', redirectTo: ['AroundProviderSearch'], name: 'AroundProviders' },
+            { path: '/around/search', component: 'aroundProviderSearch', name: 'AroundProviderSearch' },
             { path: '/help', component: 'help', name: 'Help' },
             { path: '/**', redirectTo: ['Home'] }
         ]

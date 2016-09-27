@@ -24,7 +24,7 @@
         controller: ['roleService', controller],
         bindings: {
             show: '=',
-            userRole: '='
+            provider: '='
         }
     });
 

@@ -4,7 +4,7 @@
 
     var controller = function ($scope) {
         var model = this;
-        model.title = "Home1";
+        model.title = "Home";
     };
 
     module.component("home", {

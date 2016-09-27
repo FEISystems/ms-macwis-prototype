@@ -8,45 +8,30 @@
                     </div>
 
                     <div class="panel-body" style="padding-top: 0;">
-                        <div class="form-group">
-                            <label class="">Provider Name:</label>
-                            <input type="text" class="form-control" ng-model="Criteria.ProviderName">
+                        <!--<div class="form-group">
+                            <label class="">Latitude:</label>
+                            <input type="text" class="form-control" ng-model="location.lat">
                         </div>
                         <div class="form-group">
-                            <label class="">Provider Type:</label>
-                            <select class="form-control" ng-model="Criteria.ProviderType"
-                                    ng-options="providerType.Id as providerType.Name for providerType in ProviderTypes">
-                                <option value=""></option>
-                            </select>
+                            <label class="">Longitude:</label>
+                            <input type="text" class="form-control" ng-model="location.lng">
+                        </div>-->
+                        <div class="form-group">
+                            <label class="">Address:</label>
+                            <input type="text" class="form-control" ng-model="location.address">
                         </div>
                         <div class="form-group">
-                            <label class="">City:</label>
-                            <select class="form-control" ng-model="Criteria.City"
-                                    ng-options="city for city in Cities">
-                                <option value=""></option>
-                            </select>
+                            <label class="">Distince(km):</label>
+                            <input type="text" class="form-control" ng-model="location.distince">
                         </div>
-                        <div class="form-group">
-                            <label class="">County:</label>
-                            <select class="form-control" ng-model="Criteria.County"
-                                    ng-options="county.Id as county.Name for county in Counties">
-                                <option value=""></option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="">Rate:</label>
-                            <select class="form-control" ng-model="Criteria.Rate"
-                                    ng-options="rate.Id as rate.Name for rate in Rates">
-                                <option value=""></option>
-                            </select>
-                        </div>
+
                     </div>
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="pull-right">
-                                    <button class="btn btn-success" type="submit" ng-click="search()">Search</button>
-                                    <button class="btn" ng-click="clear()">Reset</button>
+                                    <button class="btn btn-success" type="button" ng-click="search()">Search</button>
+
                                 </div>
                             </div>
                         </div>
@@ -55,27 +40,9 @@
             </form>
         </search-panel>
         <results-panel>
-            <div class="row form-group" style="float: right; margin: 0 20px 0 0;">
-                <div>
-                    <div style="float: left; margin: 7px 10px 0 0;">
-                        <label class="control-label"> Sort By:</label>
-                    </div>
-                    <div style="float: left;">
-                        <select class="form-control" ng-model="sortData.sortField" ng-change="sort()"
-                                ng-options="sortBy.Id as sortBy.Name for sortBy in SortByes"></select>
-                    </div>
-
-                    <div ng-show="!sortData.up" style="float: left; margin: 7px 0 0 10px;">
-                        <span class="glyphicon glyphicon-arrow-up" ng-click="up()"></span>
-                    </div>
-                    <div ng-show="sortData.up" style="float: left; margin: 7px 0 0 10px;">
-                        <span class="glyphicon glyphicon-arrow-down" ng-click="up()"></span>
-                    </div>
-                </div>
-            </div>
             <div class="col-xs-12">
                 <div class="row">
-                    <h1 class="h2">Find Provider</h1>
+                    <h1 class="h2">Find Around Provider</h1>
                     <div style="width: 100%; height: 1px; background: #DDDDDD;"></div>
                     <!--<div style="height: 600px; overflow: auto;">-->
                     <div class="result-pagination" style="display: none; margin: 10px 0 20px 0;">
@@ -88,12 +55,12 @@
                             <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="setPage(-1)" />
                         </div>
                     </div>
-                    <br/>
-                        <table class="table table-condensed col-xs-12">
-                            <thead ng-hide="true">
-                            </thead>
-                            <tbody>
-                            <tr class="panel row bord-all" ng-repeat="provider in filterdProviders|orderBy:sortField:reverse| paging:currentPage*listsPerPage | limitTo:listsPerPage">
+                    <br />
+                    <table class="table table-condensed col-xs-12">
+                        <thead ng-hide="true">
+                        </thead>
+                        <tbody>
+                            <tr class="panel row bord-all" ng-repeat="provider in filterdProviders | orderBy:'Distince' | paging:currentPage*listsPerPage | limitTo:listsPerPage">
                                 <td class="col-xs-6 mar-no result-section-1">
                                     <div class="col-xs-6">
                                         <div style="font-size: 120%; color: darkred; line-height: 3em;">
@@ -106,10 +73,11 @@
                                 </td>
                                 <td class="col-xs-2 mar-no result-section-2">
                                     <div class="text-semibold text-dark" style="padding-top: 7px;">
-                                        <strong>Phone:</strong><nobr>{{provider.PhoneNumber}}</nobr><br/>
-                                        <strong>City: </strong>{{provider.PhysicalCity}}<br/>
-                                        <strong>County: </strong>{{provider.CountyName}}<br/>
-                                        <strong>Capacity: </strong>{{provider.ProviderCapacity}}
+                                        <strong>Phone:</strong><nobr>{{provider.PhoneNumber}}</nobr><br />
+                                        <strong>City: </strong>{{provider.PhysicalCity}}<br />
+                                        <strong>County: </strong>{{provider.CountyName}}<br />
+                                        <strong>Capacity: </strong>{{provider.ProviderCapacity}}<br />
+                                        <strong>Distince: </strong>{{provider.Distince}}km
                                     </div>
                                 </td>
                                 <td class="col-xs-2 mar-no result-section-3">
@@ -136,8 +104,8 @@
                                     <a ng-click="showDetails(provider)">Provider Details</a>
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
                     <!--</div>-->
                     <br />
                     <br />
@@ -248,6 +216,11 @@
                                                         </p>
                                                         <p>
                                                             <strong>Latitude:</strong>{{provider.Latitude}}
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>
+                                                            <strong>Distince:</strong>{{provider.Distince}}km
                                                         </p>
                                                     </div>
                                                 </div>

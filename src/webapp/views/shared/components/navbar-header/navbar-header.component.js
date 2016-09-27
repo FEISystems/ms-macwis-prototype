@@ -40,6 +40,11 @@
                 'name': 'Help',
                 'link': ['Help'],
                 'path': 'help'
+            },
+            {
+                'name': 'Find Around Providers',
+                'link': ['AroundProviderSearch'],
+                'path': 'around'
             }
         ]
 

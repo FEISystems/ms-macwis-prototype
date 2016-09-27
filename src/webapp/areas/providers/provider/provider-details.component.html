@@ -14,17 +14,21 @@
                 </div>
                 <div class="modal-body pad-no">
                     <div class="container-fluid pad-no">
+                        <!-- Client Summary Info-->
                         <div class="row">
                             <div class="col-xs-offset-1">
                                 <div class="col-xs-4">
-                                    <p><strong>Provider Name: </strong>Provider A</p>
+                                    <p><strong>Provider Name: </strong>{{model.provider.ProviderName}}</p>
+                                    <p><strong>Date of Birth: </strong>05/21/1969</p>
                                 </div>
 
                                 <div class="col-xs-4">
-                                    <p><strong>Primary Phone#</strong> 654-263-7890</p>
+                                    <p><strong>Primary Phone#</strong> {{model.provider.PhoneNumber}}</p>
+                                    <p><strong>Program Type: </strong>CO</p>
                                 </div>
                                 <div class="col-xs-4">
-                                    <p><strong>Provider ID# </strong>12312412412414 </p>
+                                    <p><strong>Client ID# </strong>12312412412414 </p>
+                                    <p><strong>MA# </strong>865153754</p>
                                 </div>
                             </div>
                         </div>
