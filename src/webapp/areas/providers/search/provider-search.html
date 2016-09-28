@@ -34,7 +34,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="">Rate:</label>
+                            <label class="">Quality Star Rating:</label>
                             <select class="form-control" ng-model="Criteria.Rate"
                                     ng-options="rate.Id as rate.Name for rate in Rates">
                                 <option value=""></option>
@@ -66,16 +66,16 @@
                     </div>
 
                     <div ng-show="!sortData.up" style="float: left; margin: 7px 0 0 10px;">
-                        <span class="glyphicon glyphicon-arrow-up" ng-click="up()"></span>
+                        <span class="glyphicon glyphicon-arrow-down" ng-click="up()"></span>
                     </div>
                     <div ng-show="sortData.up" style="float: left; margin: 7px 0 0 10px;">
-                        <span class="glyphicon glyphicon-arrow-down" ng-click="up()"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-click="up()"></span>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="row">
-                    <h1 class="h2">Find Provider</h1>
+                    <h1 class="h2">Find Provider Results</h1>
                     <div style="width: 100%; height: 1px; background: #DDDDDD;"></div>
                     <!--<div style="height: 600px; overflow: auto;">-->
                     <div class="result-pagination" style="display: none; margin: 10px 0 20px 0;">
@@ -129,7 +129,7 @@
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" />
                                     </div>
                                     <div ng-if="provider.QualityRating===0">
-                                        Not Rated
+                                        <img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
                                     </div>
                                 </td>
                                 <td class="col-xs-2 mar-no result-section-4">
@@ -215,7 +215,7 @@
                                                     </div>
                                                     <div class="col-xs-4">
                                                         <p>
-                                                            <strong>Quality Rating:</strong>{{provider.QualityRatingDescripion}}
+                                                            <strong>Quality Star Rating:</strong>{{provider.QualityRatingDescription}}
                                                         </p>
                                                         <p>
                                                             <strong>License Type: </strong>{{provider.LicenseType}}
@@ -240,14 +240,6 @@
                                                     <div class="col-xs-4">
                                                         <p>
                                                             <strong>Can Take Children With Behavioral Problems:</strong>{{provider.CanTakeChildrenWithBehavioralProblems}}
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                        <p>
-                                                            <strong>Longitude:</strong>{{provider.Longitude}}
-                                                        </p>
-                                                        <p>
-                                                            <strong>Latitude:</strong>{{provider.Latitude}}
                                                         </p>
                                                     </div>
                                                 </div>

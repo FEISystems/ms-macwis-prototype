@@ -441,11 +441,22 @@
             if (!$scope.Criteria || $scope.Criteria.ProviderName ||
                 $scope.Criteria.ProviderType || $scope.Criteria.City || $scope.Criteria.County || ($scope.Criteria.Rate || $scope.Criteria.Rate === 0)) {
                 angular.forEach($scope.AllProviders, function (provider) {
-                    if ((!$scope.Criteria.ProviderName || ($scope.Criteria.ProviderName && $scope.Criteria.ProviderName === provider.ProviderName)) &&
+                    var nameFound = true;
+                    if ($scope.Criteria.ProviderName ) {
+                        var inputName = $scope.Criteria.ProviderName.toLowerCase();
+                        var providerName = provider.ProviderName.toLowerCase();
+                        var results = providerName.search(inputName);
+                        if (results >= 0) {
+                            nameFound = true;
+                        } else {
+                            nameFound = false;
+                        }
+                    }
+                    if (nameFound&&
                     (!$scope.Criteria.ProviderType || ($scope.Criteria.ProviderType && $scope.Criteria.ProviderType === provider.ProviderType)) &&
                     (!$scope.Criteria.City || ($scope.Criteria.City && $scope.Criteria.City === provider.PhysicalCity)) &&
                     (!$scope.Criteria.County || ($scope.Criteria.County && $scope.Criteria.County === provider.CountyNumber)) &&
-                    ($scope.Criteria.Rate === undefined || $scope.Criteria.Rate === provider.QualityRating)) {
+                    ($scope.Criteria.Rate === undefined || $scope.Criteria.Rate === null || $scope.Criteria.Rate === provider.QualityRating)) {
                         $scope.filterdProviders.push(provider);
                     }
                 });
