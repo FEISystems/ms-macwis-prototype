@@ -1,5 +1,9 @@
+
 [ng-transclude=search-panel] {
   position: absolute !important;
   left: -15px;
   right: -15px;
+}
+[ng-transclude=search-panel] label {
+  color: white;
 }

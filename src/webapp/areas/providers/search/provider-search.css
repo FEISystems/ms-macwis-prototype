@@ -1,3 +1,4 @@
+
 results-panel {
   position: fixed;
   top: 126px;
@@ -36,6 +37,7 @@ results-panel #provider-search-results-filter {
   bottom: 0px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.18);
+  background: rgba(51, 75, 84, 0.38);
 }
 results-panel #provider-search-results-filter hr {
   margin: 0 0 10px;
@@ -51,7 +53,6 @@ results-panel #provider-search-results-filter #provider-search-results-filter-fo
   border-bottom: 1px solid #EDEDED;
 }
 results-panel [ng-transclude="results-panel"],
-results-panel results-panel,
 results-panel #results-wrapper {
   height: 100%;
 }
@@ -66,4 +67,13 @@ results-panel .results-footer {
 .typeahead.typeahead-long.dropdown-menu {
   max-height: 500px;
   overflow: auto;
+}
+#white-bg {
+  position: fixed !important;
+  top: 50px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: white;
+  padding-top: 20px;
 }
