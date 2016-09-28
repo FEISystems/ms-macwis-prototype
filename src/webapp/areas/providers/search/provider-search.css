@@ -1,0 +1,45 @@
+results-panel {
+  position: fixed;
+  top: 136px;
+  bottom: 0px;
+  right: 0;
+  left: 40%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  background: white;
+  padding: 20px 20px 0px 20px;
+}
+results-panel #provider-search-results {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  bottom: 70px;
+  right: 30%;
+  overflow: auto;
+}
+results-panel #provider-search-results-filter {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  left: 70%;
+  bottom: 70px;
+  overflow: auto;
+}
+results-panel #provider-search-results-filter hr {
+  margin: 0 0 10px;
+}
+results-panel [ng-transclude="results-panel"],
+results-panel results-panel,
+results-panel #results-wrapper {
+  height: 100%;
+}
+results-panel .pagination {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  right: 25%;
+}
+results-panel .typeahead.typeahead-long.dropdown-menu {
+  max-height: 500px;
+  overflow: auto;
+}

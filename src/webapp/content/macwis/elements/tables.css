@@ -5,6 +5,3 @@ table.search-results-table tbody tr td {
   display: inline-block;
   border: none;
 }
-a:hover {
-  cursor: pointer;
-}

@@ -7,8 +7,9 @@
             return lists.slice(start);
         };
     });
-    var controller = function ($scope, $rootScope, providerService) {
+    var controller = function ($scope, $rootScope, providerService, countyCityZipsService) {
         //init start
+
         $scope.title = "Provider Search";
         $scope.Criteria = {};
         $scope.sortData = { up: true };
@@ -398,6 +399,9 @@
                 "Name": "Excellent"
             }
         ];
+
+        $scope.CountyCityZips = countyCityZipsService.query();
+        
         $scope.AllProviders = providerService.getAllProviders();
 
         $scope.SortByes = [
@@ -547,11 +551,19 @@
             $scope.sortData.up = !$scope.sortData.up;
             $scope.filterdProviders = _.reverse($scope.filterdProviders);
         };
+        
+        
+        this.$onInit = function() {
+            setTimeout(function() {
+                 $("#CountyCityZips").combobox();
+                 $("#CountyCityZipsundefined").attr("placeholder", "County, City or Zip");
+            },100);
+        }
     };
 
     module.component("providerSearch", {
         templateUrl: "Areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService", controller]
+        controller: ["$scope", "$scope", "providerService", "countyCityZipsService", controller]
     });
 }())

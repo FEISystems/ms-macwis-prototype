@@ -1,8 +1,8 @@
 ﻿(function () {
     "use strict";
-    var module = angular.module("macwisWebApp", ['ui.bootstrap', "ngComponentRouter"]);
+    var module = angular.module("macwisWebApp", ['ui.bootstrap', "ngComponentRouter", "ngResource"]);
 
-    module.value("$routerRootComponent", "macwisWebApp");
+    module.value("$routerRootComponent", "macwisWebApp", "ngResource");
 
     var controller = function (roleService) {
         var model = this;

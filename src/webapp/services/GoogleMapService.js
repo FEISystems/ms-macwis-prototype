@@ -13,7 +13,7 @@
                         error("no result, please correct your address!");
                     }
                     else if (response.results.length > 1) {
-                        error("Mutiple results, please enter more info!");
+                        error("Multiple results, please enter more info!");
                     } else {
                         success(response.results[0].geometry.location);
                     }
