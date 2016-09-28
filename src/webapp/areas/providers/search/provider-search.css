@@ -63,7 +63,7 @@ results-panel .results-footer {
   text-align: center;
   padding: 20px;
 }
-results-panel .typeahead.typeahead-long.dropdown-menu {
+.typeahead.typeahead-long.dropdown-menu {
   max-height: 500px;
   overflow: auto;
 }
