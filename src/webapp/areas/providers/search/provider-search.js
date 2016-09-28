@@ -10,6 +10,49 @@
     var controller = function ($scope, $rootScope, providerService, countyCityZipsService) {
         //init start
 
+        var filterButtonClosedText = "filter";
+        var filterButtonOpenText = "filter";
+        $scope.filterButtonText = filterButtonClosedText;
+        $scope.filterPanelOpen = false;
+
+        $scope.toggleFilterPanel = function() {
+            var delay = 400,
+                easing = "easeOutExpo";
+            function openFilterPanel() {
+                $("#googleMap").animate({
+                    "width" : "40%"
+                }, delay, easing, function(){
+                    $scope.filterPanelOpen = true;
+                });
+                $("results-panel").animate({
+                    "left" : "40%"
+                }, delay, easing);
+            };
+            function closeFilterPanel() {
+                $("#googleMap").animate({
+                    "width" : "58%"
+                }, delay, easing, function(){
+                    $scope.filterPanelOpen = false;
+                });
+                $("results-panel").animate({
+                    "left" : "58%"
+                }, delay, easing);
+            };
+
+            if ($scope.filterPanelOpen == false) {
+                openFilterPanel();
+                $scope.filterButtonText = filterButtonOpenText;
+                $(".filterCloseIcon").show();
+                $(".filterOpenIcon").hide();
+            } else if ($scope.filterPanelOpen == true) {
+                closeFilterPanel();
+                $scope.filterButtonText = filterButtonClosedText;
+                $(".filterCloseIcon").hide();
+                $(".filterOpenIcon").show();
+            }
+        };
+
+
         $scope.title = "Provider Search";
         $scope.Criteria = {};
         $scope.sortData = { up: true };

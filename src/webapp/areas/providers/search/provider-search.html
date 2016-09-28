@@ -1,26 +1,31 @@
 ﻿<standard-layout>
+    <google-map></google-map>
     <search-layout>
         <search-panel>
-            <link rel='stylesheet' type="text/css" href="areas/providers/search/provider-search.css" />
+            <link rel='stylesheet' type="text/css" href="areas/providers/search/provider-search.css"/>
             <form>
                 <div class="container" style="padding-top: 10px;">
                     <div class="col-xs-3 form-group">
                         <label style="display: block;">Find a Provider</label>
-                        <input type="text" class="form-control" ng-model="Criteria.ProviderName" placeholder="Provider Name" style="width: 75%; display: inline-block">
-                        <button class="btn btn-success" type="submit" ng-click="search()"><span class="fa fa-search"></span></button>
+                        <input type="text" class="form-control" ng-model="Criteria.ProviderName"
+                               placeholder="Provider Name" style="width: 75%; display: inline-block">
+                        <button class="btn btn-success" type="submit" ng-click="search()"><span
+                                class="fa fa-search"></span></button>
                     </div>
                     <div class="col-xs-1 form-group" style="text-align: center;">
                         <span class="h3" style="margin-top: 22px; display: inline-block; color: gray">or</span>
                     </div>
                     <div class="col-xs-3 form-group">
                         <label class="">Search By <span class="sr-only">Provider Type</span></label>
-                        <select class="form-control" ng-model="Criteria.ProviderType" ng-options="providerType.Id as providerType.Name for providerType in ProviderTypes">
-                                <option value=""></option>
+                        <select class="form-control" ng-model="Criteria.ProviderType"
+                                ng-options="providerType.Id as providerType.Name for providerType in ProviderTypes">
+                            <option value=""></option>
                         </select>
                     </div>
                     <div class="col-xs-3 form-group">
                         <label class="">Near <span class="sr-only"></span></label>
-                        <select id="CountyCityZips" class="form-control" ng-model="Criteria.CountyCityZips" ng-options="countyCityZips for countyCityZips in CountyCityZips">
+                        <select id="CountyCityZips" class="form-control" ng-model="Criteria.CountyCityZips"
+                                ng-options="countyCityZips for countyCityZips in CountyCityZips">
                             <option value=""></option>
                         </select>
                     </div>
@@ -32,7 +37,8 @@
                             <option value="">50 miles</option>
                             <option value="">75 miles</option>
                         </select>
-                        <button class="btn btn-success" type="submit" ng-click="search()"><span class="fa fa-search"></span></button>
+                        <button class="btn btn-success" type="submit" ng-click="search()"><span
+                                class="fa fa-search"></span></button>
                     </div>
                     <!--<div class="form-group">
                         <label class="">Near <span class="sr-only"></span></label>
@@ -56,7 +62,6 @@
             </form>
         </search-panel>
         <results-panel>
-            <google-map></google-map>
             <!--<div class="row form-group" style="float: right; margin: 0 20px 0 0;">
                 <div>
                     <div style="float: left; margin: 7px 10px 0 0;">
@@ -78,263 +83,284 @@
 
             <div id="results-wrapper" class="col-xs-12">
 
-                <div style="border-bottom: 1px solid #EDEDED">
-                    <h1 class="h3" style="display: inline-block; margin-top: 10px; color: gray">Results</h1>
-                    <div class="pull-right h2" style="display: inline-block; margin: 0;">
-                        <span class="fa fa-filter" style="color: gray" role="button"></span>
-                    </div>
-                </div>
-                <!--<div style="width: 100%; height: 1px; background: #DDDDDD;"></div>-->
-                <!--<div style="height: 600px; overflow: auto;">-->
-                <!--<div class="result-pagination" style="display: none; margin:s 10px 0 20px 0;">
-                        <div style="float: left;">Results : Showing {{currentPage==0 ? 1:(currentPage)*listsPerPage+1}} to {{(currentPage!=pages-1)?(currentPage+1)*listsPerPage:providersCount}}
-                            of {{providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
-                        <div class="step prevLink" style="float: left;">
-                            Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="ChangeDisplayNums()" ng-model="listsPerPage"
-                                ng-options="item as item for item in ItemsPerPageList"></select>&nbsp;&nbsp;entries&nbsp;&nbsp;|&nbsp;&nbsp;
-                        </div>
-                        <div style="float: left; ">
-                            <input id="GoPage" type="text" style="width: 35px; height: 23px;" />
-                            <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="setPage(-1)" />
-                        </div>
-                    </div>-->
 
                 <div id="provider-search-results">
+                    <div>
+                        <div class="col-xs-8">
+                            <h1 class="h3" style="display: inline-block; margin: 15px 0 0 0; color: gray">Results</h1>
+                            <div class="result-pagination" style="display: none; color: gray;">
+                                <div style="float: left;">Showing {{currentPage==0 ? 1:(currentPage)*listsPerPage+1}} to
+                                    {{(currentPage!=pages-1)?(currentPage+1)*listsPerPage:providersCount}}
+                                    of {{providersCount}} entries
+                                </div>
+                                <!--<div class="step prevLink" style="float: left;">-->
+                                <!--Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="ChangeDisplayNums()"-->
+                                <!--ng-model="listsPerPage"-->
+                                <!--ng-options="item as item for item in ItemsPerPageList"></select>&nbsp;&nbsp;entries&nbsp;&nbsp;|&nbsp;&nbsp;-->
+                                <!--</div>-->
+                                <!--<div style="float: left; ">-->
+                                <!--<input id="GoPage" type="text" style="width: 35px; height: 23px;"/>-->
+                                <!--<input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;"-->
+                                <!--ng-click="setPage(-1)"/>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="pull-right" style="display: inline-block; margin: 25px 0px;">
+                            <span class="h5" style="color: lightgray" ng-click="toggleFilterPanel()"
+                                  role="button"><span class="" style="font-size: 150%; color: gray; margin: 0px">{{filterButtonText}}</span>&nbsp;&nbsp;<span class="fa fa-chevron-left filterOpenIcon"></span><span
+                                    class="fa fa-chevron-right filterCloseIcon" style="display: none;"></span></span>
+                            </div>
+                        </div>
+                    </div>
                     <table class="table search-results-table">
                         <thead ng-hide="true">
                         </thead>
                         <tbody>
-                            <tr class="panel row bord-all" ng-repeat="provider in filterdProviders|orderBy:sortField:reverse| paging:currentPage*listsPerPage | limitTo:listsPerPage">
-                                <td class="col-xs-6 mar-no result-section-1">
-                                    <div class="col-xs-6">
-                                        <div style="font-size: 120%; color: darkred; line-height: 3em;">
-                                            <strong>{{provider.ProviderName}}</strong>
-                                        </div>
-                                        <div class="text-semibold text-dark">
-                                            <strong>Type:</strong>{{provider.ProviderTypeDescription}}
-                                        </div>
+                        <tr class="panel row bord-all"
+                            ng-repeat="provider in filterdProviders|orderBy:sortField:reverse| paging:currentPage*listsPerPage | limitTo:listsPerPage">
+                            <td class="col-xs-6 mar-no result-section-1">
+                                <div class="col-xs-6">
+                                    <div style="font-size: 120%; color: darkred; line-height: 3em;">
+                                        <strong>{{provider.ProviderName}}</strong>
                                     </div>
-                                </td>
-                                <td class="col-xs-2 mar-no result-section-2">
-                                    <div class="text-semibold text-dark" style="padding-top: 7px;">
-                                        <strong>Phone:</strong>
-                                        <nobr>{{provider.PhoneNumber}}</nobr><br/>
-                                        <strong>City: </strong>{{provider.PhysicalCity}}<br/>
-                                        <strong>County: </strong>{{provider.CountyName}}<br/>
-                                        <strong>Capacity: </strong>{{provider.ProviderCapacity}}
+                                    <div class="text-semibold text-dark">
+                                        <strong>Type:</strong>{{provider.ProviderTypeDescription}}
                                     </div>
-                                </td>
-                                <td class="col-xs-2 mar-no result-section-3">
-                                    <div ng-if="provider.QualityRating===1">
-                                        <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" /><img
-                                            src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png"
-                                        />
-                                    </div>
-                                    <div ng-if="provider.QualityRating===2">
-                                        <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"
-                                        /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img
-                                            src="content/macwis/14_star.png" />
-                                    </div>
-                                    <div ng-if="provider.QualityRating===3">
-                                        <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"
-                                        /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"
-                                        /><img src="content/macwis/14_star.png" />
-                                    </div>
-                                    <div ng-if="provider.QualityRating===4">
-                                        <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"
-                                        /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"
-                                        /><img src="content/macwis/14_star.png" />
-                                    </div>
-                                    <div ng-if="provider.QualityRating===5">
-                                        <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"
-                                        /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"
-                                        /><img src="content/macwis/knewstuff.png" />
-                                    </div>
-                                    <div ng-if="provider.QualityRating===0">
-                                        Not Rated
-                                    </div>
-                                </td>
-                                <td class="col-xs-2 mar-no result-section-4">
-                                    <a ng-click="showDetails(provider)">Provider Details</a>
-                                </td>
-                            </tr>
+                                </div>
+                            </td>
+                            <td class="col-xs-2 mar-no result-section-2">
+                                <div class="text-semibold text-dark" style="padding-top: 7px;">
+                                    <strong>Phone:</strong>
+                                    <nobr>{{provider.PhoneNumber}}</nobr>
+                                    <br/>
+                                    <strong>City: </strong>{{provider.PhysicalCity}}<br/>
+                                    <strong>County: </strong>{{provider.CountyName}}<br/>
+                                    <strong>Capacity: </strong>{{provider.ProviderCapacity}}
+                                </div>
+                            </td>
+                            <td class="col-xs-2 mar-no result-section-3">
+                                <div ng-if="provider.QualityRating===1">
+                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"/><img
+                                        src="content/macwis/14_star.png"/><img src="content/macwis/14_star.png"/><img
+                                        src="content/macwis/14_star.png"
+                                />
+                                </div>
+                                <div ng-if="provider.QualityRating===2">
+                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/knewstuff.png"
+                                /><img src="content/macwis/14_star.png"/><img src="content/macwis/14_star.png"/><img
+                                        src="content/macwis/14_star.png"/>
+                                </div>
+                                <div ng-if="provider.QualityRating===3">
+                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/knewstuff.png"
+                                /><img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"
+                                /><img src="content/macwis/14_star.png"/>
+                                </div>
+                                <div ng-if="provider.QualityRating===4">
+                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/knewstuff.png"
+                                /><img src="content/macwis/knewstuff.png"/><img src="content/macwis/knewstuff.png"
+                                /><img src="content/macwis/14_star.png"/>
+                                </div>
+                                <div ng-if="provider.QualityRating===5">
+                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/knewstuff.png"
+                                /><img src="content/macwis/knewstuff.png"/><img src="content/macwis/knewstuff.png"
+                                /><img src="content/macwis/knewstuff.png"/>
+                                </div>
+                                <div ng-if="provider.QualityRating===0">
+                                    Not Rated
+                                </div>
+                            </td>
+                            <td class="col-xs-2 mar-no result-section-4">
+                                <a ng-click="showDetails(provider)">Provider Details</a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
+                    <div class="result-pagination" style="display: none; text-align: center;">
+
+                        <!--Pagination with disabled and active states-->
+                        <!--===================================================-->
+                        <!--<div class="step prevLink" style="float: left; margin: 25px 0;">
+                                Show<select id="selectPerPage" ng-change="ChangeDisplayNums()" ng-model="listsPerPage" ng-options="item as item for item in ItemsPerPageList"></select>entries
+                            </div>
+                            <div style="width: 10px; float: left; margin: 25px 0;"></div>
+                            <div style="float: left; margin: 25px 0;">
+                                <input id="GoPage" type="text" style="width: 30px;" />
+                                <input type="button" value="GO" ng-click="setPage(-1)" />
+                            </div>-->
+                        <div class="results-footer">
+                            <ul class="pagination" style="margin:0;">
+                                <li>
+                                    <a href="javascript:void(0)" class="step prevLink" ng-click="firstPage()">
+                                        <<<</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="step prevLink"
+                                       ng-click="prevPage()">Previous</a></li>
+                                <li ng-class="{true:'active',false:''}[num==currentPage]"
+                                    ng-repeat="num in pageNum | limitTo : 6"><a href="javascript:void(0)"
+                                                                                ng-click="setPage(num)">{{num+1}}</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="step nextLink" ng-click="nextPage()">Next</a>
+                                </li>
+                                <li><a href="javascript:void(0)" class="step prevLink" ng-click="lastPage()">>>></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                        </div>
+                        <!--===================================================-->
+                        <!--End Pagination with disabled and active states-->
+                    </div>
                 </div>
                 <div id="provider-search-results-filter">
                     <div class="col-xs-12">
                         <h3 style="font-weight: bold;">Show Providers...</h3>
                     </div>
-                    <div class="col-xs-12">
-                        <h5 style="font-weight: bold;">with rating equal to or greater than:</h5>
-                        <hr>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                </label>
+                    <div id="provider-search-results-filter-form">
+                        <div class="col-xs-12">
+                            <h5 style="font-weight: bold;">with rating equal to or greater than:</h5>
+                            <hr>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio" checked>
+                                    All
+                                </label>
+                            </div>
                         </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                </label>
+                        <div class="col-xs-12">
+                            <h5 style="font-weight: bold;">that accept:</h5>
+                            <hr>
+                            <div class="checkbox">
+                                <label for="">
+                                    <input type="checkbox" checked>
+                                    Sibling Groups
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio" checked>
+                                    Boys and girls
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    Only boys
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    Only girls
+                                </label>
+                            </div>
                         </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                </label>
+                        <div class="col-xs-12">
+                            <h5 style="font-weight: bold;">that cater to:</h5>
+                            <hr>
+                            <div class="checkbox">
+                                <label for="">
+                                    <input type="checkbox" checked>
+                                    Children with special needs
+                                </label>
+                            </div>
                         </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                </label>
+                        <div class="col-xs-12">
+                            <h5 style="font-weight: bold;">that have:</h5>
+                            <hr>
+                            <div class="checkbox">
+                                <label for="">
+                                    <input type="checkbox" checked>
+                                    Space available
+                                </label>
+                            </div>
                         </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    <span class="fa fa-star" style="font-size: 110%; color: gold"></span>
-                </label>
+                        <div class="col-xs-12">
+                            <h5 style="font-weight: bold;">that are currently:</h5>
+                            <hr>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    Licensed
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio">
+                                    Unlicensed
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="">
+                                    <input type="radio" checked>
+                                    Licensed/Unlicensed
+                                </label>
+                            </div>
                         </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio" checked>
-                    All
-                </label>
+                        <div class="col-xs-12">
+                            <h5 style="font-weight: bold;">that have been:</h5>
+                            <hr>
+                            <div class="checkbox">
+                                <label for="">
+                                    <input type="checkbox" checked>
+                                    Charged with abuse or neglect
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="">
+                                    <input type="checkbox" checked>
+                                    Convicted with abuse or neglect
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-12">
-                        <h5 style="font-weight: bold;">that accept:</h5>
-                        <hr>
-                        <div class="checkbox">
-                            <label for="">
-                    <input type="checkbox" checked>
-                    Sibling Groups
-                </label>
-                        </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio" checked>
-                    Boys and girls
-                </label>
-                        </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    Only boys
-                </label>
-                        </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    Only girls
-                </label>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <h5 style="font-weight: bold;">that cater to:</h5>
-                        <hr>
-                        <div class="checkbox">
-                            <label for="">
-                    <input type="checkbox" checked>
-                    Children with special needs
-                </label>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <h5 style="font-weight: bold;">that have:</h5>
-                        <hr>
-                        <div class="checkbox">
-                            <label for="">
-                    <input type="checkbox" checked>
-                    Space available
-                </label>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <h5 style="font-weight: bold;">that are currently:</h5>
-                        <hr>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    Licensed
-                </label>
-                        </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio">
-                    Unlicensed
-                </label>
-                        </div>
-                        <div class="radio">
-                            <label for="">
-                    <input type="radio" checked>
-                    Licensed/Unlicensed
-                </label>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <h5 style="font-weight: bold;">that have been:</h5>
-                        <hr>
-                        <div class="checkbox">
-                            <label for="">
-                    <input type="checkbox" checked>
-                    Charged with abuse or neglect
-                </label>
-                        </div>
-                        <div class="checkbox">
-                            <label for="">
-                    <input type="checkbox" checked>
-                    Convicted with abuse or neglect
-                </label>
-                        </div>
-                    </div>
-                    <div class="col-xs-12">
-                        <hr>
+                    <div class="results-footer">
                         <button class="btn btn-primary btn-block">apply</button>
                     </div>
                 </div>
                 <!--<div class="result-pagination" style="display: none;">Showing {{currentPage==0 ? 1:(currentPage)*listsPerPage+1}} to {{(currentPage!=pages-1)?(currentPage+1)*listsPerPage:providersCount}} of {{providersCount}} entries</div>-->
-                <div class="result-pagination" style="display: none; text-align: center;">
 
-                    <!--Pagination with disabled and active states-->
-                    <!--===================================================-->
-                    <!--<div class="step prevLink" style="float: left; margin: 25px 0;">
-                            Show<select id="selectPerPage" ng-change="ChangeDisplayNums()" ng-model="listsPerPage" ng-options="item as item for item in ItemsPerPageList"></select>entries
-                        </div>
-                        <div style="width: 10px; float: left; margin: 25px 0;"></div>
-                        <div style="float: left; margin: 25px 0;">
-                            <input id="GoPage" type="text" style="width: 30px;" />
-                            <input type="button" value="GO" ng-click="setPage(-1)" />
-                        </div>-->
-                    <ul class="pagination">
-                        <li>
-                            <a href="javascript:void(0)" class="step prevLink" ng-click="firstPage()">
-                                <<<</a>
-                        </li>
-                        <li><a href="javascript:void(0)" class="step prevLink" ng-click="prevPage()">Previous</a></li>
-                        <li ng-class="{true:'active',false:''}[num==currentPage]" ng-repeat="num in pageNum"><a href="javascript:void(0)" ng-click="setPage(num)">{{num+1}}</a></li>
-                        <li><a href="javascript:void(0)" class="step nextLink" ng-click="nextPage()">Next</a></li>
-                        <li><a href="javascript:void(0)" class="step prevLink" ng-click="lastPage()">>>></a></li>
-                    </ul>
-
-                    <div>
-                    </div>
-                    <!--===================================================-->
-                    <!--End Pagination with disabled and active states-->
-                </div>
 
                 <div ng-show="showProviderDetails">
                     <div>
@@ -344,12 +370,14 @@
                             }
                         </style>
                         <div class="modal-backdrop" style="height: 995px;"></div>
-                        <div class="modal fade in" aria-hidden="false" role="dialog" style="display: block; overflow: scroll;">
+                        <div class="modal fade in" aria-hidden="false" role="dialog"
+                             style="display: block; overflow: scroll;">
                             <div class="modal-dialog modal-lg modal-xlg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h3 class="modal-title">Provider Details</h3>
-                                        <button type="button" class="close btn btn-default" aria-label="Close" ng-click=" clickOk()"><i class="fa fa-close"></i></button>
+                                        <button type="button" class="close btn btn-default" aria-label="Close"
+                                                ng-click=" clickOk()"><i class="fa fa-close"></i></button>
                                     </div>
                                     <div class="modal-body pad-no">
                                         <div class="container-fluid pad-no">
@@ -361,7 +389,8 @@
                                                             <strong>Provider Name: </strong>{{provider.ProviderName}}
                                                         </p>
                                                         <p>
-                                                            <strong>Provider Type:</strong> {{provider.ProviderTypeDescription}}
+                                                            <strong>Provider Type:</strong>
+                                                            {{provider.ProviderTypeDescription}}
                                                         </p>
                                                     </div>
                                                     <div class="col-xs-4">
@@ -390,7 +419,8 @@
                                                     </div>
                                                     <div class="col-xs-4">
                                                         <p>
-                                                            <strong>Provider Capacity: </strong> {{provider.ProviderCapacity}}
+                                                            <strong>Provider Capacity: </strong>
+                                                            {{provider.ProviderCapacity}}
                                                         </p>
                                                         <p>
                                                             <strong>Min Age:</strong>{{provider.MinAge}}
@@ -422,7 +452,9 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-default pull-right" type="button" ng-click="clickOk()">Close</button>
+                                            <button class="btn btn-default pull-right" type="button"
+                                                    ng-click="clickOk()">Close
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

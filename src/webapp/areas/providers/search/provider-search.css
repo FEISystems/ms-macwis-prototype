@@ -1,43 +1,67 @@
 results-panel {
   position: fixed;
-  top: 136px;
+  top: 126px;
   bottom: 0px;
-  right: 0;
-  left: 40%;
+  left: 58%;
+  width: 60%;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.7);
   background: white;
-  padding: 20px 20px 0px 20px;
+  padding: 10px 0px 0px 0px;
 }
 results-panel #provider-search-results {
   position: absolute;
-  top: 60px;
-  left: 10px;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 70%;
+  overflow: hidden;
+  box-shadow: -1px 3px 10px 3px rgba(0, 0, 0, 0.4);
+}
+results-panel #provider-search-results .search-results-table tbody {
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  right: 0px;
   bottom: 70px;
-  right: 30%;
   overflow: auto;
+  border-top: 1px solid #EDEDED;
+  border-bottom: 1px solid #EDEDED;
 }
 results-panel #provider-search-results-filter {
   position: absolute;
-  top: 60px;
-  right: 10px;
-  left: 70%;
-  bottom: 70px;
-  overflow: auto;
+  top: 0px;
+  right: 0px;
+  width: 30%;
+  bottom: 0px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.18);
 }
 results-panel #provider-search-results-filter hr {
   margin: 0 0 10px;
+}
+results-panel #provider-search-results-filter #provider-search-results-filter-form {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  left: 0px;
+  bottom: 70px;
+  overflow: auto;
+  border-top: 1px solid #EDEDED;
+  border-bottom: 1px solid #EDEDED;
 }
 results-panel [ng-transclude="results-panel"],
 results-panel results-panel,
 results-panel #results-wrapper {
   height: 100%;
 }
-results-panel .pagination {
+results-panel .results-footer {
   position: absolute;
   bottom: 0px;
-  right: 10px;
-  right: 25%;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  padding: 20px;
 }
 results-panel .typeahead.typeahead-long.dropdown-menu {
   max-height: 500px;
