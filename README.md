@@ -34,6 +34,8 @@ As we choose to use Bootstrp & AngularJS for front-end and node.js as backend im
 ## Team 
 
 ## Process
+We are doing scrum process with team for this protoype. The key activitiies are described below.
+
 ### Initial Planning
 As normally did after the agile (scrum) team assembled for this proposal, we had a quick planning meeting to setup weekly sprint process from start to finish this prototype, with common scrum configuration. See 2.1 for details.
 During the initial planning meeting, we discussed 
@@ -47,12 +49,15 @@ During the initial planning meeting, we discussed
 - Setup github repository
 - Initial code check-in with user story 1 and mockup data
 - Review
+
 ### Sprint 2 - (9/26-9/30)
 - Merge into one direction
 - Use cases 2-10 with unit testing
 - Update readme.md 
 - CI & Deploy
 - Review
+
 ### Sprint 3 - (10/3-10/7)
 - 
+
 ## License
