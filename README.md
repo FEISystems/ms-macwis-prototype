@@ -4,12 +4,14 @@ This document describes the process to build this prototype that includes Techno
 
 ## Technologies
 MS macwis prototype uses modern, open technologies, with agile (scrum) process to manage, design, coding, testing and deploy it. We also have a live demo site to show final results.
+The following standards and guidance are used or referred in this prototype.
+- [Responsive Web Design](https://en.wikipedia.org/wiki/Responsive_web_design)
+- [US Digital Service Playbook](https://playbook.cio.gov/)
+- [18F Open Source Style Guide](https://pages.18f.gov/open-source-guide/)
 
 ### Responsive Design
 
 Prototype of Web Application, based on the context, development, could means screen mockup, wireframe or UI prototyping or all of these. 
-
-
 
 The technologies we choose for this prototyping are 1) HTML5/CSS3/Bootstrap/AngularJS framework based 2) Start from UI, with imported provider data as JSON data source 3) Setup a public github repository under FEiSystems account to share the development process.
 We choose Bootstrap framework on top of HTML5/CSS3/JavaScript is based on 1) We used bootstrap as key components and front end framework for many projects 2) Bootstrap is powerful, poplar to create responsive, mobile first and cross devices web sites on the UI part.
