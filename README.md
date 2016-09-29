@@ -7,10 +7,9 @@ MS macwis prototype uses modern, open technologies, with agile (scrum) process t
 
 ### Responsive Design
 
-Prototype of Web Application, based on the context, development, could means screen mockup, wireframe or UI prototyping or all of these. FEi understand the concept of doing prototype in this response is to demonstrate the process and technologies used to create a responsive and interactive prototype based on one high level user story with agile methodologies.
+Prototype of Web Application, based on the context, development, could means screen mockup, wireframe or UI prototyping or all of these. 
 
-As normally did after the agile (scrum) team assembled for this proposal, we had a quick planning meeting to setup one sprint (two weeks) process from start to finish this prototype, with common scrum configuration. See 2.1 for details.
-During the initial planning meeting, we discussed 1) User Stories that include functional and non-functional stories 2) Move the product backlogs to sprint backlogs, based on the estimation and team capacity 3) Discussed couple ways of the prototyping and decide to use coding based approach that fully fit our needs. 4) And then team picked up the backlogs and started working on it.
+
 
 The technologies we choose for this prototyping are 1) HTML5/CSS3/Bootstrap/AngularJS framework based 2) Start from UI, with imported provider data as JSON data source 3) Setup a public github repository under FEiSystems account to share the development process.
 We choose Bootstrap framework on top of HTML5/CSS3/JavaScript is based on 1) We used bootstrap as key components and front end framework for many projects 2) Bootstrap is powerful, poplar to create responsive, mobile first and cross devices web sites on the UI part.
@@ -23,6 +22,10 @@ For the initial work, the scrum team draw the screen concept on the whiteboard, 
 ### Live Demo Site (Deployment)
 
 ### TDD
+As we choose to use Bootstrp & AngularJS for front-end and node.js as backend implementation. The test frameworks for these technologies are
+- Use [Jasmine](http://jasmine.github.io/) to write unit tests for this Angular based Applications with Bootstrap blocks.
+- For the back-end service with Node.JS, Mocha Test Framework is used that we covered all REST web services and node.js domain functions.
+
 
 ### CI with Test Automation
 
@@ -30,4 +33,26 @@ For the initial work, the scrum team draw the screen concept on the whiteboard, 
 
 ## Team 
 
+## Process
+### Initial Planning
+As normally did after the agile (scrum) team assembled for this proposal, we had a quick planning meeting to setup weekly sprint process from start to finish this prototype, with common scrum configuration. See 2.1 for details.
+During the initial planning meeting, we discussed 
+- User Stories that include functional and non-functional stories 
+- Move the product backlogs to sprint backlogs, based on the estimation and team capacity 
+- Discussed couple ways of the prototyping and decide to use coding based approach that fully fit our needs. 
+- And then team picked up the backlogs and started working on it.
+
+### Sprint 1 - (9/19-9/23)
+- Screen mockup
+- Setup github repository
+- Initial code check-in with user story 1 and mockup data
+- Review
+### Sprint 2 - (9/26-9/30)
+- Merge into one direction
+- Use cases 2-10 with unit testing
+- Update readme.md 
+- CI & Deploy
+- Review
+### Sprint 3 - (10/3-10/7)
+- 
 ## License
