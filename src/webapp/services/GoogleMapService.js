@@ -11,10 +11,7 @@
                     console.log(response);
                     if (0 == response.results.length) {
                         error("no result, please correct your address!");
-                    }
-                    else if (response.results.length > 1) {
-                        error("Mutiple results, please enter more info!");
-                    } else {
+                    }else {
                         success(response.results[0].geometry.location);
                     }
                 } else {
