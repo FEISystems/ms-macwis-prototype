@@ -1,3 +1,63 @@
 ﻿<standard-layout>
-    <h1>{{model.title}}</h1>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Find the right provider.</h1>
+            <p>ivamus bibendum turpis velit, id lacinia odio volutpat non. Nunc iaculis sagittis quam, sit amet hendrerit elit commodo a. Quisque lorem odio, consequat ac interdum ut, lacinia eu dui.</p>
+        </div>
+    </div>
+
+    <div id="homeSearch" class="container-fluid" style="position: absolute; background: #6498AD; width: 100%; left: 0; padding-top: 70px; padding-bottom: 70px; color: white">
+            <div class="container" style="position: relative;">
+                    <div class="col-xs-3 form-group">
+                        <label style="display: block;">Find a Provider</label>
+                        <input type="text" class="form-control" ng-model="Criteria.ProviderName"
+                               placeholder="Provider Name" style="width: 75%; display: inline-block">
+                        <a class="btn btn-success" ng-link="['ProviderSearch']"><span
+                                class="glyphicon glyphicon-search"></span></a>
+                    </div>
+                    <div class="col-xs-1 form-group" style="text-align: center;">
+                        <span class="h3" style="margin-top: 22px; display: inline-block; color: white">or</span>
+                    </div>
+                    <div class="col-xs-3 form-group">
+                        <label class="">Search By <span class="sr-only">Provider Type</span></label>
+                         <select class="form-control" ng-model="Criteria.ProviderType"
+                                ng-options="providerType.Id as providerType.Name for providerType in ProviderTypes">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-xs-3 form-group">
+                        <label class="">Near <span class="sr-only"></span></label>
+                        <select id="CountyCityZips" class="form-control" ng-model="Criteria.CountyCityZips"
+                                ng-options="countyCityZips for countyCityZips in CountyCityZips">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-xs-2 form-group">
+                        <label style="display: block;">Within <span class="sr-only">Mile Radius</span></label>
+                        <select class="form-control" style="width: 100px; display: inline-block">
+                            <option value="">10 miles</option>
+                            <option value="">25 miles</option>
+                            <option value="">50 miles</option>
+                            <option value="">75 miles</option>
+                        </select>
+                        <a class="btn btn-success" ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span></a>
+                    </div>
+            </div>
+        </div>
+
+    <div class="container" style="padding-top: 220px;">
+        <div class="col-xs-4">
+            <p class="lead">Heading</p>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+
+        </div>
+        <div class="col-xs-4">
+            <p class="lead">Heading</p>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+        <div class="col-xs-4">
+            <p class="lead">Heading</p>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        </div>
+    </div>
 </standard-layout>
