@@ -25,11 +25,12 @@ For the initial work, the scrum team draw the screen concept on the whiteboard, 
 
 Based on the initial research and overall chanllenges, we decide to follow our practice to use MVC architecture, with MVVM in the front-end.
 The frameworks we used in this project are:
-- Presentation/Front-End Layer: HTML5/JS 
-- Service Layer: node.js
-- Backend Database: None
+- Front-End/Presentation Layer: HTML5/JS/Bootstrap 
+- Front-End/Service Layer: AngularJS
+- Backend/Service Layer: None
+- Backend/Database: None
 
-We did not use didicated database server in this project because we want to focus the prototype work and agile process to create a good fit solution.
+We did not use didicated backend service and database in this project because we want to focus the prototype work and agile process to create a good fit solution.
 
 ### Live Demo Site (Deployment)
 
@@ -49,7 +50,17 @@ Azure provide simple Contiouse Integration (CI) that can deploy project from git
 TeamCity is a comprehensive integation build platform but need more configuration for this prototype. The configuration includes plug-ins for some Unit Test Framework we used.
 
 
-### How to build it
+### How to run it local
+This prototype is built with pure front-end HTML/JS technologies that does not need special settings. This prototype can run on any simple http server, eg. Chrome built-in HTTP Server.
+1. To run it on local Chrome Browser with built-in HTTP Server application
+- Download or Clone this [repository](https://github.com/FEISystems/ms-macwis-prototype/), assume put in directory d:\projects\ms-macwis-prototype
+- Start Chrome Browser
+- Install Chrome [Web Servver App](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en)
+- Start Web Server, point to the directory with source code d:\projects\ms-macwis-prototype\src\webapp
+- Navigate to http://127.0.0.1:8887 and you will see a live local demo
+
+### How to build and deploy to another environment
+This prototype can run on any web server or http server, such as Apache, IIS. Just put all file from src/web to the application root. You are done.
 
 
 ## Team & Process
