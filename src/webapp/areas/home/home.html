@@ -1,84 +1,96 @@
 ﻿<standard-layout>
     <div class="container">
         <div class="jumbotron">
-            <h1>Find the right provider.</h1>
-            <p>ivamus bibendum turpis velit, id lacinia odio volutpat non. Nunc iaculis sagittis quam, sit amet hendrerit elit commodo a. Quisque lorem odio, consequat ac interdum ut, lacinia eu dui.</p>
+            <h1>Find the Right Provider.</h1>
+            <p><p class="lead">There are many child care centers and other facilities that are dedicated to providing a safe, caring and productive environment for your child.</p> For more information, please visit:
+            <a href="http://www.mdhs.state.ms.us/early-childhood-care-development/for-parents/">http://www.mdhs.state.ms.us/early-childhood-care-development/for-parents/</a></p>
         </div>
     </div>
-    <style>
-        input[type='text'], select.form-control{
-            height: 45px;
-        }
-    </style>
-    <div id="homeSearch" class="container-fluid" style="position: absolute; background: #6498AD; width: 100%; left: 0; padding-top: 30px; padding-bottom: 40px; color: white">
+    <div id="homeSearch" class="container-fluid">
         <div class="container" >
             <div class="row">
-                <div class="col-xs-6" style="padding-top:30px">
-                    <div class="row">
-                        <div class="col-xs-11 col-lg-12">
-                            <h2 style="margin-top: 0">Search by Provider</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- PANEL CONTROLS -->
+                    <div class="row" role="tablist" id="tabContainer">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <a href="#locationPanel" class="btn btn-default btn-block btn-lg col-xs-12 searchTab" role="tab">Search By Location</a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <a href="#providerPanel" class="btn btn-default btn-block btn-lg col-xs-12 searchTab" role="tab">Search By Provider</a>
+                        </div>
+                        <div class="col-xs-12">
+                            <hr style="margin: 10px auto">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-11 form-group">
-                            <label style="display: block;">Provider Name</label>
-                            <input type="text" class="form-control" ng-model="Criteria.ProviderName" placeholder="Provider Name">
+                    <div class="row tab-content">
+                        <!-- LOCATION SEARCH -->
+                        <div role="tabpanel" id="locationPanel" class="tab-pane fade active in">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h2>Location Search</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                                    <label for="providerType" >Provider Type</label>
+                                    <select id="providerType" class="form-control">
+                                        <option value="$providerType"></option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                                    <label for="county">County</label>
+                                    <input type="text" class="form-control" id="county">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" class="form-control">
+                                </div>
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
+                                    <label for="zipCode">Zip Code</label>
+                                    <input type="text" id="zipCode" class="form-control">
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+                                    <label for="radius">Within <span class="sr-only">Mile Radius</span></label>
+                                    <select id="radius" class="form-control">
+                                        <option value="">10 miles</option>
+                                        <option value="">25 miles</option>
+                                        <option value="">50 miles</option>
+                                        <option value="">75 miles</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
+                                    <label for="starRating">Star Rating</label>
+                                    <select class="form-control" name="starRating" id="starRating">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="row" style="margin-top: 24px">
-                        <div class="col-xs-11">
-                            <a style="" class="btn btn-success btn-lg btn-block" ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span> Search</a>
+                        <!-- PROVIDER SEARCH -->
+                        <div role="tabpanel" id="providerPanel" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-sm-11 col-xs-12 col-lg-12">
+                                    <h2>Provider Search</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                    <label for="providerName">Provider Name</label>
+                                    <input id="providerName" type="text" class="form-control" ng-model="Criteria.ProviderName" placeholder="Provider Name">
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-                </div>
-
-                <div class="col-xs-6">
-
                     <div class="row">
                         <div class="col-xs-12">
-                            <h2 style="margin-top: 0">Search by Location</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 form-group">
-                            <label for="providerType" style="display: block">Provider Type</label>
-                            <select id="providerType" class="form-control">
-                                <option value=" "></option>
-                            </select>
-                        </div>
-                        <div class="col-xs-6 form-group">
-                            <label for="county">County</label>
-                            <input type="text" class="form-control" id="county">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6 form-group">
-                            <label for="city">City</label>
-                            <input type="text" id="city" class="form-control">
-                        </div>
-                        <div class="col-xs-3">
-                            <label for="zipCode">Zip Code</label>
-                            <input type="text" id="zipCode" class="form-control">
-                        </div>
-                        <div class="col-xs-3 form-group">
-                            <label style="display: block;">Within <span class="sr-only">Mile Radius</span></label>
-                            <select class="form-control">
-                                <option value="">10 miles</option>
-                                <option value="">25 miles</option>
-                                <option value="">50 miles</option>
-                                <option value="">75 miles</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-
-
-
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a style="" class="btn btn-success btn-lg btn-block" ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span> Search</a>
+                            <a class="btn btn-success btn-lg btn-block homeSearchButton" ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span> Search</a>
                         </div>
                     </div>
                 </div>
@@ -87,18 +99,36 @@
         </div>
     </div>
 
-    <div class="container" style="padding-top: 355px;">
-        <div class="col-xs-4">
-            <p class="lead">Heading</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+    <div class="container" id="homeBelowFold">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2>Types of Child Care</h2>
+                <hr>
+            </div>
         </div>
-        <div class="col-xs-4">
-            <p class="lead">Heading</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 homeInfo">
+                <h3>Licensed Child Care Center</h3>
+                <p>
+                    A child care center refers to a facility that provides care to children while parents are working or unavailable to care for their children. Child care centers typically group children of similar ages and offer some type of programming throughout the day. These facilities are licensed by the Mississippi Department of Health and must adhere to regulations regarding child care. High quality centers will offer educational/developmental curriculum implemented by trained staff. Health and safety of the children in these settings is a priority. Center quality can be determined by the star rating received through participation in the Mississippi Quality Stars programs. The more stars received, the higher the quality of care provided.
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 homeInfo">
+                <h3>Licensed Family Child Care Home</h3>
+                <p>A Licensed Family Child Care Home refers to a setting in which an individual is paid by parents to care for their children while they are working or unavailable. This setting occurs in the child care provider’s home and provides group care in a home-like environment and typically provides some type of programming throughout the day. These facilities are licensed by the Mississippi Department of Health and must adhere to regulations regarding child care. High quality centers will offer educational/developmental curriculum implemented by trained staff. Health and safety of the children in these settings is a priority. A system of evaluating quality in Family Daycare Homes is currently under development.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 homeInfo">
+                <h3>Registered Family Child Care Home</h3>
+                <p>A Registered Family Child Care Home refers to a setting in which an individual is paid by parents to care for their children while they are working or unavailable. This setting occurs in the child care provider’s home and provides small group care in a home-like environment. Registered Family Daycare Homes caring for fewer than six children (not related to the provider by the third degree) are NOT licensed, monitored, or otherwise regulated by the Mississippi Department of Health. Minimal information is maintained about these programs by the Mississippi Department of Health to assist in emergency preparedness only. Registered Family Daycare Homes may choose to participate in the same quality evaluation program offered to Licensed Family Daycare Homes.</p>
+            </div>
         </div>
-        <div class="col-xs-4">
-            <p class="lead">Heading</p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-        </div>
+
     </div>
+    <!-- Activates tabs for provider/location search -->
+    <script>
+        $('#tabContainer a').click(function () {
+//            e.preventDefault();
+            $(this).tab('show');
+        });
+    </script>
 </standard-layout>

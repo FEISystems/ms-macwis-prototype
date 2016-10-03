@@ -1,16 +1,64 @@
-a:hover {
+body > div.container-fluid {
+  padding: 0;
+}
+body > div.container-fluid > div.col-xs-12 {
+  padding: 0 0 25px 0;
+}
+body a:hover {
   cursor: pointer;
 }
-
-body > div.container-fluid:first-of-type{
-  padding-left: 0;
-  padding-right: 0;
+body .searchTab {
+  background: none;
+  color: white;
+  text-shadow: none;
+  font-weight: bold;
+  border: 2px solid white;
+  margin-bottom: 15px;
 }
-
-div#homeSearch{
-  background: #2083aa; /* Old browsers */
-  background: -moz-linear-gradient(top,  #2083aa 0%, #408caa 34%, #7ebec9 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #2083aa 0%,#408caa 34%,#7ebec9 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #2083aa 0%,#408caa 34%,#7ebec9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2083aa', endColorstr='#7ebec9',GradientType=0 ); /* IE6-9 */
+body input[type='text'],
+body select.form-control {
+  height: 45px;
+}
+body #providerPanel input#providerName {
+  height: 59px;
+  font-size: 18px;
+}
+body .homeSearchButton {
+  margin: 15px auto 0 auto;
+}
+body .searchTab:hover {
+  background: white;
+  border: 2px solid #ccc;
+}
+body .searchTab:active,
+body .searchTab.active {
+  background: white;
+  border: 2px solid white;
+}
+body .searchTab:focus {
+  background: none;
+  border: 2px solid white;
+  color: white;
+}
+body .tab-content .row {
+  padding: 0 15px;
+}
+body #homeBelowFold h2 {
+  font-weight: 700;
+}
+body #homeBelowFold div.homeInfo h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+body #homeSearch {
+  background: #6498AD;
+  width: 100%;
+  left: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: white;
+}
+body #homeSearch div[role="tabpanel"] h2 {
+  margin-top: 0;
+  font-weight: 600;
 }
