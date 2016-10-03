@@ -583,6 +583,7 @@
                 $scope.currentPage = 0;
                 $scope.pages = Math.ceil($scope.providersCount / $("#selectPerPage option:selected").text());
             }
+            $scope.listsPerPage = $("#selectPerPage option:selected").text(); 
             $scope.InitPages();
         };
         $scope.ItemsPerPageList = ['10', '20', '30'];
