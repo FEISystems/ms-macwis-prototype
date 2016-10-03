@@ -2,6 +2,8 @@
 This repo includes all products associated with MS macwits prototype, including source code, support documentation, issue tracking and work management.
 This document describes the process to build this prototype that includes Technologies, Team and Use Instructions.
 
+You can see live demo [here](http://msmacwis.azurewebsites.net) or http://msmacwis.azurewebsites.net.
+
 ## Technologies
 MS macwis prototype uses modern, open technologies, with agile (scrum) process to manage, design, coding, testing and deploy it. We also have a live demo site to show final results.
 The following standards and guidance are used or referred in this prototype.
@@ -21,6 +23,14 @@ For the initial work, the scrum team draw the screen concept on the whiteboard, 
 
 ### Architecture & Frameworks
 
+Based on the initial research and overall chanllenges, we decide to follow our practice to use MVC architecture, with MVVM in the front-end.
+The frameworks we used in this project are:
+- Presentation/Front-End Layer: HTML5/JS 
+- Service Layer: node.js
+- Backend Database: None
+
+We did not use didicated database server in this project because we want to focus the prototype work and agile process to create a good fit solution.
+
 ### Live Demo Site (Deployment)
 
 ### TDD
@@ -30,13 +40,23 @@ As we choose to use Bootstrp & AngularJS for front-end and node.js as backend im
 
 
 ### CI with Test Automation
+There are couple considerations that affect us to choose CI
+- Using Microsoft Azure App Service to host this prototype site
+- No backend database
+- Test Automation/Monitoring
+
+Azure provide simple Contiouse Integration (CI) that can deploy project from github to Azure App Service. For quick build purpose, we used this capability in sprint 1/2, and then switch to TeamCity.
+TeamCity is a comprehensive integation build platform but need more configuration for this prototype. The configuration includes plug-ins for some Unit Test Framework we used.
+
 
 ### How to build it
 
-## Team 
 
-## Process
-We are doing scrum process with team for this protoype. The key activitiies are described below.
+## Team & Process
+We are doing scrum process with team for this protoype. The team includes Product Owner, Scrum Master and a small scrum team. 
+For the proposal effort, we have more roles such as Product Manager and DevOps.
+
+The key activitiies are described below.
 
 ### Initial Planning
 As normally did after the agile (scrum) team assembled for this proposal, we had a quick planning meeting to setup weekly sprint process from start to finish this prototype, with common scrum configuration. See 2.1 for details.
@@ -60,6 +80,9 @@ During the initial planning meeting, we discussed
 - Review
 
 ### Sprint 3 - (10/3-10/7)
-- 
+- CI & Unit Testing Automation with TeamCity
+- Refine prototype based on review from Sprint 2
+- Proposal finalizatin based on prototype and process
 
 ## License
+[Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
