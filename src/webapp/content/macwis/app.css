@@ -1,4 +1,16 @@
-util.print: Use console.log instead
 a:hover {
   cursor: pointer;
+}
+
+body > div.container-fluid:first-of-type{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div#homeSearch{
+  background: #2083aa; /* Old browsers */
+  background: -moz-linear-gradient(top,  #2083aa 0%, #408caa 34%, #7ebec9 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #2083aa 0%,#408caa 34%,#7ebec9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #2083aa 0%,#408caa 34%,#7ebec9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2083aa', endColorstr='#7ebec9',GradientType=0 ); /* IE6-9 */
 }
