@@ -7,7 +7,7 @@ You can see live demo [here](http://msmacwis.azurewebsites.net) or http://msmacw
 ## Technologies
 MS macwis prototype uses modern, open technologies, with agile (scrum) process to manage, design, coding, testing and deploy it. We also have a live demo site to show final results.
 The following standards and guidance are used or referred in this prototype.
-- [U.S. Web Design Standards](https://standards.usa.gov/) that follows [Responsive Web Design](https://en.wikipedia.org/wiki/Responsive_web_design)
+- [U.S. Web Design Standards](https://standards.usa.gov/) that follows [Responsive Web Design](https://en.wikipedia.org/wiki/Responsive_web_design) with Accessibility out of the box
 - [US Digital Service Playbook](https://playbook.cio.gov/)
 - [18F Open Source Style Guide](https://pages.18f.gov/open-source-guide/)
 
@@ -70,6 +70,8 @@ For the proposal effort, we have more roles such as Product Manager and DevOps.
 
 The key activitiies are described below.
 
+### Initial Resarch and Discovery
+
 ### Initial Planning
 As normally did after the agile (scrum) team assembled for this proposal, we had a quick planning meeting to setup weekly sprint process from start to finish this prototype, with common scrum configuration. See 2.1 for details.
 During the initial planning meeting, we discussed 
@@ -95,6 +97,9 @@ During the initial planning meeting, we discussed
 - CI & Unit Testing Automation with TeamCity
 - Refine prototype based on review from Sprint 2
 - Proposal finalizatin based on prototype and process
+
+### Release 1.0 for Proposal submission - (10/10/2016)
+- Put a release tag as v1.0 for proposal submission
 
 ## License
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
