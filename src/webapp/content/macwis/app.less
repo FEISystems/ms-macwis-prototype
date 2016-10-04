@@ -1,3 +1,98 @@
-a:hover {
-  cursor: pointer;
+
+body{
+    
+    > div.container-fluid{
+        padding: 0;
+        > div.col-xs-12{
+            padding: 0 0 25px 0;
+        }
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+
+    .searchTab{
+        background: none;
+        color: white;
+        text-shadow: none;
+        font-weight: bold;
+        border: 2px solid white;
+        margin-bottom: 15px;
+    }
+
+    input[type='text'], select.form-control{
+        height: 45px;
+    }
+
+    #providerPanel{
+        // Homepage provider search button
+        input#providerName{
+            height: 59px;
+            font-size: 18px;
+        }
+
+
+    }
+
+    .homeSearchButton{
+        margin: 15px auto 0 auto;
+    }
+
+    .searchTab:hover{
+        background: white;
+        border: 2px solid #ccc;
+    }
+
+    .searchTab:active, .searchTab.active{
+        background: white;
+        border: 2px solid white;
+    }
+
+    .searchTab:focus{
+        background: none;
+        border: 2px solid white;
+        color: white;
+    }
+
+    .tab-content{
+        .row{
+            padding: 0 15px;
+        }
+    }
+
+    #homeBelowFold{
+        h2{
+            font-weight: 700;
+        }
+        div.homeInfo{
+
+            h3{
+                font-size:20px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    #homeSearch{
+        background: #6498AD;
+        width: 100%;
+        left: 0;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        color: white;
+
+        div[role="tabpanel"]{
+            h2{
+                margin-top: 0;
+                font-weight: 600;
+            }
+        }
+    }
+
 }
+
+
+
+
+
