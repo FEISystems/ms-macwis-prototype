@@ -32,15 +32,15 @@ The frameworks we used in this project are:
 
 We did not use didicated backend service and database in this project because we want to focus the prototype work and agile process to create a good fit solution.
 
-### Live Demo Site (Deployment)
 
 ### TDD
 As we choose to use Bootstrp & AngularJS for front-end and node.js as backend implementation. The test frameworks for these technologies are
 - Use [Jasmine](http://jasmine.github.io/) to write unit tests for this Angular based Applications with Bootstrap blocks.
 - For the back-end service with Node.JS, Mocha Test Framework is used that we covered all REST web services and node.js domain functions.
 
+## Deployment
 
-### CI with Test Automation
+### CI with Test Automation for Live Demo Site
 There are couple considerations that affect us to choose CI
 - Using Microsoft Azure App Service to host this prototype site
 - No backend database
@@ -49,6 +49,7 @@ There are couple considerations that affect us to choose CI
 Azure provide simple Contiouse Integration (CI) that can deploy project from github to Azure App Service. For quick build purpose, we used this capability in sprint 1/2, and then switch to TeamCity.
 TeamCity is a comprehensive integation build platform but need more configuration for this prototype. The configuration includes plug-ins for some Unit Test Framework we used.
 
+Here is the live demo [here](http://msmacwis.azurewebsites.net).
 
 ### How to run it local
 This prototype is built with pure front-end HTML/JS technologies that does not need special settings. This prototype can run on any simple http server, eg. Chrome built-in HTTP Server.
