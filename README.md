@@ -7,7 +7,7 @@ You can see live demo [here](http://msmacwis.azurewebsites.net) or http://msmacw
 ## Technologies
 MS macwis prototype uses modern, open technologies, with agile (scrum) process to manage, design, coding, testing and deploy it. We also have a live demo site to show final results.
 The following standards and guidance are used or referred in this prototype.
-- [Responsive Web Design](https://en.wikipedia.org/wiki/Responsive_web_design)
+- [U.S. Web Design Standards](https://standards.usa.gov/) that follows [Responsive Web Design](https://en.wikipedia.org/wiki/Responsive_web_design)
 - [US Digital Service Playbook](https://playbook.cio.gov/)
 - [18F Open Source Style Guide](https://pages.18f.gov/open-source-guide/)
 
