@@ -231,7 +231,7 @@
             var criteria = queueService.getMsg('homeSearchCriteria');
             if (!criteria)
                 return;
-
+            
             var criteriaFromHomePage = {
                 ProviderName : criteria.providerName,
                 ProviderType : criteria.providerType,
@@ -241,7 +241,15 @@
                 address: criteria.zipCode,
                 distince : criteria.radius,
                 providerName : criteria.ProviderName
-            };    
+            };
+            $scope.Criteria.ProviderType = criteria.providerType;
+            $scope.Criteria.ProviderName = criteria.providerName;
+            $scope.Criteria.City = criteria.city;
+            $scope.Criteria.County = criteria.county;
+            $scope.Criteria.Rate = criteria.rate;
+            $scope.Criteria.Address = criteria.zipCode;
+            $scope.Criteria.distince = criteria.radius;
+
             queueService.setMsg('homeSearchCriteria', null);
             $scope.search();
             
