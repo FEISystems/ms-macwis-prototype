@@ -1,11 +1,15 @@
 
 body{
-    
+
     > div.container-fluid{
         padding: 0;
         > div.col-xs-12{
             padding: 0 0 25px 0;
         }
+    }
+
+    div[ng-transclude="results-panel"], div[ng-transclude="search-panel"]{
+        padding: 0;
     }
 
     a:hover {
@@ -90,8 +94,60 @@ body{
         }
     }
 
+    table#searchResults{
+        border: none;
+        tr{
+            border-bottom: 1px solid #3c3c3c;
+            td{
+                border: none;
+                padding: 5px 0;
+                div[class^="col-"]{
+                    padding: 0;
+                    div{
+                        margin: 5px 0;
+                        strong{
+                            font-size: 16px;
+                        }
+                        span{
+                            font-size: 16px;
+                        }
+                    }
+                }
+                div.providerName{
+                    strong{
+                        font-size:18px;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    div.providerSearchResult{
+        margin: 8px 0 8px 0;
+        &:first-of-type{
+            margin-top: 15px;
+        }
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+        div.row{
+            span.providerName{
+                font-size: 16px;
+                font-weight: 700;
+                color: darkred;
+            }
+        }
+
+    }
+
 }
 
+@media (min-width: 767px){
+    div[ng-transclude="results-panel"], div[ng-transclude="search-panel"]{
+        padding: 0 15px !important;
+    }
+}
 
 
 

@@ -4,6 +4,10 @@ body > div.container-fluid {
 body > div.container-fluid > div.col-xs-12 {
   padding: 0 0 25px 0;
 }
+body div[ng-transclude="results-panel"],
+body div[ng-transclude="search-panel"] {
+  padding: 0;
+}
 body a:hover {
   cursor: pointer;
 }
@@ -61,4 +65,50 @@ body #homeSearch {
 body #homeSearch div[role="tabpanel"] h2 {
   margin-top: 0;
   font-weight: 600;
+}
+body table#searchResults {
+  border: none;
+}
+body table#searchResults tr {
+  border-bottom: 1px solid #3c3c3c;
+}
+body table#searchResults tr td {
+  border: none;
+  padding: 5px 0;
+}
+body table#searchResults tr td div[class^="col-"] {
+  padding: 0;
+}
+body table#searchResults tr td div[class^="col-"] div {
+  margin: 5px 0;
+}
+body table#searchResults tr td div[class^="col-"] div strong {
+  font-size: 16px;
+}
+body table#searchResults tr td div[class^="col-"] div span {
+  font-size: 16px;
+}
+body table#searchResults tr td div.providerName strong {
+  font-size: 18px;
+  display: block;
+}
+body div.providerSearchResult {
+  margin: 8px 0 8px 0;
+}
+body div.providerSearchResult:first-of-type {
+  margin-top: 15px;
+}
+body div.providerSearchResult:last-of-type {
+  margin-bottom: 0;
+}
+body div.providerSearchResult div.row span.providerName {
+  font-size: 16px;
+  font-weight: 700;
+  color: darkred;
+}
+@media (min-width: 767px) {
+  div[ng-transclude="results-panel"],
+  div[ng-transclude="search-panel"] {
+    padding: 0 15px !important;
+  }
 }
