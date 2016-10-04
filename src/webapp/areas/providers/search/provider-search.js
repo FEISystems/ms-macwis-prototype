@@ -83,13 +83,13 @@
             if ($scope.Criteria.address && $scope.Criteria.distince) {
                 googleMapService.getCoordinateByAddress($scope.Criteria.address, function(coordinate) {
                     tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, $scope.Criteria.distince);
-                    $scope.searchAfterLocation(tempProviders);
+                    $scope.searchByCriteria(tempProviders);
                 }, function(error) {
                     alert(error);
                 });
             } else {
                 tempProviders = $scope.AllProviders;
-                $scope.searchAfterLocation(tempProviders);
+                $scope.searchByCriteria(tempProviders);
             };
             $scope.setPage = function(num) {
                 if (num === -1) {
@@ -129,7 +129,7 @@
 
         };
 
-        $scope.searchAfterLocation = function(tempProviders) {
+        $scope.searchByCriteria = function(tempProviders) {
 
             if (!$scope.Criteria || $scope.Criteria.ProviderName ||
                 $scope.Criteria.ProviderType || $scope.Criteria.City || $scope.Criteria.County ||
