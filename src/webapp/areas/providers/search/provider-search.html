@@ -69,7 +69,7 @@
 
                             <legend>Search by Location</legend>
                             <div class="form-group">
-                                <label for="zipCode">Zip:</label>
+                                <label for="zipCode">Zip Code:</label>
                                 <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="Criteria.address" name="address">
                                 <div class="error" style="color: red" ng-show="{{'searchForm.address.$invalid '}}">
                                     Please enter a valid zip code
