@@ -6,7 +6,10 @@
         var model = this;
         model.provider = {};
         model.criteria = {};
-        model.providerTypes = dataService.getProviderTypes();         
+        model.providerTypes = dataService.getProviderTypes();  
+        model.cities = dataService.getCities();
+        model.counties = dataService.getCounties();
+        model.rates = dataService.getRates();       
         model.title = "Home";
 
         model.onClick = function(){
