@@ -11,7 +11,7 @@ body > div.container-fluid > div.col-xs-12 {
   padding: 0 0 25px 0;
 }
 body div#resultsPageContainer {
-  padding-left: 0;
+  padding: 20px 15px 0 0;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter {
   padding: 0 20px 0 10px;
@@ -46,6 +46,7 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body legend button span {
   position: relative;
   bottom: -2px;
+  margin-left: 5px;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body label {
   color: black;
@@ -57,13 +58,19 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
   color: #000 !important;
 }
 body div#resultsPageContainer div#resultsPanelContainer {
-  padding-left: 0;
+  padding: 15px 0 0 0;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row h2 {
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-left h2 {
   font-weight: 600;
-  margin-bottom: 5px;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row select#sortControl {
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-right {
+  margin-top: -20px;
+  padding-bottom: 5px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-right label[for="sortControl"] {
+  margin-bottom: 0;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-right select#sortControl {
   height: 30px !important;
   padding: 6px 1px;
 }
@@ -123,37 +130,27 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
   text-shadow: none;
 }
 body .searchTab {
-  background: none;
-  color: white;
+  background: #4d7e91 !important;
+  color: white !important;
   text-shadow: none;
   font-weight: bold;
-  border: 2px solid white;
-  margin-bottom: 15px;
+  border: none;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
-body input[type='text'],
-body select.form-control {
-  height: 45px;
+body .searchTab:not(.activeTab) {
+  bottom: -5px;
+  background-color: #3b6170 !important;
 }
-body #providerPanel input#providerName {
-  height: 59px;
-  font-size: 18px;
+body .searchTab:hover,
+body .searchTab:focus {
+  text-decoration: underline;
 }
 body .homeSearchButton {
   margin: 15px auto 0 auto;
-}
-body .searchTab:hover {
-  background: white;
-  border: 2px solid #ccc;
-}
-body .searchTab:active,
-body .searchTab.active {
-  background: white;
-  border: 2px solid white;
-}
-body .searchTab:focus {
-  background: none;
-  border: 2px solid white;
-  color: white;
 }
 body .tab-content .row {
   padding: 0 15px;
@@ -166,7 +163,7 @@ body #homeBelowFold div.homeInfo h3 {
   font-weight: 700;
 }
 body #homeSearch {
-  background: #6498AD;
+  background: #4d7e91;
   width: 100%;
   left: 0;
   padding-top: 30px;
@@ -176,6 +173,9 @@ body #homeSearch {
 body #homeSearch div[role="tabpanel"] h2 {
   margin-top: 0;
   font-weight: 600;
+}
+body #homeSearch label {
+  font-size: 130%;
 }
 @media (max-width: 767px) {
   body > div.container-fluid {
