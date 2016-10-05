@@ -125,20 +125,6 @@
                     </div>
                 </div>
             </form>
-            <script>
-                $(document).ready(function() {
-                   $('.collapse').collapse('hide');
-
-                    $('.criteriaButton').on('click', function() {
-                        var span = $(this).children();
-                        if ($(span).hasClass('glyphicon-plus')) {
-                            $(span).removeClass('glyphicon-plus').addClass('glyphicon-minus');
-                        } else {
-                            $(span).removeClass('glyphicon-minus').addClass('glyphicon-plus');
-                        }
-                    });
-                });
-            </script>
         </search-panel>
         <results-panel>
             <div class="col-xs-12">
@@ -179,12 +165,34 @@
                             <input id="GoPage" type="text" style="width: 35px; height: 23px;" />
                             <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="setPage(-1)" />
                         </div>
+                        <div style="float: left;" ng-hide="false" >
+                        <input type="button" value="PRINT SELECTED"  style="width: 120px; height: 20px; font-size: 11px; margin-left: 300px"
+                                ng-click="printprovider()" />
+
+                        </div>
                     </div>
                     <table id="searchResults" class="table table-condensed table-responsive">
                         <thead ng-hide="true"></thead>
                         <tbody>
-                            <tr ng-repeat="provider in filteredProviders| paging:currentPage*listsPerPage | limitTo:listsPerPage">
 
+
+
+                          <tr ng-repeat="provider in filteredProviders| paging:currentPage*listsPerPage | limitTo:listsPerPage">
+                              <td><div class="col-xs-12">
+                                  <label id="lblSelect" style="display: none;">Select Providers</label>
+                              </div></td>
+                              <td class="col-xs-1" ng-hide="false">
+                                    <div id="checkboxes">
+                                        <div style="font-size: 200%; color: darkred; line-height:10em;">
+                                            <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; display: block" id={{provider}} />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="display:inline-block" class="col-xs-11  result-section-1">
+                                    <div class="providerName">
+                                        <strong>{{provider.ProviderName}}</strong>
+                                    </div>
+                                </td>
                                 <td class="col-xs-12  providerNameSection">
                                     <div class="providerName">
                                         <strong>{{provider.ProviderName}}</strong>
@@ -223,6 +231,58 @@
                                         <div><strong>Capacity: </strong><span>{{provider.ProviderCapacity}}</span></div>
                                     </div>
                                 </td>
+                        <tr><td><div class="col-xs-12">
+
+                        </div></td></tr>
+                        <tr><td><div class="col-xs-12">
+                            <label id="lblSelect" style="display: none;">Select Providers</label>
+                        </div></td></tr>
+
+                         <tr ng-repeat="provider in filteredProviders| paging:currentPage*listsPerPage | limitTo:listsPerPage">
+                           <td class="col-xs-1" ng-hide="false">
+                                <div id="checkboxes">
+                                    <div style="font-size: 200%; color: darkred; line-height:10em;">
+                                        <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; display: block" id={{provider}} />
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="display:inline-block" class="col-xs-11  result-section-1">
+                                <div class="providerName">
+                                    <strong>{{provider.ProviderName}}</strong>
+                                </div>
+                            </td>
+                            <td style="display:inline-block" class="col-xs-12 starRating">
+                                <div ng-if="provider.QualityRating===1">
+                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
+                                </div>
+                                <div ng-if="provider.QualityRating===2">
+                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
+                                </div>
+                                <div ng-if="provider.QualityRating===3">
+                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
+                                </div>
+                                <div ng-if="provider.QualityRating===4">
+                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" />
+                                </div>
+                                <div ng-if="provider.QualityRating===5">
+                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" />
+                                </div>
+                                <div ng-if="provider.QualityRating===0">
+                                    <img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
+                                </div>
+                            </td>
+                            <td style="display:inline-block" class="col-xs-12 providerInfo">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div><strong>Type: </strong><span>{{provider.ProviderTypeDescription}}</span></div>
+                                    <div><strong>Phone: </strong><span>{{provider.PhoneNumber}}</span></div>
+                                    <div><strong>City: </strong><span>{{provider.PhysicalCity}}</span></div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div ng-if="provider.Distance"><strong>Distance: </strong><span>{{provider.Distance}}</span></div>
+                                    <div><strong>County: </strong><span>{{provider.CountyName}}</span></div>
+                                    <div><strong>Capacity: </strong><span>{{provider.ProviderCapacity}}</span></div>
+                                </div>
+                            </td>
 
                                 <td class="col-xs-12 col-sm-4 col-md-4 col-lg-2 providerDetails">
                                     <a class="btn btn-default btn-lg btn-block" ng-click="showDetails(provider)">Provider Details</a>
