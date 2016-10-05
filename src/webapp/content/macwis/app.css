@@ -1,15 +1,107 @@
+body .no-padding {
+  padding: 0 !important;
+}
+body a:hover {
+  cursor: pointer;
+}
 body > div.container-fluid {
   padding: 0;
 }
 body > div.container-fluid > div.col-xs-12 {
   padding: 0 0 25px 0;
 }
-body div[ng-transclude="results-panel"],
-body div[ng-transclude="search-panel"] {
+body div#resultsPageContainer {
+  padding-left: 0;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel {
+  background: #6498AD;
+  border: 4px solid #6498AD;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel .panel-heading {
+  color: white;
+  border-bottom: 1px solid white;
+  padding: 0 15px;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel .panel-heading h2 {
+  font-weight: 600;
+  margin: 10px 0 8px 0;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel .panel-body {
+  max-height: 755px !important;
+  overflow-y: scroll !important;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel .panel-footer {
+  background: #6498AD;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel .panel-footer .reset {
+  color: #000 !important;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel legend button {
+  color: black;
+  font-weight: 600;
+  background: transparent;
+  text-align: left;
+  border: none;
+  padding: 3px 0;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel legend button span {
+  position: relative;
+  bottom: -2px;
+}
+body div#resultsPageContainer div#searchPanelContainer form div.panel label {
+  color: black;
+}
+body div#resultsPageContainer div#resultsPanelContainer {
+  padding-left: 0;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row select#sortControl {
+  height: 30px !important;
+  padding: 6px 1px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults {
+  border: none;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr {
+  border-bottom: 1px solid #ccc;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td {
+  border: none;
+  padding: 0;
+  display: inline-block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td div[class^="col-"] {
   padding: 0;
 }
-body a:hover {
-  cursor: pointer;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td div[class^="col-"] div {
+  margin: 5px 0;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td div[class^="col-"] div strong {
+  font-size: 16px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td div[class^="col-"] div span {
+  font-size: 16px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection div.providerName strong {
+  font-size: 18px;
+  display: inline-block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating {
+  padding: 0;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating label {
+  font-size: 17px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating div {
+  display: inline-block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
+  padding-bottom: 15px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails a.btn {
+  background: #6498AD;
+  color: white;
+  text-shadow: none;
+  border: 1px solid #ccc;
 }
 body .searchTab {
   background: none;
@@ -66,49 +158,25 @@ body #homeSearch div[role="tabpanel"] h2 {
   margin-top: 0;
   font-weight: 600;
 }
-body table#searchResults {
-  border: none;
-}
-body table#searchResults tr {
-  border-bottom: 1px solid #3c3c3c;
-}
-body table#searchResults tr td {
-  border: none;
-  padding: 5px 0;
-}
-body table#searchResults tr td div[class^="col-"] {
-  padding: 0;
-}
-body table#searchResults tr td div[class^="col-"] div {
-  margin: 5px 0;
-}
-body table#searchResults tr td div[class^="col-"] div strong {
-  font-size: 16px;
-}
-body table#searchResults tr td div[class^="col-"] div span {
-  font-size: 16px;
-}
-body table#searchResults tr td div.providerName strong {
-  font-size: 18px;
-  display: block;
-}
-body div.providerSearchResult {
-  margin: 8px 0 8px 0;
-}
-body div.providerSearchResult:first-of-type {
-  margin-top: 15px;
-}
-body div.providerSearchResult:last-of-type {
-  margin-bottom: 0;
-}
-body div.providerSearchResult div.row span.providerName {
-  font-size: 16px;
-  font-weight: 700;
-  color: darkred;
-}
-@media (min-width: 767px) {
-  div[ng-transclude="results-panel"],
-  div[ng-transclude="search-panel"] {
-    padding: 0 15px !important;
+@media (max-width: 767px) {
+  body > div.container-fluid {
+    padding: 0;
+  }
+  body div#resultsPageContainer {
+    padding: 0;
+  }
+  body div#resultsPageContainer div#resultsPanelContainer,
+  body div#resultsPageContainer div#searchPanelContainer {
+    padding: 0px;
+  }
+  body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
+    padding: 0 15px;
+  }
+  body div#resultsPageContainer div#searchPanelContainer {
+    position: static;
+  }
+  body div#resultsPageContainer div#searchPanelContainer form div.panel .panel-body {
+    overflow: visible !important;
+    max-height: none !important;
   }
 }

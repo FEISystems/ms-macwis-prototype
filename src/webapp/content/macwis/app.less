@@ -1,5 +1,14 @@
 
 body{
+    .no-padding{
+        padding: 0 !important;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+
+
 
     > div.container-fluid{
         padding: 0;
@@ -8,13 +17,131 @@ body{
         }
     }
 
-    div[ng-transclude="results-panel"], div[ng-transclude="search-panel"]{
-        padding: 0;
+
+    // Search Page Styles
+    div#resultsPageContainer {
+        padding-left: 0;
+        div#searchPanelContainer {
+            form {
+                div.panel {
+                    background: #6498AD;
+                    border: 4px solid #6498AD;
+                    .panel-heading {
+                        color: white;
+                        border-bottom: 1px solid white;
+                        padding: 0 15px;
+                        h2 {
+                            font-weight: 600;
+                            margin: 10px 0 8px 0;
+                        }
+                    }
+                    .panel-body {
+                        max-height: 755px !important;
+                        overflow-y: scroll !important;
+                    }
+                    .panel-footer {
+                        background: #6498AD;
+                        div.row {
+
+                        }
+                        .reset {
+                            color: #000 !important;
+                        }
+
+                    }
+                    legend button {
+                        color: black;
+                        font-weight: 600;
+                        background: transparent;
+                        text-align: left;
+                        border: none;
+                        padding: 3px 0;
+                        span {
+                            position: relative;
+                            bottom: -2px;
+                        }
+                    }
+                    label {
+                        color: black;
+                    }
+                }
+            }
+
+        }
+
+        div#resultsPanelContainer {
+            padding-left: 0;
+
+            div.col-xs-12 {
+                div.row {
+                    // Sort Control
+                    select#sortControl {
+                        height: 30px !important;
+                        padding: 6px 1px;
+                    }
+
+                    // Results Template
+                    table#searchResults {
+                        border: none;
+                        tr {
+                            border-bottom: 1px solid #ccc;
+                            td {
+                                border: none;
+                                padding: 0;
+                                display: inline-block;
+                                div[class^="col-"] {
+                                    padding: 0;
+                                    div {
+                                        margin: 5px 0;
+                                        strong {
+                                            font-size: 16px;
+                                        }
+                                        span {
+                                            font-size: 16px;
+                                        }
+                                    }
+                                }
+                                &.providerNameSection{
+                                    div.providerName {
+                                        strong {
+                                            font-size: 18px;
+                                            display: inline-block;
+                                        }
+                                    }
+                                }
+
+                                &.starRating{
+                                    padding: 0;
+                                    label{
+                                        font-size: 17px;
+                                    }
+                                    div{
+                                        display: inline-block;
+                                    }
+                                }
+
+                                &.providerDetails {
+                                    padding-bottom: 15px;
+                                    a.btn {
+                                        background: #6498AD;
+                                        color: white;
+                                        text-shadow: none;
+                                        border: 1px solid #ccc;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
-    a:hover {
-        cursor: pointer;
-    }
+
+
+
+
 
     .searchTab{
         background: none;
@@ -94,58 +221,41 @@ body{
         }
     }
 
-    table#searchResults{
-        border: none;
-        tr{
-            border-bottom: 1px solid #3c3c3c;
-            td{
-                border: none;
-                padding: 5px 0;
-                div[class^="col-"]{
-                    padding: 0;
-                    div{
-                        margin: 5px 0;
-                        strong{
-                            font-size: 16px;
-                        }
-                        span{
-                            font-size: 16px;
-                        }
-                    }
-                }
-                div.providerName{
-                    strong{
-                        font-size:18px;
-                        display: block;
-                    }
-                }
-            }
-        }
-    }
-
-    div.providerSearchResult{
-        margin: 8px 0 8px 0;
-        &:first-of-type{
-            margin-top: 15px;
-        }
-        &:last-of-type{
-            margin-bottom: 0;
-        }
-        div.row{
-            span.providerName{
-                font-size: 16px;
-                font-weight: 700;
-                color: darkred;
-            }
-        }
-
-    }
-
 }
 
-@media (min-width: 767px){
-    div[ng-transclude="results-panel"], div[ng-transclude="search-panel"]{
-        padding: 0 15px !important;
+@media (max-width: 767px){
+    body {
+
+        > div.container-fluid{
+            padding: 0;
+        }
+        div#resultsPageContainer {
+            padding: 0;
+            div#resultsPanelContainer, div#searchPanelContainer {
+                padding: 0px;
+            }
+
+            div#resultsPanelContainer{
+                div.col-xs-12{
+                    div.row{
+                        padding: 0 15px;
+                    }
+                }
+            }
+
+            div#searchPanelContainer {
+                position: static;
+                form {
+                    div.panel {
+                        .panel-body {
+
+                            overflow: visible !important;
+                            max-height: none !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -1,11 +1,16 @@
 ﻿<link rel='stylesheet' type="text/css" href="views/shared/layouts/search-layout/search.layout.css" />
 
-<div class="container-fluid">
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3" ng-transclude="search-panel">
+<div class="container-fluid" id="resultsPageContainer">
+        <div id="searchPanelContainerOuter" class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+            <div id="searchPanelContainer" ng-transclude="search-panel">
+        </div>
             <!-- Search Form Content -->
         </div>
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9" ng-transclude="results-panel">
+        <div id="resultsPanelContainer" class="col-xs-12 col-sm-8 col-md-8 col-lg-9" ng-transclude="results-panel">
             <!-- Search Results Content -->
 
         </div>
 </div>
+<script>
+    $('#searchPanelContainer').affix();
+</script>
