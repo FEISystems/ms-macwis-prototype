@@ -28,7 +28,7 @@
             { path: '/around/search', component: 'aroundProviderSearch', name: 'AroundProviderSearch' },
             { path: '/help', component: 'help', name: 'Help' },
             { path: '/**', redirectTo: ['Home'] }
-        ]
+    ]
     });
 
 }());
