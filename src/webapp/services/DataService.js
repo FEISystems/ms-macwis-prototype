@@ -476,6 +476,48 @@
             }
         ];
         };
+
+        var getGenders = function(){
+            return [
+                {
+                    "Id": "Boy",
+                    "Name": "Boy"
+                },
+                {
+                    "Id": "Girl",
+                    "Name": "Girl"
+                },
+                {
+                    "Id": "Both",
+                    "Name": "Both"
+                }
+            ];
+        }
+
+        var getSortTypes = function(){
+            return [
+                {
+                    "Id": "ProviderName",
+                    "Name": "Provider Name"
+                },
+                {
+                    "Id": "ProviderTypeDescription",
+                    "Name": "Provider Type"
+                },
+                {
+                    "Id": "PhysicalCity",
+                    "Name": "City"
+                },
+                {
+                    "Id": "CountyName",
+                    "Name": "County Name"
+                },
+                {
+                    "Id": "QualityRating",
+                    "Name": "Rate"
+                }
+            ];
+        }
         return {
             ages: ages,
             getAgeById: getAgeById,
@@ -484,7 +526,9 @@
             getProviderTypes : getProviderTypes,
             getCounties: getCounties,
             getCities: getCities,
-            getRates: getRates
+            getRates: getRates,
+            getGenders: getGenders,
+            getSortTypes: getSortTypes
         };
     };
 

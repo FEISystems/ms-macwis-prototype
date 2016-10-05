@@ -139,6 +139,18 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
   padding-bottom: 15px;
 }
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails label.checkbox-inline {
+  padding-left: 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails label.checkbox-inline input.form-control {
+  box-shadow: none;
+  margin-left: 42px;
+  padding-left: 1px;
+  bottom: 3px;
+  height: 17px;
+}
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails a.btn {
   background: #6498AD;
   color: white;

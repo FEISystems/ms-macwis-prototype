@@ -4,7 +4,7 @@
             <form name="searchForm">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h1>{{title}}</h1>
+                        <h1>{{model.title}}</h1>
                     </div>
 
                     <div class="panel-body">
@@ -14,21 +14,21 @@
                         <div class="collapse" id="providerCriteria">
                             <div class="form-group">
                                 <label for="providerName">Provider Name:</label>
-                                <input type="text" id="providerName" class="form-control" ng-model="Criteria.ProviderName">
+                                <input type="text" id="providerName" class="form-control" ng-model="model.Criteria.ProviderName">
                             </div>
 
                             <div class="form-group">
                                 <label for="providerType">Provider Type:</label>
-                                <select id="providerType" class="form-control" ng-model="Criteria.ProviderType"
-                                        ng-options="providerType.Id as providerType.Name for providerType in ProviderTypes">
+                                <select id="providerType" class="form-control" ng-model="model.Criteria.ProviderType"
+                                        ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes">
                                     <option value=""></option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                             <label for="starRating">Quality Star Rating:</label>
-                            <select id="starRating" class="form-control" ng-model="Criteria.Rate"
-                                    ng-options="rate.Id as rate.Name for rate in Rates">
+                            <select id="starRating" class="form-control" ng-model="model.Criteria.Rate"
+                                    ng-options="rate.Id as rate.Name for rate in model.Rates">
                                 <option value=""></option>
                             </select>
                             <hr style="border-color: #ffffff">
@@ -46,28 +46,28 @@
                             <div class="collapse" id="locationCriteria">
                                 <div class="form-group">
                                     <label for="city">City:</label>
-                                    <select id="city" class="form-control" ng-model="Criteria.City"
-                                            ng-options="city for city in Cities">
+                                    <select id="city" class="form-control" ng-model="model.Criteria.City"
+                                            ng-options="city for city in model.Cities">
                                         <option value=""></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="county">County:</label>
-                                    <select id="county" class="form-control" ng-model="Criteria.County"
-                                            ng-options="county.Id as county.Name for county in Counties">
+                                    <select id="county" class="form-control" ng-model="model.Criteria.County"
+                                            ng-options="county.Id as county.Name for county in model.Counties">
                                         <option value=""></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="zipCode">Zip Code:</label>
-                                    <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="Criteria.address" name="address">
+                                    <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" name="address">
                                     <div class="error" style="color: red" ng-show="{{'searchForm.address.$invalid '}}">
                                         Please enter a valid zip code
                                     </div>
                                 </div>
                                 <div class="form-group">
                                 <label for="searchRadius">Distance(miles):</label>
-                                <input id="searchRadius" type="number" min="0" class="form-control" ng-model="Criteria.distance" name="distance">
+                                <input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">
                                 <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
                                     Please enter a numeric value
 
@@ -89,15 +89,15 @@
                             <div class="collapse" id="advancedCriteria">
                                 <div class="form-group">
                                     <label for="ageRange">Age Ranges:</label>
-                                    <select id="ageRange" class="form-control" ng-model="Criteria.Age"
-                                            ng-options="age.Id as age.Name for age in Ages">
+                                    <select id="ageRange" class="form-control" ng-model="model.Criteria.Age"
+                                            ng-options="age.Id as age.Name for age in model.Ages">
                                         <option value=""></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="gendersAccepted">Genders Accepted:</label>
-                                    <select id="gendersAccepted" class="form-control" ng-model="Criteria.Gender"
-                                            ng-options="gender.Id as gender.Name for gender in Genderes">
+                                    <select id="gendersAccepted" class="form-control" ng-model="model.Criteria.Gender"
+                                            ng-options="gender.Id as gender.Name for gender in model.Genderes">
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -105,8 +105,8 @@
                                 <div class="form-group">
                                     <label for="acceptsSubsidized">Accepts subsidized child care:</label>
 
-                                    <select id="acceptsSubsidized" class="form-control" ng-model="Criteria.CanTakeBehavioralChildren"
-                                            ng-options="canTakeBehavioralChildren.Id as canTakeBehavioralChildren.Name for canTakeBehavioralChildren in CanTakeBehavioralChildrens">
+                                    <select id="acceptsSubsidized" class="form-control" ng-model="model.Criteria.CanTakeBehavioralChildren"
+                                            ng-options="canTakeBehavioralChildren.Id as canTakeBehavioralChildren.Name for canTakeBehavioralChildren in model.CanTakeBehavioralChildrens">
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -117,8 +117,8 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="pull-right">
-                                    <button class="btn btn-success" type="submit" ng-click="search()">Search</button>
-                                    <button class="btn reset" ng-click="clear()" style="color: black">Reset</button>
+                                    <button class="btn btn-success" type="submit" ng-click="model.search()">Search</button>
+                                    <button class="btn reset" ng-click="model.clear()" style="color: black">Reset</button>
                                 </div>
                             </div>
                         </div>
@@ -139,58 +139,53 @@
                                     <label for="sortControl" class="control-label">Sort By:</label>
                                 </div>
                                 <div class="col-xs-1">
-                                    <span ng-show="!sortData.up">
-                                        <span class="glyphicon glyphicon-arrow-down" ng-click="up()"></span>
+                                    <span ng-show="!model.sortData.up">
+                                        <span class="glyphicon glyphicon-arrow-down" ng-click="model.up()"></span>
                                     </span>
-                                    <span ng-show="sortData.up">
-                                        <span class="glyphicon glyphicon-arrow-up" ng-click="up()"></span>
+                                    <span ng-show="model.sortData.up">
+                                        <span class="glyphicon glyphicon-arrow-up" ng-click="model.up()"></span>
                                     </span>
                                 </div>
                             </div>
-                            <select id="sortControl" class="form-control" ng-model="sortData.sortField" ng-change="sort()"
-                                    ng-options="sortBy.Id as sortBy.Name for sortBy in SortByes">
+                            <select id="sortControl" class="form-control" ng-model="model.sortData.sortField" ng-change="model.sort()"
+                                    ng-options="sortBy.Id as sortBy.Name for sortBy in model.SortByes">
                             </select>
 
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <hr style="margin-top: 0">
-                    <div class="result-pagination" style="display: none; margin: 10px 0 20px 0;">
-                        <div ng-if="filteredProviders.length>0" style="float: left;">Showing {{currentPage==0 ? 1:(currentPage)*listsPerPage+1}} to {{(currentPage!=pages-1)?(currentPage+1)*listsPerPage:providersCount}} of {{providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
-                        <div ng-if="filteredProviders.length===0"  style="float: left;">No Data Found</div>
-                        <div class="step prevLink" style="float: left;" ng-if="filteredProviders.length>0">
-                            Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="ChangeDisplayNums()" ng-model="listsPerPage" ng-options="item as item for item in ItemsPerPageList"></select>&nbsp;&nbsp;entries&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <div class="result-pagination" >
+                        <div ng-if="model.filteredProviders.length>0" style="float: left;">Showing {{model.currentPage==0 ? 1:(model.currentPage)*model.listsPerPage+1}} to {{(model.currentPage!=pages-1)?(model.currentPage+1)*model.listsPerPage:model.providersCount}} of {{model.providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
+                        <div ng-if="model.filteredProviders.length===0"  style="float: left;">No Data Found</div>
+                        <div class="step prevLink" style="float: left;" ng-if="model.filteredProviders.length>0">
+                            Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="model.ChangeDisplayNums()" ng-model="model.listsPerPage" ng-options="item as item for item in model.ItemsPerPageList"></select>&nbsp;&nbsp;entries&nbsp;&nbsp;|&nbsp;&nbsp;
                         </div>
-                        <div style="float: left; " ng-if="filteredProviders.length>0">
+                        <div style="float: left; " ng-if="model.filteredProviders.length>0">
                             <input id="GoPage" type="text" style="width: 35px; height: 23px;" />
-                            <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="setPage(-1)" />
+                            <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="model.setPage(-1)" />
                         </div>
                         <div style="float: left;" ng-hide="false" >
-                        <input type="button" value="PRINT SELECTED"  style="width: 120px; height: 20px; font-size: 11px; margin-left: 300px"
-                                ng-click="printprovider()" />
-
+                            <input type="button" value="PRINT SELECTED"  style="width: 120px; height: 20px; font-size: 11px; margin-left: 300px"
+                                   ng-click="printprovider()" />
                         </div>
                     </div>
                     <table id="searchResults" class="table table-condensed table-responsive">
                         <thead ng-hide="true"></thead>
                         <tbody>
+                            <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
 
-
-
-                          <tr ng-repeat="provider in filteredProviders| paging:currentPage*listsPerPage | limitTo:listsPerPage">
-                              <td><div class="col-xs-12">
-                                  <label id="lblSelect" style="display: none;">Select Providers</label>
-                              </div></td>
-                              <td class="col-xs-1" ng-hide="false">
-                                    <div id="checkboxes">
-                                        <div style="font-size: 200%; color: darkred; line-height:10em;">
-                                            <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; display: block" id={{provider}} />
-                                        </div>
+                                <td>
+                                    <div class="col-xs-12">
+                                        <label for="" id="lblSelect" style="display: none;">Select Providers</label>
                                     </div>
                                 </td>
-                                <td style="display:inline-block" class="col-xs-11  result-section-1">
-                                    <div class="providerName">
-                                        <strong>{{provider.ProviderName}}</strong>
+                                <td class="col-xs-1" ng-hide="false">
+                                    <div id="checkboxes">
+                                        <div style="font-size: 200%">
+
+
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="col-xs-12  providerNameSection">
@@ -231,61 +226,20 @@
                                         <div><strong>Capacity: </strong><span>{{provider.ProviderCapacity}}</span></div>
                                     </div>
                                 </td>
-                        <tr><td><div class="col-xs-12">
-
-                        </div></td></tr>
-                        <tr><td><div class="col-xs-12">
-                            <label id="lblSelect" style="display: none;">Select Providers</label>
-                        </div></td></tr>
-
-                         <tr ng-repeat="provider in filteredProviders| paging:currentPage*listsPerPage | limitTo:listsPerPage">
-                           <td class="col-xs-1" ng-hide="false">
-                                <div id="checkboxes">
-                                    <div style="font-size: 200%; color: darkred; line-height:10em;">
-                                        <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; display: block" id={{provider}} />
-                                    </div>
-                                </div>
-                            </td>
-                            <td style="display:inline-block" class="col-xs-11  result-section-1">
-                                <div class="providerName">
-                                    <strong>{{provider.ProviderName}}</strong>
-                                </div>
-                            </td>
-                            <td style="display:inline-block" class="col-xs-12 starRating">
-                                <div ng-if="provider.QualityRating===1">
-                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
-                                </div>
-                                <div ng-if="provider.QualityRating===2">
-                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
-                                </div>
-                                <div ng-if="provider.QualityRating===3">
-                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
-                                </div>
-                                <div ng-if="provider.QualityRating===4">
-                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png" />
-                                </div>
-                                <div ng-if="provider.QualityRating===5">
-                                    <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png" />
-                                </div>
-                                <div ng-if="provider.QualityRating===0">
-                                    <img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" /><img src="content/macwis/14_star.png" />
-                                </div>
-                            </td>
-                            <td style="display:inline-block" class="col-xs-12 providerInfo">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div><strong>Type: </strong><span>{{provider.ProviderTypeDescription}}</span></div>
-                                    <div><strong>Phone: </strong><span>{{provider.PhoneNumber}}</span></div>
-                                    <div><strong>City: </strong><span>{{provider.PhysicalCity}}</span></div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                    <div ng-if="provider.Distance"><strong>Distance: </strong><span>{{provider.Distance}}</span></div>
-                                    <div><strong>County: </strong><span>{{provider.CountyName}}</span></div>
-                                    <div><strong>Capacity: </strong><span>{{provider.ProviderCapacity}}</span></div>
-                                </div>
-                            </td>
 
                                 <td class="col-xs-12 col-sm-4 col-md-4 col-lg-2 providerDetails">
-                                    <a class="btn btn-default btn-lg btn-block" ng-click="showDetails(provider)">Provider Details</a>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label class="checkbox-inline" for="{{provider.Id}}_print">
+                                                <input class="form-control" type="checkbox" id="{{provider.Id}}_print" />
+                                                Print</label>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12"></div>
+                                    </div>
+                                    <a class="btn btn-default btn-lg btn-block" ng-click="model.showDetails(provider)">Provider Details</a>
                                 </td>
 
                             </tr>
@@ -307,11 +261,11 @@
                             <input type="button" value="GO" ng-click="setPage(-1)" />
                         </div>-->
                         <ul class="pagination" style="margin-top: 30px;">
-                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="firstPage()"><<<</a></li>
-                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="prevPage()">Previous</a></li>
-                            <li ng-class="{true:'active',false:''}[num==currentPage]" ng-repeat="num in pageNum"><a href="javascript:void(0)" ng-click="setPage(num)">{{num+1}}</a></li>
-                            <li><a href="javascript:void(0)" class="step nextLink" ng-click="nextPage()">Next</a></li>
-                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="lastPage()">>>></a></li>
+                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.firstPage()"><<<</a></li>
+                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.prevPage()">Previous</a></li>
+                            <li ng-class="{true:'active',false:''}[num==model.currentPage]" ng-repeat="num in model.pageNum"><a href="javascript:void(0)" ng-click="model.setPage(num)">{{num+1}}</a></li>
+                            <li><a href="javascript:void(0)" class="step nextLink" ng-click="model.nextPage()">Next</a></li>
+                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.lastPage()">>>></a></li>
                         </ul>
 
                         <div>
@@ -321,7 +275,7 @@
                     </div>
                 </div>
 
-                <div ng-show="showProviderDetails">
+                <div ng-show="model.showProviderDetails">
                     <div>
                         <style type="text/css">
                             .modal-backdrop
@@ -335,7 +289,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h3 class="modal-title">Provider Details</h3>
-                                        <button type="button" class="close btn btn-default" aria-label="Close" ng-click=" clickOk()"><i class="fa fa-close"></i></button>
+                                        <button type="button" class="close btn btn-default" aria-label="Close" ng-click="model.clickOk()"><i class="fa fa-close"></i></button>
                                     </div>
                                     <div class="modal-body pad-no">
                                         <div class="container-fluid pad-no">
@@ -344,55 +298,55 @@
 
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
-                                                        <strong>Provider Name: </strong>{{provider.ProviderName}}
+                                                        <strong>Provider Name: </strong>{{model.provider.ProviderName}}
                                                     </p>
                                                     <p>
-                                                        <strong>Provider Type: </strong> {{provider.ProviderTypeDescription}}
+                                                        <strong>Provider Type: </strong> {{model.provider.ProviderTypeDescription}}
                                                     </p>
                                                     <p>
-                                                        <strong>Phone#: </strong>{{provider.PhoneNumber}}
+                                                        <strong>Phone#: </strong>{{model.provider.PhoneNumber}}
                                                     </p>
-                                                    <p ng-show="provider.CanTakeChildrenWithBehavioralProblems===true">
+                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===true">
 
                                                         <strong>Accepts subsidized child care: </strong>Yes
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
-                                                        <strong>City: </strong>{{provider.PhysicalCity}}
+                                                        <strong>City: </strong>{{model.provider.PhysicalCity}}
                                                     </p>
                                                     <p>
-                                                        <strong>Quality Star Rating: </strong>{{provider.QualityRatingDescription}}
+                                                        <strong>Quality Star Rating: </strong>{{model.provider.QualityRatingDescription}}
                                                     </p>
                                                     <p>
-                                                        <strong>License Type: </strong>{{provider.LicenseType}}
+                                                        <strong>License Type: </strong>{{model.provider.LicenseType}}
                                                     </p>
-                                                    <p ng-show="provider.CanTakeChildrenWithBehavioralProblems===false">
+                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===false">
 
                                                         <strong>Accepts subsidized child care: </strong>No
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
-                                                        <strong>County: </strong>{{provider.CountyName}}
+                                                        <strong>County: </strong>{{model.provider.CountyName}}
                                                     </p>
                                                     <p>
-                                                        <strong>Zip Code: </strong>{{provider.PhysicalZipCode}}
+                                                        <strong>Zip Code: </strong>{{model.provider.PhysicalZipCode}}
                                                     </p>
                                                     <p>
-                                                        <strong>Provider Capacity: </strong> {{provider.ProviderCapacity}}
+                                                        <strong>Provider Capacity: </strong> {{model.provider.ProviderCapacity}}
                                                     </p>
                                                     <p>
-                                                        <strong>Age Range: </strong>{{provider.MinAge}}-{{provider.MaxAge}}
+                                                        <strong>Age Range: </strong>{{model.provider.MinAge}}-{{model.provider.MaxAge}}
                                                     </p>
                                                     <p>
-                                                        <strong>Gender: </strong>{{provider.Gender}}
+                                                        <strong>Gender: </strong>{{model.provider.Gender}}
                                                     </p>
 
 
-                                                    <p ng-show="provider.CanTakeChildrenWithBehavioralProblems!==false&& provider.CanTakeChildrenWithBehavioralProblems!==true">
+                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems!==false&& model.provider.CanTakeChildrenWithBehavioralProblems!==true">
 
-                                                        <strong>Accepts subsidized child care: </strong>{{provider.CanTakeChildrenWithBehavioralProblems}}
+                                                        <strong>Accepts subsidized child care: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
                                                     </p>
                                                 </div>
 
@@ -400,7 +354,7 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button id="providerSearchButton" class="btn btn-default pull-right" type="button" ng-click="clickOk()">Close</button>
+                                            <button id="providerSearchButton" class="btn btn-default pull-right" type="button" ng-click="model.clickOk()">Close</button>
                                         </div>
                                     </div>
                                 </div>
