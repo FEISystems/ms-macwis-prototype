@@ -1,15 +1,149 @@
+body .no-padding {
+  padding: 0 !important;
+}
+body a:hover {
+  cursor: pointer;
+}
 body > div.container-fluid {
   padding: 0;
 }
 body > div.container-fluid > div.col-xs-12 {
   padding: 0 0 25px 0;
 }
-body div[ng-transclude="results-panel"],
-body div[ng-transclude="search-panel"] {
+body div#resultsPageContainer {
+  padding: 20px 15px 0 0;
+  height: 100%;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter {
+  padding: 0;
+  background: #6498AD;
+  position: fixed;
+  height: 100%;
+  margin-top: -20px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
+  height: 100%;
+  padding-left: 10px;
+  position: relative;
+  left: -10px;
+  top: 0;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel {
+  border-radius: 0;
+  background: #6498AD;
+  border: none;
+  box-shadow: none;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-heading {
+  color: white;
+  border-bottom: 1px solid white;
+  padding: 0 15px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-heading h1 {
+  font-weight: 600;
+  margin: 10px 0 8px 0;
+  font-size: 28px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
+  max-height: 830px !important;
+  overflow-y: scroll !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body legend button {
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  background: transparent;
+  text-align: left;
+  border: none;
+  padding: 3px 0;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body legend button span {
+  position: relative;
+  bottom: -2px;
+  margin-left: 5px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body label {
+  color: white;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer {
+  background: #6498AD;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer .reset {
+  color: #000 !important;
+}
+body div#resultsPageContainer div#resultsPanelContainer {
+  overflow-x: hidden;
+  padding: 15px 5px 0 0;
+  margin-left: 25.75%;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-left h2 {
+  font-weight: 600;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-right {
+  margin-top: -20px;
+  padding-bottom: 5px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-right label[for="sortControl"] {
+  margin-bottom: 0;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-right select#sortControl {
+  height: 30px !important;
+  padding: 6px 1px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults {
+  border: none;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr {
+  border-bottom: 1px solid #ccc;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td {
+  border: none;
+  padding: 0;
+  display: inline-block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection {
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection div.providerName strong {
+  font-size: 22px;
+  color: #6498AD;
+  display: inline-block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating {
+  padding: 3px 0 0 0;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating label {
+  font-size: 18px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating div {
+  display: inline-block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating div img {
+  padding-bottom: 6px;
+  padding-right: 1px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div {
   padding: 0;
 }
-body a:hover {
-  cursor: pointer;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div {
+  margin: 8px 0;
+  font-size: 15px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div strong {
+  font-size: 16px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div span {
+  font-size: 15px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
+  padding-bottom: 15px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails a.btn {
+  background: #6498AD;
+  color: white;
+  border: 1px solid #ccc;
+  text-shadow: none;
 }
 body .searchTab {
   background: #4d7e91 !important;
@@ -59,49 +193,46 @@ body #homeSearch div[role="tabpanel"] h2 {
 body #homeSearch label {
   font-size: 130%;
 }
-body table#searchResults {
-  border: none;
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {
+  body div#resultsPageContainer div#resultsPanelContainer {
+    margin-left: 34.75%;
+  }
 }
-body table#searchResults tr {
-  border-bottom: 1px solid #3c3c3c;
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  body div#resultsPageContainer div#resultsPanelContainer {
+    margin-left: 34.75%;
+  }
 }
-body table#searchResults tr td {
-  border: none;
-  padding: 5px 0;
-}
-body table#searchResults tr td div[class^="col-"] {
-  padding: 0;
-}
-body table#searchResults tr td div[class^="col-"] div {
-  margin: 5px 0;
-}
-body table#searchResults tr td div[class^="col-"] div strong {
-  font-size: 16px;
-}
-body table#searchResults tr td div[class^="col-"] div span {
-  font-size: 16px;
-}
-body table#searchResults tr td div.providerName strong {
-  font-size: 18px;
-  display: block;
-}
-body div.providerSearchResult {
-  margin: 8px 0 8px 0;
-}
-body div.providerSearchResult:first-of-type {
-  margin-top: 15px;
-}
-body div.providerSearchResult:last-of-type {
-  margin-bottom: 0;
-}
-body div.providerSearchResult div.row span.providerName {
-  font-size: 16px;
-  font-weight: 700;
-  color: darkred;
-}
-@media (min-width: 767px) {
-  div[ng-transclude="results-panel"],
-  div[ng-transclude="search-panel"] {
-    padding: 0 15px !important;
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  body > div.container-fluid {
+    padding: 0;
+  }
+  body div#resultsPageContainer {
+    padding: 0;
+  }
+  body div#resultsPageContainer div#resultsPanelContainer,
+  body div#resultsPageContainer div#searchPanelContainer {
+    padding: 0px;
+  }
+  body div#resultsPageContainer div#resultsPanelContainer {
+    margin-left: 0;
+  }
+  body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
+    padding: 0 15px;
+  }
+  body div#resultsPageContainer div#searchPanelContainerOuter {
+    padding-top: 10px;
+    position: static;
+  }
+  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
+    position: static;
+    padding-top: 20px;
+  }
+  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
+    overflow: visible !important;
+    max-height: none !important;
   }
 }
