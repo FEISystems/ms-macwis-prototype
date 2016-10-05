@@ -19,9 +19,9 @@
 
         model.showProviderDetails = false;
 
-        
-        
-        
+
+
+
         model.Cities = dataService.getCities();
         model.Counties = dataService.getCounties();
         model.ProviderTypes = dataService.getProviderTypes();
@@ -39,51 +39,6 @@
         model.clickOk = function (provider) {
             model.showProviderDetails = false;
         };
-
-        $scope.printprovider=function () {
-            debugger;
-            var selected = [];
-            var htmlcode='';
-            debugger
-            $('div#checkboxes input[type=checkbox]').each(function() {
-                if ($(this).is(":checked")) {
-                    selected.push($(this).attr('id'));
-                }
-            });
-
-
-            $.each(selected,function (index,value) {
-                var TerValue=value.split(',')[16].split(':')[1].replace(/\"/g, "")=="true"?"Yes":"No";
-                htmlcode =htmlcode+ "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> "+value.split(',')[1].split(':')[1].replace(/\"/g, "")+"</p></div>"+
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  "+value.split(',')[4].split(':')[1].replace(/\"/g, "")+"</p> </div>"+
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  "+value.split(',')[10].split(':')[1].replace(/\"/g, "")+"</p><p class='ng-binding'> <strong>City: </strong>"+value.split(',')[6].split(':')[1].replace(/\"/g, "")+" </p><p class='ng-binding'><strong>Quality Star Rating: </strong>   Excellent  </p>  "+
-                    "<p class='ng-binding'><strong>License Type: </strong>   "+value.split(',')[2].split(':')[1].replace(/\"/g, "")+" </p>"+
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>"+ TerValue +"</p>" +
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>"+
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>"+
-                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  "+value.split(',')[9].split(':')[1].replace(/\"/g, "")+"</p>"+
-                    "<p class='ng-binding'><strong>Zip Code: </strong> "+value.split(',')[7].split(':')[1].replace(/\"/g, "")+"</p>"+
-                    "    <p class='ng-binding'><strong>Provider Capacity: </strong> "+value.split(',')[5].split(':')[1].replace(/\"/g, "")+"</p>"+
-                    "<p class='ng-binding'><strong>Age Range: </strong> "+value.split(',')[13].split(':')[1].replace(/\"/g, "")+" to "+value.split(',')[14].split(':')[1].replace(/\"/g, "")+"  </p>"+
-                    "<p class='ng-binding'><strong>Gender: </strong> "+value.split(',')[15].split(':')[1].replace(/\"/g, "")+" </p></div></div></div></div></tr></table><hr/>";
-
-            });
-            // htmlcode=htmlcode+'</table>';
-            if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
-                var popupWin = window.open('', '_blank', 'width=3000,height=3000');
-                popupWin.document.open();
-                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
-                popupWin.document.close();
-            }
-            else
-            {
-                return false;
-            }
-
-        };
-
-
-
         model.search = function() {
             model.filteredProviders = [];
             var tempProviders = [];
@@ -98,6 +53,47 @@
             } else {
                 tempProviders = model.AllProviders;
                 model.searchByCriteria(tempProviders);
+            };
+            model.printprovider=function () {
+                debugger;
+                var selected = [];
+                var htmlcode='';
+                debugger
+                $('div#checkboxes input[type=checkbox]').each(function() {
+                    if ($(this).is(":checked")) {
+                        selected.push($(this).attr('id'));
+                    }
+                });
+
+
+                $.each(selected,function (index,value) {
+                    var TerValue=value.split(',')[16].split(':')[1].replace(/\"/g, "")=="true"?"Yes":"No";
+                    htmlcode =htmlcode+ "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> "+value.split(',')[1].split(':')[1].replace(/\"/g, "")+"</p></div>"+
+                        "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  "+value.split(',')[4].split(':')[1].replace(/\"/g, "")+"</p> </div>"+
+                        "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  "+value.split(',')[10].split(':')[1].replace(/\"/g, "")+"</p><p class='ng-binding'> <strong>City: </strong>"+value.split(',')[6].split(':')[1].replace(/\"/g, "")+" </p><p class='ng-binding'><strong>Quality Star Rating: </strong>   Excellent  </p>  "+
+                        "<p class='ng-binding'><strong>License Type: </strong>   "+value.split(',')[2].split(':')[1].replace(/\"/g, "")+" </p>"+
+                        "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>"+ TerValue +"</p>" +
+                        "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>"+
+                        "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>"+
+                        " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  "+value.split(',')[9].split(':')[1].replace(/\"/g, "")+"</p>"+
+                        "<p class='ng-binding'><strong>Zip Code: </strong> "+value.split(',')[7].split(':')[1].replace(/\"/g, "")+"</p>"+
+                        "    <p class='ng-binding'><strong>Provider Capacity: </strong> "+value.split(',')[5].split(':')[1].replace(/\"/g, "")+"</p>"+
+                        "<p class='ng-binding'><strong>Age Range: </strong> "+value.split(',')[13].split(':')[1].replace(/\"/g, "")+" to "+value.split(',')[14].split(':')[1].replace(/\"/g, "")+"  </p>"+
+                        "<p class='ng-binding'><strong>Gender: </strong> "+value.split(',')[15].split(':')[1].replace(/\"/g, "")+" </p></div></div></div></div></tr></table><hr/>";
+
+                });
+                // htmlcode=htmlcode+'</table>';
+                if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
+                    var popupWin = window.open('', '_blank', 'width=3000,height=3000');
+                    popupWin.document.open();
+                    popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
+                    popupWin.document.close();
+                }
+                else
+                {
+                    return false;
+                }
+
             };
             model.setPage = function(num) {
                 if (num === -1) {
@@ -177,9 +173,9 @@
             if (model.filteredProviders.length > 0)
                 $(".result-pagination").show();
                $("#lblSelect").show();
-            model.currentPage = 0;
-            model.listsPerPage = model.ItemsPerPageList[0];
-            model.providersCount = model.filteredProviders.length;
+                model.currentPage = 0;
+                model.listsPerPage = model.ItemsPerPageList[0];
+                model.providersCount = model.filteredProviders.length;
             if ($("#selectPerPage option:selected").text()) {
                 model.currentPage = 0;
                 model.pages = Math.ceil(model.providersCount / $("#selectPerPage option:selected").text());

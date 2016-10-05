@@ -1,10 +1,10 @@
-﻿<standard-layout>
+﻿﻿<standard-layout>
     <search-layout>
         <search-panel>
             <form name="searchForm">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h1>{{title}}</h1>
+                        <h1>{{model.title}}</h1>
                     </div>
 
                     <div class="panel-body">
@@ -39,11 +39,16 @@
 
                         <fieldset>
                             <legend>
-                                <button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#locationCriteria">Search by Location
+                                <button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#locationCriteria">Search by Distance
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
                             <div class="collapse" id="locationCriteria">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p>Enter zip code to find providers within the distance selected.</p>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="city">City:</label>
                                     <select id="city" class="form-control" ng-model="model.Criteria.City"
@@ -88,7 +93,7 @@
                             </legend>
                             <div class="collapse" id="advancedCriteria">
                                 <div class="form-group">
-                                    <label for="ageRange">Age Ranges:</label>
+                                    <label for="ageRange">Age of Children Served:</label>
                                     <select id="ageRange" class="form-control" ng-model="model.Criteria.Age"
                                             ng-options="age.Id as age.Name for age in model.Ages">
                                         <option value=""></option>
@@ -169,7 +174,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <hr style="margin-top: 0">
-                    <div class="result-pagination" style="display: none; margin: 10px 0 20px 0;">
+                    <div class="result-pagination" >
                         <div ng-if="model.filteredProviders.length>0" style="float: left;">Showing {{model.currentPage==0 ? 1:(model.currentPage)*model.listsPerPage+1}} to {{(model.currentPage!=pages-1)?(model.currentPage+1)*model.listsPerPage:model.providersCount}} of {{model.providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
                         <div ng-if="model.filteredProviders.length===0"  style="float: left;">No Data Found</div>
                         <div class="step prevLink" style="float: left;" ng-if="model.filteredProviders.length>0">
@@ -178,17 +183,14 @@
                         <div style="float: left; " ng-if="model.filteredProviders.length>0">
                             <input id="GoPage" type="text" style="width: 35px; height: 23px;" />
                             <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="model.setPage(-1)" />
-
                         </div>
                         <div style="float: left;" ng-hide="false" >
-                        <input type="button" value="PRINT SELECTED"  style="width: 120px; height: 20px; font-size: 11px; margin-left: 300px"
-                                ng-click="printprovider()" />
-
+                            <input type="button" value="PRINT SELECTED"  style="width: 120px; height: 20px; font-size: 11px; margin-left: 300px"
+                                   ng-click="printprovider()" />
                         </div>
                     </div>
                     <table id="searchResults" class="table table-condensed table-responsive">
                         <thead ng-hide="true"></thead>
-
                         <tbody>
                         <tr><td><div class="col-xs-12">
 
