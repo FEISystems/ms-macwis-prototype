@@ -1,3 +1,4 @@
+@primary-theme-color : darken(#6498AD, 10%);
 
 body{
     .no-padding{
@@ -20,7 +21,7 @@ body{
 
     // Search Page Styles
     div#resultsPageContainer {
-        padding-left: 0;
+        padding: 15px 15px 0 0;
         div#searchPanelContainerOuter{
             padding: 0 20px 0 10px;
             div#searchPanelContainer {
@@ -52,6 +53,7 @@ body{
                                 span {
                                     position: relative;
                                     bottom: -2px;
+                                    margin-left: 5px;
                                 }
                             }
                             label {
@@ -77,18 +79,27 @@ body{
         }
 
         div#resultsPanelContainer {
-            padding-left: 0;
-
+            padding: 15px 0 0 0;
             div.col-xs-12 {
                 div.row {
-                    h2{
+                    div.pull-left{
+                      h2{
+
                         font-weight: 600;
-                        margin-bottom: 5px;
+                      }
                     }
                     // Sort Control
-                    select#sortControl {
-                        height: 30px !important;
-                        padding: 6px 1px;
+                    div.pull-right{
+                      margin-top: -20px;
+                      padding-bottom: 5px;
+                      label[for="sortControl"]{
+                        margin-bottom: 0;
+                      }
+                      select#sortControl {
+                          height: 30px !important;
+                          padding: 6px 1px;
+
+                      }
                     }
 
                     // Results Template
@@ -166,24 +177,40 @@ body{
 
 
 
-    .searchTab{
-        background: none;
-        color: white;
+    .searchTab {
+        background: @primary-theme-color !important;
+        color: white !important;
         text-shadow: none;
         font-weight: bold;
-        border: 2px solid white;
-        margin-bottom: 15px;
+        border: none;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+        &:not(.activeTab) {
+            bottom: -5px;
+            background-color: darken(@primary-theme-color, 10%) !important;
+        }
+
+
+        &:hover,
+        &:focus
+        {
+            text-decoration: underline;
+        }
     }
 
     input[type='text'], select.form-control{
-        height: 45px;
+        //height: 45px;
     }
 
     #providerPanel{
         // Homepage provider search button
         input#providerName{
-            height: 59px;
-            font-size: 18px;
+            //height: 59px;
+            //font-size: 18px;
         }
 
 
@@ -191,22 +218,6 @@ body{
 
     .homeSearchButton{
         margin: 15px auto 0 auto;
-    }
-
-    .searchTab:hover{
-        background: white;
-        border: 2px solid #ccc;
-    }
-
-    .searchTab:active, .searchTab.active{
-        background: white;
-        border: 2px solid white;
-    }
-
-    .searchTab:focus{
-        background: none;
-        border: 2px solid white;
-        color: white;
     }
 
     .tab-content{
@@ -229,7 +240,7 @@ body{
     }
 
     #homeSearch{
-        background: #6498AD;
+        background: @primary-theme-color;
         width: 100%;
         left: 0;
         padding-top: 30px;
@@ -241,6 +252,10 @@ body{
                 margin-top: 0;
                 font-weight: 600;
             }
+        }
+
+        label {
+            font-size: 130%;
         }
     }
 
