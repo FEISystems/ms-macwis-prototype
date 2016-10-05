@@ -55,10 +55,10 @@
                 model.searchByCriteria(tempProviders);
             };
             model.printprovider=function () {
-                debugger;
+
                 var selected = [];
                 var htmlcode='';
-                debugger
+
                 $('div#checkboxes input[type=checkbox]').each(function() {
                     if ($(this).is(":checked")) {
                         selected.push($(this).attr('id'));
