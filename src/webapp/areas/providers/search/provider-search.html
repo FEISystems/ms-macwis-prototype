@@ -39,11 +39,16 @@
 
                         <fieldset>
                             <legend>
-                                <button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#locationCriteria">Search by Location
+                                <button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#locationCriteria">Search by Distance
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
                             <div class="collapse" id="locationCriteria">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p>Enter zip code to find providers within the distance selected.</p>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="city">City:</label>
                                     <select id="city" class="form-control" ng-model="model.Criteria.City"
@@ -88,7 +93,7 @@
                             </legend>
                             <div class="collapse" id="advancedCriteria">
                                 <div class="form-group">
-                                    <label for="ageRange">Age Ranges:</label>
+                                    <label for="ageRange">Age of Children Served:</label>
                                     <select id="ageRange" class="form-control" ng-model="model.Criteria.Age"
                                             ng-options="age.Id as age.Name for age in model.Ages">
                                         <option value=""></option>
@@ -174,12 +179,6 @@
                         <thead ng-hide="true"></thead>
                         <tbody>
                             <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
-
-                                <td>
-                                    <div class="col-xs-12">
-                                        <label for="" id="lblSelect" style="display: none;">Select Providers</label>
-                                    </div>
-                                </td>
                                 <td class="col-xs-1" ng-hide="false">
                                     <div id="checkboxes">
                                         <div style="font-size: 200%">

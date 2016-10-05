@@ -65,6 +65,10 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body label {
   color: white;
 }
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.row div.col-xs-12 p {
+  color: white;
+  font-size: 16px;
+}
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer {
   background: #6498AD;
 }
@@ -102,7 +106,7 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
   display: inline-block;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection {
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 8px;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection div.providerName strong {
@@ -146,9 +150,9 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails label.checkbox-inline input.form-control {
   box-shadow: none;
-  margin-left: 42px;
+  margin-left: 35px;
   padding-left: 1px;
-  bottom: 3px;
+  bottom: 4px;
   height: 17px;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails a.btn {
