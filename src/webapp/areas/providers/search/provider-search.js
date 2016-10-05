@@ -13,61 +13,23 @@
         $scope.Criteria = {};
         $scope.sortData = { up: true };
         $scope.provider = {};
-        $scope.Cities = dataService.getCities();
-        $scope.Counties = dataService.getCounties();
-        $scope.ProviderTypes = dataService.getProviderTypes();
-
-        $scope.Rates = dataService.getRates();
-
-        $scope.Ages = dataService.ages;
-
-        $scope.Genderes = [
-            {
-                "Id": "Boy",
-                "Name": "Boy"
-            },
-            {
-                "Id": "Girl",
-                "Name": "Girl"
-            },
-            {
-                "Id": "Both",
-                "Name": "Both"
-            }
-        ];
-
-        //  $scope.CanTakeBehavioralChildren = dataService.canTakeBehavioralChildrenes;
-        $scope.CanTakeBehavioralChildrens = dataService.canTakeBehavioralChildrenes;
-
-        $scope.AllProviders = providerService.getAllProviders();
-
-        $scope.SortByes = [
-            {
-                "Id": "ProviderName",
-                "Name": "Provider Name"
-            },
-            {
-                "Id": "ProviderTypeDescription",
-                "Name": "Provider Type"
-            },
-            {
-                "Id": "PhysicalCity",
-                "Name": "City"
-            },
-            {
-                "Id": "CountyName",
-                "Name": "County Name"
-            },
-            {
-                "Id": "QualityRating",
-                "Name": "Rate"
-            }
-        ];
         $scope.filteredProviders = [];
         // init end
 
         $scope.showProviderDetails = false;
 
+        
+        
+        
+        $scope.Cities = dataService.getCities();
+        $scope.Counties = dataService.getCounties();
+        $scope.ProviderTypes = dataService.getProviderTypes();
+        $scope.Rates = dataService.getRates();
+        $scope.Ages = dataService.ages;
+        $scope.Genderes = dataService.getGenders();
+        $scope.CanTakeBehavioralChildrens = dataService.canTakeBehavioralChildrenes;
+        $scope.AllProviders = providerService.getAllProviders();
+        $scope.SortByes = dataService.getSortTypes();
         $scope.showDetails = function (provider) {
 
             $scope.
