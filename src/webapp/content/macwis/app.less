@@ -22,15 +22,26 @@ body{
     // Search Page Styles
     div#resultsPageContainer {
         padding: 20px 15px 0 0;
+        height: 100%;
         div#searchPanelContainerOuter{
-            padding: 0 20px 0 10px;
+            padding: 0;
+            background: #6498AD;
             position: fixed;
+            height: 100%;
+            margin-top: -20px;
             div#searchPanelContainer {
+                height: 100%;
+                padding-left: 10px;
                 position: relative;
+                left: -10px;
+                top: 0;
+
                 form {
                     div.panel {
+                        border-radius: 0;
                         background: #6498AD;
-                        border: 4px solid #6498AD;
+                        border: none;
+                        box-shadow: none;
                         .panel-heading {
                             color: white;
                             border-bottom: 1px solid white;
@@ -42,10 +53,10 @@ body{
                             }
                         }
                         .panel-body {
-                            max-height: 755px !important;
+                            max-height: 830px !important;
                             overflow-y: scroll !important;
                             legend button {
-                                color: black;
+                                color: white;
                                 font-weight: 600;
                                 font-size: 18px;
                                 background: transparent;
@@ -59,7 +70,7 @@ body{
                                 }
                             }
                             label {
-                                color: black;
+                                color: white;
                             }
                         }
                         .panel-footer {
@@ -81,8 +92,9 @@ body{
         }
 
         div#resultsPanelContainer {
-            padding: 15px 0 0 0;
-            margin-left: 25%;
+            overflow-x: hidden;
+            padding: 15px 5px 0 0;
+            margin-left: 25.75%;
             div.col-xs-12 {
                 div.row {
                     div.pull-left{
@@ -259,7 +271,7 @@ body{
     body{
         div#resultsPageContainer{
             div#resultsPanelContainer{
-                margin-left: 33%;
+                margin-left: 34.75%;
             }
         }
     }
@@ -270,7 +282,7 @@ body{
     body{
         div#resultsPageContainer{
             div#resultsPanelContainer{
-                margin-left: 33%;
+                margin-left: 34.75%;
             }
         }
     }
@@ -302,6 +314,7 @@ body{
                 position: static;
                 div#searchPanelContainer {
                     position: static;
+                    padding-top: 20px;
                     form {
                         div.panel {
                             .panel-body {
