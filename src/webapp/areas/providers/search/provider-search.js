@@ -9,136 +9,99 @@
     });
     var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService) {
         //init start
-        $scope.title = "Provider Search";
-        $scope.Criteria = {};
-        $scope.sortData = { up: true };
-        $scope.provider = {};
-        $scope.Cities = dataService.getCities();
-        $scope.Counties = dataService.getCounties();
-        $scope.ProviderTypes = dataService.getProviderTypes();
-
-        $scope.Rates = dataService.getRates();
-
-        $scope.Ages = dataService.ages;
-
-        $scope.Genderes = [
-            {
-                "Id": "Boy",
-                "Name": "Boy"
-            },
-            {
-                "Id": "Girl",
-                "Name": "Girl"
-            },
-            {
-                "Id": "Both",
-                "Name": "Both"
-            }
-        ];
-
-        //  $scope.CanTakeBehavioralChildren = dataService.canTakeBehavioralChildrenes;
-        $scope.CanTakeBehavioralChildrens = dataService.canTakeBehavioralChildrenes;
-
-        $scope.AllProviders = providerService.getAllProviders();
-
-        $scope.SortByes = [
-            {
-                "Id": "ProviderName",
-                "Name": "Provider Name"
-            },
-            {
-                "Id": "ProviderTypeDescription",
-                "Name": "Provider Type"
-            },
-            {
-                "Id": "PhysicalCity",
-                "Name": "City"
-            },
-            {
-                "Id": "CountyName",
-                "Name": "County Name"
-            },
-            {
-                "Id": "QualityRating",
-                "Name": "Rate"
-            }
-        ];
-        $scope.filteredProviders = [];
+        var model = this;
+        model.title = "Provider Search";
+        model.Criteria = {};
+        model.sortData = { up: true };
+        model.provider = {};
+        model.filteredProviders = [];
         // init end
 
-        $scope.showProviderDetails = false;
+        model.showProviderDetails = false;
 
-        $scope.showDetails = function (provider) {
-            $scope.showProviderDetails = true;
-            $scope.provider = provider;
+        
+        
+        
+        model.Cities = dataService.getCities();
+        model.Counties = dataService.getCounties();
+        model.ProviderTypes = dataService.getProviderTypes();
+        model.Rates = dataService.getRates();
+        model.Ages = dataService.ages;
+        model.Genderes = dataService.getGenders();
+        model.CanTakeBehavioralChildrens = dataService.canTakeBehavioralChildrenes;
+        model.AllProviders = providerService.getAllProviders();
+        model.SortByes = dataService.getSortTypes();
+        model.showDetails = function (provider) {
+            model.showProviderDetails = true;
+            model.provider = provider;
         };
 
-        $scope.clickOk = function (provider) {
-            $scope.showProviderDetails = false;
+        model.clickOk = function (provider) {
+            model.showProviderDetails = false;
         };
-        $scope.search = function() {
-            $scope.filteredProviders = [];
+        model.search = function() {
+            model.filteredProviders = [];
             var tempProviders = [];
-            $scope.sortData = { up: false, sortField: "QualityRating" };
-            if ($scope.Criteria.address && $scope.Criteria.distince) {
-                googleMapService.getCoordinateByAddress($scope.Criteria.address, function(coordinate) {
-                    tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, $scope.Criteria.distince);
-                    $scope.searchByCriteria(tempProviders);
+            model.sortData = { up: false, sortField: "QualityRating" };
+            if (model.Criteria.address && model.Criteria.distince) {
+                googleMapService.getCoordinateByAddress(model.Criteria.address, function(coordinate) {
+                    tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distince);
+                    model.searchByCriteria(tempProviders);
                 }, function(error) {
                     alert(error);
                 });
             } else {
-                tempProviders = $scope.AllProviders;
-                $scope.searchByCriteria(tempProviders);
+                tempProviders = model.AllProviders;
+                model.searchByCriteria(tempProviders);
             };
-            $scope.setPage = function(num) {
+            model.setPage = function(num) {
                 if (num === -1) {
                     if (isNaN($("#GoPage").val()))
                         num = 0;
-                    else if ($("#GoPage").val() <= $scope.pages)
+                    else if ($("#GoPage").val() <= model.pages)
                         num = $("#GoPage").val() - 1;
-                    else num = $scope.pages - 1;
+                    else num = model.pages - 1;
                 }
                 if (num < 0)
                     num = 0;
-                $scope.currentPage = num;
-                $scope.InitPages();
+                model.currentPage = num;
+                model.InitPages();
             };
 
-            $scope.prevPage = function() {
-                if ($scope.currentPage > 0) {
-                    $scope.currentPage--;
+            model.prevPage = function() {
+                if (model.currentPage > 0) {
+                    model.currentPage--;
                 }
-                $scope.InitPages();
+                model.InitPages();
             };
-            $scope.nextPage = function() {
-                if ($scope.currentPage < $scope.pages - 1) {
-                    $scope.currentPage++;
+            model.nextPage = function() {
+                if (model.currentPage < model.pages - 1) {
+                    model.currentPage++;
                 }
-                $scope.InitPages();
+                model.InitPages();
             };
-            $scope.firstPage = function() {
-                $scope.currentPage = 0;
-                $scope.InitPages();
+            model.firstPage = function() {
+                model.currentPage = 0;
+                model.InitPages();
             };
 
-            $scope.lastPage = function() {
-                $scope.currentPage = $scope.pages - 1;
-                $scope.InitPages();
+            model.lastPage = function() {
+                model.currentPage = model.pages - 1;
+                model.InitPages();
             };
 
         };
 
-        $scope.searchByCriteria = function(tempProviders) {
+        model.searchByCriteria = function(tempProviders) {
 
-            if (!$scope.Criteria || $scope.Criteria.ProviderName ||
-                $scope.Criteria.ProviderType || $scope.Criteria.City || $scope.Criteria.County ||
-                ($scope.Criteria.Rate || $scope.Criteria.Rate === 0) ||
-                $scope.Criteria.Age || $scope.Criteria.Gender || $scope.Criteria.CanTakeBehavioralChildren) {
+            if (!model.Criteria || model.Criteria.ProviderName ||
+                model.Criteria.ProviderType || model.Criteria.City || model.Criteria.County ||
+                (model.Criteria.Rate || model.Criteria.Rate === 0) ||
+                model.Criteria.Age || model.Criteria.Gender || model.Criteria.CanTakeBehavioralChildren) {
                 angular.forEach(tempProviders, function (provider) {
                     var nameFound = true;
-                    if ($scope.Criteria.ProviderName) {
-                        var inputName = $scope.Criteria.ProviderName.toLowerCase();
+                    if (model.Criteria.ProviderName) {
+                        var inputName = model.Criteria.ProviderName.toLowerCase();
                         var providerName = provider.ProviderName.toLowerCase();
                         var results = providerName.search(inputName);
                         if (results >= 0) {
@@ -148,90 +111,90 @@
                         }
                     }
                     if (nameFound &&
-                    (!$scope.Criteria.ProviderType || ($scope.Criteria.ProviderType && $scope.Criteria.ProviderType === provider.ProviderType)) &&
-                    (!$scope.Criteria.City || ($scope.Criteria.City && $scope.Criteria.City === provider.PhysicalCity)) &&
-                    (!$scope.Criteria.County || ($scope.Criteria.County && $scope.Criteria.County === provider.CountyNumber)) &&
-                    ($scope.Criteria.Rate === undefined || $scope.Criteria.Rate === null || $scope.Criteria.Rate === provider.QualityRating) &&
-                    (!$scope.Criteria.Age || ($scope.Criteria.Age
-                        && dataService.getAgeById($scope.Criteria.Age) && dataService.getAgeById($scope.Criteria.Age)[0] >= provider.MinAge
-                        && dataService.getAgeById($scope.Criteria.Age)[1] <= provider.MaxAge)) &&
-                    (!$scope.Criteria.Gender || ($scope.Criteria.Gender && $scope.Criteria.Gender === provider.Gender)) &&
-                    (!$scope.Criteria.CanTakeBehavioralChildren ||
-                    ($scope.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById($scope.Criteria.CanTakeBehavioralChildren) === provider.CanTakeChildrenWithBehavioralProblems))) {
-                        $scope.filteredProviders.push(provider);
+                    (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType === provider.ProviderType)) &&
+                    (!model.Criteria.City || (model.Criteria.City && model.Criteria.City === provider.PhysicalCity)) &&
+                    (!model.Criteria.County || (model.Criteria.County && model.Criteria.County === provider.CountyNumber)) &&
+                    (model.Criteria.Rate === undefined || model.Criteria.Rate === null || model.Criteria.Rate === provider.QualityRating) &&
+                    (!model.Criteria.Age || (model.Criteria.Age
+                        && dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge
+                        && dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
+                    (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender === provider.Gender)) &&
+                    (!model.Criteria.CanTakeBehavioralChildren ||
+                    (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) === provider.CanTakeChildrenWithBehavioralProblems))) {
+                        model.filteredProviders.push(provider);
                     }
                 });
             } else {
-                $scope.filteredProviders = tempProviders;
+                model.filteredProviders = tempProviders;
             };
-            $scope.sort();
+            model.sort();
 
-            if ($scope.filteredProviders.length > 0)
+            if (model.filteredProviders.length > 0)
                 $(".result-pagination").show();
-            $scope.currentPage = 0;
-            $scope.listsPerPage = $scope.ItemsPerPageList[0];
-            $scope.providersCount = $scope.filteredProviders.length;
+            model.currentPage = 0;
+            model.listsPerPage = model.ItemsPerPageList[0];
+            model.providersCount = model.filteredProviders.length;
             if ($("#selectPerPage option:selected").text()) {
-                $scope.currentPage = 0;
-                $scope.pages = Math.ceil($scope.providersCount / $("#selectPerPage option:selected").text());
+                model.currentPage = 0;
+                model.pages = Math.ceil(model.providersCount / $("#selectPerPage option:selected").text());
             } else
-                $scope.pages = Math.ceil($scope.providersCount / $scope.listsPerPage);
-            $scope.pageNum = [];
-            $scope.InitPages();
+                model.pages = Math.ceil(model.providersCount / model.listsPerPage);
+            model.pageNum = [];
+            model.InitPages();
         };
-        $scope.InitPages = function () {
-            $scope.pageNum = [];
-            for (var i = 0; i < $scope.pages; i++) {
-                if ($scope.currentPage <= 5) {
+        model.InitPages = function () {
+            model.pageNum = [];
+            for (var i = 0; i < model.pages; i++) {
+                if (model.currentPage <= 5) {
                     if (i < 10) {
-                        $scope.pageNum.push(i);
+                        model.pageNum.push(i);
                     }
-                } else if ($scope.currentPage >= $scope.pages - 5) {
-                    if (i >= $scope.pages - 10) {
-                        $scope.pageNum.push(i);
+                } else if (model.currentPage >= model.pages - 5) {
+                    if (i >= model.pages - 10) {
+                        model.pageNum.push(i);
                     }
                 } else {
-                    if (i <= $scope.currentPage + 5 && i >= $scope.currentPage - 4) {
-                        $scope.pageNum.push(i);
+                    if (i <= model.currentPage + 5 && i >= model.currentPage - 4) {
+                        model.pageNum.push(i);
                     }
                 }
             }
         };
-        $scope.ChangeDisplayNums = function () {
+        model.ChangeDisplayNums = function () {
             if ($("#selectPerPage option:selected").text()) {
-                $scope.currentPage = 0;
-                $scope.pages = Math.ceil($scope.providersCount / $("#selectPerPage option:selected").text());
+                model.currentPage = 0;
+                model.pages = Math.ceil(model.providersCount / $("#selectPerPage option:selected").text());
             }
-            $scope.listsPerPage = $("#selectPerPage option:selected").text(); 
-            $scope.InitPages();
+            model.listsPerPage = $("#selectPerPage option:selected").text(); 
+            model.InitPages();
         };
-        $scope.ItemsPerPageList = ['10', '20', '30'];
-        $scope.clear = function () {
-            $scope.Criteria = {};
+        model.ItemsPerPageList = ['10', '20', '30'];
+        model.clear = function () {
+            model.Criteria = {};
         };
-        $scope.sort = function () {
-            if ($scope.sortData && $scope.sortData.sortField && $scope.filteredProviders) {
-                if ($scope.sortData.sortField === "QualityRating") {
-                    $scope.filteredProviders = _.orderBy($scope.filteredProviders, [$scope.sortData.sortField], ['asc']);
+        model.sort = function () {
+            if (model.sortData && model.sortData.sortField && model.filteredProviders) {
+                if (model.sortData.sortField === "QualityRating") {
+                    model.filteredProviders = _.orderBy(model.filteredProviders, [model.sortData.sortField], ['asc']);
                 } else {
-                    $scope.filteredProviders = _.sortBy($scope.filteredProviders, $scope.sortData.sortField);
+                    model.filteredProviders = _.sortBy(model.filteredProviders, model.sortData.sortField);
                 }
             }
-            if (!$scope.sortData.up) {
-                $scope.filteredProviders = _.reverse($scope.filteredProviders);
+            if (!model.sortData.up) {
+                model.filteredProviders = _.reverse(model.filteredProviders);
             }
-            $scope.ChangeDisplayNums();
+            model.ChangeDisplayNums();
         };
-        $scope.up = function () {
-            $scope.sortData.up = !$scope.sortData.up;
-            $scope.filteredProviders = _.reverse($scope.filteredProviders);
+        model.up = function () {
+            model.sortData.up = !model.sortData.up;
+            model.filteredProviders = _.reverse(model.filteredProviders);
         };
         
         $scope.$watch(function() { return angular.element("#providerSearchButton").is(':visible') }, function() {
             var criteria = queueService.getMsg('homeSearchCriteria');
             if (!criteria)
             {
-                $scope.search();
+                model.search();
                 return;
             }
             
@@ -245,16 +208,16 @@
                 distince : criteria.radius,
                 providerName : criteria.ProviderName
             };
-            $scope.Criteria.ProviderType = criteria.providerType;
-            $scope.Criteria.ProviderName = criteria.providerName;
-            $scope.Criteria.City = criteria.city;
-            $scope.Criteria.County = criteria.county;
-            $scope.Criteria.Rate = criteria.rate;
-            $scope.Criteria.Address = criteria.zipCode;
-            $scope.Criteria.distince = criteria.radius;
+            model.Criteria.ProviderType = criteria.providerType;
+            model.Criteria.ProviderName = criteria.providerName;
+            model.Criteria.City = criteria.city;
+            model.Criteria.County = criteria.county;
+            model.Criteria.Rate = criteria.rate;
+            model.Criteria.Address = criteria.zipCode;
+            model.Criteria.distince = criteria.radius;
 
             queueService.setMsg('homeSearchCriteria', null);
-            $scope.search();
+            model.search();
             
         });
     };
