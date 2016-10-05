@@ -84,8 +84,8 @@
 
 
 
-        $scope.search = function() {
-            $scope.filteredProviders = [];
+        model.search = function() {
+            model.filteredProviders = [];
             var tempProviders = [];
             model.sortData = { up: false, sortField: "QualityRating" };
             if (model.Criteria.address && model.Criteria.distince) {
