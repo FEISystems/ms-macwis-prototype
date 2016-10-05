@@ -24,7 +24,9 @@ body{
         padding: 20px 15px 0 0;
         div#searchPanelContainerOuter{
             padding: 0 20px 0 10px;
+            position: fixed;
             div#searchPanelContainer {
+                position: relative;
                 form {
                     div.panel {
                         background: #6498AD;
@@ -80,6 +82,7 @@ body{
 
         div#resultsPanelContainer {
             padding: 15px 0 0 0;
+            margin-left: 25%;
             div.col-xs-12 {
                 div.row {
                     div.pull-left{
@@ -251,7 +254,30 @@ body{
 
 }
 
-@media (max-width: 767px){
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+    body{
+        div#resultsPageContainer{
+            div#resultsPanelContainer{
+                margin-left: 33%;
+            }
+        }
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+    body{
+        div#resultsPageContainer{
+            div#resultsPanelContainer{
+                margin-left: 33%;
+            }
+        }
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
     body {
         > div.container-fluid{
             padding: 0;
@@ -263,6 +289,7 @@ body{
             }
 
             div#resultsPanelContainer{
+                margin-left: 0;
                 div.col-xs-12{
                     div.row{
                         padding: 0 15px;
@@ -270,22 +297,25 @@ body{
                 }
             }
 
-            div#searchPanelContainer {
+            div#searchPanelContainerOuter{
+                padding-top: 10px;
                 position: static;
-                form {
-                    div.panel {
-                        .panel-body {
+                div#searchPanelContainer {
+                    position: static;
+                    form {
+                        div.panel {
+                            .panel-body {
 
-                            overflow: visible !important;
-                            max-height: none !important;
+                                overflow: visible !important;
+                                max-height: none !important;
+                            }
                         }
                     }
                 }
             }
+
         }
     }
 }
-
-
 
 

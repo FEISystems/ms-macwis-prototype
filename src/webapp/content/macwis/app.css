@@ -15,6 +15,10 @@ body div#resultsPageContainer {
 }
 body div#resultsPageContainer div#searchPanelContainerOuter {
   padding: 0 20px 0 10px;
+  position: fixed;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
+  position: relative;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel {
   background: #6498AD;
@@ -59,6 +63,7 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
 }
 body div#resultsPageContainer div#resultsPanelContainer {
   padding: 15px 0 0 0;
+  margin-left: 25%;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-left h2 {
   font-weight: 600;
@@ -177,7 +182,20 @@ body #homeSearch div[role="tabpanel"] h2 {
 body #homeSearch label {
   font-size: 130%;
 }
-@media (max-width: 767px) {
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) {
+  body div#resultsPageContainer div#resultsPanelContainer {
+    margin-left: 33%;
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  body div#resultsPageContainer div#resultsPanelContainer {
+    margin-left: 33%;
+  }
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
   body > div.container-fluid {
     padding: 0;
   }
@@ -188,13 +206,20 @@ body #homeSearch label {
   body div#resultsPageContainer div#searchPanelContainer {
     padding: 0px;
   }
+  body div#resultsPageContainer div#resultsPanelContainer {
+    margin-left: 0;
+  }
   body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
     padding: 0 15px;
   }
-  body div#resultsPageContainer div#searchPanelContainer {
+  body div#resultsPageContainer div#searchPanelContainerOuter {
+    padding-top: 10px;
     position: static;
   }
-  body div#resultsPageContainer div#searchPanelContainer form div.panel .panel-body {
+  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
+    position: static;
+  }
+  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
     overflow: visible !important;
     max-height: none !important;
   }
