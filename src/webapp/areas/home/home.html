@@ -1,102 +1,156 @@
-﻿<standard-layout>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Find the Right Provider.</h1>
-            <p><p class="lead">There are many child care centers and other facilities that are dedicated to providing a safe, caring and productive environment for your child.</p> For more information, please visit:
-            <a href="http://www.mdhs.state.ms.us/early-childhood-care-development/for-parents/">http://www.mdhs.state.ms.us/early-childhood-care-development/for-parents/</a></p>
+﻿<style type="text/css">
+    .homepage-image {
+        display: inline-block;
+        position: absolute;
+        width: 100%;
+        hieght: auto;
+        top: -30%;
+        left: 0;
+        right: 0%;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        z-index: -1;
+    }
+
+    .featuered-content {
+        background-color: rgba(255, 255, 255, 0.85);
+        border-top-right-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        margin: 0;
+    }
+</style>
+
+<standard-layout>
+    <div class="container-fluid" style="position: relative; overflow: hidden">
+        <img ng-src="img/macwis-homepage-img.jpg" alt="Image of kids playing." class="homepage-image">
+        <div class="container">
+            <div class="jumbotron col-xs-6 featuered-content">
+                <h1>Find the Right Provider.</h1>
+                <p>
+                <p class="lead">There are many child care centers and other facilities that are dedicated to providing a
+                    safe, caring and productive environment for your child.</p> For more information, please visit:
+                <a href="http://www.mdhs.state.ms.us/early-childhood-care-development/for-parents/">http://www.mdhs.state.ms.us/early-childhood-care-development/for-parents/</a></p>
+            </div>
         </div>
     </div>
-    <div id="homeSearch" class="container-fluid">
-        <div class="container" >
+    <div class="container" style="position: relative;">
+        <div class="row" role="tablist" id="tabContainer"
+             style="position: absolute; bottom: 0; left: 0; right:0; overflow: hidden">
+            <a href="#locationPanel" class="btn btn-default btn-lg col-xs-4 searchTab activeTab" role="tab"
+               ng-click="model.setActiveTab($event)">
+                <span class="h4">Search all Providers</span>
+            </a>
+            <a href="#providerPanel" class="btn btn-default btn-lg col-xs-4  searchTab" role="tab"
+               ng-click="model.setActiveTab($event)">
+                <span class="h4">Search by Provider Name</span>
+            </a>
+        </div>
+    </div>
+    </div>
+    <div id="homeSearch" class="container-fluid" style="min-height: 280px">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <!-- PANEL CONTROLS -->
-                    <div class="row" role="tablist" id="tabContainer">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#locationPanel" class="btn btn-default btn-block btn-lg col-xs-12 searchTab" role="tab">Search By Location</a>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#providerPanel" class="btn btn-default btn-block btn-lg col-xs-12 searchTab" role="tab">Search By Provider</a>
-                        </div>
-                        <div class="col-xs-12">
-                            <hr style="margin: 10px auto">
-                        </div>
-                    </div>
                     <div class="row tab-content">
                         <!-- LOCATION SEARCH -->
-                        <div role="tabpanel" id="locationPanel" class="tab-pane fade active in">
+                        <div role="tabpanel" id="locationPanel" class="tab-pane active in">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <h2>Location Search</h2>
+                                <div class="col-xs-12 col-sm-3 col-sm-offset-1">
+                                    <div class="form-group">
+                                        <label for="providerType">Provider Type</label>
+                                        <select id="providerType" class="form-control"
+                                                ng-model="model.criteria.providerType"
+                                                ng-options="providerType.Id as providerType.Name for providerType in model.providerTypes">
+                                            <option value="$providerType"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-8 form-group" style="padding: 0;">
+                                        <label for="starRating">Quality Star Rating</label>
+                                        <select class="form-control" name="starRating" id="starRating"
+                                                ng-model="model.criteria.rate"
+                                                ng-options="rate.Id as rate.Name for rate in model.rates">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5 form-group">
+                                            <label for="county">County</label>
+                                            <select id="county" class="form-control" ng-model="model.criteria.countyy"
+                                                    ng-options="county.Id as county.Name for county in model.counties">
+                                                <option value=""></option>
+                                            </select>
+                                            <!--<input type="text" class="form-control" id="county" ng-model="model.criteria.county">-->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-5 form-group">
+                                            <label for="city">City</label>
+                                            <!--<input type="text" id="city" class="form-control" ng-model="model.criteria.city">-->
+                                            <select id="city" class="form-control" ng-model="model.criteria.city"
+                                                    ng-options="city for city in model.cities">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 form-group">
+                                            <label for="zipCode">Zip Code</label>
+                                            <input type="text" id="zipCode" class="form-control"
+                                                   ng-model="model.criteria.zipCode">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 form-group">
+                                            <label for="radius">Within <span class="sr-only">Mile Radius</span></label>
+                                            <select id="radius" class="form-control" ng-model="model.criteria.radius">
+                                                <option value="">10 miles</option>
+                                                <option value="">25 miles</option>
+                                                <option value="">50 miles</option>
+                                                <option value="">75 miles</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
-                                    <label for="providerType" >Provider Type</label>
-                                    <select id="providerType" class="form-control" ng-model="model.criteria.providerType"
-                                        ng-options="providerType.Id as providerType.Name for providerType in model.providerTypes">
-                                        <option value="$providerType"></option>
-                                    </select>                                                                 
-                                </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
-                                    <label for="county">County</label>
-                                    <select id="county" class="form-control" ng-model="model.criteria.countyy"
-                                            ng-options="county.Id as county.Name for county in model.counties">
-                                        <option value=""></option>
-                                    </select>
-                                    <!--<input type="text" class="form-control" id="county" ng-model="model.criteria.county">-->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
-                                    <label for="city">City</label>
-                                    <!--<input type="text" id="city" class="form-control" ng-model="model.criteria.city">-->
-                                    <select id="city" class="form-control" ng-model="model.criteria.city"
-                                            ng-options="city for city in model.cities">
-                                        <option value=""></option>
-                                    </select>
-                                </div>
-                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
-                                    <label for="zipCode">Zip Code</label>
-                                    <input type="text" id="zipCode" class="form-control" ng-model="model.criteria.zipCode">
-                                </div>
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
-                                    <label for="radius">Within <span class="sr-only">Mile Radius</span></label>
-                                    <select id="radius" class="form-control" ng-model="model.criteria.radius">
-                                        <option value="">10 miles</option>
-                                        <option value="">25 miles</option>
-                                        <option value="">50 miles</option>
-                                        <option value="">75 miles</option>
-                                    </select>
-                                </div>
-                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
-                                    <label for="starRating">Quality Star Rating</label>
-                                    <select class="form-control" name="starRating" id="starRating" ng-model="model.criteria.rate" ng-options="rate.Id as rate.Name for rate in model.rates">                                        
-                                    </select>
-                                </div>
+                            <div class="row" style="border-top: 1px solid white; text-align: center !important">
+                                <a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
+                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;search
+                                </a>
                             </div>
                         </div>
                         <!-- PROVIDER SEARCH -->
-                        <div role="tabpanel" id="providerPanel" class="tab-pane fade">
+                        <div role="tabpanel" id="providerPanel" class="tab-pane">
                             <div class="row">
-                                <div class="col-sm-11 col-xs-12 col-lg-12">
-                                    <h2>Provider Search</h2>
+                                <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+                                    <div class="col-xs-12 col-sm-7 form-group" style="padding: 0;">
+                                        <label for="providerName">Provider Name</label>
+                                        <input id="providerName" type="text" class="form-control"
+                                               ng-model="model.criteria.providerName" placeholder="Provider Name">
+                                    </div>
                                 </div>
+                                <!--<div class=" col-sm-4">-->
+                                    <!--<a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">-->
+                                        <!--search-->
+                                    <!--</a>-->
+                                <!--</div>-->
                             </div>
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                                    <label for="providerName">Provider Name</label>
-                                    <input id="providerName" type="text" class="form-control" ng-model="model.criteria.providerName" placeholder="Provider Name">
-                                </div>
+                            <div class="row" style="border-top: 1px solid white; text-align: center !important">
+                                <a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
+                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;search
+                                </a>
                             </div>
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a class="btn btn-success btn-lg btn-block homeSearchButton" ng-click="model.onClick()" ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span> Search</a>
-                        </div>
-                    </div>
+                    <!--<div class="row">-->
+                    <!--<div class="col-xs-12">-->
+                    <!--<a class="btn btn-success btn-lg btn-block homeSearchButton" ng-click="model.onClick()"-->
+                    <!--ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span> Search</a>-->
+                    <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
 
@@ -114,20 +168,49 @@
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 homeInfo">
                 <h3>Licensed Child Care Center</h3>
                 <p>
-                    A child care center refers to a facility that provides care to children while parents are working or unavailable to care for their children. Child care centers typically group children of similar ages and offer some type of programming throughout the day. These facilities are licensed by the Mississippi Department of Health and must adhere to regulations regarding child care. High quality centers will offer educational/developmental curriculum implemented by trained staff. Health and safety of the children in these settings is a priority. Center quality can be determined by the star rating received through participation in the Mississippi Quality Stars programs. The more stars received, the higher the quality of care provided.
+                    A child care center refers to a facility that provides care to children while parents are working or
+                    unavailable to care for their children. Child care centers typically group children of similar ages
+                    and offer some type of programming throughout the day. These facilities are licensed by the
+                    Mississippi Department of Health and must adhere to regulations regarding child care. High quality
+                    centers will offer educational/developmental curriculum implemented by trained staff. Health and
+                    safety of the children in these settings is a priority. Center quality can be determined by the star
+                    rating received through participation in the Mississippi Quality Stars programs. The more stars
+                    received, the higher the quality of care provided.
                 </p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 homeInfo">
                 <h3>Licensed Family Child Care Home</h3>
-                <p>A Licensed Family Child Care Home refers to a setting in which an individual is paid by parents to care for their children while they are working or unavailable. This setting occurs in the child care provider’s home and provides group care in a home-like environment and typically provides some type of programming throughout the day. These facilities are licensed by the Mississippi Department of Health and must adhere to regulations regarding child care. High quality centers will offer educational/developmental curriculum implemented by trained staff. Health and safety of the children in these settings is a priority. A system of evaluating quality in Family Daycare Homes is currently under development.</p>
+                <p>A Licensed Family Child Care Home refers to a setting in which an individual is paid by parents to
+                    care for their children while they are working or unavailable. This setting occurs in the child care
+                    provider’s home and provides group care in a home-like environment and typically provides some type
+                    of programming throughout the day. These facilities are licensed by the Mississippi Department of
+                    Health and must adhere to regulations regarding child care. High quality centers will offer
+                    educational/developmental curriculum implemented by trained staff. Health and safety of the children
+                    in these settings is a priority. A system of evaluating quality in Family Daycare Homes is currently
+                    under development.</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 homeInfo">
                 <h3>Registered Family Child Care Home</h3>
-                <p>A Registered Family Child Care Home refers to a setting in which an individual is paid by parents to care for their children while they are working or unavailable. This setting occurs in the child care provider’s home and provides small group care in a home-like environment. Registered Family Daycare Homes caring for fewer than six children (not related to the provider by the third degree) are NOT licensed, monitored, or otherwise regulated by the Mississippi Department of Health. Minimal information is maintained about these programs by the Mississippi Department of Health to assist in emergency preparedness only. Registered Family Daycare Homes may choose to participate in the same quality evaluation program offered to Licensed Family Daycare Homes.</p>
+                <p>A Registered Family Child Care Home refers to a setting in which an individual is paid by parents to
+                    care for their children while they are working or unavailable. This setting occurs in the child care
+                    provider’s home and provides small group care in a home-like environment. Registered Family Daycare
+                    Homes caring for fewer than six children (not related to the provider by the third degree) are NOT
+                    licensed, monitored, or otherwise regulated by the Mississippi Department of Health. Minimal
+                    information is maintained about these programs by the Mississippi Department of Health to assist in
+                    emergency preparedness only. Registered Family Daycare Homes may choose to participate in the same
+                    quality evaluation program offered to Licensed Family Daycare Homes.</p>
             </div>
         </div>
 
     </div>
+    <footer class="container-fluid" style="background: #748f5c; padding: 15px 0;">
+        <div class="container">
+            <p class="h4">
+                <span class="fa fa-bug" style="font-size: 150%"></span>&nbsp;&nbsp;<strong>Find an issue with this site? Please report it to:
+                <a href="#" style="color: #e5f3ad; text-decoration: underline;">reportabug@feisystems.com</a></strong>
+            </p>
+        </div>
+    </footer>
     <!-- Activates tabs for provider/location search -->
     <script>
         $('#tabContainer a').click(function () {
