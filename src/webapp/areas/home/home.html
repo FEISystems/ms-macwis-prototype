@@ -33,27 +33,36 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                                     <label for="providerType" >Provider Type</label>
-                                    <select id="providerType" class="form-control">
+                                    <select id="providerType" class="form-control" ng-model="model.criteria.providerType"
+                                        ng-options="providerType.Id as providerType.Name for providerType in model.providerTypes">
                                         <option value="$providerType"></option>
-                                    </select>
+                                    </select>                                                                 
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                                     <label for="county">County</label>
-                                    <input type="text" class="form-control" id="county">
+                                    <select id="county" class="form-control" ng-model="model.criteria.countyy"
+                                            ng-options="county.Id as county.Name for county in model.counties">
+                                        <option value=""></option>
+                                    </select>
+                                    <!--<input type="text" class="form-control" id="county" ng-model="model.criteria.county">-->
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
                                     <label for="city">City</label>
-                                    <input type="text" id="city" class="form-control">
+                                    <!--<input type="text" id="city" class="form-control" ng-model="model.criteria.city">-->
+                                    <select id="city" class="form-control" ng-model="model.criteria.city"
+                                            ng-options="city for city in model.cities">
+                                        <option value=""></option>
+                                    </select>
                                 </div>
                                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
                                     <label for="zipCode">Zip Code</label>
-                                    <input type="text" id="zipCode" class="form-control">
+                                    <input type="text" id="zipCode" class="form-control" ng-model="model.criteria.zipCode">
                                 </div>
                                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
                                     <label for="radius">Within <span class="sr-only">Mile Radius</span></label>
-                                    <select id="radius" class="form-control">
+                                    <select id="radius" class="form-control" ng-model="model.criteria.radius">
                                         <option value="">10 miles</option>
                                         <option value="">25 miles</option>
                                         <option value="">50 miles</option>
@@ -62,13 +71,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
                                     <label for="starRating">Quality Star Rating</label>
-                                    <select class="form-control" name="starRating" id="starRating">
-                                        <option value="0">Not Rated</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                    <select class="form-control" name="starRating" id="starRating" ng-model="model.criteria.rate" ng-options="rate.Id as rate.Name for rate in model.rates">                                        
                                     </select>
                                 </div>
                             </div>
@@ -83,7 +86,7 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                                     <label for="providerName">Provider Name</label>
-                                    <input id="providerName" type="text" class="form-control" ng-model="Criteria.ProviderName" placeholder="Provider Name">
+                                    <input id="providerName" type="text" class="form-control" ng-model="model.criteria.providerName" placeholder="Provider Name">
                                 </div>
                             </div>
                         </div>
@@ -91,7 +94,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <a class="btn btn-success btn-lg btn-block homeSearchButton" ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span> Search</a>
+                            <a class="btn btn-success btn-lg btn-block homeSearchButton" ng-click="model.onClick()" ng-link="['ProviderSearch']"><span class="glyphicon glyphicon-search"></span> Search</a>
                         </div>
                     </div>
                 </div>

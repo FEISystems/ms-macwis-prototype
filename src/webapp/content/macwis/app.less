@@ -21,50 +21,57 @@ body{
     // Search Page Styles
     div#resultsPageContainer {
         padding-left: 0;
-        div#searchPanelContainer {
-            form {
-                div.panel {
-                    background: #6498AD;
-                    border: 4px solid #6498AD;
-                    .panel-heading {
-                        color: white;
-                        border-bottom: 1px solid white;
-                        padding: 0 15px;
-                        h2 {
-                            font-weight: 600;
-                            margin: 10px 0 8px 0;
-                        }
-                    }
-                    .panel-body {
-                        max-height: 755px !important;
-                        overflow-y: scroll !important;
-                    }
-                    .panel-footer {
+        div#searchPanelContainerOuter{
+            padding: 0 20px 0 10px;
+            div#searchPanelContainer {
+                form {
+                    div.panel {
                         background: #6498AD;
-                        div.row {
+                        border: 4px solid #6498AD;
+                        .panel-heading {
+                            color: white;
+                            border-bottom: 1px solid white;
+                            padding: 0 15px;
+                            h1 {
+                                font-weight: 600;
+                                margin: 10px 0 8px 0;
+                                font-size: 28px
+                            }
+                        }
+                        .panel-body {
+                            max-height: 755px !important;
+                            overflow-y: scroll !important;
+                            legend button {
+                                color: black;
+                                font-weight: 600;
+                                font-size: 18px;
+                                background: transparent;
+                                text-align: left;
+                                border: none;
+                                padding: 3px 0;
+                                span {
+                                    position: relative;
+                                    bottom: -2px;
+                                }
+                            }
+                            label {
+                                color: black;
+                            }
+                        }
+                        .panel-footer {
+                            background: #6498AD;
+                            div.row {
+
+                            }
+                            .reset {
+                                color: #000 !important;
+                            }
 
                         }
-                        .reset {
-                            color: #000 !important;
-                        }
 
-                    }
-                    legend button {
-                        color: black;
-                        font-weight: 600;
-                        background: transparent;
-                        text-align: left;
-                        border: none;
-                        padding: 3px 0;
-                        span {
-                            position: relative;
-                            bottom: -2px;
-                        }
-                    }
-                    label {
-                        color: black;
                     }
                 }
+
             }
 
         }
@@ -74,6 +81,10 @@ body{
 
             div.col-xs-12 {
                 div.row {
+                    h2{
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                    }
                     // Sort Control
                     select#sortControl {
                         height: 30px !important;
@@ -89,34 +100,46 @@ body{
                                 border: none;
                                 padding: 0;
                                 display: inline-block;
-                                div[class^="col-"] {
-                                    padding: 0;
-                                    div {
-                                        margin: 5px 0;
-                                        strong {
-                                            font-size: 16px;
-                                        }
-                                        span {
-                                            font-size: 16px;
-                                        }
-                                    }
-                                }
                                 &.providerNameSection{
+                                    padding-top: 20px;
+                                    padding-bottom: 8px;
                                     div.providerName {
                                         strong {
-                                            font-size: 18px;
+                                            font-size: 22px;
+                                            color: #6498AD;
                                             display: inline-block;
+                                        }
+                                    }
+
+                                }
+
+                                &.starRating{
+                                    padding: 3px 0 0 0;
+                                    label{
+                                        font-size: 18px;
+                                    }
+                                    div{
+                                        display: inline-block;
+                                        img{
+                                            padding-bottom: 6px;
+                                            padding-right: 1px;
                                         }
                                     }
                                 }
 
-                                &.starRating{
-                                    padding: 0;
-                                    label{
-                                        font-size: 17px;
-                                    }
+                                &.providerInfo{
                                     div{
-                                        display: inline-block;
+                                        padding: 0;
+                                        div {
+                                            margin: 8px 0;
+                                            font-size: 15px;
+                                            strong{
+                                                font-size: 16px;
+                                            }
+                                            span{
+                                                font-size: 15px;
+                                            }
+                                        }
                                     }
                                 }
 
@@ -125,8 +148,8 @@ body{
                                     a.btn {
                                         background: #6498AD;
                                         color: white;
-                                        text-shadow: none;
                                         border: 1px solid #ccc;
+                                        text-shadow: none;
                                     }
                                 }
                             }
@@ -225,7 +248,6 @@ body{
 
 @media (max-width: 767px){
     body {
-
         > div.container-fluid{
             padding: 0;
         }

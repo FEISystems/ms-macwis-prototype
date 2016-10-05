@@ -7,7 +7,7 @@ You can see live demo [here](http://msmacwis.azurewebsites.net) or http://msmacw
 ## Technologies
 MS macwis prototype uses modern, open technologies, with agile (scrum) process to manage, design, coding, testing and deploy it. We also have a live demo site to show final results.
 The following standards and guidance are used or referred in this prototype.
-- [Responsive Web Design](https://en.wikipedia.org/wiki/Responsive_web_design)
+- [U.S. Web Design Standards](https://standards.usa.gov/) that follows [Responsive Web Design](https://en.wikipedia.org/wiki/Responsive_web_design) with Accessibility out of the box
 - [US Digital Service Playbook](https://playbook.cio.gov/)
 - [18F Open Source Style Guide](https://pages.18f.gov/open-source-guide/)
 
@@ -32,15 +32,15 @@ The frameworks we used in this project are:
 
 We did not use didicated backend service and database in this project because we want to focus the prototype work and agile process to create a good fit solution.
 
-### Live Demo Site (Deployment)
 
 ### TDD
 As we choose to use Bootstrp & AngularJS for front-end and node.js as backend implementation. The test frameworks for these technologies are
 - Use [Jasmine](http://jasmine.github.io/) to write unit tests for this Angular based Applications with Bootstrap blocks.
 - For the back-end service with Node.JS, Mocha Test Framework is used that we covered all REST web services and node.js domain functions.
 
+## Deployment
 
-### CI with Test Automation
+### CI with Test Automation for Live Demo Site
 There are couple considerations that affect us to choose CI
 - Using Microsoft Azure App Service to host this prototype site
 - No backend database
@@ -49,6 +49,7 @@ There are couple considerations that affect us to choose CI
 Azure provide simple Contiouse Integration (CI) that can deploy project from github to Azure App Service. For quick build purpose, we used this capability in sprint 1/2, and then switch to TeamCity.
 TeamCity is a comprehensive integation build platform but need more configuration for this prototype. The configuration includes plug-ins for some Unit Test Framework we used.
 
+Here is the live demo [here](http://msmacwis.azurewebsites.net).
 
 ### How to run it local
 This prototype is built with pure front-end HTML/JS technologies that does not need special settings. This prototype can run on any simple http server, eg. Chrome built-in HTTP Server.
@@ -68,6 +69,8 @@ We are doing scrum process with team for this protoype. The team includes Produc
 For the proposal effort, we have more roles such as Product Manager and DevOps.
 
 The key activitiies are described below.
+
+### Initial Resarch and Discovery
 
 ### Initial Planning
 As normally did after the agile (scrum) team assembled for this proposal, we had a quick planning meeting to setup weekly sprint process from start to finish this prototype, with common scrum configuration. See 2.1 for details.
@@ -94,6 +97,9 @@ During the initial planning meeting, we discussed
 - CI & Unit Testing Automation with TeamCity
 - Refine prototype based on review from Sprint 2
 - Proposal finalizatin based on prototype and process
+
+### Release 1.0 for Proposal submission - (10/10/2016)
+- Put a release tag as v1.0 for proposal submission
 
 ## License
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
