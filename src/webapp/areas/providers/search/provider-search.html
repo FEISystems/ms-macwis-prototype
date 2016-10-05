@@ -200,7 +200,7 @@
                                 <td class="col-xs-1" ng-hide="false">
                                     <div id="checkboxes">
                                         <div style="font-size: 200%; color: darkred; line-height:10em;">
-                                            <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; display: block" id={{provider}} />
+                                            <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; margin-top: 20px; display: block" id={{provider}} />
                                         </div>
                                     </div>
                                 </td>
@@ -209,7 +209,7 @@
                                         <strong>{{provider.ProviderName}}</strong>
                                     </div>
                                 </td>
-                                <td class="col-xs-12 starRating">
+                                <td class="col-xs-11 col-xs-offset-1 starRating">
                                     <label>Quality Star Rating:</label>
                                     <div ng-if="provider.QualityRating===1">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
@@ -230,7 +230,7 @@
                                         <img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                     </div>
                                 </td>
-                                <td class="col-xs-12 col-sm-8 col-md-8 col-lg-10 providerInfo">
+                                <td class="col-xs-11 col-xs-offset-1 col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1 col-lg-9 col-lg-offset-1 providerInfo">
                                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                         <div><strong>Type: </strong><span>{{provider.ProviderTypeDescription}}</span></div>
                                         <div><strong>Phone: </strong><span>{{provider.PhoneNumber}}</span></div>
