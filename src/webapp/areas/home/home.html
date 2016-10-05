@@ -24,13 +24,83 @@
         border-bottom-left-radius: 0 !important;
         margin: 0;
     }
+
+
+    /*==========  Non-Mobile First Method  ==========*/
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+        .homepage-image {
+            top: -10%;
+        }
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+        .homepage-image {
+            top: -10%;
+            width: 120%;
+            left: -15%;
+        }
+
+        .featured-content-container {
+            padding: 0;
+            margin: 0;
+        }
+
+        .featured-content {
+            padding: 0;
+            margin: 0;
+            width: 100% !important;
+        }
+        .featuered-content {
+            padding: 0 15px 60px;
+            margin-top: 180px;
+            padding-right: 20px !important;
+            padding-left: 20px !important;
+        }
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+
+        .homepage-image {
+            top: -10%;
+            width: 160%;
+            left: -55%;
+        }
+        .featuered-content {
+            padding-top: 20px;
+            margin-top: 180px;
+            padding-right: 20px !important;
+            padding-left: 20px !important;
+            margin-top: 0px;
+        }
+    }
+
+
+    /* Extra Small Devices, Phones */
+    @media only screen and (max-width : 480px) {
+
+        .homepage-image {
+            top: -10%;
+            width: 200%;
+            left: -75%;
+        }
+    }
+
+    /* Custom, iPhone Retina */
+    @media only screen and (max-width : 320px) {
+
+    }
 </style>
 
 <standard-layout>
-    <div class="container-fluid" style="position: relative; overflow: hidden">
+    <div class="container-fluid featured-content-container" style="position: relative; overflow: hidden">
         <img ng-src="img/macwis-homepage-img.jpg" alt="Image of kids playing." class="homepage-image">
-        <div class="container">
-            <div class="jumbotron col-xs-6 featuered-content">
+        <div class="container featured-content">
+            <div class="jumbotron col-sm-12 col-md-6 featuered-content">
                 <h1>Find the Right Provider.</h1>
                 <p>
                 <p class="lead">There are many child care centers and other facilities that are dedicated to providing a
@@ -39,14 +109,14 @@
             </div>
         </div>
     </div>
-    <div class="container" style="position: relative;">
+    <div class="container " style="position: relative;">
         <div class="row" role="tablist" id="tabContainer"
              style="position: absolute; bottom: 0; left: 0; right:0; overflow: hidden">
-            <a href="#locationPanel" class="btn btn-default btn-lg col-xs-4 searchTab activeTab" role="tab"
+            <a href="#locationPanel" class="btn btn-default btn-lg col-xs-6 col-sm-4 searchTab activeTab" role="tab"
                ng-click="model.setActiveTab($event)">
                 <span class="h4">Search all Providers</span>
             </a>
-            <a href="#providerPanel" class="btn btn-default btn-lg col-xs-4  searchTab" role="tab"
+            <a href="#providerPanel" class="btn btn-default btn-lg col-xs-6 col-sm-4  searchTab" role="tab"
                ng-click="model.setActiveTab($event)">
                 <span class="h4">Search by Provider Name</span>
             </a>
@@ -78,7 +148,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-7">
+                                <div class="col-xs-12 col-sm-8" style="padding: 0;">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-5 form-group">
                                             <label for="county">County</label>
@@ -102,15 +172,6 @@
                                             <label for="zipCode">Zip Code</label>
                                             <input type="text" id="zipCode" class="form-control"
                                                    ng-model="model.criteria.zipCode">
-                                        </div>
-                                        <div class="col-xs-12 col-sm-3 form-group">
-                                            <label for="radius">Within <span class="sr-only">Mile Radius</span></label>
-                                            <select id="radius" class="form-control" ng-model="model.criteria.radius">
-                                                <option value="">10 miles</option>
-                                                <option value="">25 miles</option>
-                                                <option value="">50 miles</option>
-                                                <option value="">75 miles</option>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -203,11 +264,12 @@
         </div>
 
     </div>
-    <footer class="container-fluid" style="background: #748f5c; padding: 15px 0;">
+    <footer class="container-fluid" style="background: #748f5c; padding: 15px 0; margin-top: 20px">
         <div class="container">
             <p class="h4">
                 <span class="fa fa-bug" style="font-size: 150%"></span>&nbsp;&nbsp;<strong>Find an issue with this site? Please report it to:
-                <a href="#" style="color: #e5f3ad; text-decoration: underline;">reportabug@feisystems.com</a></strong>
+                <a href="mailto:ms.bugreport@feisystems.com?subject=Issue found in MACWIS.com
+&body=Hi, I'd like to report the following issue:" style="color: #e5f3ad; text-decoration: underline;">ms.bugreport@feisystems.com</a></strong>
             </p>
         </div>
     </footer>
