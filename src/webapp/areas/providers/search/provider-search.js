@@ -230,7 +230,10 @@
         $scope.$watch(function() { return angular.element("#providerSearchButton").is(':visible') }, function() {
             var criteria = queueService.getMsg('homeSearchCriteria');
             if (!criteria)
+            {
+                $scope.search();
                 return;
+            }
             
             var criteriaFromHomePage = {
                 ProviderName : criteria.providerName,
