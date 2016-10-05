@@ -67,11 +67,9 @@
                         </div>
 
 
-
-                        <fieldset style="border: 1px solid #c0c0c0;">
                             <legend>Search by Location</legend>
                             <div class="form-group">
-                                <label for="zipCode">Zip:</label>
+                                <label for="zipCode">Zip Code:</label>
                                 <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="Criteria.address" name="address">
                                 <div class="error" style="color: red" ng-show="{{'searchForm.address.$invalid '}}">
                                     Please enter a valid zip code
@@ -86,8 +84,6 @@
                                 </div>
                             </div>
 
-                            </div>
-                        </fieldset>
                     </div>
                     <div class="panel-footer">
                         <div class="row">
@@ -198,10 +194,10 @@
                                 </div>
                             </td>
 
-                            <td style="display:inline-block" class="col-xs-12 providerDetails">
-                                <a ng-click="showDetails(provider)">Provider Details</a>
-                            </td>
-                        </tr>
+                                <td style="display:inline-block" class="col-xs-12 providerDetails">
+                                    <a ng-click="showDetails(provider)">Provider Details</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <!--</div>-->
@@ -311,7 +307,7 @@
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-default pull-right" type="button" ng-click="clickOk()">Close</button>
+                                            <button id="providerSearchButton" class="btn btn-default pull-right" type="button" ng-click="clickOk()">Close</button>
                                         </div>
                                     </div>
                                 </div>
