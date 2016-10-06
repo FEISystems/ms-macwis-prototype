@@ -19,10 +19,10 @@
         model.filteredProviders = [];
         model.selected = [];
         model.showProviderDetails = false;
-
+        model.isRendered = false;
         /***********************Model Metadata******************** */
-        model.Cities = dataService.getCities();
-        model.Counties = dataService.getCounties();
+        model.Cities = dataService.titleCaseData(dataService.getCities());
+        model.Counties = dataService.titleCaseData(dataService.getCounties(), "Name");
         model.ProviderTypes = dataService.getProviderTypes();
         model.Rates = dataService.getRates();
         model.Ages = dataService.ages;
@@ -30,7 +30,7 @@
         model.CanTakeBehavioralChildrens = dataService.canTakeBehavioralChildrenes;
         model.AllProviders = providerService.getAllProviders();
         model.SortByes = dataService.getSortTypes();
-
+        model.Distances = dataService.getDistances();
 
 
         /************************Paging functionality************ */
@@ -149,13 +149,23 @@
                 up: false,
                 sortField: "QualityRating"
             };
-            if (model.Criteria.address && model.Criteria.distince) {
-                googleMapService.getCoordinateByAddress(model.Criteria.address, function(coordinate) {
-                    tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distince);
-                    model.searchByCriteria(tempProviders);
-                }, function(error) {
-                    $log.error(error);
-                });
+            if (model.Criteria.address) {
+                if(!isNaN(model.Criteria.distance) && model.Criteria.distance > 0)
+                {
+                    googleMapService.getCoordinateByAddress(model.Criteria.address, function(coordinate) {
+                        tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distance);
+                        model.searchByCriteria(tempProviders);
+                    }, function(error) {
+                        $log.error(error);
+                    });
+                }
+                else{
+                    angular.forEach(model.AllProviders, function(provider) {                        
+                        if (provider.PhysicalZipCode == model.Criteria.address) {
+                            tempProviders.push(provider);
+                        }
+                    });
+                }
             } else {
                 tempProviders = model.AllProviders;
                 model.searchByCriteria(tempProviders);
@@ -166,7 +176,7 @@
             if (!model.Criteria || model.Criteria.ProviderName ||
                 model.Criteria.ProviderType || model.Criteria.City || model.Criteria.County ||
                 (model.Criteria.Rate || model.Criteria.Rate === 0) ||
-                model.Criteria.Age || model.Criteria.Gender || model.Criteria.CanTakeBehavioralChildren) {
+                model.Criteria.Age || model.Criteria.Gender || model.Criteria.CanTakeBehavioralChildren || model.Criteria.address) {
                 angular.forEach(tempProviders, function(provider) {
                     var nameFound = true;
                     if (model.Criteria.ProviderName) {
@@ -184,6 +194,7 @@
                         (!model.Criteria.City || (model.Criteria.City && model.Criteria.City === provider.PhysicalCity)) &&
                         (!model.Criteria.County || (model.Criteria.County && model.Criteria.County === provider.CountyNumber)) &&
                         (model.Criteria.Rate === undefined || model.Criteria.Rate === null || model.Criteria.Rate === provider.QualityRating) &&
+                        (!model.Criteria.address || (model.Criteria.address === provider.PhysicalZipCode)) &&
                         (!model.Criteria.Age || (model.Criteria.Age &&
                             dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
                             dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
@@ -251,6 +262,9 @@
         $scope.$watch(function() {
             return angular.element("#providerSearchButton").is(':visible')
         }, function() {
+            if (model.isRendered)
+                return;
+            model.isRendered = true;
             var criteria = queueService.getMsg('homeSearchCriteria');
             if (!criteria) {
                 model.search();

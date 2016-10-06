@@ -72,10 +72,13 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="searchRadius">Distance(miles):</label>
-                                <input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">
+                                <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
+                                <select id="searchRadius" class="form-control" ng-model="model.Criteria.distance"
+                                            ng-options="distance.Id as distance.Name for distance in model.Distances">
+                                        <option value=""></option>
+                                    </select>
                                 <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
                                     Please enter a numeric value
-
                                 </div>
                                 <hr style="border-color: #ffffff">
                             </div>
