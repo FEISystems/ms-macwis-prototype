@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
     var module = angular.module("macwisWebApp", ['ui.bootstrap', "ngComponentRouter", "ngAnimate"]);
-
+    window.document.title = 'MS Prototype';
     module.value("$routerRootComponent", "macwisWebApp");
 
     var controller = function (roleService) {
