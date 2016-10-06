@@ -149,13 +149,23 @@
                 up: false,
                 sortField: "QualityRating"
             };
-            if (model.Criteria.address && model.Criteria.distance) {
-                googleMapService.getCoordinateByAddress(model.Criteria.address, function(coordinate) {
-                    tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distance);
-                    model.searchByCriteria(tempProviders);
-                }, function(error) {
-                    $log.error(error);
-                });
+            if (model.Criteria.address) {
+                if(!isNaN(model.Criteria.distance) && model.Criteria.distance > 0)
+                {
+                    googleMapService.getCoordinateByAddress(model.Criteria.address, function(coordinate) {
+                        tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distance);
+                        model.searchByCriteria(tempProviders);
+                    }, function(error) {
+                        $log.error(error);
+                    });
+                }
+                else{
+                    angular.forEach(model.AllProviders, function(provider) {                        
+                        if (provider.PhysicalZipCode == model.Criteria.address) {
+                            tempProviders.push(provider);
+                        }
+                    });
+                }
             } else {
                 tempProviders = model.AllProviders;
                 model.searchByCriteria(tempProviders);
