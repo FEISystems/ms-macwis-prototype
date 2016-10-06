@@ -87,19 +87,6 @@
                 }
             }
         };
-        function removeItem(obj, prop, val) {
-            var c, found=false;
-            for(c in obj) {
-                if(obj[c][prop] == val) {
-                    found=true;
-                    break;
-                }
-            }
-            if(found){
-                delete obj[c];
-            }
-        }
-
 
         model.ChangeDisplayNums = function() {
             if ($("#selectPerPage option:selected").text()) {
@@ -113,6 +100,7 @@
         model.clear = function() {
             model.Criteria = {};
         };
+
         /****************** *Print functionality **************/
 
         model.selectProviderToPrint = function($event) {
@@ -120,9 +108,7 @@
             if ($(printpage).is(":checked")) {
                 model.selected.push($(printpage).attr('id'));
             } else {
-
                     model.selected.splice(model.selected.length-1);
-                    //removeItem(model.selected,'id','Id of the item to be deleted');
                 }
             };
 
@@ -145,7 +131,6 @@
                         "<p class='ng-binding'><strong>Gender: </strong> " + value.split(',')[15].split(':')[1].replace(/\"/g, "") + " </p></div></div></div></div></tr></table><hr/>";
 
                 });
-                // htmlcode=htmlcode+'</table>'; if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
                     var popupWin = window.open('', '_blank', 'width=3000,height=3000');
                     popupWin.document.open();
                     popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
@@ -154,8 +139,8 @@
                 else {
                     return false;
                 }
-
         };
+
         /*****************Sorting and searching functionality**********************/
         model.search = function() {
             model.filteredProviders = [];
