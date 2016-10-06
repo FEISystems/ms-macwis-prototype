@@ -42,7 +42,8 @@
         model.AllProviders = providerService.getAllProviders();
         model.SortByes = dataService.getSortTypes();
         model.Distances = dataService.getDistances();
-
+        
+        model.Criteria.Rate = model.Rates[0].Id;
 
         /************************Paging functionality************ */
         model.setPage = function(num) {
@@ -205,7 +206,7 @@
                         (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType === provider.ProviderType)) &&
                         (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() === provider.PhysicalCity.toLowerCase())) &&
                         (!model.Criteria.County || (model.Criteria.County && model.Criteria.County.toLowerCase() === provider.CountyNumber.toLowerCase())) &&
-                        (model.Criteria.Rate === undefined || model.Criteria.Rate === null || model.Criteria.Rate === provider.QualityRating) &&
+                        (model.Criteria.Rate === undefined || model.Criteria.Rate === null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
                         (!model.Criteria.address || (model.Criteria.address === provider.PhysicalZipCode)) &&
                         (!model.Criteria.Age || (model.Criteria.Age &&
                             dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
