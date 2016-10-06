@@ -198,16 +198,19 @@
                         <tr><td><div class="col-xs-12">
                             <label id="lblSelect" style="display: none;">Select Providers</label>
                         </div></td></tr>
-                            <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
-                                <td class="col-xs-1" ng-hide="false">
+                            <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model                              .listsPerPage">
+                            <!--    <td class="col-xs-1" ng-hide="false">
                                     <div id="checkboxes">
                                         <div style="font-size: 200%; color: darkred; line-height:10em;">
-                                            <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; margin-top: 20px; display: block" id={{provider}} />
+
                                         </div>
                                     </div>
-                                </td>
-                                <td class="col-xs-11  providerNameSection">
-                                    <div class="providerName">
+                                </td> -->
+                                <td class="col-xs-12  providerNameSection">
+                                <div style="width:20px; height:20px; margin-right: 40px;float: left; ">
+                                    <input type="checkbox" style="width:52px;height:20px;" ng-click="model.selectProviderToPrint($event)"                                        id={{provider}} />
+                                </div>
+                                    <div class="providerName" style="float:left;">
                                         <strong>{{provider.ProviderName}}</strong>
                                     </div>
                                 </td>
