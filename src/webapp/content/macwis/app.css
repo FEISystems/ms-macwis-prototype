@@ -20,6 +20,7 @@ body div#resultsPageContainer div#searchPanelContainerOuter {
   position: fixed;
   height: 100%;
   margin-top: -20px;
+  top: 70px;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
   height: 100%;
@@ -45,7 +46,6 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
   font-size: 28px;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
-  max-height: 830px !important;
   overflow-y: scroll !important;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body legend button {

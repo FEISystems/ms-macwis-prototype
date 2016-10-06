@@ -10,7 +10,7 @@
                     <div class="panel-body">
 
                         <!-- PROVIDER SEARCH OPTIONS -->
-                        <legend><button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#providerCriteria">Search by Provider <span class="glyphicon glyphicon-plus pull-right"></span></button></legend>
+                        <legend><button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#providerCriteria">Search by Provider <span class="glyphicon glyphicon-minus pull-right"></span></button></legend>
                         <div class="collapse" id="providerCriteria">
                             <div class="form-group">
                                 <label for="providerName">Provider Name:</label>
@@ -31,8 +31,22 @@
                                     ng-options="rate.Id as rate.Name for rate in model.Rates">
                                 <option value=""></option>
                             </select>
-                            <hr style="border-color: #ffffff">
-                        </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <select id="city" class="form-control" ng-model="model.Criteria.City"
+                                        ng-options="city for city in model.Cities">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="county">County:</label>
+                                <select id="county" class="form-control" ng-model="model.Criteria.County"
+                                        ng-options="county.Id as county.Name for county in model.Counties">
+                                    <option value=""></option>
+                                </select>
+                                <hr style="border-color: #ffffff">
+                            </div>
                         </div>
                         <!-- LOCATION SEARCH OPTIONS -->
 
@@ -43,26 +57,13 @@
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
-                            <div class="collapse" id="locationCriteria">
+                            <div class="collapse in" id="locationCriteria">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <p>Enter zip code to find providers within the distance selected.</p>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="city">City:</label>
-                                    <select id="city" class="form-control" ng-model="model.Criteria.City"
-                                            ng-options="city for city in model.Cities">
-                                        <option value=""></option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="county">County:</label>
-                                    <select id="county" class="form-control" ng-model="model.Criteria.County"
-                                            ng-options="county.Id as county.Name for county in model.Counties">
-                                        <option value=""></option>
-                                    </select>
-                                </div>
+
                                 <div class="form-group">
                                     <label for="zipCode">Zip Code:</label>
                                     <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" name="address">
@@ -71,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                <label for="searchRadius">Distance(miles):</label>
+                                <label for="searchRadius">Within distance of zip code:</label>
                                 <input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">
                                 <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
                                     Please enter a numeric value
@@ -91,7 +92,7 @@
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
-                            <div class="collapse" id="advancedCriteria">
+                            <div class="collapse in" id="advancedCriteria">
                                 <div class="form-group">
                                     <label for="ageRange">Age of Children Served:</label>
                                     <select id="ageRange" class="form-control" ng-model="model.Criteria.Age"
@@ -132,8 +133,10 @@
             </form>
             <script>
                 $(document).ready(function() {
-                   $('.collapse').collapse('hide');
+                    // Activate Collapse and hide all
+                    $('.collapse').collapse();
 
+                    // Toggle icons for collapse states
                     $('.criteriaButton').on('click', function() {
                         var span = $(this).children();
                         if ($(span).hasClass('glyphicon-plus')) {
@@ -142,6 +145,16 @@
                             $(span).removeClass('glyphicon-minus').addClass('glyphicon-plus');
                         }
                     });
+
+                    // Set max-height of search criteria .panel-body to window height
+                    var setPanelHeight = function (){
+                        var panelBody = $('#searchPanelContainer .panel-body');
+                        panelBody.css('max-height', ($(window).height() - 154));
+                    };
+                    setPanelHeight();
+                    $(window).resize(setPanelHeight());
+
+
                 });
             </script>
         </search-panel>
