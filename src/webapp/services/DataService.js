@@ -536,6 +536,28 @@
                 }
             ];
         }
+
+        var titleCaseData = function(data, property)
+        {
+            var results = [];
+            function toTitleCase(str)
+            {
+                return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            }
+        
+            $.each(data, function(index, value) {
+                if (property)
+                {
+                    value[property] = toTitleCase(value[property]);
+                    results.push(value);
+                }
+                else
+                    results.push(toTitleCase(value));                
+            })
+            return results;
+        }
+
+
         return {
             ages: ages,
             getAgeById: getAgeById,
@@ -547,7 +569,8 @@
             getRates: getRates,
             getGenders: getGenders,
             getSortTypes: getSortTypes,
-            getDistances: getDistances
+            getDistances: getDistances,
+            titleCaseData: titleCaseData
         };
     };
 

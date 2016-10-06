@@ -21,8 +21,8 @@
         model.showProviderDetails = false;
         model.isRendered = false;
         /***********************Model Metadata******************** */
-        model.Cities = dataService.getCities();
-        model.Counties = dataService.getCounties();
+        model.Cities = dataService.titleCaseData(dataService.getCities());
+        model.Counties = dataService.titleCaseData(dataService.getCounties(), "Name");
         model.ProviderTypes = dataService.getProviderTypes();
         model.Rates = dataService.getRates();
         model.Ages = dataService.ages;

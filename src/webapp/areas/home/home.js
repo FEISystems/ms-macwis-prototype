@@ -7,8 +7,8 @@
         model.provider = {};
         model.criteria = {};
         model.providerTypes = dataService.getProviderTypes();
-        model.cities = dataService.getCities();
-        model.counties = dataService.getCounties();
+        model.cities = dataService.titleCaseData(dataService.getCities());
+        model.counties = dataService.titleCaseData(dataService.getCounties(), "Name");
         model.rates = dataService.getRates();
         model.title = "Home";
         model.homePageImageUrl = "img/macwis-homepage-img.jpg";
