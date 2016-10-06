@@ -38,35 +38,36 @@
                                         ng-options="county.Id as county.Name for county in model.Counties">
                                     <option value=""></option>
                                 </select>
-                                <hr style="border-color: #ffffff">
+
                             </div>
                             <div class="form-group">
-                                <label for="starRating"><a href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating Equal or Above: <span style="font-size:12px;font-style:italic;">(Click for Description)<span></a></label>
+                                <label for="starRating"><a href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating Equal or Above:</a><span style="display: block;font-size:12px;font-style:italic;">(Click for Description)<span></label>
                                 <br/>
                                 <label>
-                                <input type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[0].Id}}">
+                                <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[0].Id}}">
                                         Do Not Filter By Star Rating
                                 </label><br/>                            
                                 <label>
-                                <input type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[5].Id}}">
+                                <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[5].Id}}">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png">
                                 </label><br/>
                                 <label>
-                                    <input type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[4].Id}}">
+                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[4].Id}}">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
                                 <label>
-                                    <input type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[3].Id}}">
+                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[3].Id}}">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
                                 <label>
-                                    <input type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[2].Id}}">
+                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[2].Id}}">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
                                 <label>
-                                    <input type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[1].Id}}">
+                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[1].Id}}">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
+                                <hr style="border-color: #ffffff">
                             </div>
                         </div>
                         <!-- LOCATION SEARCH OPTIONS -->
@@ -84,26 +85,34 @@
                                         <p>Enter zip code to find providers within the distance selected.</p>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="zipCode">Zip Code:</label>
-                                    <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" name="address">
-                                    <div class="error" style="color: red" ng-show="{{'searchForm.address.$invalid '}}">
-                                        Please enter a valid zip code
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 zip">
+                                    <div class="form-group" style="">
+                                        <label for="zipCode">Zip Code:</label>
+                                        <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" name="address">
+                                        <div class="error" style="color: red" ng-show="{{'searchForm.address.$invalid '}}">
+                                            Please enter a valid zip code
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                <label for="searchRadius">Within Distance of Zip Code:</label>
-                                <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
-                                <select id="searchRadius" class="form-control" ng-model="model.Criteria.distance"
-                                        ng-options="distance.Id as distance.Name for distance in model.Distances">
-                                    <option value=""></option>
-                                </select>
-                                <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
-                                    Please enter a numeric value
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="searchRadius">Within Distance of Zip Code:</label>
+                                        <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
+                                        <select id="searchRadius" class="form-control" ng-model="model.Criteria.distance"
+                                                ng-options="distance.Id as distance.Name for distance in model.Distances">
+                                            <option value=""></option>
+                                        </select>
+                                        <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
+                                            Please enter a numeric value
 
+                                        </div>
+                                    </div>
                                 </div>
+
+
+
+
                                 <hr style="border-color: #ffffff">
-                            </div>
                             </div>
                         </fieldset>
 
@@ -131,9 +140,24 @@
                                         <option value=""></option>
                                     </select>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="acceptsSubsidized">Accepts subsidized child care:</label>
+                                    <label for="behavioralNeeds">Serves Children with Special Behavioral Needs:</label>
+                                    <select id="behavioralNeeds" class="form-control">
+                                        <option value=""> </option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="medicalNeeds">Serves Children with Special Medical Needs:</label>
+                                    <select id="medicalNeeds" class="form-control">
+                                        <option value=""> </option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="acceptsSubsidized">Accepts Subsidized Child Care:</label>
 
                                     <select id="acceptsSubsidized" class="form-control" ng-model="model.Criteria.CanTakeBehavioralChildren"
                                             ng-options="canTakeBehavioralChildren.Id as canTakeBehavioralChildren.Name for canTakeBehavioralChildren in model.CanTakeBehavioralChildrens">
@@ -292,11 +316,11 @@
 
                                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                             <div class="row">
-                                                <span class="label">City: </span><span class="data-element">{{provider.PhysicalCity}}</span>
+                                                <span class="label">City: </span><span class="data-element">{{provider.PhysicalCity.toTitleCase()}}</span>
                                             </div>
                                             <div class="row">
                                                 <span class="label">County: </span>
-                                                <span class="data-element">{{provider.CountyName}}</span>
+                                                <span class="data-element">{{provider.CountyName.toTitleCase()}}</span>
                                             </div>
                                         </div>
 

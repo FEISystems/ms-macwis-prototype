@@ -79,6 +79,16 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
   color: white;
   font-size: 16px;
 }
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.col-xs-12.col-sm-6.col-md-6.col-lg-6.zip {
+  padding-left: 0 !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.col-xs-12.col-sm-6.col-md-6.col-lg-6.zip div.form-group {
+  padding-top: 20px;
+  margin-bottom: 0 !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.col-xs-12.col-sm-6.col-md-6.col-lg-6:last-of-type {
+  padding-right: 0;
+}
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer {
   background: #6498AD;
 }
