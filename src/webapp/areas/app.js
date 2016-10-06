@@ -45,3 +45,10 @@ if (!String.prototype.startsWith) {
       return this.substr(position, searchString.length) === searchString;
   };
 }
+
+if (!String.prototype.toTitleCase) {
+    String.prototype.toTitleCase = function(){
+      return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  };
+}
+
