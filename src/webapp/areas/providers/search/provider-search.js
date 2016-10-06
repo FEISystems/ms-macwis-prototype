@@ -32,7 +32,7 @@
         model.SortByes = dataService.getSortTypes();
 
 
-        
+
         /************************Paging functionality************ */
         model.setPage = function(num) {
             if (num === -1) {
@@ -87,6 +87,20 @@
                 }
             }
         };
+        function removeItem(obj, prop, val) {
+            var c, found=false;
+            for(c in obj) {
+                if(obj[c][prop] == val) {
+                    found=true;
+                    break;
+                }
+            }
+            if(found){
+                delete obj[c];
+            }
+        }
+
+
         model.ChangeDisplayNums = function() {
             if ($("#selectPerPage option:selected").text()) {
                 model.currentPage = 0;
@@ -100,15 +114,17 @@
             model.Criteria = {};
         };
         /****************** *Print functionality **************/
-        
+
         model.selectProviderToPrint = function($event) {
             var printpage = $event.currentTarget;
             if ($(printpage).is(":checked")) {
                 model.selected.push($(printpage).attr('id'));
             } else {
 
-            }
-        };
+                    model.selected.splice(model.selected.length-1);
+                    //removeItem(model.selected,'id','Id of the item to be deleted');
+                }
+            };
 
         model.printprovider = function() {
             var htmlcode = '';
@@ -129,16 +145,18 @@
                         "<p class='ng-binding'><strong>Gender: </strong> " + value.split(',')[15].split(':')[1].replace(/\"/g, "") + " </p></div></div></div></div></tr></table><hr/>";
 
                 });
-                var popupWin = window.open('', '_blank', 'width=3000,height=3000');
-                popupWin.document.open();
-                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
-                popupWin.document.close();
-            } else {
-                return false;
-            }
+                // htmlcode=htmlcode+'</table>'; if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
+                    var popupWin = window.open('', '_blank', 'width=3000,height=3000');
+                    popupWin.document.open();
+                    popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
+                    popupWin.document.close();
+                }
+                else {
+                    return false;
+                }
 
         };
-        /*****************Sorting and searching functionality**********************/        
+        /*****************Sorting and searching functionality**********************/
         model.search = function() {
             model.filteredProviders = [];
             var tempProviders = [];
@@ -234,7 +252,7 @@
             model.showProviderDetails = false;
         };
 
-        
+
         model.up = function() {
             model.sortData.up = !model.sortData.up;
             model.filteredProviders = _.reverse(model.filteredProviders);
@@ -253,6 +271,7 @@
                 model.search();
                 return;
             }
+
             var criteriaFromHomePage = {
                 ProviderName: criteria.providerName,
                 ProviderType: criteria.providerType,
