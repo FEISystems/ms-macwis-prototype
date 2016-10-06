@@ -17,6 +17,17 @@
         };
         model.provider = {};
         model.filteredProviders = [];
+        // init end
+
+        $scope.isCollapsed = true;
+        $scope.locationCollapsed = true;
+        $scope.advancedOptionsCollapsed = true;
+
+
+        model.locationCollapsed = function(){$scope.isCollapsed = true};
+
+        model.Cities = dataService.getCities();
+        model.Counties = dataService.getCounties();
         model.selected = [];
         model.showProviderDetails = false;
         model.isRendered = false;
@@ -160,7 +171,7 @@
                     });
                 }
                 else{
-                    angular.forEach(model.AllProviders, function(provider) {                        
+                    angular.forEach(model.AllProviders, function(provider) {
                         if (provider.PhysicalZipCode == model.Criteria.address) {
                             tempProviders.push(provider);
                         }

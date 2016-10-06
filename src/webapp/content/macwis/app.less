@@ -10,6 +10,12 @@ body{
     }
 
 
+    .label{
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
     > div.container-fluid{
         padding: 0;
@@ -21,7 +27,7 @@ body{
 
     // Search Page Styles
     div#resultsPageContainer {
-        padding: 20px 15px 0 0;
+        padding: 0 15px 0 0;
         height: 100%;
         div#searchPanelContainerOuter{
             padding: 0;
@@ -29,6 +35,7 @@ body{
             position: fixed;
             height: 100%;
             margin-top: -20px;
+            top: 70px;
             div#searchPanelContainer {
                 height: 100%;
                 padding-left: 10px;
@@ -53,7 +60,6 @@ body{
                             }
                         }
                         .panel-body {
-                            max-height: 830px !important;
                             overflow-y: scroll !important;
                             legend button {
                                 color: white;
@@ -71,6 +77,10 @@ body{
                             }
                             label {
                                 color: white;
+                                a{
+                                    color: white;
+                                    text-decoration: underline;
+                                }
                             }
 
                             #locationCriteria{
@@ -132,8 +142,11 @@ body{
                     table#searchResults {
                         border: none;
                         tr {
-                            border-bottom: 1px solid #ccc;
                             td {
+                                span.label{
+                                    white-space: normal;
+                                    text-align: left;
+                                }
                                 border: none;
                                 padding: 0;
                                 display: inline-block;
@@ -151,9 +164,12 @@ body{
                                 }
 
                                 &.starRating{
-                                    padding: 3px 0 0 0;
-                                    label{
-                                        font-size: 18px;
+                                    padding: 3px 0 5px 0;
+                                    span.label{
+                                        font-size: 16px;
+                                        color: black;
+                                        font-weight: bold;
+                                        padding-left: 0;
                                     }
                                     div{
                                         display: inline-block;
@@ -165,41 +181,59 @@ body{
                                 }
 
                                 &.providerInfo{
-                                    div{
-                                        padding: 0;
-                                        div {
-                                            margin: 8px 0;
-                                            font-size: 15px;
-                                            strong{
-                                                font-size: 16px;
+                                    div.row{
+                                        padding-left: 8px;
+                                        div.col-xs-12.col-sm-4.col-md-4.col-lg-4{
+                                            margin: 0;
+                                            div.row{
+                                                padding-bottom: 15px;
+                                                span.label{
+                                                    padding: 0;
+                                                    color: black;
+                                                    font-size: 14px;
+                                                    font-weight: bold;
+                                                }
+                                                span.data-element{
+                                                    font-size: 17px;
+                                                    display: block;
+                                                }
                                             }
-                                            span{
-                                                font-size: 15px;
-                                            }
+
                                         }
                                     }
                                 }
 
                                 &.providerDetails {
                                     padding-bottom: 15px;
-                                    label.checkbox-inline{
-                                        padding-left: 0;
-                                        font-weight: 600;
-                                        font-size: 16px;
-                                        input.form-control{
-                                            box-shadow: none;
-                                            margin-left: 35px;
-                                            padding-left: 1px;
-                                            bottom: 4px;
-                                            height: 17px;
+                                    padding-left: 8.33333333%;
+                                    // Collapse toggle row
+                                    div.row{
+                                        button{
+                                            background: transparent;
                                         }
+
                                     }
 
-                                    a.btn {
-                                        background: #6498AD;
-                                        color: white;
-                                        border: 1px solid #ccc;
-                                        text-shadow: none;
+                                    // Collapse Panel
+                                    div.collapse{
+                                        div.row{
+                                            padding: 0 15px 10px 8px;
+                                            div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(2),
+                                            div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(3){
+                                                padding-left:48px;
+                                            }
+                                            span.label{
+                                                word-wrap: break-word;
+                                                padding: 0;
+                                                color: black;
+                                                font-size: 14px;
+                                                font-weight: bold;
+                                            }
+                                            span.data-element{
+                                                font-size: 17px;
+                                                display: block;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -325,10 +359,16 @@ body{
             }
 
             div#resultsPanelContainer{
+                padding-top: 20px;
                 margin-left: 0;
                 div.col-xs-12{
                     div.row{
                         padding: 0 15px;
+                    }
+                }
+                td.providerDetails {
+                    div.row {
+                        padding: 0;
                     }
                 }
             }
@@ -337,6 +377,7 @@ body{
                 padding-top: 10px;
                 position: static;
                 div#searchPanelContainer {
+                    padding-left: 0;
                     position: static;
                     padding-top: 20px;
                     form {

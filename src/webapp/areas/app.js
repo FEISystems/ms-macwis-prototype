@@ -1,6 +1,6 @@
 ﻿(function () {
     "use strict";
-    var module = angular.module("macwisWebApp", ['ui.bootstrap', "ngComponentRouter"]);
+    var module = angular.module("macwisWebApp", ['ui.bootstrap', "ngComponentRouter", "ngAnimate"]);
 
     module.value("$routerRootComponent", "macwisWebApp");
 
