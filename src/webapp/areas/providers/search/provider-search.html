@@ -10,8 +10,8 @@
                     <div class="panel-body">
 
                         <!-- PROVIDER SEARCH OPTIONS -->
-                        <legend><button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#providerCriteria">Search by Provider <span class="glyphicon glyphicon-plus pull-right"></span></button></legend>
-                        <div class="collapse" id="providerCriteria">
+                        <legend><button class="btn-block criteriaButton" ng-click="providerCollapsed = !providerCollapsed">Search by Provider <span class="glyphicon glyphicon-minus pull-right"></span></button></legend>
+                        <div uib-collapse="providerCollapsed" class="in" id="providerCriteria">
                             <div class="form-group">
                                 <label for="providerName">Provider Name:</label>
                                 <input type="text" id="providerName" class="form-control" ng-model="model.Criteria.ProviderName">
@@ -26,42 +26,42 @@
                             </div>
 
                             <div class="form-group">
-                            <label for="starRating">Quality Star Rating:</label>
+                            <label for="starRating"><a href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating:</a></label>
                             <select id="starRating" class="form-control" ng-model="model.Criteria.Rate"
                                     ng-options="rate.Id as rate.Name for rate in model.Rates">
                                 <option value=""></option>
                             </select>
-                            <hr style="border-color: #ffffff">
-                        </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <select id="city" class="form-control" ng-model="model.Criteria.City"
+                                        ng-options="city for city in model.Cities">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="county">County:</label>
+                                <select id="county" class="form-control" ng-model="model.Criteria.County"
+                                        ng-options="county.Id as county.Name for county in model.Counties">
+                                    <option value=""></option>
+                                </select>
+                                <hr style="border-color: #ffffff">
+                            </div>
                         </div>
                         <!-- LOCATION SEARCH OPTIONS -->
 
 
                         <fieldset>
                             <legend>
-                                <button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#locationCriteria">Search by Distance
+                                <button ng-model="model.locationCollapsed" ng-click="locationCollapsed = !locationCollapsed" class="btn-block criteriaButton">Search by Distance
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
-                            <div class="collapse" id="locationCriteria">
+                            <div  id="locationCriteria" uib-collapse="locationCollapsed">
                                 <div class="row">
                                     <div class="col-xs-12">
                                         <p>Enter zip code to find providers within the distance selected.</p>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="city">City:</label>
-                                    <select id="city" class="form-control" ng-model="model.Criteria.City"
-                                            ng-options="city for city in model.Cities">
-                                        <option value=""></option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="county">County:</label>
-                                    <select id="county" class="form-control" ng-model="model.Criteria.County"
-                                            ng-options="county.Id as county.Name for county in model.Counties">
-                                        <option value=""></option>
-                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="zipCode">Zip Code:</label>
@@ -71,14 +71,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                <label for="searchRadius">Distance(miles):</label>
+                                <label for="searchRadius">Within Distance of Zip Code:</label>
                                 <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
                                 <select id="searchRadius" class="form-control" ng-model="model.Criteria.distance"
-                                            ng-options="distance.Id as distance.Name for distance in model.Distances">
-                                        <option value=""></option>
-                                    </select>
+                                        ng-options="distance.Id as distance.Name for distance in model.Distances">
+                                    <option value=""></option>
+                                </select>
                                 <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
                                     Please enter a numeric value
+
                                 </div>
                                 <hr style="border-color: #ffffff">
                             </div>
@@ -90,11 +91,11 @@
                         <!-- ADVANCED SEARCH OPTIONS -->
                         <fieldset>
                             <legend>
-                                <button class="btn-block criteriaButton" data-toggle="collapse" data-target="#advancedCriteria" aria-expanded="false">Advanced Search Options
+                                <button class="btn-block criteriaButton" ng-click="advancedOptionsCollapsed = !advancedOptionsCollapsed">Advanced Search Options
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
-                            <div class="collapse" id="advancedCriteria">
+                            <div uib-collapse="advancedOptionsCollapsed" id="advancedCriteria">
                                 <div class="form-group">
                                     <label for="ageRange">Age of Children Served:</label>
                                     <select id="ageRange" class="form-control" ng-model="model.Criteria.Age"
@@ -135,8 +136,7 @@
             </form>
             <script>
                 $(document).ready(function() {
-                   $('.collapse').collapse('hide');
-
+                    // Toggle icons for collapse states
                     $('.criteriaButton').on('click', function() {
                         var span = $(this).children();
                         if ($(span).hasClass('glyphicon-plus')) {
@@ -145,6 +145,27 @@
                             $(span).removeClass('glyphicon-minus').addClass('glyphicon-plus');
                         }
                     });
+
+                    $('.expandDetails').on('click', function() {
+                        var span = $(this).children();
+                        if ($(span).hasClass('glyphicon-chevron-down')) {
+                            $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                        } else {
+                            $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                        }
+                    });
+
+
+
+                    // Set max-height of search criteria .panel-body to window height
+                    var setPanelHeight = function (){
+                        var panelBody = $('#searchPanelContainer .panel-body');
+                        panelBody.css('max-height', ($(window).height() - 154));
+                    };
+                    setPanelHeight();
+                    $(window).resize(setPanelHeight());
+
+
                 });
             </script>
         </search-panel>
@@ -196,22 +217,25 @@
                         <thead ng-hide="true"></thead>
                         <tbody>
                         <tr><td><div class="col-xs-12">
+
                         </div></td></tr>
                         <tr><td><div class="col-xs-12">
                             <label id="lblSelect" style="display: none;">Select Providers</label>
                         </div></td></tr>
-                            <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model                              .listsPerPage">
-
-                                <td class="col-xs-12  providerNameSection">
-                                <div style="width:20px; height:20px; margin-right: 40px;float: left; ">
-                                    <input type="checkbox" style="width:52px;height:20px;" ng-click="model.selectProviderToPrint($event)"                                        id={{provider}} />
-                                </div>
-                                    <div class="providerName" style="float:left;">
+                            <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
+                                <td class="col-xs-1"  ng-hide="false">
+                                    <div id="checkboxes" style="height: 100%; display: block;">
+                                        <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; margin-top: 20px; display: block" id={{provider}} />
+                                        <label for="{{provider}}" class="sr-only">Add to Print List</label>
+                                    </div>
+                                </td>
+                                <td class="col-xs-11  providerNameSection">
+                                    <div class="providerName">
                                         <strong>{{provider.ProviderName}}</strong>
                                     </div>
                                 </td>
                                 <td class="col-xs-11 col-xs-offset-1 starRating">
-                                  <a ng-href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating:</a>
+                                    <span class="label">Quality Star Rating:</span.label>
                                     <div ng-if="provider.QualityRating===1">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                     </div>
@@ -231,21 +255,111 @@
                                         <img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                     </div>
                                 </td>
-                                <td class="col-xs-11 col-xs-offset-1 col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1 col-lg-9 col-lg-offset-1 providerInfo">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                        <div><strong>Type: </strong><span>{{provider.ProviderTypeDescription}}</span></div>
-                                        <div><strong>Phone: </strong><span>{{provider.PhoneNumber}}</span></div>
-                                        <div><strong>City: </strong><span>{{provider.PhysicalCity}}</span></div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div ng-if="provider.Distance"><strong>Distance: </strong><span>{{provider.Distance}}</span></div>
-                                        <div><strong>County: </strong><span>{{provider.CountyName}}</span></div>
-                                        <div><strong>Capacity: </strong><span>{{provider.ProviderCapacity}}</span></div>
+                                <td class="col-xs-11 col-xs-offset-1 col-sm-12 col-md-12 col-lg-12 providerInfo">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <div class="row">
+                                                <span class="label">Type: </span>
+                                                <span class="data-element">{{provider.ProviderTypeDescription}}</span>
+                                            </div>
+                                            <div class="row">
+                                                <span class="label">Phone: </span>
+                                                <span class="data-element">{{provider.PhoneNumber}}</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <div class="row">
+                                                <span class="label">City: </span><span class="data-element">{{provider.PhysicalCity}}</span>
+                                            </div>
+                                            <div class="row">
+                                                <span class="label">County: </span>
+                                                <span class="data-element">{{provider.CountyName}}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <div ng-if="provider.Distance" class="row">
+                                                <span class="label">Distance: </span>
+                                                <span class="data-element">{{provider.Distance}}
+                                                </span>
+                                            </div>
+                                            <div class="row">
+                                                <span class="label">Zip Code:</span>
+                                                <span class="data-element">{{provider.PhysicalZipCode}}</span>
+                                            </div>
+                                            <div class="row">
+                                                <span class="label">Capacity: </span>
+                                                <span class="data-element">{{provider.ProviderCapacity}}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
 
-                                <td class="col-xs-12 col-sm-4 col-md-4 col-lg-2 providerDetails">
-                                    <a class="btn btn-default btn-lg btn-block" ng-click="model.showDetails(provider)">Provider Details</a>
+                                <!-- Enable to show popup if needed -->
+                                <!--<td class="col-xs-12 col-sm-4 col-md-4 col-lg-2">-->
+                                    <!--<a class="btn btn-default btn-lg btn-block" ng-click="model.showDetails(provider)">Provider Details</a>-->
+                                <!--</td>-->
+
+                                <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 providerDetails">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
+                                                <button class="btn expandDetails" ng-click="isCollapsed = !isCollapsed">
+                                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                                    View More
+                                                </button>
+                                            <hr style="margin-top: 0">
+                                        </div>
+                                    </div>
+                                    <div uib-collapse="isCollapsed">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                                <div class="row">
+                                                    <span class="label">Hours of Operation: </span>
+                                                    <span class="data-element">9:00 AM - 5:00 PM</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="label">Age of Children Served: </span>
+                                                    <span class="data-element">{{model.provider.MinAge || "n/a"}} - {{model.provider.MaxAge || "n/a"}}</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="label" style="overflow-wrap: break-word">Services for Children with Special Behavioral Needs:</span>
+                                                    <span class="data-element">Yes</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                                <div class="row">
+                                                    <span class="label">Days of Operation: </span><span
+                                                        class="data-element">Mon, Tues, Thurs, Fri</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="label">License Type: </span>
+                                                    <span class="data-element">{{model.provider.LicenseType || "n/a"}}</span>
+
+                                                </div>
+                                                <div class="row">
+                                                    <span class="label">USDA Food Program:</span>
+                                                    <span class="data-element">Yes</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                                <div class="row">
+                                                    <span class="label">Genders Accepted: </span>
+                                                    <span class="data-element">{{model.provider.Gender || "n/a"}}</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="label">Accepts Subsidized Childcare:</span>
+                                                    <span class="data-element">Yes</span>
+                                                </div>
+
+                                                <div class="row">
+                                                    <span class="label"></span>
+                                                    <span class="data-element"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </td>
 
                             </tr>
