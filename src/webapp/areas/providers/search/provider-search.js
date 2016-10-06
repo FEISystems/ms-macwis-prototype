@@ -250,7 +250,6 @@
                 model.search();
                 return;
             }
-
             var criteriaFromHomePage = {
                 ProviderName: criteria.providerName,
                 ProviderType: criteria.providerType,
@@ -266,7 +265,7 @@
             model.Criteria.City = criteria.city;
             model.Criteria.County = criteria.county;
             model.Criteria.Rate = criteria.rate;
-            model.Criteria.Address = criteria.zipCode;
+            model.Criteria.address = criteria.zipCode;
             model.Criteria.distince = criteria.radius;
 
             queueService.setMsg('homeSearchCriteria', null);
