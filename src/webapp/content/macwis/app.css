@@ -4,6 +4,12 @@ body .no-padding {
 body a:hover {
   cursor: pointer;
 }
+body .label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 body > div.container-fluid {
   padding: 0;
 }
@@ -11,7 +17,7 @@ body > div.container-fluid > div.col-xs-12 {
   padding: 0 0 25px 0;
 }
 body div#resultsPageContainer {
-  padding: 20px 15px 0 0;
+  padding: 0 15px 0 0;
   height: 100%;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter {
@@ -127,39 +133,42 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
   padding-bottom: 6px;
   padding-right: 1px;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div {
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row {
+  padding-left: 8px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
+  margin: 0;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row span.label {
   padding: 0;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div {
-  margin: 8px 0;
+  color: black;
   font-size: 15px;
+  font-weight: bold;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div strong {
-  font-size: 16px;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div span {
-  font-size: 15px;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row span.data-element {
+  font-size: 19px;
+  display: block;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
   padding-bottom: 15px;
+  padding-left: 8.33333333%;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails label.checkbox-inline {
-  padding-left: 0;
-  font-weight: 600;
-  font-size: 16px;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row button {
+  background: transparent;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails label.checkbox-inline input.form-control {
-  box-shadow: none;
-  margin-left: 35px;
-  padding-left: 1px;
-  bottom: 4px;
-  height: 17px;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row {
+  padding: 0 15px 0 8px;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails a.btn {
-  background: #6498AD;
-  color: white;
-  border: 1px solid #ccc;
-  text-shadow: none;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row span.label {
+  word-wrap: break-word;
+  padding: 0;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row span.data-element {
+  font-size: 19px;
+  display: block;
 }
 body .searchTab {
   background: #4d7e91 !important;
@@ -234,10 +243,14 @@ body #homeSearch label {
     padding: 0px;
   }
   body div#resultsPageContainer div#resultsPanelContainer {
+    padding-top: 20px;
     margin-left: 0;
   }
   body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
     padding: 0 15px;
+  }
+  body div#resultsPageContainer div#resultsPanelContainer td.providerDetails div.row {
+    padding: 0;
   }
   body div#resultsPageContainer div#searchPanelContainerOuter {
     padding-top: 10px;

@@ -10,6 +10,12 @@ body{
     }
 
 
+    .label{
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
     > div.container-fluid{
         padding: 0;
@@ -21,7 +27,7 @@ body{
 
     // Search Page Styles
     div#resultsPageContainer {
-        padding: 20px 15px 0 0;
+        padding: 0 15px 0 0;
         height: 100%;
         div#searchPanelContainerOuter{
             padding: 0;
@@ -165,41 +171,54 @@ body{
                                 }
 
                                 &.providerInfo{
-                                    div{
-                                        padding: 0;
-                                        div {
-                                            margin: 8px 0;
-                                            font-size: 15px;
-                                            strong{
-                                                font-size: 16px;
+                                    div.row{
+                                        padding-left: 8px;
+                                        div.col-xs-12.col-sm-4.col-md-4.col-lg-4{
+                                            margin: 0;
+                                            div.row{
+                                                span.label{
+                                                    padding: 0;
+                                                    color: black;
+                                                    font-size: 15px;
+                                                    font-weight: bold;
+                                                }
+                                                span.data-element{
+                                                    font-size: 19px;
+                                                    display: block;
+                                                }
                                             }
-                                            span{
-                                                font-size: 15px;
-                                            }
+
                                         }
                                     }
                                 }
 
                                 &.providerDetails {
                                     padding-bottom: 15px;
-                                    label.checkbox-inline{
-                                        padding-left: 0;
-                                        font-weight: 600;
-                                        font-size: 16px;
-                                        input.form-control{
-                                            box-shadow: none;
-                                            margin-left: 35px;
-                                            padding-left: 1px;
-                                            bottom: 4px;
-                                            height: 17px;
+                                    padding-left: 8.33333333%;
+                                    // Collapse toggle row
+                                    div.row{
+                                        button{
+                                            background: transparent;
                                         }
+
                                     }
 
-                                    a.btn {
-                                        background: #6498AD;
-                                        color: white;
-                                        border: 1px solid #ccc;
-                                        text-shadow: none;
+                                    // Collapse Panel
+                                    div.collapse{
+                                        div.row{
+                                            padding: 0 15px 0 8px;
+                                            span.label{
+                                                word-wrap: break-word;
+                                                padding: 0;
+                                                color: black;
+                                                font-size: 15px;
+                                                font-weight: bold;
+                                            }
+                                            span.data-element{
+                                                font-size: 19px;
+                                                display: block;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -325,10 +344,16 @@ body{
             }
 
             div#resultsPanelContainer{
+                padding-top: 20px;
                 margin-left: 0;
                 div.col-xs-12{
                     div.row{
                         padding: 0 15px;
+                    }
+                }
+                td.providerDetails {
+                    div.row {
+                        padding: 0;
                     }
                 }
             }

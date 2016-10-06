@@ -17,10 +17,12 @@
         model.filteredProviders = [];
         // init end
 
-        model.showProviderDetails = false;
+        $scope.isCollapsed = true;
+        $scope.locationCollapsed = true;
+        $scope.advancedOptionsCollapsed = true;
 
 
-
+        model.locationCollapsed = function(){$scope.isCollapsed = true};
 
         model.Cities = dataService.getCities();
         model.Counties = dataService.getCounties();
