@@ -35,11 +35,6 @@
                 'name': 'Find Providers',
                 'link': ['ProviderSearch'],
                 'path': 'providers'
-            },
-            {
-                'name': 'Help',
-                'link': ['Help'],
-                'path': 'help'
             }
         ];
 
