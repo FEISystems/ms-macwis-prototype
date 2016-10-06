@@ -14,6 +14,14 @@
         model.homePageImageUrl = "img/macwis-homepage-img.jpg";
 
         model.onClick = function () {
+            /************
+             * The elements from the home.html template are bound to the model.criteria object
+             * upon the click event, the search criteria selected will load the provider search page
+             * and dequeue the search criteria while using it for the search upon render showing the results
+             * there is a mapping to the elements that are in the provider search page inside of the render method
+             * of the provider search button
+             * ************ */
+    
             queueService.setMsg('homeSearchCriteria', model.criteria);
         }
 
