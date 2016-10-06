@@ -116,6 +116,21 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
   white-space: normal;
   text-align: left;
 }
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect {
+  display: table-cell;
+  vertical-align: middle;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes {
+  height: 100%;
+  display: block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes input {
+  width: 20px;
+  height: 20px;
+  margin-left: 40%;
+  margin-top: 0;
+  display: block;
+}
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection {
   padding-top: 10px;
   padding-bottom: 8px;
@@ -162,7 +177,9 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
   padding-bottom: 15px;
-  padding-left: 8.33333333%;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row {
+  padding-bottom: 10px;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row button {
   background: transparent;
@@ -170,9 +187,11 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row {
   padding: 0 15px 10px 8px;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(2),
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(2) {
+  padding-left: 2%;
+}
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(3) {
-  padding-left: 48px;
+  padding-left: 3%;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row span.label {
   word-wrap: break-word;
@@ -266,6 +285,9 @@ body #homeSearch label {
   }
   body div#resultsPageContainer div#resultsPanelContainer td.providerDetails div.row {
     padding: 0;
+  }
+  body div#resultsPageContainer div#resultsPanelContainer td.providerDetails div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
+    padding-left: 15px !important;
   }
   body div#resultsPageContainer div#searchPanelContainerOuter {
     padding-top: 10px;
