@@ -518,6 +518,46 @@
                 }
             ];
         }
+        var getDistances = function(){
+            return [
+                {
+                    Id: "5",
+                    Name: "5 Miles"
+                },
+                {
+                    Id: "10",
+                    Name: "10 Miles"
+                },{
+                    Id: "25",
+                    Name: "25 Miles"
+                },{
+                    Id: "50",
+                    Name: "50 Miles"
+                }
+            ];
+        }
+
+        var titleCaseData = function(data, property)
+        {
+            var results = [];
+            function toTitleCase(str)
+            {
+                return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            }
+        
+            $.each(data, function(index, value) {
+                if (property)
+                {
+                    value[property] = toTitleCase(value[property]);
+                    results.push(value);
+                }
+                else
+                    results.push(toTitleCase(value));                
+            })
+            return results;
+        }
+
+
         return {
             ages: ages,
             getAgeById: getAgeById,
@@ -528,7 +568,9 @@
             getCities: getCities,
             getRates: getRates,
             getGenders: getGenders,
-            getSortTypes: getSortTypes
+            getSortTypes: getSortTypes,
+            getDistances: getDistances,
+            titleCaseData: titleCaseData
         };
     };
 

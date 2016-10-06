@@ -3,7 +3,7 @@
         display: inline-block;
         position: absolute;
         width: 100%;
-        hieght: auto;
+        height: auto;
         top: -30%;
         left: 0;
         right: 0%;
@@ -101,7 +101,7 @@
         <img ng-src="img/macwis-homepage-img.jpg" alt="Image of kids playing." class="homepage-image">
         <div class="container featured-content">
             <div class="jumbotron col-sm-12 col-md-6 featuered-content">
-                <h1>Find the Right Provider.</h1>
+                <h1>Find the right provider for your child in Mississippi.</h1>
                 <p>
                 <p class="lead">There are many child care centers and other facilities that are dedicated to providing a
                     safe, caring and productive environment for your child.</p> For more information, please visit:
@@ -152,7 +152,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-5 form-group">
                                             <label for="county">County</label>
-                                            <select id="county" class="form-control" ng-model="model.criteria.countyy"
+                                            <select id="county" class="form-control" ng-model="model.criteria.county"
                                                     ng-options="county.Id as county.Name for county in model.counties">
                                                 <option value=""></option>
                                             </select>
@@ -178,9 +178,12 @@
                             </div>
                             <div class="row" style="border-top: 1px solid white; text-align: center !important">
                                 <a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
-                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;search
+                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Search
                                 </a>
-                            </div>
+                                <a class="btn btn-info btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
+                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Advanced Search
+                                </a>
+                            </div>                            
                         </div>
                         <!-- PROVIDER SEARCH -->
                         <div role="tabpanel" id="providerPanel" class="tab-pane">
@@ -200,9 +203,12 @@
                             </div>
                             <div class="row" style="border-top: 1px solid white; text-align: center !important">
                                 <a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
-                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;search
+                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Search
                                 </a>
-                            </div>
+                                <a class="btn btn-info btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
+                                    <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Advanced Search
+                                </a>
+                            </div>                            
                         </div>
 
                     </div>
