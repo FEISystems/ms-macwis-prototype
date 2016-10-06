@@ -77,6 +77,10 @@ body{
                             }
                             label {
                                 color: white;
+                                a{
+                                    color: white;
+                                    text-decoration: underline;
+                                }
                             }
 
                             #locationCriteria{
@@ -138,8 +142,11 @@ body{
                     table#searchResults {
                         border: none;
                         tr {
-                            border-bottom: 1px solid #ccc;
                             td {
+                                span.label{
+                                    white-space: normal;
+                                    text-align: left;
+                                }
                                 border: none;
                                 padding: 0;
                                 display: inline-block;
@@ -157,9 +164,12 @@ body{
                                 }
 
                                 &.starRating{
-                                    padding: 3px 0 0 0;
-                                    label{
-                                        font-size: 18px;
+                                    padding: 3px 0 5px 0;
+                                    span.label{
+                                        font-size: 16px;
+                                        color: black;
+                                        font-weight: bold;
+                                        padding-left: 0;
                                     }
                                     div{
                                         display: inline-block;
@@ -176,14 +186,15 @@ body{
                                         div.col-xs-12.col-sm-4.col-md-4.col-lg-4{
                                             margin: 0;
                                             div.row{
+                                                padding-bottom: 15px;
                                                 span.label{
                                                     padding: 0;
                                                     color: black;
-                                                    font-size: 15px;
+                                                    font-size: 14px;
                                                     font-weight: bold;
                                                 }
                                                 span.data-element{
-                                                    font-size: 19px;
+                                                    font-size: 17px;
                                                     display: block;
                                                 }
                                             }
@@ -206,16 +217,20 @@ body{
                                     // Collapse Panel
                                     div.collapse{
                                         div.row{
-                                            padding: 0 15px 0 8px;
+                                            padding: 0 15px 10px 8px;
+                                            div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(2),
+                                            div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(3){
+                                                padding-left:48px;
+                                            }
                                             span.label{
                                                 word-wrap: break-word;
                                                 padding: 0;
                                                 color: black;
-                                                font-size: 15px;
+                                                font-size: 14px;
                                                 font-weight: bold;
                                             }
                                             span.data-element{
-                                                font-size: 19px;
+                                                font-size: 17px;
                                                 display: block;
                                             }
                                         }
@@ -362,6 +377,7 @@ body{
                 padding-top: 10px;
                 position: static;
                 div#searchPanelContainer {
+                    padding-left: 0;
                     position: static;
                     padding-top: 20px;
                     form {
