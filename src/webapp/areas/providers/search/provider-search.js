@@ -165,6 +165,7 @@
                             tempProviders.push(provider);
                         }
                     });
+                    model.searchByCriteria(tempProviders);
                 }
             } else {
                 tempProviders = model.AllProviders;
