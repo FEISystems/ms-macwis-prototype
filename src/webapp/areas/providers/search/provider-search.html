@@ -72,10 +72,13 @@
                                 </div>
                                 <div class="form-group">
                                 <label for="searchRadius">Distance(miles):</label>
-                                <input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">
+                                <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
+                                <select id="searchRadius" class="form-control" ng-model="model.Criteria.distance"
+                                            ng-options="distance.Id as distance.Name for distance in model.Distances">
+                                        <option value=""></option>
+                                    </select>
                                 <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
                                     Please enter a numeric value
-
                                 </div>
                                 <hr style="border-color: #ffffff">
                             </div>
@@ -184,7 +187,7 @@
                             <input id="GoPage" type="text" style="width: 35px; height: 23px;" />
                             <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="model.setPage(-1)" />
                         </div>
-                        <div style="float: left;" ng-hide="false" >
+                        <div style="float: left;">
                             <input type="button" value="PRINT SELECTED"  style="width: 120px; height: 20px; font-size: 11px; margin-left: 300px"
                                    ng-click="model.printprovider()" />
                         </div>
@@ -193,19 +196,12 @@
                         <thead ng-hide="true"></thead>
                         <tbody>
                         <tr><td><div class="col-xs-12">
-
                         </div></td></tr>
                         <tr><td><div class="col-xs-12">
                             <label id="lblSelect" style="display: none;">Select Providers</label>
                         </div></td></tr>
                             <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model                              .listsPerPage">
-                            <!--    <td class="col-xs-1" ng-hide="false">
-                                    <div id="checkboxes">
-                                        <div style="font-size: 200%; color: darkred; line-height:10em;">
 
-                                        </div>
-                                    </div>
-                                </td> -->
                                 <td class="col-xs-12  providerNameSection">
                                 <div style="width:20px; height:20px; margin-right: 40px;float: left; ">
                                     <input type="checkbox" style="width:52px;height:20px;" ng-click="model.selectProviderToPrint($event)"                                        id={{provider}} />

@@ -518,6 +518,24 @@
                 }
             ];
         }
+        var getDistances = function(){
+            return [
+                {
+                    Id: "5",
+                    Name: "5 Miles"
+                },
+                {
+                    Id: "10",
+                    Name: "10 Miles"
+                },{
+                    Id: "25",
+                    Name: "25 Miles"
+                },{
+                    Id: "50",
+                    Name: "50 Miles"
+                }
+            ];
+        }
         return {
             ages: ages,
             getAgeById: getAgeById,
@@ -528,7 +546,8 @@
             getCities: getCities,
             getRates: getRates,
             getGenders: getGenders,
-            getSortTypes: getSortTypes
+            getSortTypes: getSortTypes,
+            getDistances: getDistances
         };
     };
 
