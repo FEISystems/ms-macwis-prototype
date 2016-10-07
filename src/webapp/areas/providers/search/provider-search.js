@@ -1,13 +1,13 @@
-﻿(function() {
+﻿(function () {
     "use strict";
     var module = angular.module("macwisWebApp");
 
-    module.filter('paging', function() {
-        return function(lists, start) {
+    module.filter('paging', function () {
+        return function (lists, start) {
             return lists.slice(start);
         };
     });
-    var controller = function($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log) {
+    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log) {
         /**************************Model datapoints******************** */
         var model = this;
         model.title = "Provider Search";
@@ -24,7 +24,9 @@
         $scope.advancedOptionsCollapsed = true;
 
 
-        model.locationCollapsed = function(){$scope.isCollapsed = true};
+        model.locationCollapsed = function () {
+            $scope.isCollapsed = true
+        };
 
         model.Cities = dataService.getCities();
         model.Counties = dataService.getCounties();
@@ -42,11 +44,11 @@
         model.AllProviders = providerService.getAllProviders();
         model.SortByes = dataService.getSortTypes();
         model.Distances = dataService.getDistances();
-        
+
         model.Criteria.Rate = model.Rates[0].Id;
 
         /************************Paging functionality************ */
-        model.setPage = function(num) {
+        model.setPage = function (num) {
             if (num === -1) {
                 if (isNaN($("#GoPage").val()))
                     num = 0;
@@ -60,28 +62,28 @@
             model.InitPages();
         };
 
-        model.prevPage = function() {
+        model.prevPage = function () {
             if (model.currentPage > 0) {
                 model.currentPage--;
             }
             model.InitPages();
         };
-        model.nextPage = function() {
+        model.nextPage = function () {
             if (model.currentPage < model.pages - 1) {
                 model.currentPage++;
             }
             model.InitPages();
         };
-        model.firstPage = function() {
+        model.firstPage = function () {
             model.currentPage = 0;
             model.InitPages();
         };
 
-        model.lastPage = function() {
+        model.lastPage = function () {
             model.currentPage = model.pages - 1;
             model.InitPages();
         };
-                model.InitPages = function() {
+        model.InitPages = function () {
             model.pageNum = [];
             for (var i = 0; i < model.pages; i++) {
                 if (model.currentPage <= 5) {
@@ -100,7 +102,7 @@
             }
         };
 
-        model.ChangeDisplayNums = function() {
+        model.ChangeDisplayNums = function () {
             if ($("#selectPerPage option:selected").text()) {
                 model.currentPage = 0;
                 model.pages = Math.ceil(model.providersCount / $("#selectPerPage option:selected").text());
@@ -109,47 +111,57 @@
             model.InitPages();
         };
         model.ItemsPerPageList = ['10', '20', '30'];
-        model.clear = function() {
+        model.clear = function () {
             model.Criteria = {};
         };
 
         /****************** *Print functionality **************/
+        model.selectedItems = [];
 
-        model.selectProviderToPrint = function($event) {
-            var printpage = $event.currentTarget;
-            debugger;
-            if ($(printpage).is(":checked")) {
-                model.selected.push($(printpage).attr('id'));
+        model.selectProviderToPrint = function ($event) {
+            var currentSelection = $event.currentTarget;
+            if ($(currentSelection).is(":checked")) {
+                model.selectedItems.push($(currentSelection).attr('id'));
             } else {
-                    model.selected.splice(model.selected.length-1);
-                }
-            };
+                // model.selected.splice(model.selected.length-1);
+
+                var currentSelectionId = JSON.parse($(currentSelection).attr('id')).Id;
+
+                $.each(model.selectedItems, function(i, item){
+                    var itemToSplice = JSON.parse(item);
+                    if (itemToSplice.Id == currentSelectionId){
+                        model.selectedItems.splice(i, 1);
+                    }
+                });
+            }
+        };
 
         model.printprovider = function () {
             var htmlcode = '';
-            debugger;
-            if(model.selected.length > 0) {
-                $.each(model.selected, function (index, value) {
-                    var TerValue = value.split(',')[16].split(':')[1].replace(/\"/g, "") == "true" ? "Yes" : "No";
-                    htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + value.split(',')[1].split(':')[1].replace(/\"/g, "") + "</p></div>" +
+            if (model.selectedItems.length > 0) {
+                $.each(model.selectedItems, function (index, value) {
+                   // var TerValue = value.split(',')[16].split(':')[1].replace(/\"/g, "") == "true" ? "Yes" : "No";
 
-                        "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + value.split(',')[4].split(':')[1].replace(/\"/g, "") + "</p>" +
-                        "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + value.split(',')[18].split(':')[1].replace(/\"/g, "") +"</p> " +
-                        "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + value.split(',')[19].split(':')[1].replace(/\"/g, "") +"</p> " +
-                        "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " + value.split(',')[20].split(':')[1].replace(/\"/g, "") +"</p> " +
-                        "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + value.split(',')[21].split(':')[1].replace(/\"/g, "") +"</p> " +
-                        "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + value.split(',')[22].split(':')[1].replace(/[\"}]/g, "") + "</p></div>" +
+                    var acceptsSubsidizedChild = "N/A";
+                    var templateModel = JSON.parse(value);
+                    htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + templateModel.ProviderName + "</p></div>" +
 
-                        "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + value.split(',')[10].split(':')[1].replace(/\"/g, "") + "</p><p class='ng-binding'> <strong>City: </strong>" + value.split(',')[6].split(':')[1].replace(/\"/g, "") + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>   Excellent  </p>  " +
-                        "<p class='ng-binding'><strong>License Type: </strong>   " + value.split(',')[2].split(':')[1].replace(/\"/g, "") + " </p>" +
-                        "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>" + TerValue + "</p>" +
-                        "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
-                        "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
-                        " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + value.split(',')[9].split(':')[1].replace(/\"/g, "") + "</p>" +
-                        "<p class='ng-binding'><strong>Zip Code: </strong> " + value.split(',')[7].split(':')[1].replace(/\"/g, "") + "</p>" +
-                        "    <p class='ng-binding'><strong>Provider Capacity: </strong> " + value.split(',')[5].split(':')[1].replace(/\"/g, "") + "</p>" +
-                        "<p class='ng-binding'><strong>Age Range: </strong> " + value.split(',')[13].split(':')[1].replace(/\"/g, "") + " to " + value.split(',')[14].split(':')[1].replace(/\"/g, "") + "  </p>" +
-                        "<p class='ng-binding'><strong>Gender: </strong> " + value.split(',')[15].split(':')[1].replace(/\"/g, "") + " </p></div></div></div></div></tr></table><hr/>";
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + templateModel.ProviderType + "</p>" +
+                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + "N/A" +"</p> " +
+                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + "N/A" +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " + "N/A" +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + templateModel.CanTakeChildrenWithBehavioralProblems +"</p> " +
+                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + "N/A" + "</p></div>" +
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + templateModel.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + templateModel.City + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + templateModel.QualityRating +  "</p>  " +
+                    "<p class='ng-binding'><strong>License Type: </strong>   " + templateModel.LicenseType + " </p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>" + acceptsSubsidizedChild + "</p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
+                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + templateModel.County + "</p>" +
+                    "<p class='ng-binding'><strong>Zip Code: </strong> " + templateModel.PhysicalZipCode + "</p>" +
+                    "    <p class='ng-binding'><strong>Provider Capacity: </strong> " + templateModel.ProviderCapacity + "</p>" +
+                    "<p class='ng-binding'><strong>Age Range: </strong> " + templateModel.MinAge + " to " + templateModel.MaxAge + "  </p>" +
+                    "<p class='ng-binding'><strong>Gender: </strong> " + templateModel.Gender + " </p></div></div></div></div></tr></table><hr/>";
 
                 });
                 // htmlcode=htmlcode+'</table>'; if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
@@ -165,7 +177,7 @@
         };
 
         /*****************Sorting and searching functionality**********************/
-        model.search = function() {
+        model.search = function () {
             model.filteredProviders = [];
             var tempProviders = [];
             model.sortData = {
@@ -173,17 +185,16 @@
                 sortField: "QualityRating"
             };
             if (model.Criteria.address) {
-                if(!isNaN(model.Criteria.distance) && model.Criteria.distance > 0)
-                {
-                    googleMapService.getCoordinateByAddress(model.Criteria.address, function(coordinate) {
+                if (!isNaN(model.Criteria.distance) && model.Criteria.distance > 0) {
+                    googleMapService.getCoordinateByAddress(model.Criteria.address, function (coordinate) {
                         tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distance);
                         model.searchByCriteria(tempProviders);
-                    }, function(error) {
+                    }, function (error) {
                         $log.error(error);
                     });
                 }
-                else{
-                    angular.forEach(model.AllProviders, function(provider) {
+                else {
+                    angular.forEach(model.AllProviders, function (provider) {
                         if (provider.PhysicalZipCode == model.Criteria.address) {
                             tempProviders.push(provider);
                         }
@@ -195,13 +206,13 @@
                 model.searchByCriteria(tempProviders);
             }
         };
-        model.searchByCriteria = function(tempProviders) {
+        model.searchByCriteria = function (tempProviders) {
 
             if (!model.Criteria || model.Criteria.ProviderName ||
                 model.Criteria.ProviderType || model.Criteria.City || model.Criteria.County ||
                 (model.Criteria.Rate || model.Criteria.Rate === 0) ||
                 model.Criteria.Age || model.Criteria.Gender || model.Criteria.CanTakeBehavioralChildren || model.Criteria.address) {
-                angular.forEach(tempProviders, function(provider) {
+                angular.forEach(tempProviders, function (provider) {
                     var nameFound = true;
                     if (model.Criteria.ProviderName) {
                         var inputName = model.Criteria.ProviderName.toLowerCase();
@@ -220,17 +231,18 @@
                         (model.Criteria.Rate === undefined || model.Criteria.Rate === null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
                         (!model.Criteria.address || (model.Criteria.address === provider.PhysicalZipCode)) &&
                         (!model.Criteria.Age || (model.Criteria.Age &&
-                            dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
-                            dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
+                        dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
+                        dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
                         (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender.toLowerCase() === provider.Gender.toLowerCase())) &&
                         (!model.Criteria.CanTakeBehavioralChildren ||
-                            (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) === provider.CanTakeChildrenWithBehavioralProblems))) {
+                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) === provider.CanTakeChildrenWithBehavioralProblems))) {
                         model.filteredProviders.push(provider);
                     }
                 });
             } else {
                 model.filteredProviders = tempProviders;
-            };
+            }
+            ;
             model.sort();
 
             if (model.filteredProviders.length > 0)
@@ -248,7 +260,7 @@
             model.InitPages();
         };
 
-        model.sort = function() {
+        model.sort = function () {
             if (model.sortData && model.sortData.sortField && model.filteredProviders) {
                 if (model.sortData.sortField === "QualityRating") {
                     model.filteredProviders = _.orderBy(model.filteredProviders, [model.sortData.sortField], ['asc']);
@@ -263,17 +275,17 @@
         };
 
         /*****************General page logic**********************/
-        model.showDetails = function(provider) {
+        model.showDetails = function (provider) {
             model.showProviderDetails = true;
             model.provider = provider;
         };
 
-        model.clickOk = function(provider) {
+        model.clickOk = function (provider) {
             model.showProviderDetails = false;
         };
 
 
-        model.up = function() {
+        model.up = function () {
             model.sortData.up = !model.sortData.up;
             model.filteredProviders = _.reverse(model.filteredProviders);
         };
@@ -282,10 +294,10 @@
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
          * then we pre load the search to the results. If there is not a search criteria, then it will load all providers
-        */
-        $scope.$watch(function() {
+         */
+        $scope.$watch(function () {
             return angular.element("#providerSearchButton").is(':visible')
-        }, function() {
+        }, function () {
             if (model.isRendered)
                 return;
             model.isRendered = true;
