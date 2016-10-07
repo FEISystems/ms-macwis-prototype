@@ -52,7 +52,7 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
   font-size: 28px;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body legend button {
   color: white;
@@ -97,7 +97,7 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
 }
 body div#resultsPageContainer div#resultsPanelContainer {
   overflow-x: hidden;
-  padding: 15px 5px 0 0;
+  padding: 15px 10px 0 0;
   margin-left: 25.75%;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-left h2 {
@@ -128,10 +128,11 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect {
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: top;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes {
   height: 100%;
+  padding-top: 35px;
   display: block;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes input {
@@ -142,11 +143,11 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
   display: block;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection {
-  padding-top: 10px;
-  padding-bottom: 8px;
+  padding-top: 25px;
+  padding-bottom: 0;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection div.providerName strong {
-  font-size: 22px;
+  font-size: 24px;
   color: #6498AD;
   display: inline-block;
 }
@@ -178,11 +179,11 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row span.label {
   padding: 0;
   color: black;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row span.data-element {
-  font-size: 17px;
+  font-size: 15px;
   display: block;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
@@ -194,25 +195,8 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row button {
   background: transparent;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row {
-  padding: 0 15px 10px 8px;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(2) {
-  padding-left: 2%;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(3) {
-  padding-left: 3%;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row span.label {
-  word-wrap: break-word;
-  padding: 0;
-  color: black;
-  font-size: 14px;
-  font-weight: bold;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.collapse div.row span.data-element {
-  font-size: 17px;
-  display: block;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr:nth-child(even) {
+  background: #F7F7F7;
 }
 body .searchTab {
   background: #4d7e91 !important;

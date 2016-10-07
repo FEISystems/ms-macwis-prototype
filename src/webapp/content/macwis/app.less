@@ -60,7 +60,7 @@ body{
                             }
                         }
                         .panel-body {
-                            overflow-y: scroll !important;
+                            overflow-y: auto !important;
                             legend button {
                                 color: white;
                                 font-weight: 600;
@@ -126,7 +126,7 @@ body{
 
         div#resultsPanelContainer {
             overflow-x: hidden;
-            padding: 15px 5px 0 0;
+            padding: 15px 10px 0 0;
             margin-left: 25.75%;
             div.col-xs-12 {
                 div.row {
@@ -165,9 +165,10 @@ body{
 
                                 &.printSelect{
                                     display: table-cell;
-                                    vertical-align: middle;
+                                    vertical-align: top;
                                     div#checkboxes{
                                         height: 100%;
+                                        padding-top: 35px;
                                         display: block;
                                         input{
                                             width: 20px;
@@ -179,11 +180,11 @@ body{
                                     }
                                 }
                                 &.providerNameSection{
-                                    padding-top: 10px;
-                                    padding-bottom: 8px;
+                                    padding-top: 25px;
+                                    padding-bottom: 0;
                                     div.providerName {
                                         strong {
-                                            font-size: 22px;
+                                            font-size: 24px;
                                             color: #6498AD;
                                             display: inline-block;
                                         }
@@ -218,11 +219,11 @@ body{
                                                 span.label{
                                                     padding: 0;
                                                     color: black;
-                                                    font-size: 14px;
+                                                    font-size: 15px;
                                                     font-weight: bold;
                                                 }
                                                 span.data-element{
-                                                    font-size: 17px;
+                                                    font-size: 15px;
                                                     display: block;
                                                 }
                                             }
@@ -241,31 +242,10 @@ body{
                                         }
 
                                     }
-
-                                    // Collapse Panel
-                                    div.collapse{
-                                        div.row{
-                                            padding: 0 15px 10px 8px;
-                                            div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(2){
-                                                padding-left: 2%;
-                                            }
-                                            div.col-xs-12.col-sm-4.col-md-4.col-lg-4:nth-of-type(3){
-                                                padding-left: 3%;
-                                            }
-                                            span.label{
-                                                word-wrap: break-word;
-                                                padding: 0;
-                                                color: black;
-                                                font-size: 14px;
-                                                font-weight: bold;
-                                            }
-                                            span.data-element{
-                                                font-size: 17px;
-                                                display: block;
-                                            }
-                                        }
-                                    }
                                 }
+                            }
+                            &:nth-child(even){
+                                background: #F7F7F7;
                             }
                         }
                     }
