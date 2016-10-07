@@ -497,6 +497,10 @@
         var getSortTypes = function(){
             return [
                 {
+                    "Id": "QualityRating",
+                    "Name": "Quality Star Rating"
+                },
+                {
                     "Id": "ProviderName",
                     "Name": "Provider Name"
                 },
@@ -510,12 +514,9 @@
                 },
                 {
                     "Id": "CountyName",
-                    "Name": "County Name"
-                },
-                {
-                    "Id": "QualityRating",
-                    "Name": "Rate"
+                    "Name": "County"
                 }
+
             ];
         }
         var getDistances = function(){
