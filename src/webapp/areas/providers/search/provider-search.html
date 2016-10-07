@@ -41,30 +41,36 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="starRating"><a href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating Equal or Above:</a><span style="display: block;font-size:12px;font-style:italic;">(Click for Description)<span></label>
-                                <br/>
-                                <label>
-                                <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[0].Id}}">
+                                <label for="starRating"><a href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating Equal or Above:</a>
+                                    <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)<span></label>
+                                <label for="starRating_none">
+                                <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[0].Id}}">
                                         Do Not Filter By Star Rating
-                                </label><br/>                            
-                                <label>
-                                <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[5].Id}}">
+                                </label><br/>
+                                <input id="starRating_one" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[5].Id}}">
+                                <label for="starRating_one">
+                                        <span class="sr-only">One</span>
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png">
                                 </label><br/>
-                                <label>
-                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[4].Id}}">
+                                <input id="starRating_two" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[4].Id}}">
+
+                                <label for="starRating_two">
+                                    <span class="sr-only">Two</span>
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
-                                <label>
-                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[3].Id}}">
+                                <input id="starRating_three" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[3].Id}}">
+                                <label for="starRating_three">
+                                    <span class="sr-only">Three</span>
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
-                                <label>
-                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[2].Id}}">
+                                <input id="starRating_four" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[2].Id}}">
+                                <label for="starRating_four">
+                                    <span class="sr-only">Four</span>
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
-                                <label>
-                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[1].Id}}">
+                                <input id="starRating_five" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[1].Id}}">
+                                <label for="starRating_five">
+                                    <span class="sr-only">Five</span>
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                 </label><br/>
                                 <hr style="border-color: #ffffff">
@@ -273,7 +279,7 @@
                                     </div>
                                 </td>
                                 <td class="col-xs-11 starRating">
-                                    <span class="label">Quality Star Rating:</span.label>
+                                    <span class="label">Quality Star Rating:</span>
                                     <div ng-if="provider.QualityRating===1">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                     </div>
@@ -360,7 +366,7 @@
 
                                                 </div>
                                                 <div class="row">
-                                                    <span class="label">Services for Children with Special Medical Needs;</span>
+                                                    <span class="label">Services for Children with Special Medical Needs:</span>
                                                     <span class="data-element">Yes</span>
                                                 </div>
                                             </div>
