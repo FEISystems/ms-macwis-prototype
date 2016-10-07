@@ -117,6 +117,7 @@
 
         model.selectProviderToPrint = function($event) {
             var printpage = $event.currentTarget;
+            debugger;
             if ($(printpage).is(":checked")) {
                 model.selected.push($(printpage).attr('id'));
             } else {
@@ -124,13 +125,21 @@
                 }
             };
 
-        model.printprovider = function() {
+        model.printprovider = function () {
             var htmlcode = '';
-            if (model.selected.length > 0) {
-                $.each(model.selected, function(index, value) {
+            debugger;
+            if(model.selected.length > 0) {
+                $.each(model.selected, function (index, value) {
                     var TerValue = value.split(',')[16].split(':')[1].replace(/\"/g, "") == "true" ? "Yes" : "No";
                     htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + value.split(',')[1].split(':')[1].replace(/\"/g, "") + "</p></div>" +
-                        "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + value.split(',')[4].split(':')[1].replace(/\"/g, "") + "</p> </div>" +
+
+                        "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + value.split(',')[4].split(':')[1].replace(/\"/g, "") + "</p>" +
+                        "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + value.split(',')[18].split(':')[1].replace(/\"/g, "") +"</p> " +
+                        "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + value.split(',')[19].split(':')[1].replace(/\"/g, "") +"</p> " +
+                        "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " + value.split(',')[20].split(':')[1].replace(/\"/g, "") +"</p> " +
+                        "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + value.split(',')[21].split(':')[1].replace(/\"/g, "") +"</p> " +
+                        "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + value.split(',')[22].split(':')[1].replace(/[\"}]/g, "") + "</p></div>" +
+
                         "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + value.split(',')[10].split(':')[1].replace(/\"/g, "") + "</p><p class='ng-binding'> <strong>City: </strong>" + value.split(',')[6].split(':')[1].replace(/\"/g, "") + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>   Excellent  </p>  " +
                         "<p class='ng-binding'><strong>License Type: </strong>   " + value.split(',')[2].split(':')[1].replace(/\"/g, "") + " </p>" +
                         "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>" + TerValue + "</p>" +
@@ -143,14 +152,16 @@
                         "<p class='ng-binding'><strong>Gender: </strong> " + value.split(',')[15].split(':')[1].replace(/\"/g, "") + " </p></div></div></div></div></tr></table><hr/>";
 
                 });
-                    var popupWin = window.open('', '_blank', 'width=3000,height=3000');
-                    popupWin.document.open();
-                    popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
-                    popupWin.document.close();
-                }
-                else {
-                    return false;
-                }
+                // htmlcode=htmlcode+'</table>'; if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
+                var popupWin = window.open('', '_blank', 'width=3000,height=3000');
+                popupWin.document.open();
+                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
+                popupWin.document.close();
+            }
+            else {
+                return false;
+            }
+
         };
 
         /*****************Sorting and searching functionality**********************/

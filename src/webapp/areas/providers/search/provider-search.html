@@ -41,15 +41,15 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="starRating"><a href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating Equal or Above:</a>
-                                    <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)<span></label>
+                                <span  style="display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: bold; color: white "><a class="label" style="text-decoration: underline; color: white; font-size: 14px; padding-left: 0;" href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}" target="_blank">Quality Star Rating Equal or Above:</a>
+                                    <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)</span> </span><br>
                                 <label for="starRating_none">
                                 <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[0].Id}}">
-                                        Do Not Filter By Star Rating
+                                        Show All
                                 </label><br/>
-                                <input id="starRating_one" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[5].Id}}">
-                                <label for="starRating_one">
-                                        <span class="sr-only">One</span>
+
+                                <label>
+                                <input id="starRating" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[5].Id}}">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png">
                                 </label><br/>
                                 <input id="starRating_two" type="radio" ng-model="model.Criteria.Rate" value="{{model.Rates[4].Id}}">
@@ -269,7 +269,7 @@
                             <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
                                 <td class="col-xs-1 printSelect"  ng-hide="false">
                                     <div id="checkboxes">
-                                        <input type="checkbox" id={{provider}} />
+                                        <input type="checkbox" id={{provider}} ng-click="model.selectProviderToPrint($event)" />
                                         <label for="{{provider}}" class="sr-only">Add to Print List</label>
                                     </div>
                                 </td>
@@ -344,7 +344,7 @@
                                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                                 <div class="row">
                                                     <span class="label">Hours of Operation: </span>
-                                                    <span class="data-element">9:00 AM - 5:00 PM</span>
+                                                    <span class="data-element">{{provider.HoursofOperation}}</span>
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">Capacity: </span>
@@ -352,13 +352,13 @@
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">Services for Children with Special Behavioral Needs:</span>
-                                                    <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems}}</span>
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                                 <div class="row">
                                                     <span class="label">Days of Operation: </span><span
-                                                        class="data-element">Mon, Tues, Thurs, Fri</span>
+                                                        class="data-element">{{provider.DaysofOperation}}</span>
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">License Type: </span>
@@ -366,8 +366,8 @@
 
                                                 </div>
                                                 <div class="row">
-                                                    <span class="label">Services for Children with Special Medical Needs:</span>
-                                                    <span class="data-element">Yes</span>
+                                                    <span class="label">Services for Children with Special Medical Needs;</span>
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -381,7 +381,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">USDA Food Program:</span>
-                                                    <span class="data-element">Yes</span>
+                                                    <span class="data-element">{{provider.USDAFoodPrograms.toTitleCase()}}</span>
                                                 </div>
 
                                             </div>
