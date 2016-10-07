@@ -452,27 +452,27 @@
             return [
             {
                 "Id": 0,
-                "Name": "Not Rated"
+                "Name": "Show All"
             },
             {
                 "Id": 1,
-                "Name": "1"
+                "Name": "1 Stars or greater"
             },
             {
                 "Id": 2,
-                "Name": "2"
+                "Name": "2 Stars or greater"
             },
             {
                 "Id": 3,
-                "Name": "3"
+                "Name": "3 Stars or greater"
             },
             {
                 "Id": 4,
-                "Name": "4"
+                "Name": "4 Stars or greater"
             },
             {
                 "Id": 5,
-                "Name": "5"
+                "Name": "5 Stars"
             }
         ];
         };
