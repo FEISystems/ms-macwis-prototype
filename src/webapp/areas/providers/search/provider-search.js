@@ -205,7 +205,7 @@
                     if (nameFound &&
                         (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType === provider.ProviderType)) &&
                         (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() === provider.PhysicalCity.toLowerCase())) &&
-                        (!model.Criteria.County || (model.Criteria.County && model.Criteria.County.toLowerCase() === provider.CountyNumber.toLowerCase())) &&
+                        (!model.Criteria.County || (model.Criteria.County && model.Criteria.County === provider.CountyNumber)) &&
                         (model.Criteria.Rate === undefined || model.Criteria.Rate === null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
                         (!model.Criteria.address || (model.Criteria.address === provider.PhysicalZipCode)) &&
                         (!model.Criteria.Age || (model.Criteria.Age &&
