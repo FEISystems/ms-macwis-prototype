@@ -263,7 +263,7 @@
                             <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
                                 <td class="col-xs-1 printSelect"  ng-hide="false">
                                     <div id="checkboxes">
-                                        <input type="checkbox" id={{provider}} />
+                                        <input type="checkbox" id={{provider}} ng-click="model.selectProviderToPrint($event)" />
                                         <label for="{{provider}}" class="sr-only">Add to Print List</label>
                                     </div>
                                 </td>
@@ -273,7 +273,7 @@
                                     </div>
                                 </td>
                                 <td class="col-xs-11 starRating">
-                                    <span class="label">Quality Star Rating:</span.label>
+                                    <span class="label">Quality Star Rating:</span>
                                     <div ng-if="provider.QualityRating===1">
                                         <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
                                     </div>
@@ -338,7 +338,7 @@
                                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                                 <div class="row">
                                                     <span class="label">Hours of Operation: </span>
-                                                    <span class="data-element">9:00 AM - 5:00 PM</span>
+                                                    <span class="data-element">{{provider.HoursofOperation}}</span>
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">Capacity: </span>
@@ -346,13 +346,13 @@
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">Services for Children with Special Behavioral Needs:</span>
-                                                    <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems}}</span>
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                                 <div class="row">
                                                     <span class="label">Days of Operation: </span><span
-                                                        class="data-element">Mon, Tues, Thurs, Fri</span>
+                                                        class="data-element">{{provider.DaysofOperation}}</span>
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">License Type: </span>
@@ -361,7 +361,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">Services for Children with Special Medical Needs;</span>
-                                                    <span class="data-element">Yes</span>
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -375,7 +375,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <span class="label">USDA Food Program:</span>
-                                                    <span class="data-element">Yes</span>
+                                                    <span class="data-element">{{provider.USDAFoodPrograms.toTitleCase()}}</span>
                                                 </div>
 
                                             </div>
