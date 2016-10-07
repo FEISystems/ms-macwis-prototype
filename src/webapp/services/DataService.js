@@ -456,23 +456,23 @@
             },
             {
                 "Id": 1,
-                "Name": "Low"
+                "Name": "1"
             },
             {
                 "Id": 2,
-                "Name": "Average"
+                "Name": "2"
             },
             {
                 "Id": 3,
-                "Name": "Good"
+                "Name": "3"
             },
             {
                 "Id": 4,
-                "Name": "Very Good"
+                "Name": "4"
             },
             {
                 "Id": 5,
-                "Name": "Excellent"
+                "Name": "5"
             }
         ];
         };
