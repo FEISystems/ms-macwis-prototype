@@ -40,7 +40,7 @@ body{
                 height: 100%;
                 padding-left: 10px;
                 position: relative;
-                left: -10px;
+                //left: -10px;
                 top: 0;
 
                 form {
@@ -409,4 +409,109 @@ body{
     }
 }
 
+@scroll-bar-track-color: rgba(0, 0, 0, 0.45);
+@scroll-bar-color: rgba(255, 255, 255, 0.55);
 
+*
+{
+    &::-webkit-scrollbar
+    {
+        width: 12px;
+        height: 12px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-track-piece
+    {
+        border: 8px;
+        border-color: black;
+    }
+    //Vertical Track
+    &::-webkit-scrollbar:vertical
+    {
+        background: @scroll-bar-track-color;
+        cursor: pointer;
+    }
+
+    &::-webkit-scrollbar:vertical:corner-present
+    {
+        border-bottom-width: 0;
+    }
+
+    &::-webkit-scrollbar-thumb:vertical
+    {
+        background: @scroll-bar-color;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        max-width: 4px;
+        min-height: 20px;
+    }
+
+    &::-webkit-scrollbar-track-piece:vertical:start
+    {
+        margin-top: 0px !important;
+    }
+
+    &::-webkit-scrollbar-track-piece:vertical:start
+    {
+        margin-bottom: 0px !important;
+    }
+    //Horizontal Track
+    &::-webkit-scrollbar:horizontal
+    {
+        border: 2px solid transparent;
+        background: @scroll-bar-track-color;
+        cursor: pointer;
+    }
+
+    &::-webkit-scrollbar:horizontal:corner-present
+    {
+        border-bottom-width: 0;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal
+    {
+        background: @scroll-bar-color;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+        max-height: 4px;
+        min-width: 20px;
+    }
+
+    &::-webkit-scrollbar-track-piece:horizontal:start
+    {
+        margin-left: 0px !important;
+    }
+
+    &::-webkit-scrollbar-track-piece:horizontal:start
+    {
+        margin-right: 0px !important;
+    }
+}
+.search-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .panel-body {
+        position: absolute;
+        top: 50px;
+        left: 0px;
+        right: 0px;
+        bottom: 90px;
+    }
+
+    .sticky-footer {
+        position: absolute !important;
+        left: 0px !important;
+        right: 0px !important;
+        display: none;
+        margin: 0px !important;
+    }
+}
