@@ -119,7 +119,6 @@
                                         <p style="font-style: italic">Enter zip code to find providers within the distance selected.</p>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left: 0;">
                                     <div class="form-group" style="">
                                         <label for="zipCode">Zip Code:</label>
                                         <input id="zipCode" type="text" ng-minlength="5" class="form-control"
@@ -131,7 +130,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <label for="searchRadius">Within Distance of Zip Code:</label>
                                         <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
@@ -195,7 +193,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="acceptsSubsidized">Accepts Subsidized Child Care:</label>
+                                    <label for="acceptsSubsidized">Accepts Subsidized Childcare:</label>
 
                                     <select id="acceptsSubsidized" class="form-control"
                                             ng-model="model.Criteria.CanTakeBehavioralChildren"
@@ -443,7 +441,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Services for Special Behavioral Needs:
+                                                Serves Special Behavioral Needs:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
@@ -452,7 +450,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Services for Special Medical Needs:
+                                                Serves Special Medical Needs:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
@@ -575,7 +573,7 @@
                                                     </p>
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===true">
 
-                                                        <strong>Accepts subsidized child care: </strong>Yes
+                                                        <strong>Accepts subsidized childcare: </strong>Yes
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
@@ -590,7 +588,7 @@
                                                     </p>
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===false">
 
-                                                        <strong>Accepts subsidized child care: </strong>No
+                                                        <strong>Accepts subsidized childcare: </strong>No
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
@@ -614,7 +612,7 @@
 
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems!==false&& model.provider.CanTakeChildrenWithBehavioralProblems!==true">
 
-                                                        <strong>Accepts subsidized child care: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
+                                                        <strong>Accepts subsidized childcare: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
                                                     </p>
                                                 </div>
 
