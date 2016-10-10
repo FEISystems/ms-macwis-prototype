@@ -237,8 +237,13 @@
                         dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
                         (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender.toLowerCase() == provider.Gender.toLowerCase())) &&
                         (!model.Criteria.CanTakeBehavioralChildren ||
-                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) == provider.CanTakeChildrenWithBehavioralProblems)));
-                        debugger;
+                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) == provider.CanTakeChildrenWithBehavioralProblems))
+                        &&
+                        (!model.Criteria.ServesSpecialMedicalNeeds ||
+                        (model.Criteria.ServesSpecialMedicalNeeds && model.Criteria.ServesSpecialMedicalNeeds == provider.CanTakeChildrenWithMedicalProblems)) &&
+                        (!model.Criteria.AcceptsSubsidizedChildCare || (
+                         model.Criteria.AcceptsSubsidizedChildCare && model.Criteria.AcceptsSubsidizedChildCare == provider.USDAFoodPrograms   
+                        )));
                         if (match)
                             model.filteredProviders.push(provider);
                         
@@ -340,7 +345,6 @@
                 model.Criteria.Rate = 0;
             model.Criteria.address = criteria.zipCode;
             model.Criteria.distince = criteria.radius;
-
             queueService.setMsg('homeSearchCriteria', null);
             model.search();
 

@@ -176,15 +176,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="behavioralNeeds">Serves Special Behavioral Needs:</label>
-                                    <select id="behavioralNeeds" class="form-control">
+                                    <select id="behavioralNeeds" class="form-control" ng-model="model.Criteria.CanTakeBehavioralChildren"
+                                            ng-options="canTakeBehavioralChildren.Id as canTakeBehavioralChildren.Name for canTakeBehavioralChildren in model.CanTakeBehavioralChildrens">
                                         <option value=""></option>
-                                        <option value="No">No</option>
-                                        <option value="Yes">Yes</option>
+                                        
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="medicalNeeds">Serves Special Medical Needs:</label>
-                                    <select id="medicalNeeds" class="form-control">
+                                    <select id="medicalNeeds" class="form-control" ng-model="model.Criteria.ServesSpecialMedicalNeeds">
                                         <option value=""></option>
                                         <option value="No">No</option>
                                         <option value="Yes">Yes</option>
@@ -193,10 +193,10 @@
                                 <div class="form-group">
                                     <label for="acceptsSubsidized">Accepts Subsidized Child Care:</label>
 
-                                    <select id="acceptsSubsidized" class="form-control"
-                                            ng-model="model.Criteria.CanTakeBehavioralChildren"
-                                            ng-options="canTakeBehavioralChildren.Id as canTakeBehavioralChildren.Name for canTakeBehavioralChildren in model.CanTakeBehavioralChildrens">
+                                    <select id="acceptsSubsidized" class="form-control" ng-model="model.Criteria.AcceptsSubsidizedChildCare">
                                         <option value=""></option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
                                     </select>
                                 </div>
                             </div>
