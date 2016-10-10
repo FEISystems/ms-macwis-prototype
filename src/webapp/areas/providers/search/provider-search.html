@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <label for="providerType">Provider Type:</label>
                                 <select id="providerType" class="form-control" ng-model="model.Criteria.ProviderType"
-                                        ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes" ng-keypress="model.onKeyPress($event)>
+                                        ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -33,14 +33,14 @@
                             <div class="form-group">
                                 <label for="city">City:</label>
                                 <select id="city" class="form-control" ng-model="model.Criteria.City"
-                                        ng-options="city for city in model.Cities" ng-keypress="model.onKeyPress($event)>
+                                        ng-options="city for city in model.Cities">
                                     <option value=""></option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="county">County:</label>
                                 <select id="county" class="form-control" ng-model="model.Criteria.County"
-                                        ng-options="county.Id as county.Name for county in model.Counties" ng-keypress="model.onKeyPress($event)>
+                                        ng-options="county.Id as county.Name for county in model.Counties">
                                     <option value=""></option>
                                 </select>
 
@@ -53,7 +53,7 @@
                                         target="_blank">Quality Star Rating Equal or Greater:</a>
                                     <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)</span> </span><br>
                                 <label for="starRating_none">
-                                    <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate" ng-keypress="model.onKeyPress($event)
+                                    <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate"
                                            value="{{model.Rates[0].Id}}">
                                     Show All
                                 </label><br/>
@@ -122,7 +122,7 @@
                                     <div class="form-group" style="">
                                         <label for="zipCode">Zip Code:</label>
                                         <input id="zipCode" type="text" ng-minlength="5" class="form-control"
-                                               ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" ng-keypress="model.onKeyPress($event)
+                                               ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" ng-keypress="model.onKeyPress($event)"
                                                name="address">
                                         <div class="error" style="color: red"
                                              ng-show="{{'searchForm.address.$invalid '}}">
@@ -135,7 +135,7 @@
                                         <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
                                         <select id="searchRadius" class="form-control"
                                                 ng-model="model.Criteria.distance"
-                                                ng-options="distance.Id as distance.Name for distance in model.Distances" ng-keypress="model.onKeyPress($event)>
+                                                ng-options="distance.Id as distance.Name for distance in model.Distances">
                                             <option value=""></option>
                                         </select>
                                         <div class="error" style="color: red"
