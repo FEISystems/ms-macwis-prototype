@@ -303,6 +303,7 @@
             model.isRendered = true;
             var criteria = queueService.getMsg('homeSearchCriteria');
             if (!criteria) {
+                $('#starRating_none').prop('checked', true);
                 model.search();
                 return;
             }
