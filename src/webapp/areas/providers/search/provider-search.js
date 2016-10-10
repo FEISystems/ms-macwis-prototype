@@ -302,6 +302,10 @@
                 return;
             model.isRendered = true;
             var criteria = queueService.getMsg('homeSearchCriteria');
+            
+            if (!criteria || !criteria.rate)
+                $('#starRating_none').prop('checked', true);
+            
             if (!criteria) {
                 model.search();
                 return;
@@ -322,6 +326,8 @@
             model.Criteria.City = criteria.city;
             model.Criteria.County = criteria.county;
             model.Criteria.Rate = criteria.rate;
+            if (!model.Criteria.Rate)
+                model.Criteria.Rate = 0;
             model.Criteria.address = criteria.zipCode;
             model.Criteria.distince = criteria.radius;
 
