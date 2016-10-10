@@ -284,11 +284,11 @@
                             of {{model.providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
                         <div ng-if="model.filteredProviders.length===0" style="float: left;">No Data Found</div>
                         <div class="step prevLink" style="float: left;" ng-if="model.filteredProviders.length>0">
-                            Show&nbsp;&nbsp;<select id="selectPerPage" aria-labelledby="ShowNumberOf selectPerPage" ng-change="model.ChangeDisplayNums()"
+                            Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="model.ChangeDisplayNums()"
                                                     ng-model="model.listsPerPage"
                                                     ng-options="item as item for item in model.ItemsPerPageList"></select>&nbsp;&nbsp;
-                            <span class="ui-helper-hidden-accessible"  id="ShowNumberOf">Show number of</span>
-                            <label for="selectPerPage">entries</label>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <label class="ui-helper-hidden-accessible" for="selectPerPage">Show number of Entries</label>
+                            <span>entries</span>&nbsp;&nbsp;|&nbsp;&nbsp;
                         </div>
                         <div style="float: left;">
                             <input type="button" value="PRINT SELECTED"
