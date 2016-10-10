@@ -7,7 +7,7 @@
             return lists.slice(start);
         };
     });
-    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log) {
+    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log, $timeout) {
         /**************************Model datapoints******************** */
         var model = this;
         model.title = "Provider Search";
@@ -156,7 +156,7 @@
 
                     "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + templateModel.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + templateModel.City + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + templateModel.QualityRating +  "</p>  " +
                     "<p class='ng-binding'><strong>License Type: </strong>   " + templateModel.LicenseType + " </p>" +
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>" + acceptsSubsidizedChild + "</p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized childcare: </strong>" + acceptsSubsidizedChild + "</p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
                     " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + templateModel.County + "</p>" +
@@ -292,6 +292,12 @@
             model.filteredProviders = _.reverse(model.filteredProviders);
         };
 
+        model.onKeyPress = function(e){
+            if (e && e.originalEvent && e.originalEvent.code == "Enter")
+            {
+                model.search();
+            }
+        }
         /**********************
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
@@ -342,6 +348,6 @@
     module.component("providerSearch", {
         templateUrl: "Areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', controller]
+        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
     });
 }())

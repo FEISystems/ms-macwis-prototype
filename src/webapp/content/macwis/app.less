@@ -319,6 +319,9 @@ body {
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
   body {
+    div#searchPanelContainer {
+      
+    }
     div#resultsPageContainer {
       div#resultsPanelContainer {
         margin-left: 34.75%;
@@ -365,11 +368,24 @@ body {
           position: static;
           padding-top: 20px;
           form {
-            div.panel {
+            .search-panel{
+              overflow: visible !important;
+              max-height: none !important;
+              position: static;
               .panel-body {
+                position: static;
+                top: 50px;
+                left: 0px;
+                right: 0px;
+                bottom: 90px;
+              }
 
-                overflow: visible !important;
-                max-height: none !important;
+              .sticky-footer {
+                position: static !important;
+                left: 0px !important;
+                right: 0px !important;
+                display: none;
+                margin: 0px !important;
               }
             }
           }
@@ -496,3 +512,4 @@ body {
     margin-bottom: 10px;
   }
 }
+

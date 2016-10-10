@@ -19,13 +19,13 @@
                             <div class="form-group">
                                 <label for="providerName">Provider Name:</label>
                                 <input type="text" id="providerName" class="form-control"
-                                       ng-model="model.Criteria.ProviderName">
+                                       ng-model="model.Criteria.ProviderName" ng-keypress="model.onKeyPress($event)">
                             </div>
 
                             <div class="form-group">
                                 <label for="providerType">Provider Type:</label>
                                 <select id="providerType" class="form-control" ng-model="model.Criteria.ProviderType"
-                                        ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes">
+                                        ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes" ng-keypress="model.onKeyPress($event)>
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -33,14 +33,14 @@
                             <div class="form-group">
                                 <label for="city">City:</label>
                                 <select id="city" class="form-control" ng-model="model.Criteria.City"
-                                        ng-options="city for city in model.Cities">
+                                        ng-options="city for city in model.Cities" ng-keypress="model.onKeyPress($event)>
                                     <option value=""></option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="county">County:</label>
                                 <select id="county" class="form-control" ng-model="model.Criteria.County"
-                                        ng-options="county.Id as county.Name for county in model.Counties">
+                                        ng-options="county.Id as county.Name for county in model.Counties" ng-keypress="model.onKeyPress($event)>
                                     <option value=""></option>
                                 </select>
 
@@ -53,7 +53,7 @@
                                         target="_blank">Quality Star Rating Equal or Greater:</a>
                                     <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)</span> </span><br>
                                 <label for="starRating_none">
-                                    <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate"
+                                    <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate" ng-keypress="model.onKeyPress($event)
                                            value="{{model.Rates[0].Id}}">
                                     Show All
                                 </label><br/>
@@ -119,11 +119,10 @@
                                         <p style="font-style: italic">Enter zip code to find providers within the distance selected.</p>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left: 0;">
                                     <div class="form-group" style="">
                                         <label for="zipCode">Zip Code:</label>
                                         <input id="zipCode" type="text" ng-minlength="5" class="form-control"
-                                               ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address"
+                                               ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" ng-keypress="model.onKeyPress($event)
                                                name="address">
                                         <div class="error" style="color: red"
                                              ng-show="{{'searchForm.address.$invalid '}}">
@@ -131,13 +130,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group">
                                         <label for="searchRadius">Within Distance of Zip Code:</label>
                                         <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
                                         <select id="searchRadius" class="form-control"
                                                 ng-model="model.Criteria.distance"
-                                                ng-options="distance.Id as distance.Name for distance in model.Distances">
+                                                ng-options="distance.Id as distance.Name for distance in model.Distances" ng-keypress="model.onKeyPress($event)>
                                             <option value=""></option>
                                         </select>
                                         <div class="error" style="color: red"
@@ -195,7 +193,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="acceptsSubsidized">Accepts Subsidized Child Care:</label>
+                                    <label for="acceptsSubsidized">Accepts Subsidized Childcare:</label>
 
                                     <select id="acceptsSubsidized" class="form-control"
                                             ng-model="model.Criteria.CanTakeBehavioralChildren"
@@ -443,7 +441,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Services for Special Behavioral Needs:
+                                                Serves Special Behavioral Needs:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
@@ -452,7 +450,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Services for Special Medical Needs:
+                                                Serves Special Medical Needs:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
@@ -575,7 +573,7 @@
                                                     </p>
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===true">
 
-                                                        <strong>Accepts subsidized child care: </strong>Yes
+                                                        <strong>Accepts subsidized childcare: </strong>Yes
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
@@ -590,7 +588,7 @@
                                                     </p>
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===false">
 
-                                                        <strong>Accepts subsidized child care: </strong>No
+                                                        <strong>Accepts subsidized childcare: </strong>No
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
@@ -614,7 +612,7 @@
 
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems!==false&& model.provider.CanTakeChildrenWithBehavioralProblems!==true">
 
-                                                        <strong>Accepts subsidized child care: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
+                                                        <strong>Accepts subsidized childcare: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
                                                     </p>
                                                 </div>
 
