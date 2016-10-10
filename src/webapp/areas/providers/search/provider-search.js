@@ -144,14 +144,16 @@
 
                     var acceptsSubsidizedChild = "N/A";
                     var templateModel = JSON.parse(value);
-                    htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + templateModel.ProviderName + "</p></div>" +
+                    htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> " + "<div class='col-xs-offset-1'> " +
+                        "<div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + templateModel.ProviderName + "</p></div>" +
 
                     "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + templateModel.ProviderType + "</p>" +
-                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + "N/A" +"</p> " +
-                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + "N/A" +"</p> " +
-                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " + "N/A" +"</p> " +
+                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + templateModel.HoursofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + templateModel.DaysofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " +  templateModel.CanTakeChildrenWithMedicalProblems  +"</p> " +
                     "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + templateModel.CanTakeChildrenWithBehavioralProblems +"</p> " +
-                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + "N/A" + "</p></div>" +
+                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + templateModel.USDAFoodPrograms  + "</p></div>" +
+
                     "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + templateModel.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + templateModel.City + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + templateModel.QualityRating +  "</p>  " +
                     "<p class='ng-binding'><strong>License Type: </strong>   " + templateModel.LicenseType + " </p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>" + acceptsSubsidizedChild + "</p>" +
