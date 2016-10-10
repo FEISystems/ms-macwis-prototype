@@ -170,7 +170,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="gendersAccepted">Childcare Provided for the Following Genders:</label>
+                                    <label for="gendersAccepted">Child Care Provided for the Following Genders:</label>
                                     <select id="gendersAccepted" class="form-control" ng-model="model.Criteria.Gender"
                                             ng-options="gender.Id as gender.Name for gender in model.Genderes">
                                         <option value=""></option>
@@ -193,7 +193,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="acceptsSubsidized">Accepts Subsidized Childcare:</label>
+                                    <label for="acceptsSubsidized">Accepts Subsidized Child Care:</label>
 
                                     <select id="acceptsSubsidized" class="form-control"
                                             ng-model="model.Criteria.CanTakeBehavioralChildren"
@@ -431,7 +431,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                               Childcare Provided for the Following Genders:
+                                               Child Care Provided for the Following Genders:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">{{provider.Gender}}</span>
@@ -458,7 +458,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Accepts Subsidized Childcare:
+                                                Accepts Subsidized Child Care:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">Yes</span>
@@ -572,7 +572,7 @@
                                                     </p>
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===true">
 
-                                                        <strong>Accepts subsidized childcare: </strong>Yes
+                                                        <strong>Accepts Subsidized Child Care: </strong>Yes
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
@@ -587,7 +587,7 @@
                                                     </p>
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===false">
 
-                                                        <strong>Accepts subsidized childcare: </strong>No
+                                                        <strong>Accepts Subsidized Child Care: </strong>No
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
@@ -611,7 +611,7 @@
 
                                                     <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems!==false&& model.provider.CanTakeChildrenWithBehavioralProblems!==true">
 
-                                                        <strong>Accepts subsidized childcare: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
+                                                        <strong>Accepts Subsidized Child Care: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
                                                     </p>
                                                 </div>
 
