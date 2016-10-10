@@ -51,17 +51,30 @@ TeamCity is a comprehensive integation build platform but need more configuratio
 
 Here is the live demo [here](http://msmacwis.azurewebsites.net).
 
-### How to run it local
+### How to run it local 
 This prototype is built with pure front-end HTML/JS technologies that does not need special settings. This prototype can run on any simple http server, eg. Chrome built-in HTTP Server.
-1. To run it on local Chrome Browser with built-in HTTP Server application
-- Download or Clone this [repository](https://github.com/FEISystems/ms-macwis-prototype/), assume put in directory d:\projects\ms-macwis-prototype
+To run it on local Chrome Browser with built-in HTTP Server application
+- Download or use `git clone` the [repository](https://github.com/FEISystems/ms-macwis-prototype/), assume put in directory d:\projects\ms-macwis-prototype
 - Start Chrome Browser
 - Install Chrome [Web Servver App](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en)
 - Start Web Server, point to the directory with source code d:\projects\ms-macwis-prototype\src\webapp
 - Navigate to http://127.0.0.1:8887 and you will see a live local demo
 
-### How to build and deploy to another environment
-This prototype can run on any web server or http server, such as Apache, IIS. Just put all file from src/web to the application root. You are done.
+### How to build and deploy to another environment with node.js supported (development)
+This prototype can run on any web server or http server, such as Apache, IIS.  For development environment with Node.js, here are the detailed step.
+You will need 
+- Github account
+- install Node.js from https://nodejs.org
+
+And then
+```
+git clone https://github.com/FEISystems/ms-macwis-prototype.git
+cd ms-macwis-prototype
+npm install http-server -g
+http-server ./src/webapp
+```
+
+If you prefer to run it in apache http server, can also copy all files from src/webapp to the root web folder.
 
 
 ## Team & Process
