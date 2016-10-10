@@ -7,7 +7,7 @@
             return lists.slice(start);
         };
     });
-    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log) {
+    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log, $timeout) {
         /**************************Model datapoints******************** */
         var model = this;
         model.title = "Provider Search";
@@ -290,6 +290,12 @@
             model.filteredProviders = _.reverse(model.filteredProviders);
         };
 
+        model.onKeyPress = function(e){
+            if (e && e.originalEvent && e.originalEvent.code == "Enter")
+            {
+                model.search();
+            }
+        }
         /**********************
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
@@ -340,6 +346,6 @@
     module.component("providerSearch", {
         templateUrl: "Areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', controller]
+        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
     });
 }())
