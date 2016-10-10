@@ -11,98 +11,98 @@
                     <div class="panel-body">
 
                         <!-- PROVIDER SEARCH OPTIONS -->
-                        <legend>
-                            <button class="btn-block criteriaButton" ng-click="providerCollapsed = !providerCollapsed">
-                                Search by Provider <span class="glyphicon glyphicon-minus pull-right"></span></button>
-                        </legend>
-                        <div uib-collapse="providerCollapsed" class="in" id="providerCriteria">
-                            <div class="form-group">
-                                <label for="providerName">Provider Name:</label>
-                                <input type="text" id="providerName" class="form-control"
-                                       ng-model="model.Criteria.ProviderName" ng-keypress="model.onKeyPress($event)">
+                        <fieldset>
+                            <legend>
+                                <button class="btn-block criteriaButton" ng-click="providerCollapsed = !providerCollapsed">
+                                    Search by Provider <span class="glyphicon glyphicon-minus pull-right"></span></button>
+                            </legend>
+                            <div uib-collapse="providerCollapsed" class="in" id="providerCriteria">
+                                <div class="form-group">
+                                    <label for="providerName">Provider Name:</label>
+                                    <input type="text" id="providerName" class="form-control"
+                                           ng-model="model.Criteria.ProviderName" ng-keypress="model.onKeyPress($event)">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="providerType">Provider Type:</label>
+                                    <select id="providerType" class="form-control" ng-model="model.Criteria.ProviderType"
+                                            ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city">City:</label>
+                                    <select id="city" class="form-control" ng-model="model.Criteria.City"
+                                            ng-options="city for city in model.Cities">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="county">County:</label>
+                                    <select id="county" class="form-control" ng-model="model.Criteria.County"
+                                            ng-options="county.Id as county.Name for county in model.Counties">
+                                        <option value=""></option>
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <span style="display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: bold; color: white "><a
+                                            class="label"
+                                            style="text-decoration: underline; color: white; font-size: 14px; padding-left: 0;"
+                                            href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}"
+                                            target="_blank">Quality Star Rating Equal or Greater:</a>
+                                        <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)</span> </span><br>
+                                    <label for="starRating_none">
+                                        <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate"
+                                               value="{{model.Rates[0].Id}}">
+                                        Show All
+                                    </label><br/>
+
+                                    <label>
+                                        <input id="starRating" type="radio" ng-model="model.Criteria.Rate"
+                                               value="{{model.Rates[5].Id}}">
+                                        <img src="content/macwis/knewstuff.png"/><img
+                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
+                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png">
+                                    </label><br/>
+                                    <input id="starRating_two" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[4].Id}}">
+
+                                    <label for="starRating_two">
+                                        <span class="sr-only">Two</span>
+                                        <img src="content/macwis/knewstuff.png"/><img
+                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
+                                            src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png">
+                                    </label><br/>
+                                    <input id="starRating_three" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[3].Id}}">
+                                    <label for="starRating_three">
+                                        <span class="sr-only">Three</span>
+                                        <img src="content/macwis/knewstuff.png"/><img
+                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
+                                            src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
+                                    </label><br/>
+                                    <input id="starRating_four" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[2].Id}}">
+                                    <label for="starRating_four">
+                                        <span class="sr-only">Four</span>
+                                        <img src="content/macwis/knewstuff.png"/><img
+                                            src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png"><img
+                                            src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
+                                    </label><br/>
+                                    <input id="starRating_five" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[1].Id}}">
+                                    <label for="starRating_five">
+                                        <span class="sr-only">Five</span>
+                                        <img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"><img
+                                            src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img
+                                            src="content/macwis/14_star.png">
+                                    </label><br/>
+                                </div>
+
                             </div>
-
-                            <div class="form-group">
-                                <label for="providerType">Provider Type:</label>
-                                <select id="providerType" class="form-control" ng-model="model.Criteria.ProviderType"
-                                        ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes">
-                                    <option value=""></option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="city">City:</label>
-                                <select id="city" class="form-control" ng-model="model.Criteria.City"
-                                        ng-options="city for city in model.Cities">
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="county">County:</label>
-                                <select id="county" class="form-control" ng-model="model.Criteria.County"
-                                        ng-options="county.Id as county.Name for county in model.Counties">
-                                    <option value=""></option>
-                                </select>
-
-                            </div>
-                            <div class="form-group">
-                                <span style="display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: bold; color: white "><a
-                                        class="label"
-                                        style="text-decoration: underline; color: white; font-size: 14px; padding-left: 0;"
-                                        href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}"
-                                        target="_blank">Quality Star Rating Equal or Greater:</a>
-                                    <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)</span> </span><br>
-                                <label for="starRating_none">
-                                    <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate"
-                                           value="{{model.Rates[0].Id}}">
-                                    Show All
-                                </label><br/>
-
-                                <label>
-                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate"
-                                           value="{{model.Rates[5].Id}}">
-                                    <img src="content/macwis/knewstuff.png"/><img
-                                        src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
-                                        src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png">
-                                </label><br/>
-                                <input id="starRating_two" type="radio" ng-model="model.Criteria.Rate"
-                                       value="{{model.Rates[4].Id}}">
-
-                                <label for="starRating_two">
-                                    <span class="sr-only">Two</span>
-                                    <img src="content/macwis/knewstuff.png"/><img
-                                        src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
-                                        src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png">
-                                </label><br/>
-                                <input id="starRating_three" type="radio" ng-model="model.Criteria.Rate"
-                                       value="{{model.Rates[3].Id}}">
-                                <label for="starRating_three">
-                                    <span class="sr-only">Three</span>
-                                    <img src="content/macwis/knewstuff.png"/><img
-                                        src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
-                                        src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
-                                </label><br/>
-                                <input id="starRating_four" type="radio" ng-model="model.Criteria.Rate"
-                                       value="{{model.Rates[2].Id}}">
-                                <label for="starRating_four">
-                                    <span class="sr-only">Four</span>
-                                    <img src="content/macwis/knewstuff.png"/><img
-                                        src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
-                                </label><br/>
-                                <input id="starRating_five" type="radio" ng-model="model.Criteria.Rate"
-                                       value="{{model.Rates[1].Id}}">
-                                <label for="starRating_five">
-                                    <span class="sr-only">Five</span>
-                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png">
-                                </label><br/>
-                            </div>
-
-                            <br>
-                            <br>
-                        </div>
+                        </fieldset>
                         <!-- LOCATION SEARCH OPTIONS -->
 
                         <fieldset>
@@ -119,39 +119,37 @@
                                         <p style="font-style: italic">Enter zip code to find providers within the distance selected.</p>
                                     </div>
                                 </div>
-                                    <div class="form-group" style="">
-                                        <label for="zipCode">Zip Code:</label>
-                                        <input id="zipCode" type="text" ng-minlength="5" class="form-control"
-                                               ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" ng-keypress="model.onKeyPress($event)"
-                                               name="address">
-                                        <div class="error" style="color: red"
-                                             ng-show="{{'searchForm.address.$invalid '}}">
-                                            Please enter a valid zip code
+                                <div class="row" id="searchRadiusCriteria">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-group" style="">
+                                            <label for="zipCode">Zip Code:</label>
+                                            <input id="zipCode" type="text" ng-minlength="5" class="form-control"
+                                                   ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" ng-keypress="model.onKeyPress($event)"
+                                                   name="address">
+                                            <div class="error" style="color: red"
+                                                 ng-show="{{'searchForm.address.$invalid '}}">
+                                                Please enter a valid zip code
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="searchRadius">Within Distance of Zip Code:</label>
+                                            <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
+                                            <select id="searchRadius" class="form-control"
+                                                    ng-model="model.Criteria.distance"
+                                                    ng-options="distance.Id as distance.Name for distance in model.Distances">
+                                                <option value=""></option>
+                                            </select>
+                                            <div class="error" style="color: red"
+                                                 ng-show="{{'searchForm.distance.$invalid '}}">
+                                                Please enter a numeric value
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="form-group">
-                                        <label for="searchRadius">Within Distance of Zip Code:</label>
-                                        <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
-                                        <select id="searchRadius" class="form-control"
-                                                ng-model="model.Criteria.distance"
-                                                ng-options="distance.Id as distance.Name for distance in model.Distances">
-                                            <option value=""></option>
-                                        </select>
-                                        <div class="error" style="color: red"
-                                             ng-show="{{'searchForm.distance.$invalid '}}">
-                                            Please enter a numeric value
-
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
                                 </div>
-                            </div>
-
                         </fieldset>
-
-
                         <!-- ADVANCED SEARCH OPTIONS -->
                         <fieldset>
                             <legend>
@@ -204,6 +202,7 @@
                             </div>
                         </fieldset>
                     </div>
+
                     <div class="panel-footer sticky-footer">
                         <div class="row">
                             <div class="col-xs-12">
