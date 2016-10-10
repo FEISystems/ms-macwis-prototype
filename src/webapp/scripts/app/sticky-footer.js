@@ -22,7 +22,7 @@ macwis.stickyFooter = function (targetElement, options) {
                 topOffset = $(parentContainer).scrollTop(),
                 bottomOffset = containerHeight - (topOffset + $(parentContainer).height()),
                 parentVisibleHeightNoPad = containerHeight - bottomOffset,
-                parentContainerPaddingTop = parseInt($(parentContainer).css('padding-top').replace("px", "")),
+                parentContainerPaddingTop = parseInt($(parentContainer).css('padding-top')),
                 parentVisibleHeight = parentVisibleHeightNoPad + parentContainerPaddingTop;
             
             return parentVisibleHeight;
