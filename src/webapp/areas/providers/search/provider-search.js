@@ -156,7 +156,7 @@
 
                     "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + templateModel.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + templateModel.City + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + templateModel.QualityRating +  "</p>  " +
                     "<p class='ng-binding'><strong>License Type: </strong>   " + templateModel.LicenseType + " </p>" +
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized childcare: </strong>" + acceptsSubsidizedChild + "</p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts Subsidized Child Care: </strong>" + acceptsSubsidizedChild + "</p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
                     " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + templateModel.County + "</p>" +
