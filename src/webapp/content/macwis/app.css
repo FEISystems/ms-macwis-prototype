@@ -181,6 +181,9 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr:nth-child(even) {
   background: #F7F7F7;
 }
+body div#resultsPageContainer div#resultsPanelContainer .result-pagination label {
+  font-weight: normal;
+}
 body .searchTab {
   background: #4d7e91 !important;
   color: white !important;
