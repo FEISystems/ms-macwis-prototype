@@ -226,20 +226,22 @@
                             nameFound = false;
                         }
                     }
-                    if (nameFound &&
-                        (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType === provider.ProviderType)) &&
-                        (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() === provider.PhysicalCity.toLowerCase())) &&
-                        (!model.Criteria.County || (model.Criteria.County && model.Criteria.County === provider.CountyNumber)) &&
-                        (model.Criteria.Rate === undefined || model.Criteria.Rate === null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
-                        (!model.Criteria.address || (model.Criteria.address === provider.PhysicalZipCode)) &&
+                    var match = (nameFound &&
+                        (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType == provider.ProviderType)) &&
+                        (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() == provider.PhysicalCity.toLowerCase())) &&
+                        (!model.Criteria.County || (model.Criteria.County && model.Criteria.County == provider.CountyNumber)) &&
+                        (model.Criteria.Rate == undefined || model.Criteria.Rate == null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
+                        (!model.Criteria.address || (model.Criteria.address == provider.PhysicalZipCode)) &&
                         (!model.Criteria.Age || (model.Criteria.Age &&
                         dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
                         dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
-                        (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender.toLowerCase() === provider.Gender.toLowerCase())) &&
+                        (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender.toLowerCase() == provider.Gender.toLowerCase())) &&
                         (!model.Criteria.CanTakeBehavioralChildren ||
-                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) === provider.CanTakeChildrenWithBehavioralProblems))) {
-                        model.filteredProviders.push(provider);
-                    }
+                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) == provider.CanTakeChildrenWithBehavioralProblems)));
+                        debugger;
+                        if (match)
+                            model.filteredProviders.push(provider);
+                        
                 });
             } else {
                 model.filteredProviders = tempProviders;
