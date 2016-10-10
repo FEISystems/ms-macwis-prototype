@@ -362,7 +362,6 @@ body #homeSearch label {
 }
 #searchResults .control-label {
   font-size: 100%;
-  text-transform: uppercase;
   color: #6d6d6d;
   padding: 0;
   margin: 0;
