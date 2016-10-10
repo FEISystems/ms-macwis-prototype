@@ -481,11 +481,11 @@
             return [
                 {
                     "Id": "Boy",
-                    "Name": "Boy"
+                    "Name": "Boy Only"
                 },
                 {
                     "Id": "Girl",
-                    "Name": "Girl"
+                    "Name": "Girl Only"
                 },
                 {
                     "Id": "Both",
