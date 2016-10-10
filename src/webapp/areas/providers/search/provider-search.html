@@ -50,7 +50,7 @@
                                         class="label"
                                         style="text-decoration: underline; color: white; font-size: 14px; padding-left: 0;"
                                         href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}"
-                                        target="_blank">Quality Star Rating Equal or Above:</a>
+                                        target="_blank">Quality Star Rating Equal or Greater:</a>
                                     <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)</span> </span><br>
                                 <label for="starRating_none">
                                     <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate"
@@ -165,7 +165,7 @@
                             </legend>
                             <div uib-collapse="advancedOptionsCollapsed" id="advancedCriteria">
                                 <div class="form-group">
-                                    <label for="ageRange">Age of Children Served:</label>
+                                    <label for="ageRange">Age Served:</label>
                                     <select id="ageRange" class="form-control" ng-model="model.Criteria.Age"
                                             ng-options="age.Id as age.Name for age in model.Ages">
                                         <option value=""></option>
@@ -179,7 +179,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="behavioralNeeds">Serves Children with Special Behavioral Needs:</label>
+                                    <label for="behavioralNeeds">Serves Special Behavioral Needs:</label>
                                     <select id="behavioralNeeds" class="form-control">
                                         <option value=""></option>
                                         <option value="No">No</option>
@@ -187,7 +187,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="medicalNeeds">Serves Children with Special Medical Needs:</label>
+                                    <label for="medicalNeeds">Serves Special Medical Needs:</label>
                                     <select id="medicalNeeds" class="form-control">
                                         <option value=""></option>
                                         <option value="No">No</option>
@@ -383,7 +383,7 @@
                                         </div>
                                         <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Age of Children Served:
+                                                Age Served:
                                             </span>
                                             <div class="col-sm-6">
                                                 <span class="data-element">{{provider.MinAge}}&nbsp;yrs&nbsp;-&nbsp;{{provider.MaxAge}}&nbsp;yrs&nbsp;</span>
@@ -443,7 +443,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Services Children with Special Behavioral Needs:
+                                                Services for Special Behavioral Needs:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
@@ -452,7 +452,7 @@
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
-                                                Services Children with Special Medical Needs:
+                                                Services for Special Medical Needs:
                                             </span>
                                                 <div class="col-sm-6">
                                                     <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
