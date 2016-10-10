@@ -233,11 +233,13 @@
                     });
 
                     $('.expandDetails').on('click', function () {
-                        var span = $(this).children();
+                        var span = $(this).find(".glyphicon");
                         if ($(span).hasClass('glyphicon-chevron-down')) {
                             $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                            $(this).find('.toggleProviderInfo').html("show less");
                         } else {
                             $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                            $(this).find('.toggleProviderInfo').html("show more");
                         }
                     });
 
@@ -310,10 +312,13 @@
                             <td class="col-xs-11  providerNameSection">
                                 <div class="providerName">
                                     <strong>{{provider.ProviderName}}</strong>
+                                    <i ng-if="provider.Distance">
+                                        &nbsp;({{provider.Distance}} away)
+                                    </i>
                                 </div>
                             </td>
                             <td class="col-xs-11 starRating">
-                                <span class="label">Quality Star Rating:</span>
+                                <span class="label sr-only">Quality Star Rating:</span>
                                 <div ng-if="provider.QualityRating===1">
                                     <img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"><img
                                         src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img
@@ -347,93 +352,133 @@
                             </td>
                             <td class="col-xs-11 col-sm-12 col-md-12 col-lg-12 providerInfo">
                                 <div class="row">
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div class="row">
-                                            <span class="label">Type: </span>
-                                            <span class="data-element">{{provider.ProviderTypeDescription}}</span>
-                                        </div>
-                                        <div class="row">
-                                            <span class="label">Phone: </span>
-                                            <span class="data-element">{{provider.PhoneNumber}}</span>
-                                        </div>
 
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                                        <div class="row">
+                                            <span class="fa fa-map-marker"></span>&nbsp;&nbsp;
+                                            <span class="label sr-only">County: </span>
+                                            <span class="">{{provider.CountyName.toTitleCase()}}&nbsp;County,&nbsp;</span>
+                                            <span class="label sr-only">City: </span>
+                                            <span class="">{{provider.PhysicalCity.toTitleCase()}}&nbsp;</span>
+                                            <span class="label sr-only">State: </span>
+                                            <span class="">MS&nbsp;</span>
+                                            <span class="label sr-only">Zip Code:</span>
+                                            <span class="">{{provider.PhysicalZipCode}}</span><br>
+                                            <span class="fa fa-phone"></span>&nbsp;&nbsp;
+                                            <span class="label sr-only">Phone: </span>
+                                            <span class="">{{provider.PhoneNumber}}</span>
+
+                                        </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div class="row">
-                                            <span class="label">City: </span><span class="data-element">{{provider.PhysicalCity.toTitleCase()}}</span>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                        <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Provider Type:
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <span class="data-element">{{provider.ProviderTypeDescription}}</span>
+                                            </div>
                                         </div>
-                                        <div class="row">
-                                            <span class="label">County: </span>
-                                            <span class="data-element">{{provider.CountyName.toTitleCase()}}</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div ng-if="provider.Distance" class="row">
-                                            <span class="label">Distance: </span>
-                                            <span class="data-element">{{provider.Distance}}
-                                                </span>
-                                        </div>
-                                        <div class="row">
-                                            <span class="label">Zip Code:</span>
-                                            <span class="data-element">{{provider.PhysicalZipCode}}</span>
-                                        </div>
-                                        <div class="row">
-                                            <span class="label">Age of Children Served: </span>
-                                            <span class="data-element">{{provider.MinAge}} - {{provider.MaxAge}}</span>
+                                        <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Age of Children Served:
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <span class="data-element">{{provider.MinAge}}&nbsp;yrs&nbsp;-&nbsp;{{provider.MaxAge}}&nbsp;yrs&nbsp;</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div uib-collapse="isCollapsed" class="viewMore">
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                            <div class="row">
-                                                <span class="label">Hours of Operation: </span>
-                                                <span class="data-element">{{provider.HoursofOperation}}</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="label">Capacity: </span>
-                                                <span class="data-element">{{provider.ProviderCapacity}}</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="label">Services for Children with Special Behavioral Needs:</span>
-                                                <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                            <div class="row">
-                                                <span class="label">Days of Operation: </span><span
-                                                    class="data-element">{{provider.DaysofOperation}}</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="label">License Type: </span>
-                                                <span class="data-element">{{provider.LicenseType.toTitleCase()}}</span>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Hours of Operation:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.HoursOfOperation}}</span>
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <span class="label">Services for Children with Special Medical Needs;</span>
-                                                <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                            <div class="row">
-                                                <span class="label">Genders Accepted: </span>
-                                                <span class="data-element">{{provider.Gender}}</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="label">Accepts Subsidized Childcare:</span>
-                                                <span class="data-element">Yes</span>
-                                            </div>
-                                            <div class="row">
-                                                <span class="label">USDA Food Program:</span>
-                                                <span class="data-element">{{provider.USDAFoodPrograms.toTitleCase()}}</span>
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Days of Operation:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.DaysofOperation}}</span>
+                                                </div>
                                             </div>
 
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Capacity:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.ProviderCapacity}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Licensed/Unlicensed:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.LicenseType.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <hr style="margin-top: 0">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Genders Accepted:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.Gender}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Services Children with Special Behavioral Needs:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Services Children with Special Medical Needs:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Accepts Subsidized Childcare:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">Yes</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Accepts USDA Food Program:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.USDAFoodPrograms.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                     </div>
                                 </div>
                             </td>
@@ -450,7 +495,7 @@
                                     <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
                                         <button class="btn expandDetails" ng-click="isCollapsed = !isCollapsed">
                                             <span class="glyphicon glyphicon-chevron-down"></span>
-                                            View More
+                                            <span class="toggleProviderInfo" style="font-weight: normal">show more</span>
                                         </button>
                                     </div>
                                 </div>

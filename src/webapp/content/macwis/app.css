@@ -153,12 +153,6 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating {
   padding: 3px 0 5px 0;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating span.label {
-  font-size: 16px;
-  color: black;
-  font-weight: bold;
-  padding-left: 0;
-}
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating div {
   display: inline-block;
 }
@@ -174,16 +168,6 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row {
   padding-bottom: 15px;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row span.label {
-  padding: 0;
-  color: black;
-  font-size: 15px;
-  font-weight: bold;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row span.data-element {
-  font-size: 15px;
-  display: block;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
   padding-bottom: 15px;
@@ -370,4 +354,23 @@ body #homeSearch label {
   right: 0px !important;
   display: none;
   margin: 0px !important;
+}
+#searchResults span {
+  font-size: 120%;
+  color: #555555;
+  font-weight: bold;
+}
+#searchResults .control-label {
+  font-size: 100%;
+  text-transform: uppercase;
+  color: #6d6d6d;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+#searchResults .data-element {
+  display: block;
+}
+#searchResults .form-group {
+  margin-bottom: 10px;
 }
