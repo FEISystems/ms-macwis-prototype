@@ -191,9 +191,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="acceptsSubsidized">Accepts Subsidized Child Care:</label>
+                                    <label for="acceptsUSDA">Accepts USDA Food Program:</label>
 
-                                    <select id="acceptsSubsidized" class="form-control" ng-model="model.Criteria.AcceptsSubsidizedChildCare">
+                                    <select id="acceptsUSDA" class="form-control" ng-model="model.Criteria.AcceptsUSDAFoodProgram">
                                         <option value=""></option>
                                         <option value="No">No</option>
                                         <option value="Yes">Yes</option>
@@ -455,14 +455,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row form-group">
-                                            <span class="col-sm-6 control-label">
-                                                Accepts Subsidized Child Care:
-                                            </span>
-                                                <div class="col-sm-6">
-                                                    <span class="data-element">Yes</span>
-                                                </div>
-                                            </div>
+                                            
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
@@ -569,10 +562,7 @@
                                                     <p>
                                                         <strong>Phone#: </strong>{{model.provider.PhoneNumber}}
                                                     </p>
-                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===true">
-
-                                                        <strong>Accepts Subsidized Child Care: </strong>Yes
-                                                    </p>
+                                                    
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
@@ -584,10 +574,7 @@
                                                     <p>
                                                         <strong>License Type: </strong>{{model.provider.LicenseType}}
                                                     </p>
-                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===false">
-
-                                                        <strong>Accepts Subsidized Child Care: </strong>No
-                                                    </p>
+                                                    
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
@@ -608,10 +595,7 @@
                                                     </p>
 
 
-                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems!==false&& model.provider.CanTakeChildrenWithBehavioralProblems!==true">
-
-                                                        <strong>Accepts Subsidized Child Care: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
-                                                    </p>
+                                                    
                                                 </div>
 
                                             </div>

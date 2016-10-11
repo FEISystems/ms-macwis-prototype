@@ -129,7 +129,6 @@
                 angular.forEach(itemsToPrint, function (provider) {
                    // var TerValue = value.split(',')[16].split(':')[1].replace(/\"/g, "") == "true" ? "Yes" : "No";
 
-                    var acceptsSubsidizedChild = "N/A";
                     htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> " + "<div class='col-xs-offset-1'> " +
                         "<div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + provider.ProviderName + "</p></div>" +
 
@@ -142,7 +141,6 @@
 
                     "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + provider.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + provider.PhysicalCity + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + provider.QualityRating +  "</p>  " +
                     "<p class='ng-binding'><strong>License Type: </strong>   " + provider.LicenseType + " </p>" +
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts Subsidized Child Care: </strong>" + acceptsSubsidizedChild + "</p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
                     " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + provider.CountyName + "</p>" +
@@ -228,8 +226,8 @@
                         &&
                         (!model.Criteria.ServesSpecialMedicalNeeds ||
                         (model.Criteria.ServesSpecialMedicalNeeds && model.Criteria.ServesSpecialMedicalNeeds == provider.CanTakeChildrenWithMedicalProblems)) &&
-                        (!model.Criteria.AcceptsSubsidizedChildCare || (
-                         model.Criteria.AcceptsSubsidizedChildCare && model.Criteria.AcceptsSubsidizedChildCare == provider.USDAFoodPrograms   
+                        (!model.Criteria.AcceptsUSDAFoodProgram || (
+                         model.Criteria.AcceptsUSDAFoodProgram && model.Criteria.AcceptsUSDAFoodProgram == provider.USDAFoodPrograms   
                         )));
                         if (match)
                             model.filteredProviders.push(provider);
