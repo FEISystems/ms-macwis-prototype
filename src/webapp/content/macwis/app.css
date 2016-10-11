@@ -1,3 +1,12 @@
+.dark-bg-border-focus :focus,
+.dark-bg-border-focus button:focus,
+.dark-bg-border-focus .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+.dark-bg-border-focus input[type="radio"]:focus,
+.dark-bg-border-focus input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
+}
 body .no-padding {
   padding: 0 !important;
 }
@@ -93,6 +102,15 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer .reset {
   color: #000 !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer :focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer button:focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer input[type="radio"]:focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
 }
 body div#resultsPageContainer div#resultsPanelContainer {
   overflow-x: hidden;
@@ -231,6 +249,15 @@ body #homeSearch div[role="tabpanel"] h2 {
 }
 body #homeSearch label {
   font-size: 130%;
+}
+body #homeSearch :focus,
+body #homeSearch button:focus,
+body #homeSearch .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+body #homeSearch input[type="radio"]:focus,
+body #homeSearch input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
 }
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1200px) {
