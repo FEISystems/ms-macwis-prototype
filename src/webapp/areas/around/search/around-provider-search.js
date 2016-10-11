@@ -549,7 +549,7 @@
     };
 
     module.component("aroundProviderSearch", {
-        templateUrl: "Areas/around/search/around-provider-search.html",
+        templateUrl: "areas/around/search/around-provider-search.html",
         controllerAs: "model",
         controller: ["$scope", "$scope", "providerService", "googleMapService", controller]
     });

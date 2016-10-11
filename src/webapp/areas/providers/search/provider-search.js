@@ -337,7 +337,7 @@
     };
 
     module.component("providerSearch", {
-        templateUrl: "Areas/providers/search/provider-search.html",
+        templateUrl: "areas/providers/search/provider-search.html",
         controllerAs: "model",
         controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
     });
