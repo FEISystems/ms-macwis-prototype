@@ -7,7 +7,7 @@
             return lists.slice(start);
         };
     });
-    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log) {
+    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log, $timeout) {
         /**************************Model datapoints******************** */
         var model = this;
         model.title = "Provider Search";
@@ -144,17 +144,19 @@
 
                     var acceptsSubsidizedChild = "N/A";
                     var templateModel = JSON.parse(value);
-                    htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + templateModel.ProviderName + "</p></div>" +
+                    htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> " + "<div class='col-xs-offset-1'> " +
+                        "<div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + templateModel.ProviderName + "</p></div>" +
 
                     "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + templateModel.ProviderType + "</p>" +
-                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + "N/A" +"</p> " +
-                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + "N/A" +"</p> " +
-                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " + "N/A" +"</p> " +
+                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + templateModel.HoursofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + templateModel.DaysofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " +  templateModel.CanTakeChildrenWithMedicalProblems  +"</p> " +
                     "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + templateModel.CanTakeChildrenWithBehavioralProblems +"</p> " +
-                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + "N/A" + "</p></div>" +
+                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + templateModel.USDAFoodPrograms  + "</p></div>" +
+
                     "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + templateModel.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + templateModel.City + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + templateModel.QualityRating +  "</p>  " +
                     "<p class='ng-binding'><strong>License Type: </strong>   " + templateModel.LicenseType + " </p>" +
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>" + acceptsSubsidizedChild + "</p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts Subsidized Child Care: </strong>" + acceptsSubsidizedChild + "</p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
                     " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + templateModel.County + "</p>" +
@@ -224,20 +226,27 @@
                             nameFound = false;
                         }
                     }
-                    if (nameFound &&
-                        (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType === provider.ProviderType)) &&
-                        (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() === provider.PhysicalCity.toLowerCase())) &&
-                        (!model.Criteria.County || (model.Criteria.County && model.Criteria.County === provider.CountyNumber)) &&
-                        (model.Criteria.Rate === undefined || model.Criteria.Rate === null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
-                        (!model.Criteria.address || (model.Criteria.address === provider.PhysicalZipCode)) &&
+                    var match = (nameFound &&
+                        (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType == provider.ProviderType)) &&
+                        (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() == provider.PhysicalCity.toLowerCase())) &&
+                        (!model.Criteria.County || (model.Criteria.County && model.Criteria.County == provider.CountyNumber)) &&
+                        (model.Criteria.Rate == undefined || model.Criteria.Rate == null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
+                        (!model.Criteria.address || (model.Criteria.address == provider.PhysicalZipCode)) &&
                         (!model.Criteria.Age || (model.Criteria.Age &&
                         dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
                         dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
-                        (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender.toLowerCase() === provider.Gender.toLowerCase())) &&
+                        (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender.toLowerCase() == provider.Gender.toLowerCase())) &&
                         (!model.Criteria.CanTakeBehavioralChildren ||
-                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) === provider.CanTakeChildrenWithBehavioralProblems))) {
-                        model.filteredProviders.push(provider);
-                    }
+                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) == provider.CanTakeChildrenWithBehavioralProblems))
+                        &&
+                        (!model.Criteria.ServesSpecialMedicalNeeds ||
+                        (model.Criteria.ServesSpecialMedicalNeeds && model.Criteria.ServesSpecialMedicalNeeds == provider.CanTakeChildrenWithMedicalProblems)) &&
+                        (!model.Criteria.AcceptsSubsidizedChildCare || (
+                         model.Criteria.AcceptsSubsidizedChildCare && model.Criteria.AcceptsSubsidizedChildCare == provider.USDAFoodPrograms   
+                        )));
+                        if (match)
+                            model.filteredProviders.push(provider);
+                        
                 });
             } else {
                 model.filteredProviders = tempProviders;
@@ -290,6 +299,12 @@
             model.filteredProviders = _.reverse(model.filteredProviders);
         };
 
+        model.onKeyPress = function(e){
+            if (e && e.originalEvent && e.originalEvent.code == "Enter")
+            {
+                model.search();
+            }
+        }
         /**********************
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
@@ -330,7 +345,6 @@
                 model.Criteria.Rate = 0;
             model.Criteria.address = criteria.zipCode;
             model.Criteria.distince = criteria.radius;
-
             queueService.setMsg('homeSearchCriteria', null);
             model.search();
 
@@ -340,6 +354,6 @@
     module.component("providerSearch", {
         templateUrl: "Areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', controller]
+        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
     });
 }())

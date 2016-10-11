@@ -278,9 +278,24 @@ body #homeSearch label {
     position: static;
     padding-top: 20px;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
+  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form .search-panel {
     overflow: visible !important;
     max-height: none !important;
+    position: static;
+  }
+  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form .search-panel .panel-body {
+    position: static;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    bottom: 90px;
+  }
+  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form .search-panel .sticky-footer {
+    position: static !important;
+    left: 0px !important;
+    right: 0px !important;
+    display: none;
+    margin: 0px !important;
   }
 }
 *::-webkit-scrollbar {

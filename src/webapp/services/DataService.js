@@ -75,11 +75,9 @@
             var result = null;
             switch (id) {
             case 1:
-                result = true;
-                break;
+                return "Yes";
             case 2:
-                result = false;
-                break;
+                return "No";
             default:
                 console.log("can't get CanTakeBehavioralChildren by id: " + id);
                 break;
@@ -481,11 +479,11 @@
             return [
                 {
                     "Id": "Boy",
-                    "Name": "Boy"
+                    "Name": "Boy Only"
                 },
                 {
                     "Id": "Girl",
-                    "Name": "Girl"
+                    "Name": "Girl Only"
                 },
                 {
                     "Id": "Both",
