@@ -35,7 +35,7 @@
     };
 
     module.component("home", {
-        templateUrl: "Areas/home/home.html",
+        templateUrl: "areas/home/home.html",
         controllerAs: "model",
         controller: ["$scope", "dataService", "queueService", "$location", controller]
 

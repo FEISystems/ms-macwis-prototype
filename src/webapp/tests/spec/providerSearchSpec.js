@@ -1,35 +1,29 @@
 describe('Component: providerSearch', function () {
     beforeEach(module('macwisWebApp'));
-
-    var $componentController;
-
-    beforeEach(inject(function (_$componentController_) {
-        $componentController = _$componentController_;
+    var $scope = null;
+    var controller = null;
+    beforeEach(inject(function (_$componentController_, $rootScope) {
+        $scope = $rootScope.$new();
+        controller = _$componentController_('providerSearch', {
+            $scope: $scope
+        });
     }));
 
-
     it('if no search creteria then search all', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
-        $scope.search();
-        expect($scope.filteredProviders.length).toBe($scope.AllProviders.length);
+        $scope.model.AllProviders = AllProviders();
+        $scope.model.search();
+        expect($scope.model.filteredProviders.length).toBe($scope.model.AllProviders.length);
     });
 
-
-
-
     it('search by provider name, should be fuzzy search', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
-        $scope.Criteria.ProviderName = "a";
-        $scope.search();
+        $scope.model.AllProviders = AllProviders();
+        $scope.model.Criteria.ProviderName = "a";
+        $scope.model.search();
         var allProviderNameContainsLetterA = true;
-        _.each($scope.filteredProviders, function (value) {
+        _.each($scope.model.filteredProviders, function (value) {
             allProviderNameContainsLetterA = allProviderNameContainsLetterA && (value.ProviderName.toLowerCase().indexOf('a') >= 0);
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProviderNameContainsLetterA).toBe(true);
         }
         else {
@@ -38,17 +32,15 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by provider type', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
+        $scope.model.AllProviders = AllProviders();
         var providerTypeValue = 4;
-        $scope.Criteria.ProviderType = providerTypeValue;
-        $scope.search();
+        $scope.model.Criteria.ProviderType = providerTypeValue;
+        $scope.model.search();
         var allProviderTypeIs4 = true;
-        _.each($scope.filteredProviders, function (value) {
+        _.each($scope.model.filteredProviders, function (value) {
             allProviderTypeIs4 = allProviderTypeIs4 && (value.ProviderType == providerTypeValue);
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProviderTypeIs4).toBe(true);
         }
         else {
@@ -57,17 +49,15 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by city', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
+        $scope.model.AllProviders = AllProviders();
         var providerCityValue = "YAZOO CITY";
-        $scope.Criteria.City = providerCityValue;
-        $scope.search();
+        $scope.model.Criteria.City = providerCityValue;
+        $scope.model.search();
         var allProviderCityIsYC = true;
-        _.each($scope.filteredProviders, function (value) {
+        _.each($scope.model.filteredProviders, function (value) {
             allProviderCityIsYC = allProviderCityIsYC && (value.PhysicalCity == providerCityValue);
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProviderCityIsYC).toBe(true);
         }
         else {
@@ -76,17 +66,15 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by county', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
+        $scope.model.AllProviders = AllProviders();
         var providerCountyValue = 82;
-        $scope.Criteria.County = providerCountyValue;
-        $scope.search();
+        $scope.model.Criteria.County = providerCountyValue;
+        $scope.model.search();
         var allProviderCountyIsYC = true;
         _.each($scope.filteredProviders, function (value) {
             allProviderCountyIsYC = allProviderCountyIsYC && (value.CountyNumber == providerCountyValue);
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProviderCountyIsYC).toBe(true);
         }
         else {
@@ -95,17 +83,15 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by quality rating', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
+        $scope.model.AllProviders = AllProviders();
         var providerQualityRating = 3;
-        $scope.Criteria.Rate = providerQualityRating;
-        $scope.search();
+        $scope.model.Criteria.Rate = providerQualityRating;
+        $scope.model.search();
         var allProviderQualityRatingIs3 = true;
-        _.each($scope.filteredProviders, function (value) {
+        _.each($scope.model.filteredProviders, function (value) {
             allProviderQualityRatingIs3 = allProviderQualityRatingIs3 && (value.QualityRating == providerQualityRating);
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProviderQualityRatingIs3).toBe(true);
         }
         else {
@@ -114,25 +100,23 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by multiple criterias(provider name, provider type, city, county, quality star rating)', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
+        $scope.model.AllProviders = AllProviders();
         var providerQualityRating = 3;
-        $scope.Criteria.ProviderName = "Abelina";
-        $scope.Criteria.ProviderType = 5;
-        $scope.Criteria.City = "YAZOO CITY";
-        $scope.Criteria.County = 82;
-        $scope.Criteria.Rate = 0;
-        $scope.search();
+        $scope.model.Criteria.ProviderName = "Abelina";
+        $scope.model.Criteria.ProviderType = 5;
+        $scope.model.Criteria.City = "YAZOO CITY";
+        $scope.model.Criteria.County = 82;
+        $scope.model.Criteria.Rate = 0;
+        $scope.model.search();
         var allFieldsMatched = true;
-        _.each($scope.filteredProviders, function (value) {
-            allFieldsMatched = allFieldsMatched && (value.ProviderName.toLowerCase().indexOf($scope.Criteria.ProviderName.toLowerCase()) >= 0)
-                                                && (value.ProviderType == $scope.Criteria.ProviderType)
-                                                && (value.PhysicalCity == $scope.Criteria.City)
-                                                && (value.CountyNumber == $scope.Criteria.County)
-                                                && (value.QualityRating == $scope.Criteria.Rate);
+        _.each($scope.model.filteredProviders, function (value) {
+            allFieldsMatched = allFieldsMatched && (value.ProviderName.toLowerCase().indexOf($scope.model.Criteria.ProviderName.toLowerCase()) >= 0)
+                                                && (value.ProviderType == $scope.model.Criteria.ProviderType)
+                                                && (value.PhysicalCity == $scope.model.Criteria.City)
+                                                && (value.CountyNumber == $scope.model.Criteria.County)
+                                                && (value.QualityRating == $scope.model.Criteria.Rate);
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allFieldsMatched).toBe(true);
         }
         else {
@@ -141,17 +125,15 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by age', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
+        $scope.model.AllProviders = AllProviders();
         var ageRange = 6;
-        $scope.Criteria.Age = ageRange;
-        $scope.search();
+        $scope.model.Criteria.Age = ageRange;
+        $scope.model.search();
         var allProvidersAgeIn5And9 = true;
-        _.each($scope.filteredProviders, function (value) {
+        _.each($scope.model.filteredProviders, function (value) {
             allProvidersAgeIn5And9 = allProvidersAgeIn5And9 && (value.MinAge <= 5 && value.MaxAge >= 9);
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProvidersAgeIn5And9).toBe(true);
         }
         else {
@@ -160,17 +142,15 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by gender', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
+        $scope.model.AllProviders = AllProviders();
         var ageRange = 6;
-        $scope.Criteria.Gender = "Boy";
-        $scope.search();
+        $scope.model.Criteria.Gender = "Boy";
+        $scope.model.search();
         var allProviderIsBoy = true;
-        _.each($scope.filteredProviders, function (value) {
+        _.each($scope.model.filteredProviders, function (value) {
             allProviderIsBoy = allProviderIsBoy && (value.Gender == "Boy");
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProviderIsBoy).toBe(true);
         }
         else {
@@ -179,17 +159,14 @@ describe('Component: providerSearch', function () {
     });
 
     it('search by accepts subsidized child care', function () {
-        var $scope = {};
-        var component = $componentController('providerSearch', { $scope: $scope });
-        $scope.AllProviders = AllProviders();
-        var ageRange = 6;
-        $scope.Criteria.CanTakeBehavioralChildren = 1;
-        $scope.search();
+        $scope.model.AllProviders = AllProviders();
+        $scope.model.Criteria.CanTakeBehavioralChildren = 1;
+        $scope.model.search();
         var allProviderAccepts = true;
-        _.each($scope.filteredProviders, function (value) {
-            allProviderAccepts = allProviderAccepts && (value.CanTakeChildrenWithBehavioralProblems == true);
+        _.each($scope.model.filteredProviders, function (value) {
+            allProviderAccepts = allProviderAccepts && (value.CanTakeChildrenWithBehavioralProblems == "Yes");
         });
-        if ($scope.filteredProviders.length > 0) {
+        if ($scope.model.filteredProviders.length > 0) {
             expect(allProviderAccepts).toBe(true);
         }
         else {
@@ -217,9 +194,13 @@ function AllProviders() {
           "MinAge": 7,
           "MaxAge": 7,
           "Gender": "Girl",
-          "CanTakeChildrenWithBehavioralProblems": true,
+          "CanTakeChildrenWithBehavioralProblems": "No",
           "Longitude": -90.640331841471721,
-          "Latitude": 32.702097831167421
+          "Latitude": 32.702097831167421,
+          "HoursofOperation": "9 AM - 4 AM",
+          "DaysofOperation": "M W TH F",
+          "CanTakeChildrenWithMedicalProblems": "No",
+          "USDAFoodPrograms": "Yes"
       },
       {
           "Id": 168,
@@ -238,9 +219,13 @@ function AllProviders() {
           "MinAge": 4,
           "MaxAge": 9,
           "Gender": "Boy",
-          "CanTakeChildrenWithBehavioralProblems": true,
+          "CanTakeChildrenWithBehavioralProblems": "Yes",
           "Longitude": -90.562220571883046,
-          "Latitude": 32.923857458333757
+          "Latitude": 32.923857458333757,
+          "HoursofOperation": "9 AM - 10 AM",
+          "DaysofOperation": "T W F",
+          "CanTakeChildrenWithMedicalProblems": "No",
+          "USDAFoodPrograms": "No"
       },
       {
           "Id": 173,
@@ -259,9 +244,13 @@ function AllProviders() {
           "MinAge": 11,
           "MaxAge": 11,
           "Gender": "Both",
-          "CanTakeChildrenWithBehavioralProblems": true,
+          "CanTakeChildrenWithBehavioralProblems": "Yes",
           "Longitude": -90.276894399184613,
-          "Latitude": 32.868142375957476
+          "Latitude": 32.868142375957476,
+          "HoursofOperation": "11 AM - 6 AM",
+          "DaysofOperation": "T W",
+          "CanTakeChildrenWithMedicalProblems": "No",
+          "USDAFoodPrograms": "No"
       },
       {
           "Id": 178,
@@ -280,9 +269,13 @@ function AllProviders() {
           "MinAge": 7,
           "MaxAge": 9,
           "Gender": "Girl",
-          "CanTakeChildrenWithBehavioralProblems": true,
+          "CanTakeChildrenWithBehavioralProblems": "Yes",
           "Longitude": -90.592949126486161,
-          "Latitude": 32.812427293581194
+          "Latitude": 32.812427293581194,
+          "HoursofOperation": "3 PM - 5 PM",
+          "DaysofOperation": "M T W TH",
+          "CanTakeChildrenWithMedicalProblems": "No",
+          "USDAFoodPrograms": "No"
       },
       {
           "Id": 1104,
@@ -301,9 +294,13 @@ function AllProviders() {
           "MinAge": 11,
           "MaxAge": 11,
           "Gender": "Girl",
-          "CanTakeChildrenWithBehavioralProblems": true,
+          "CanTakeChildrenWithBehavioralProblems": "Yes",
           "Longitude": -89.728038841343363,
-          "Latitude": 32.030667401617627
+          "Latitude": 32.030667401617627,
+          "HoursofOperation": "9 AM - 4 PM",
+          "DaysofOperation": "T TH F",
+          "CanTakeChildrenWithMedicalProblems": "Yes",
+          "USDAFoodPrograms": "No"
       },
       {
           "Id": 2615,
@@ -322,9 +319,13 @@ function AllProviders() {
           "MinAge": 5,
           "MaxAge": 10,
           "Gender": "Boy",
-          "CanTakeChildrenWithBehavioralProblems": true,
+          "CanTakeChildrenWithBehavioralProblems": "Yes",
           "Longitude": -89.4907531694069,
-          "Latitude": 34.5458086616672
+          "Latitude": 34.5458086616672,
+          "HoursofOperation": "10 AM - 5 PM",
+          "DaysofOperation": "M T TH",
+          "CanTakeChildrenWithMedicalProblems": "Yes",
+          "USDAFoodPrograms": "Yes"
       }
     ];
 }

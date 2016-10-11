@@ -9,7 +9,7 @@
 
 
     module.component("help", {
-        templateUrl: "Areas/help/help.html",
+        templateUrl: "areas/help/help.html",
         controllerAs: "model",
         controller: ["$scope", controller]
 
