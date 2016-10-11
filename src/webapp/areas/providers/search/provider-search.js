@@ -290,6 +290,39 @@
                 model.search();
             }
         }
+
+        // Toggle icons for collapse states
+        model.toggleSearchPanels = function($event){
+            var span = $($event.currentTarget).children();
+            if ($(span).hasClass('glyphicon-plus')) {
+                $(span).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+            } else {
+                $(span).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+            }
+        };
+        model.toggleProviderDetails = function($event) {
+            var span = $($event.currentTarget).find(".glyphicon");
+            if ($(span).hasClass('glyphicon-chevron-down')) {
+                $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                $($event.currentTarget).find('.toggleProviderInfo').html("show less");
+            } else {
+                $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                $($event.currentTarget).find('.toggleProviderInfo').html("show more");
+            }
+        };
+        model.$onInit = function () {
+            macwis.stickyFooter('.sticky-footer');
+            // $(window).resize(function(){
+            //     if (window.width == 480) {
+            //
+            //     } else {
+            //
+            //     }
+            //
+            // });
+        }
+
+
         /**********************
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
@@ -339,6 +372,6 @@
     module.component("providerSearch", {
         templateUrl: "areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
+        controller: ["$scope", "$rootScope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
     });
 }())

@@ -13,7 +13,7 @@
                         <!-- PROVIDER SEARCH OPTIONS -->
                         <fieldset>
                             <legend>
-                                <button class="btn-block criteriaButton" ng-click="providerCollapsed = !providerCollapsed">
+                                <button class="btn-block" ng-click="model.toggleSearchPanels($event); providerCollapsed = !providerCollapsed">
                                     Search by Provider <span class="glyphicon glyphicon-minus pull-right"></span></button>
                             </legend>
                             <div uib-collapse="providerCollapsed" class="in" id="providerCriteria">
@@ -109,8 +109,8 @@
                         <fieldset>
                             <legend>
                                 <button ng-model="model.locationCollapsed"
-                                        ng-click="locationCollapsed = !locationCollapsed"
-                                        class="btn-block criteriaButton">Search by Distance
+                                        ng-click="model.toggleSearchPanels($event); locationCollapsed = !locationCollapsed"
+                                        class="btn-block ">Search by Distance
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
@@ -154,8 +154,8 @@
                         <!-- ADVANCED SEARCH OPTIONS -->
                         <fieldset>
                             <legend>
-                                <button class="btn-block criteriaButton"
-                                        ng-click="advancedOptionsCollapsed = !advancedOptionsCollapsed">Advanced Search
+                                <button class="btn-block"
+                                        ng-click="model.toggleSearchPanels($event); advancedOptionsCollapsed = !advancedOptionsCollapsed">Advanced Search
                                     Options
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
@@ -491,7 +491,7 @@
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-                                        <button class="btn expandDetails" ng-click="isCollapsed = !isCollapsed">
+                                        <button class="btn" ng-click="model.toggleProviderDetails($event); isCollapsed = !isCollapsed">
                                             <span class="glyphicon glyphicon-chevron-down"></span>
                                             <span class="toggleProviderInfo" style="font-weight: normal">show more</span>
                                         </button>
