@@ -27,7 +27,6 @@
         model.locationCollapsed = function () {
             $scope.isCollapsed = true
         };
-
         model.Cities = dataService.getCities();
         model.Counties = dataService.getCounties();
         model.selected = [];
@@ -116,54 +115,41 @@
         };
 
         /****************** *Print functionality **************/
-        model.selectedItems = [];
-
-        model.selectProviderToPrint = function ($event) {
-            var currentSelection = $event.currentTarget;
-            if ($(currentSelection).is(":checked")) {
-                model.selectedItems.push($(currentSelection).attr('id'));
-            } else {
-                // model.selected.splice(model.selected.length-1);
-
-                var currentSelectionId = JSON.parse($(currentSelection).attr('id')).Id;
-
-                $.each(model.selectedItems, function(i, item){
-                    var itemToSplice = JSON.parse(item);
-                    if (itemToSplice.Id == currentSelectionId){
-                        model.selectedItems.splice(i, 1);
-                    }
-                });
-            }
-        };
-
+        
         model.printprovider = function () {
             var htmlcode = '';
-            if (model.selectedItems.length > 0) {
-                $.each(model.selectedItems, function (index, value) {
+            var itemsToPrint = [];
+
+            angular.forEach(model.filteredProviders, function (provider) {
+                if (provider.selectedForPrint) 
+                    itemsToPrint.push(provider);
+            });
+
+            if (itemsToPrint.length > 0) {
+                angular.forEach(itemsToPrint, function (provider) {
                    // var TerValue = value.split(',')[16].split(':')[1].replace(/\"/g, "") == "true" ? "Yes" : "No";
 
                     var acceptsSubsidizedChild = "N/A";
-                    var templateModel = JSON.parse(value);
                     htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> " + "<div class='col-xs-offset-1'> " +
-                        "<div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + templateModel.ProviderName + "</p></div>" +
+                        "<div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + provider.ProviderName + "</p></div>" +
 
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + templateModel.ProviderType + "</p>" +
-                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + templateModel.HoursofOperation  +"</p> " +
-                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + templateModel.DaysofOperation  +"</p> " +
-                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " +  templateModel.CanTakeChildrenWithMedicalProblems  +"</p> " +
-                    "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + templateModel.CanTakeChildrenWithBehavioralProblems +"</p> " +
-                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + templateModel.USDAFoodPrograms  + "</p></div>" +
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + provider.ProviderType + "</p>" +
+                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + provider.HoursofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + provider.DaysofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " +  provider.CanTakeChildrenWithMedicalProblems  +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + provider.CanTakeChildrenWithBehavioralProblems +"</p> " +
+                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + provider.USDAFoodPrograms  + "</p></div>" +
 
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + templateModel.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + templateModel.City + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + templateModel.QualityRating +  "</p>  " +
-                    "<p class='ng-binding'><strong>License Type: </strong>   " + templateModel.LicenseType + " </p>" +
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + provider.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + provider.PhysicalCity + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + provider.QualityRating +  "</p>  " +
+                    "<p class='ng-binding'><strong>License Type: </strong>   " + provider.LicenseType + " </p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts Subsidized Child Care: </strong>" + acceptsSubsidizedChild + "</p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
-                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + templateModel.County + "</p>" +
-                    "<p class='ng-binding'><strong>Zip Code: </strong> " + templateModel.PhysicalZipCode + "</p>" +
-                    "    <p class='ng-binding'><strong>Provider Capacity: </strong> " + templateModel.ProviderCapacity + "</p>" +
-                    "<p class='ng-binding'><strong>Age Range: </strong> " + templateModel.MinAge + " to " + templateModel.MaxAge + "  </p>" +
-                    "<p class='ng-binding'><strong>Gender: </strong> " + templateModel.Gender + " </p></div></div></div></div></tr></table><hr/>";
+                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + provider.CountyName + "</p>" +
+                    "<p class='ng-binding'><strong>Zip Code: </strong> " + provider.PhysicalZipCode + "</p>" +
+                    "    <p class='ng-binding'><strong>Provider Capacity: </strong> " + provider.ProviderCapacity + "</p>" +
+                    "<p class='ng-binding'><strong>Age Range: </strong> " + provider.MinAge + " to " + provider.MaxAge + "  </p>" +
+                    "<p class='ng-binding'><strong>Gender: </strong> " + provider.Gender + " </p></div></div></div></div></tr></table><hr/>";
 
                 });
                 // htmlcode=htmlcode+'</table>'; if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
@@ -226,6 +212,7 @@
                             nameFound = false;
                         }
                     }
+                    provider.selectedForPrint = false;
                     var match = (nameFound &&
                         (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType == provider.ProviderType)) &&
                         (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() == provider.PhysicalCity.toLowerCase())) &&

@@ -300,9 +300,9 @@
                         <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
                             <td class="col-xs-1 printSelect" ng-hide="false">
                                 <div id="checkboxes">
-                                    <input type="checkbox" id={{provider}}
-                                           ng-click="model.selectProviderToPrint($event)"/>
-                                    <label for="{{provider}}" class="sr-only">Add to Print List</label>
+                                    <input type="checkbox" id={{provider.Id}}
+                                           ng-model="provider.selectedForPrint"/>
+                                    <label for="{{provider.Id}}" class="sr-only">Add to Print List</label>
                                 </div>
                             </td>
                             <td class="col-xs-11  providerNameSection">
