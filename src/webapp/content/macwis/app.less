@@ -1,4 +1,18 @@
 @primary-theme-color: darken(#6498AD, 10%);
+@dark-bg-focus-color: #16e9ff;
+
+.dark-bg-border-focus {
+
+  :focus,
+  button:focus,
+  .form-control:focus {
+    border: 2px solid @dark-bg-focus-color !important;
+  }
+  input[type="radio"]:focus,
+  input[type="checkbox"]:focus {
+    outline: 5px auto @dark-bg-focus-color;
+  }
+}
 
 body {
   .no-padding {
@@ -131,6 +145,7 @@ body {
             }
           }
         }
+        .dark-bg-border-focus;
       }
     }
 
@@ -319,6 +334,8 @@ body {
     }
   }
 
+    .dark-bg-border-focus;
+  }
 }
 
 /* Large Devices, Wide Screens */
@@ -445,7 +462,6 @@ body {
           }
         }
 
-      }
     }
   }
 }
