@@ -348,6 +348,8 @@ Issues can be reported to MS.bugreport@feisystems.com . This information is incl
 
 
 
-[Agile Scrum Process]:	./artifacts/Agile\sScrum\sProcess\sDiagram/Agile_Development_Scrum_Process_Diagram.png
+[Agile Scrum Process]:	../blob/master/artifacts/Agile Scrum Process Diagram/Agile_Development_Scrum_Process_Diagram.png
+
+[Agile Scrum Process]:	(./artifacts/Agile Scrum Process Diagram/Agile_Development_Scrum_Process_Diagram.png)
 
 
