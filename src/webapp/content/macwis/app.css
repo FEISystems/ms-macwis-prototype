@@ -265,13 +265,13 @@ body #homeSearch div[role="tabpanel"] h2 {
 body #homeSearch label {
   font-size: 130%;
 }
-body #homeSearch :focus,
-body #homeSearch button:focus,
-body #homeSearch .form-control:focus {
+body :focus,
+body button:focus,
+body .form-control:focus {
   border: 2px solid #16e9ff !important;
 }
-body #homeSearch input[type="radio"]:focus,
-body #homeSearch input[type="checkbox"]:focus {
+body input[type="radio"]:focus,
+body input[type="checkbox"]:focus {
   outline: 5px auto #16e9ff;
 }
 /* Large Devices, Wide Screens */

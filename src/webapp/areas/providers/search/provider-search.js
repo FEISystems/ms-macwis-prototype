@@ -134,11 +134,11 @@
                     "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + provider.CanTakeChildrenWithBehavioralProblems +"</p> " +
                     "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + provider.USDAFoodPrograms  + "</p></div>" +
 
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + provider.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + provider.PhysicalCity + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + provider.QualityRating +  "</p>  " +
-                    "<p class='ng-binding'><strong>License Type: </strong>   " + provider.LicenseType + " </p>" +
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + provider.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + provider.PhysicalCity.toTitleCase() + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + provider.QualityRating +  "</p>  " +
+                    "<p class='ng-binding'><strong>License Type: </strong>   " + provider.LicenseType.toTitleCase() + " </p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
-                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + provider.CountyName + "</p>" +
+                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + provider.CountyName.toTitleCase() + "</p>" +
                     "<p class='ng-binding'><strong>Zip Code: </strong> " + provider.PhysicalZipCode + "</p>" +
                     "    <p class='ng-binding'><strong>Provider Capacity: </strong> " + provider.ProviderCapacity + "</p>" +
                     "<p class='ng-binding'><strong>Age Range: </strong> " + provider.MinAge + " to " + provider.MaxAge + "  </p>" +
