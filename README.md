@@ -15,7 +15,7 @@ In addition to the requirements provided in the solicitation, the FEi team has e
 ##  B.	List of Artifacts Used to Create Prototype
 Our team relied on the following artifacts to create the prototype:
 
-*	**Staffing Plan:** Greater detail about the team and roles can be found in <LINK to Section III> Section III. Team Structure. 
+*	**Staffing Plan:** Greater detail about the team and roles can be found in [Section III - Team Structure](#iii----team-structure) 
 *	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint schedule and activities are included | [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf)
 *	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in section <LINK to Section IV> IV. Research and Discovery.
 *	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in section <LINK to Section V> V. Design. 
