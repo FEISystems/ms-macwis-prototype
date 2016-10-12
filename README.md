@@ -107,10 +107,11 @@ FEi’s research and discovery efforts were designed to better understand the ne
 
 **Caseworker Perspective**
 
-The Requirements Team, including FEi’s PO and Business Analyst, analyzed the needs expressed by caseworkers during the Caseworker Q&A session held as part of this procurement on Friday, September 9, 2016. The recorded call was transcribed, <LINK RMF Linked Files | Research Documents | Mississippi_Caseworker_Q&A_Transcript.PDF>. Our team reviewed the transcription and highlighted themes that emerged throughout the call. Caseworkers expressed particular interest in several features and improvements to the current search portal. Our team’s prototype incorporates the following enhancements:
-1.	Geographic searches/ability to search by radius
-2.	Advanced search capabilities to narrow down providers
-3.	Multi-language support
+The Requirements Team, including FEi’s PO and Business Analyst, analyzed the needs expressed by caseworkers during the Caseworker Q&A session held as part of this procurement on Friday, September 9, 2016. The recorded call was transcribed, [Research Document 6](./artifacts/Research Documents/Mississippi_Caseworker_Q&A_Transcript.pdf). Our team reviewed the transcription and highlighted themes that emerged throughout the call. Caseworkers expressed particular interest in several features and improvements to the current search portal. Our team’s prototype incorporates the following enhancements:
+
+1.  Geographic searches/ability to search by radius
+2.  Advanced search capabilities to narrow down providers
+3.  Multi-language support
 
 In addition to the information gathered from the Caseworker Q&A, our team reached out to individuals who have worked with caseworkers and could share their perspective. We conducted structured interviews with two individuals who have a long career in social work (particularly child welfare), Gary and Liz (last names are not disclosed for privacy) on September 28, 2016 to further understand the needs and protocols followed by child welfare professionals. 
 
@@ -121,6 +122,7 @@ It is worth noting that the interviews with Gary and Liz did not just consist of
 **Parent Perspective**
 
 Similarly, our team reached out to a network of parents to test the prototype and gather their perceptions. Of particular relevance, we gained insights from parents familiar with the experience of looking for child care providers. Interviews with parents resulted in useful design feedback for the results filters. The revisions focused on the filters for: 
+
 1.	Hours of operation
 2.	Days of operation
 
