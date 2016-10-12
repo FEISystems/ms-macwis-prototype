@@ -5,15 +5,22 @@
             <form name="searchForm">
                 <div class="panel search-panel">
                     <div class="panel-heading">
+                        <span class="pull-right">
+                            <button type="button" class="btn btn-default visible-xs navbar-toggle" ng-click="model.toggleSearchMenu($event); mobileSearchCollapse = !mobileSearchCollapse">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                <span class="searchToggle">Show Menu</span>
+                            </button>
+                        </span>
                         <h1>{{model.title}}</h1>
+
                     </div>
 
-                    <div class="panel-body">
+                    <div class="panel-body in" id="searchBody" uib-collapse="mobileSearchCollapse">
 
                         <!-- PROVIDER SEARCH OPTIONS -->
                         <fieldset>
                             <legend>
-                                <button class="btn-block criteriaButton" ng-click="providerCollapsed = !providerCollapsed">
+                                <button class="btn-block" ng-click="model.toggleSearchPanels($event); providerCollapsed = !providerCollapsed">
                                     Search by Provider <span class="glyphicon glyphicon-minus pull-right"></span></button>
                             </legend>
                             <div uib-collapse="providerCollapsed" class="in" id="providerCriteria">
@@ -59,45 +66,46 @@
                                         Show All
                                     </label><br/>
 
+                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate"
+                                                        value="{{model.Rates[5].Id}}">
                                     <label>
-                                        <input id="starRating" type="radio" ng-model="model.Criteria.Rate"
-                                               value="{{model.Rates[5].Id}}">
-                                        <img src="content/macwis/knewstuff.png"/><img
-                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
-                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png">
+                                        <span class="sr-only">Five star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true">
                                     </label><br/>
+
                                     <input id="starRating_two" type="radio" ng-model="model.Criteria.Rate"
                                            value="{{model.Rates[4].Id}}">
-
                                     <label for="starRating_two">
-                                        <span class="sr-only">Two</span>
-                                        <img src="content/macwis/knewstuff.png"/><img
-                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
-                                            src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png">
+                                        <span class="sr-only">Two star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                     </label><br/>
                                     <input id="starRating_three" type="radio" ng-model="model.Criteria.Rate"
                                            value="{{model.Rates[3].Id}}">
                                     <label for="starRating_three">
-                                        <span class="sr-only">Three</span>
-                                        <img src="content/macwis/knewstuff.png"/><img
-                                            src="content/macwis/knewstuff.png"><img src="content/macwis/knewstuff.png"><img
-                                            src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
+                                        <span class="sr-only">Three star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                     </label><br/>
                                     <input id="starRating_four" type="radio" ng-model="model.Criteria.Rate"
                                            value="{{model.Rates[2].Id}}">
                                     <label for="starRating_four">
-                                        <span class="sr-only">Four</span>
-                                        <img src="content/macwis/knewstuff.png"/><img
-                                            src="content/macwis/knewstuff.png"><img src="content/macwis/14_star.png"><img
-                                            src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
+                                        <span class="sr-only">Four star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                     </label><br/>
                                     <input id="starRating_five" type="radio" ng-model="model.Criteria.Rate"
                                            value="{{model.Rates[1].Id}}">
                                     <label for="starRating_five">
-                                        <span class="sr-only">Five</span>
-                                        <img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"><img
-                                            src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img
-                                            src="content/macwis/14_star.png">
+                                        <span class="sr-only">Five star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                     </label><br/>
                                 </div>
 
@@ -108,8 +116,8 @@
                         <fieldset>
                             <legend>
                                 <button ng-model="model.locationCollapsed"
-                                        ng-click="locationCollapsed = !locationCollapsed"
-                                        class="btn-block criteriaButton">Search by Distance
+                                        ng-click="model.toggleSearchPanels($event); locationCollapsed = !locationCollapsed"
+                                        class="btn-block ">Search by Distance
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
@@ -153,8 +161,8 @@
                         <!-- ADVANCED SEARCH OPTIONS -->
                         <fieldset>
                             <legend>
-                                <button class="btn-block criteriaButton"
-                                        ng-click="advancedOptionsCollapsed = !advancedOptionsCollapsed">Advanced Search
+                                <button class="btn-block"
+                                        ng-click="model.toggleSearchPanels($event); advancedOptionsCollapsed = !advancedOptionsCollapsed">Advanced Search
                                     Options
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
@@ -179,7 +187,7 @@
                                     <select id="behavioralNeeds" class="form-control" ng-model="model.Criteria.CanTakeBehavioralChildren"
                                             ng-options="canTakeBehavioralChildren.Id as canTakeBehavioralChildren.Name for canTakeBehavioralChildren in model.CanTakeBehavioralChildrens">
                                         <option value=""></option>
-                                        
+
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -207,9 +215,11 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="pull-right">
-                                    <button class="btn btn-success" type="submit" ng-click="model.search()">Search
+                                    <button class="btn btn-success" type="submit" ng-click="model.search()">
+                                        <span class="glyphicon glyphicon-search"></span> Search
                                     </button>
-                                    <button class="btn reset" ng-click="model.clear()" style="color: black">Reset
+                                    <button class="btn reset" ng-click="model.clear()">
+                                        <span class="glyphicon glyphicon-remove"></span> Reset
                                     </button>
                                 </div>
                             </div>
@@ -275,22 +285,24 @@
                     <div class="clearfix"></div>
                     <hr style="margin-top: 0">
                     <div class="result-pagination">
-                        <div ng-if="model.filteredProviders.length>0" style="float: left;padding-top: 5px;">Showing
+                        <div ng-if="model.showPagination" style="float: left;padding-top: 5px;">Showing
                             {{model.currentPage==0 ? 1:(model.currentPage)*model.listsPerPage+1}} to
                             {{(model.currentPage!=pages-1)?(model.currentPage+1)*model.listsPerPage:model.providersCount}}
                             of {{model.providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
-                        <div ng-if="model.filteredProviders.length===0" style="float: left;padding-top: 5px;">No Data Found</div>
-                        <div class="step prevLink" style="float: left;padding-top: 5px;" ng-if="model.filteredProviders.length>0">
+                        <div ng-if="model.showPagination" style="float: left;padding-top: 5px;">No Data Found</div>
+                        <div class="step prevLink" style="float: left;padding-top: 5px;" ng-if="model.showPagination">
                             Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="model.ChangeDisplayNums()"
                                                     ng-model="model.listsPerPage"
-                                                    ng-options="item as item for item in model.ItemsPerPageList"></select>&nbsp;&nbsp;entries&nbsp;&nbsp;|&nbsp;&nbsp;
+                                                    ng-options="item as item for item in model.ItemsPerPageList"></select>&nbsp;&nbsp;
+                            <label class="ui-helper-hidden-accessible" for="selectPerPage">Show number of Entries</label>
+                            <span aria-hidden="true">entries</span>&nbsp;&nbsp;|&nbsp;&nbsp;
                         </div>
                         <div style="float: left;">
                             <button class="btn btn-default" type="button" value="PRINT SELECTED"
                                    ng-click="model.printprovider()">Print Selected</button>
                         </div>
                     </div>
-                    <table id="searchResults" class="table table-condensed table-responsive">
+                    <table id="searchResults" class="table table-condensed table-responsive" summary="Provider Search Results">
                         <thead ng-hide="true"></thead>
                         <tbody>
 
@@ -302,7 +314,7 @@
                                 <div id="checkboxes">
                                     <input type="checkbox" id={{provider.Id}}
                                            ng-model="provider.selectedForPrint"/>
-                                    <label for="{{provider.Id}}" class="sr-only">Add to Print List</label>
+                                    <label for="{{provider.Id}}" class="sr-only">Add {{provider.ProviderName}} to Print List</label>
                                 </div>
                             </td>
                             <td class="col-xs-11  providerNameSection">
@@ -316,34 +328,40 @@
                             <td class="col-xs-11 starRating">
                                 <span class="label sr-only">Quality Star Rating:</span>
                                 <div ng-if="provider.QualityRating===1">
-                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png">
+                                    <span class="sr-only">One star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true" /><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="1Star not selected" aria-hidden="true">
                                 </div>
                                 <div ng-if="provider.QualityRating===2">
-                                    <img src="content/macwis/knewstuff.png"/> <img
-                                        src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
+                                    <span class="sr-only">Two star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star"  aria-hidden="true"/> <img
+                                        src="content/macwis/knewstuff.png" alt="Selected Star"  aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                 </div>
                                 <div ng-if="provider.QualityRating===3">
-                                    <img src="content/macwis/knewstuff.png"/> <img src="content/macwis/knewstuff.png"/>
-                                    <img src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png">
+                                    <span class="sr-only">Three star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Selected Star" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                 </div>
                                 <div ng-if="provider.QualityRating===4">
-                                    <img src="content/macwis/knewstuff.png"/> <img src="content/macwis/knewstuff.png"/>
-                                    <img src="content/macwis/knewstuff.png"/> <img
-                                        src="content/macwis/knewstuff.png"/><img src="content/macwis/14_star.png">
+                                    <span class="sr-only">Four star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img
+                                        src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                 </div>
                                 <div ng-if="provider.QualityRating===5">
-                                    <img src="content/macwis/knewstuff.png"/> <img src="content/macwis/knewstuff.png"/>
-                                    <img src="content/macwis/knewstuff.png"/> <img src="content/macwis/knewstuff.png"/>
-                                    <img src="content/macwis/knewstuff.png"/>
+                                    <span class="sr-only">Five star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
                                 </div>
                                 <div ng-if="provider.QualityRating===0">
-                                    <img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img
-                                        src="content/macwis/14_star.png">
+                                    <span class="sr-only">Zero star rating</span>
+                                    <img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
                                 </div>
                             </td>
                             <td class="col-xs-11 col-sm-12 col-md-12 col-lg-12 providerInfo">
@@ -455,7 +473,7 @@
                                                 </div>
                                             </div>
 
-                                            
+
 
                                             <div class="row form-group">
                                             <span class="col-sm-6 control-label">
@@ -482,7 +500,7 @@
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-                                        <button class="btn expandDetails" ng-click="isCollapsed = !isCollapsed">
+                                        <button class="btn" ng-click="model.toggleProviderDetails($event); isCollapsed = !isCollapsed">
                                             <span class="glyphicon glyphicon-chevron-down"></span>
                                             <span class="toggleProviderInfo" style="font-weight: normal">show more</span>
                                         </button>
@@ -495,8 +513,7 @@
                     </table>
                     <!--</div>-->
 
-                    <!--<div class="result-pagination" style="display: none;">Showing {{currentPage==0 ? 1:(currentPage)*listsPerPage+1}} to {{(currentPage!=pages-1)?(currentPage+1)*listsPerPage:providersCount}} of {{providersCount}} entries</div>-->
-                    <div class="result-pagination" style="display: none; text-align: center;">
+                    <div class="result-pagination" style="text-align: center;" ng-show="model.showPagination">
 
                         <!--Pagination with disabled and active states-->
                         <!--===================================================-->
@@ -562,7 +579,7 @@
                                                     <p>
                                                         <strong>Phone#: </strong>{{model.provider.PhoneNumber}}
                                                     </p>
-                                                    
+
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
@@ -574,7 +591,7 @@
                                                     <p>
                                                         <strong>License Type: </strong>{{model.provider.LicenseType}}
                                                     </p>
-                                                    
+
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
@@ -595,7 +612,7 @@
                                                     </p>
 
 
-                                                    
+
                                                 </div>
 
                                             </div>

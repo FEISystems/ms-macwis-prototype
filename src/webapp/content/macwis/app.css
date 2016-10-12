@@ -1,3 +1,12 @@
+.dark-bg-border-focus :focus,
+.dark-bg-border-focus button:focus,
+.dark-bg-border-focus .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+.dark-bg-border-focus input[type="radio"]:focus,
+.dark-bg-border-focus input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
+}
 body .no-padding {
   padding: 0 !important;
 }
@@ -90,9 +99,33 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer {
   background: #6498AD;
+  padding: 0 15px;
 }
-body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer .reset {
-  color: #000 !important;
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row {
+  padding: 10px 0 5px 0;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row div.col-xs-12 div.pull-right button.btn.btn-success {
+  padding: 8px 35px;
+  font-weight: bold;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row div.col-xs-12 div.pull-right button.btn.reset {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row div.col-xs-12 div.pull-right button.btn.reset span.glyphicon {
+  font-size: 11px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer :focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer button:focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer input[type="radio"]:focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
 }
 body div#resultsPageContainer div#resultsPanelContainer {
   overflow-x: hidden;
@@ -181,6 +214,9 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr:nth-child(even) {
   background: #F7F7F7;
 }
+body div#resultsPageContainer div#resultsPanelContainer .result-pagination label {
+  font-weight: normal;
+}
 body .searchTab {
   background: #4d7e91 !important;
   color: white !important;
@@ -229,6 +265,15 @@ body #homeSearch div[role="tabpanel"] h2 {
 body #homeSearch label {
   font-size: 130%;
 }
+body :focus,
+body button:focus,
+body .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+body input[type="radio"]:focus,
+body input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1200px) {
   body div#resultsPageContainer div#resultsPanelContainer {
@@ -246,53 +291,72 @@ body #homeSearch label {
   body > div.container-fluid {
     padding: 0;
   }
-  body div#resultsPageContainer {
+  body > div.container-fluid div#resultsPageContainer {
     padding: 0;
   }
-  body div#resultsPageContainer div#resultsPanelContainer,
-  body div#resultsPageContainer div#searchPanelContainer {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer,
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainer {
     padding: 0px;
   }
-  body div#resultsPageContainer div#resultsPanelContainer {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer {
     padding-top: 20px;
     margin-left: 0;
   }
-  body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
     padding: 0 15px;
   }
-  body div#resultsPageContainer div#resultsPanelContainer td.providerDetails div.row {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes input {
+    margin-left: 20%;
+  }
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row {
     padding: 0;
   }
-  body div#resultsPageContainer div#resultsPanelContainer td.providerDetails div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
     padding-left: 15px !important;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter {
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter {
     padding-top: 10px;
     position: static;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
     padding-left: 0;
     position: static;
     padding-top: 20px;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form .search-panel {
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel {
     overflow: visible !important;
     max-height: none !important;
     position: static;
+    padding-bottom: 0 !important;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form .search-panel .panel-body {
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel button.btn.btn-default.visible-xs.navbar-toggle {
+    color: white;
+    margin: -15px 0 0 0;
+    display: inline-block;
+    text-shadow: none;
+    background: transparent;
+    border: 1px solid white;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel button.btn.btn-default.visible-xs.navbar-toggle span.glyphicon {
+    font-size: 11px;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel .panel-body {
     position: static;
     top: 50px;
     left: 0px;
     right: 0px;
     bottom: 90px;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form .search-panel .sticky-footer {
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel div.sticky-footer.panel-footer {
     position: static !important;
     left: 0px !important;
     right: 0px !important;
     display: none;
     margin: 0px !important;
+    padding: 0 15px;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel div.sticky-footer.panel-footer div.row {
+    padding: 15px 0 0 0;
   }
 }
 *::-webkit-scrollbar {

@@ -19,14 +19,9 @@
         model.filteredProviders = [];
         // init end
 
-        $scope.isCollapsed = true;
-        $scope.locationCollapsed = true;
-        $scope.advancedOptionsCollapsed = true;
-
-
-        model.locationCollapsed = function () {
-            $scope.isCollapsed = true
-        };
+        // model.locationCollapsed = function () {
+        //     $scope.isCollapsed = true
+        // };
         model.Cities = dataService.getCities();
         model.Counties = dataService.getCounties();
         model.selected = [];
@@ -139,11 +134,11 @@
                     "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + provider.CanTakeChildrenWithBehavioralProblems +"</p> " +
                     "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + provider.USDAFoodPrograms  + "</p></div>" +
 
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + provider.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + provider.PhysicalCity + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + provider.QualityRating +  "</p>  " +
-                    "<p class='ng-binding'><strong>License Type: </strong>   " + provider.LicenseType + " </p>" +
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + provider.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + provider.PhysicalCity.toTitleCase() + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + provider.QualityRating +  "</p>  " +
+                    "<p class='ng-binding'><strong>License Type: </strong>   " + provider.LicenseType.toTitleCase() + " </p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
                     "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
-                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + provider.CountyName + "</p>" +
+                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + provider.CountyName.toTitleCase() + "</p>" +
                     "<p class='ng-binding'><strong>Zip Code: </strong> " + provider.PhysicalZipCode + "</p>" +
                     "    <p class='ng-binding'><strong>Provider Capacity: </strong> " + provider.ProviderCapacity + "</p>" +
                     "<p class='ng-binding'><strong>Age Range: </strong> " + provider.MinAge + " to " + provider.MaxAge + "  </p>" +
@@ -191,6 +186,8 @@
                 tempProviders = model.AllProviders;
                 model.searchByCriteria(tempProviders);
             }
+            model.showPagination = (model.filteredProviders.length > model.listsPerPage);
+            console.dir(model.showPagination);
         };
         model.searchByCriteria = function (tempProviders) {
 
@@ -239,8 +236,8 @@
             ;
             model.sort();
 
-            if (model.filteredProviders.length > 0)
-                $(".result-pagination").show();
+            // if (model.filteredProviders.length > 0)
+            //     $(".result-pagination").show();
             $("#lblSelect").show();
             model.currentPage = 0;
             model.listsPerPage = model.ItemsPerPageList[0];
@@ -290,7 +287,59 @@
                 model.search();
             }
         }
-        /**********************
+
+        // Toggle icons for collapse states
+        // Set search panels to open/close on page load
+        $scope.isCollapsed = true;
+        $scope.locationCollapsed = true;
+        $scope.advancedOptionsCollapsed = true;
+
+        model.toggleSearchMenu = function($event){
+            var span = $($event.currentTarget).find('.glyphicon');
+            if($(span).hasClass('glyphicon-chevron-down')) {
+                $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                $($event.currentTarget).find('.searchToggle').html(' Hide Menu');
+            } else {
+                $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                $($event.currentTarget).find('.searchToggle').html(' Show Menu');
+            }
+        }
+        model.toggleSearchPanels = function($event){
+            var span = $($event.currentTarget).children();
+            if ($(span).hasClass('glyphicon-plus')) {
+                $(span).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+            } else {
+                $(span).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+            }
+        };
+        model.toggleProviderDetails = function($event) {
+            var span = $($event.currentTarget).find(".glyphicon");
+            if ($(span).hasClass('glyphicon-chevron-down')) {
+                $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                $($event.currentTarget).find('.toggleProviderInfo').html("show less");
+            } else {
+                $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                $($event.currentTarget).find('.toggleProviderInfo').html("show more");
+            }
+        };
+        model.$onInit = function () {
+            macwis.stickyFooter('.sticky-footer');
+            function setSearchCollapse() {
+                var mobileSearchCollapse = $('.panel-body');
+                if ($(window).innerWidth() <= 755) {
+                    mobileSearchCollapse.removeClass('in');
+                } else {
+                    mobileSearchCollapse.addClass('in');
+                };
+            };
+            setSearchCollapse();
+            $(window).resize(function () {
+                setSearchCollapse();
+            });
+        };
+
+
+            /**********************
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
          * then we pre load the search to the results. If there is not a search criteria, then it will load all providers
@@ -339,6 +388,6 @@
     module.component("providerSearch", {
         templateUrl: "areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
+        controller: ["$scope", "$rootScope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
     });
 }())

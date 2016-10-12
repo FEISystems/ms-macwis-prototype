@@ -109,20 +109,20 @@
             </div>
         </div>
     </div>
-    <div class="container " style="position: relative;">
-        <div class="row" role="tablist" id="tabContainer"
-             style="position: absolute; bottom: 0; left: 0; right:0; overflow: hidden">
-            <a href="#locationPanel" class="btn btn-default btn-lg col-xs-6 col-sm-4 searchTab activeTab" role="tab"
-               ng-click="model.setActiveTab($event)">
-                <span class="h4">Search all Providers</span>
-            </a>
-            <a href="#providerPanel" class="btn btn-default btn-lg col-xs-6 col-sm-4  searchTab" role="tab"
-               ng-click="model.setActiveTab($event)">
-                <span class="h4">Search by Provider Name</span>
-            </a>
+        <div class="container " style="position: relative;">
+            <div class="row" role="tablist" id="tabContainer"
+                 style="position: absolute; bottom: 0; left: 0; right:0; overflow: hidden">
+                <a href="#locationPanel" class="btn btn-default btn-lg col-xs-6 col-sm-4 searchTab activeTab" role="tab"
+                   ng-click="model.setActiveTab($event)">
+                    <span class="h4">Search all Providers</span>
+                </a>
+                <a href="#providerPanel" class="btn btn-default btn-lg col-xs-6 col-sm-4  searchTab" role="tab"
+                   ng-click="model.setActiveTab($event)">
+                    <span class="h4">Search by Provider Name</span>
+                </a>
+            </div>
         </div>
-    </div>
-    </div>
+   <!-- </div>  -->
     <div id="homeSearch" class="container-fluid" style="min-height: 280px">
         <div class="container">
             <div class="row">
@@ -130,7 +130,9 @@
                     <div class="row tab-content">
                         <!-- LOCATION SEARCH -->
                         <div role="tabpanel" id="locationPanel" class="tab-pane active in">
-                            <div class="row">
+                            <fieldset>
+                                <legend class="sr-only">Search All Providers</legend>
+                                <div class="row">
                                 <div class="col-xs-12 col-sm-3 col-sm-offset-1">
                                     <div class="form-group">
                                         <label for="providerType">Provider Type</label>
@@ -176,6 +178,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </fieldset>
                             <div class="row" style="border-top: 1px solid white; text-align: center !important">
                                 <a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
                                     <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Search
@@ -187,20 +190,23 @@
                         </div>
                         <!-- PROVIDER SEARCH -->
                         <div role="tabpanel" id="providerPanel" class="tab-pane">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-7 col-sm-offset-1">
-                                    <div class="col-xs-12 col-sm-7 form-group" style="padding: 0;">
-                                        <label for="providerName">Provider Name</label>
-                                        <input id="providerName" type="text" class="form-control"
-                                               ng-model="model.criteria.providerName" placeholder="Provider Name">
+                            <fieldset>
+                                <legend class="sr-only">Search by Provider Name</legend>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+                                        <div class="col-xs-12 col-sm-7 form-group" style="padding: 0;">
+                                            <label for="providerName">Provider Name</label>
+                                            <input id="providerName" type="text" class="form-control"
+                                                   ng-model="model.criteria.providerName" placeholder="Provider Name">
+                                        </div>
                                     </div>
+                                    <!--<div class=" col-sm-4">-->
+                                        <!--<a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">-->
+                                            <!--search-->
+                                        <!--</a>-->
+                                    <!--</div>-->
                                 </div>
-                                <!--<div class=" col-sm-4">-->
-                                    <!--<a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">-->
-                                        <!--search-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                            </div>
+                            </fieldset>
                             <div class="row" style="border-top: 1px solid white; text-align: center !important">
                                 <a class="btn btn-success btn-lg col-xs-12 col-sm-3" ng-click="model.onClick()" ng-link="['ProviderSearch']" style="margin-top: 15px; float: none;">
                                     <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;Search
