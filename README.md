@@ -16,16 +16,16 @@ In addition to the requirements provided in the solicitation, the FEi team has e
 Our team relied on the following artifacts to create the prototype:
 
 *	**Staffing Plan:** Greater detail about the team and roles can be found in <LINK to Section III> Section III. Team Structure. 
-*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint schedule and activities are included | [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf).
+*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint schedule and activities are included | [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf)
 *	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in section <LINK to Section IV> IV. Research and Discovery.
 *	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in section <LINK to Section V> V. Design. 
-*	**Wireframes:** Design notes and Wireframes can be found: <LINK RMF Linked Files | Wireframes >
-*	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria. [User Stories](./artifacts/User Stories/User_Stories.pdf)
-*	**Definition of Done:** We used a checklist for the definition of done [Definition_of_Done_Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf.
-*	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included in <LINK RMF Linked Files | Meeting Notes>.
+*	**Wireframes:** Design notes and Wireframes can be found | [Wireframes](./artifacts/Wireframes)
+*	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria | [User Stories](./artifacts/User Stories/User_Stories.pdf)
+*	**Definition of Done:** We used a checklist for the definition of done | [Definition of Done Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf)
+*	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included | [Meeting Notes](./artifacts/Meeting Notes)
 *	**Frameworks and Libraries Used:** A description of the prototype frameworks and libraries used and why they were employed is located in <LINK Architecture and Frameworks Section>. The prototype framework and libraries are included in GitHub, <LINK to GitHub location>. 
-*	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format) are shown here, [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx).
-*	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found: [Data_Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf.
+*	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format) are shown | [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx)
+*	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found | [Data_Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf)
 
 ##  C.	Functional Description of Prototype Components
 Based on our research and the SME interviews that we conducted, the needs and the level of expertise of the two types of prototype users, caseworkers and parents, will vary. 
@@ -141,11 +141,11 @@ We distributed the link to FEi employees and encouraged forwarding to extended n
 FEi’s user survey findings are summarized in <LINK | RMF Linked Files | Survey_Results | Survey_Results.PDF>.
 
 ##  C.	Research Methods – System
-We also completed research to tailor the system to Mississippi. For instance, we examined the Mississippi Child Care license, <LINK RMF Linked Files | Research Documents | HOW-TO_GET-A-CHILD-CARE-LICENSE_2.PDF>, application to make assumptions about available data points for the prototype. Based on the application packet, we determined it was feasible to incorporate hours and days of operation into the prototype. 
+We also completed research to tailor the system to Mississippi. For instance, we examined the Mississippi Child Care license, [Research Document 1](./artifacts/Research Documents/HOW-TO-GET-A-CHILD-CARE-LICENSE_2.pdf), application to make assumptions about available data points for the prototype. Based on the application packet, we determined it was feasible to incorporate hours and days of operation into the prototype. 
 
-Similarly, we reviewed the state licensing regulations to identify the target age groups served by centers, <LINK RMF Linked Files | Research Documents | MS_License_Regulations.PDF>. To better understand what the star quality ratings mean, we reviewed the Mississippi Quality Stars Brochure, <LINK RMF Linked Files | Research Documents | MS_Quality_Stars_Bropchure.PDF>
+Similarly, we reviewed the state licensing regulations to identify the target age groups served by centers, [Research Document 4](./artifacts/Research Documents/MS_License_Regulations.pdf). To better understand what the star quality ratings mean, we reviewed the Mississippi Quality Stars Brochure, [Research Document 5](./artifacts/Research Documents/MS_Quality_Stars_Brochure.pdf)
 
-Additionally, to gain a better understanding of the procurement approach, we completed research about 18F, <LINK RMF Linked Files | Research Documents | ISM_Conference_About_18F.PDF> and <LINK RMF Linked Files | Research Documents | MS_Article.PDF>. 
+Additionally, to gain a better understanding of the procurement approach, we completed research about 18F, [Research Document 2](./artifacts/Research Documents/ISM_Conference_About_18F.pdf). 
 
 #   V.	Design
 ##  A.	Design Guide
@@ -160,7 +160,7 @@ As mentioned in Section IV <LINK to Section VI. Research and Discovery>, we used
 For more information on bootstrap style guides, see http://getbootstrap.com/2.3.2/components.html. 
 
 ### US Digital Services Playbook
-We also followed the principles outlined in the US Digital Services Playbook. A summary of our adoption by play can be found here, <LINK RMF Linked Files | Digital Services Play Checklist | Digital_Services_Play_Checklist.PDF>. 
+We also followed the principles outlined in the US Digital Services Playbook. A summary of our adoption by play can be found here | [Digital Services Play Checklist](./artifacts/Digital Services Play Checklist/Digital_Services_Playbook.pdf). 
 
 ##  B.	Accessibility Best Practices
 
@@ -190,7 +190,7 @@ To ensure compliance without incurring refactoring costs, our team weaves Sectio
     *	Content that is accessible when displayed on hover
     *	Visual focus that moves with keyboard navigation
 
-We tested the prototype using a JAWS 16 screen reader. At the conclusion of Section 508 testing, our team compiled a detailed findings report, detailing a ‘scorecard’ of compliance, see <LINK | RMF Linked Files | Section 508 Compliance | 508_Compliance_Scorecard.PDF>. For each non-compliance issue, we documented our recommendations for remediation, including follow up timelines and testing procedures to verify that compliance problems have been sufficiently resolved. Our team worked closely with development to ensure that the reasons for non-compliance are understood, and we put into place best practices and processes for validating Section 508 compliance early on in the development process. 
+We tested the prototype using a JAWS 16 screen reader. At the conclusion of Section 508 testing, our team compiled a detailed findings report, detailing a ‘scorecard’ of compliance, see [Section 508 Compliance](./artifacts/Section 508 Compliance/Section_508_Compliance_Scorecard.pdf) For each non-compliance issue, we documented our recommendations for remediation, including follow up timelines and testing procedures to verify that compliance problems have been sufficiently resolved. Our team worked closely with development to ensure that the reasons for non-compliance are understood, and we put into place best practices and processes for validating Section 508 compliance early on in the development process. 
 ##  C.	Responsive Design
 Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see <LINK VI.A Response Web Design>.
 
