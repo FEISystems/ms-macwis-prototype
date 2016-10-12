@@ -345,4 +345,4 @@ We anticipated that users may want to print the providers they have identified d
 Issues can be reported to MS.bugreport@feisystems.com . This information is included as a footer in the Home Page of the prototype.
 
 
-[Agile Scrum Process]:	(./artifacts/Agile_Scrum_Process_Diagram/Agile_Development_Scrum_Process_Diagram.png)
+[Agile Scrum Process]:	(./artifacts/Agile Scrum Process Diagram/Agile_Development_Scrum_Process_Diagram.png)
