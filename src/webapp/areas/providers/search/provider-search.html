@@ -285,12 +285,12 @@
                     <div class="clearfix"></div>
                     <hr style="margin-top: 0">
                     <div class="result-pagination">
-                        <div ng-if="model.filteredProviders.length>0" style="float: left;padding-top: 5px;">Showing
+                        <div ng-if="model.showPagination" style="float: left;padding-top: 5px;">Showing
                             {{model.currentPage==0 ? 1:(model.currentPage)*model.listsPerPage+1}} to
                             {{(model.currentPage!=pages-1)?(model.currentPage+1)*model.listsPerPage:model.providersCount}}
                             of {{model.providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
-                        <div ng-if="model.filteredProviders.length===0" style="float: left;padding-top: 5px;">No Data Found</div>
-                        <div class="step prevLink" style="float: left;padding-top: 5px;" ng-if="model.filteredProviders.length>0">
+                        <div ng-if="model.showPagination" style="float: left;padding-top: 5px;">No Data Found</div>
+                        <div class="step prevLink" style="float: left;padding-top: 5px;" ng-if="model.showPagination">
                             Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="model.ChangeDisplayNums()"
                                                     ng-model="model.listsPerPage"
                                                     ng-options="item as item for item in model.ItemsPerPageList"></select>&nbsp;&nbsp;
@@ -513,8 +513,7 @@
                     </table>
                     <!--</div>-->
 
-                    <!--<div class="result-pagination" style="display: none;">Showing {{currentPage==0 ? 1:(currentPage)*listsPerPage+1}} to {{(currentPage!=pages-1)?(currentPage+1)*listsPerPage:providersCount}} of {{providersCount}} entries</div>-->
-                    <div class="result-pagination" style="display: none; text-align: center;">
+                    <div class="result-pagination" style="text-align: center;" ng-show="model.showPagination">
 
                         <!--Pagination with disabled and active states-->
                         <!--===================================================-->

@@ -186,6 +186,8 @@
                 tempProviders = model.AllProviders;
                 model.searchByCriteria(tempProviders);
             }
+            model.showPagination = (model.filteredProviders.length > model.listsPerPage);
+            console.dir(model.showPagination);
         };
         model.searchByCriteria = function (tempProviders) {
 
@@ -234,8 +236,8 @@
             ;
             model.sort();
 
-            if (model.filteredProviders.length > 0)
-                $(".result-pagination").show();
+            // if (model.filteredProviders.length > 0)
+            //     $(".result-pagination").show();
             $("#lblSelect").show();
             model.currentPage = 0;
             model.listsPerPage = model.ItemsPerPageList[0];
