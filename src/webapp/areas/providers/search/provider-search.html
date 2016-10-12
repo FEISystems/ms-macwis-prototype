@@ -5,10 +5,17 @@
             <form name="searchForm">
                 <div class="panel search-panel">
                     <div class="panel-heading">
+                        <span class="pull-right">
+                            <button type="button" class="btn btn-default visible-xs navbar-toggle" ng-click="model.toggleSearchMenu($event); mobileSearchCollapse = !mobileSearchCollapse">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                <span class="searchToggle">Show Menu</span>
+                            </button>
+                        </span>
                         <h1>{{model.title}}</h1>
+
                     </div>
 
-                    <div class="panel-body">
+                    <div class="panel-body in" id="searchBody" uib-collapse="mobileSearchCollapse">
 
                         <!-- PROVIDER SEARCH OPTIONS -->
                         <fieldset>
@@ -208,9 +215,11 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="pull-right">
-                                    <button class="btn btn-success" type="submit" ng-click="model.search()">Search
+                                    <button class="btn btn-success" type="submit" ng-click="model.search()">
+                                        <span class="glyphicon glyphicon-search"></span> Search
                                     </button>
-                                    <button class="btn reset" ng-click="model.clear()" style="color: black">Reset
+                                    <button class="btn reset" ng-click="model.clear()">
+                                        <span class="glyphicon glyphicon-remove"></span> Reset
                                     </button>
                                 </div>
                             </div>

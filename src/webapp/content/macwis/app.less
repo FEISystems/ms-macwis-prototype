@@ -106,20 +106,32 @@ body {
             }
             .panel-footer {
               background: #6498AD;
-              div.row {
-
+              padding: 0 15px;
+              div.row{
+                padding: 10px 0 5px 0;
+                div.col-xs-12{
+                  div.pull-right{
+                    button.btn.btn-success{
+                      padding: 8px 35px;
+                      font-weight: bold;
+                    }
+                    button.btn.reset{
+                      background: transparent;
+                      border: 1px solid white;
+                      color: white;
+                      font-weight: bold;
+                      padding: 8px 12px;
+                      span.glyphicon{
+                        font-size: 11px;
+                      }
+                    }
+                  }
+                }
               }
-              .reset {
-                color: #000 !important;
-              }
-
             }
-
           }
         }
-
       }
-
     }
 
     div#resultsPanelContainer {
@@ -339,63 +351,101 @@ body {
   body {
     > div.container-fluid {
       padding: 0;
-    }
-    div#resultsPageContainer {
-      padding: 0;
-      div#resultsPanelContainer, div#searchPanelContainer {
-        padding: 0px;
-      }
 
-      div#resultsPanelContainer {
-        padding-top: 20px;
-        margin-left: 0;
-        div.col-xs-12 {
-          div.row {
-            padding: 0 15px;
-          }
+      div#resultsPageContainer {
+        padding: 0;
+        div#resultsPanelContainer, div#searchPanelContainer {
+          padding: 0px;
         }
-        td.providerDetails {
-          div.row {
-            padding: 0;
-            div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
-              padding-left: 15px !important;
-            }
-          }
-        }
-      }
 
-      div#searchPanelContainerOuter {
-        padding-top: 10px;
-        position: static;
-        div#searchPanelContainer {
-          padding-left: 0;
-          position: static;
+        div#resultsPanelContainer {
           padding-top: 20px;
-          form {
-            .search-panel{
-              overflow: visible !important;
-              max-height: none !important;
-              position: static;
-              .panel-body {
-                position: static;
-                top: 50px;
-                left: 0px;
-                right: 0px;
-                bottom: 90px;
+          margin-left: 0;
+          div.col-xs-12 {
+            div.row {
+              padding: 0 15px;
+              table#searchResults {
+                tr {
+                  td {
+                    &.printSelect {
+                      div#checkboxes {
+                        input {
+                          margin-left: 20%;
+                        }
+                      }
+                    }
+                    &.providerDetails {
+                      div.row {
+                        padding: 0;
+                        div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
+                          padding-left: 15px !important;
+                        }
+                      }
+                    }
+                  }
+                }
               }
 
-              .sticky-footer {
-                position: static !important;
-                left: 0px !important;
-                right: 0px !important;
-                display: none;
-                margin: 0px !important;
+            }
+
+          }
+
+
+
+
+        }
+
+        div#searchPanelContainerOuter {
+          padding-top: 10px;
+          position: static;
+          div#searchPanelContainer {
+            padding-left: 0;
+            position: static;
+            padding-top: 20px;
+            form {
+              div.panel.search-panel{
+                overflow: visible !important;
+                max-height: none !important;
+                position: static;
+                padding-bottom: 0 !important;
+
+                button.btn.btn-default.visible-xs.navbar-toggle{
+                  color: white;
+                  margin: -15px 0 0 0;
+                  display: inline-block;
+                  text-shadow: none;
+                  background: transparent;
+                  border: 1px solid white;
+                  span.glyphicon{
+                    font-size: 11px
+                  }
+                }
+                .panel-body {
+                  position: static;
+                  top: 50px;
+                  left: 0px;
+                  right: 0px;
+                  bottom: 90px;
+                }
+
+                div.sticky-footer.panel-footer {
+                  position: static !important;
+                  left: 0px !important;
+                  right: 0px !important;
+                  display: none;
+                  margin: 0px !important;
+                  padding: 0 15px;
+                  div.row{
+                    padding: 15px 0 0 0;
+                  }
+
+                }
               }
             }
           }
         }
-      }
 
+      }
     }
   }
 }

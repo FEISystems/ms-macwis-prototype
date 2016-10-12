@@ -19,14 +19,9 @@
         model.filteredProviders = [];
         // init end
 
-        $scope.isCollapsed = true;
-        $scope.locationCollapsed = true;
-        $scope.advancedOptionsCollapsed = true;
-
-
-        model.locationCollapsed = function () {
-            $scope.isCollapsed = true
-        };
+        // model.locationCollapsed = function () {
+        //     $scope.isCollapsed = true
+        // };
         model.Cities = dataService.getCities();
         model.Counties = dataService.getCounties();
         model.selected = [];
@@ -292,6 +287,21 @@
         }
 
         // Toggle icons for collapse states
+        // Set search panels to open/close on page load
+        $scope.isCollapsed = true;
+        $scope.locationCollapsed = true;
+        $scope.advancedOptionsCollapsed = true;
+
+        model.toggleSearchMenu = function($event){
+            var span = $($event.currentTarget).find('.glyphicon');
+            if($(span).hasClass('glyphicon-chevron-down')) {
+                $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                $($event.currentTarget).find('.searchToggle').html(' Hide Menu');
+            } else {
+                $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                $($event.currentTarget).find('.searchToggle').html(' Show Menu');
+            }
+        }
         model.toggleSearchPanels = function($event){
             var span = $($event.currentTarget).children();
             if ($(span).hasClass('glyphicon-plus')) {
@@ -312,18 +322,22 @@
         };
         model.$onInit = function () {
             macwis.stickyFooter('.sticky-footer');
-            // $(window).resize(function(){
-            //     if (window.width == 480) {
-            //
-            //     } else {
-            //
-            //     }
-            //
-            // });
-        }
+            function setSearchCollapse() {
+                var mobileSearchCollapse = $('.panel-body');
+                if ($(window).innerWidth() <= 755) {
+                    mobileSearchCollapse.removeClass('in');
+                } else {
+                    mobileSearchCollapse.addClass('in');
+                };
+            };
+            setSearchCollapse();
+            $(window).resize(function () {
+                setSearchCollapse();
+            });
+        };
 
 
-        /**********************
+            /**********************
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
          * then we pre load the search to the results. If there is not a search criteria, then it will load all providers
