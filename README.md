@@ -57,7 +57,7 @@ To run it on local Chrome Browser with built-in HTTP Server application
 - Download or use `git clone` the [repository](https://github.com/FEISystems/ms-macwis-prototype/), assume put in directory d:\projects\ms-macwis-prototype
 - Start Chrome Browser
 - Install Chrome [Web Servver App](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en)
-- Start Web Server, point to the directory with source code d:\projects\ms-macwis-prototype\src\webapp
+- Start this installed Web Server App, point to the directory with source code d:\projects\ms-macwis-prototype\src\webapp and check the option "Automatically show index.html"
 - Navigate to http://127.0.0.1:8887 and you will see a live local demo
 
 ### How to build and deploy to another environment with node.js supported (development)

@@ -126727,8 +126727,7 @@
         var filterAndSetDistince = function(provider, lat, lng, distance) {
 
             var dist = calculatorService.getDistinceByCoordinate(lat, lng, provider.Latitude, provider.Longitude) / 1000 * 0.6214;
-
-            if (parseInt(dist) < distance) {
+            if (parseInt(dist) < parseInt(distance)) {
                 provider['Distance'] = parseInt(dist) + ' miles';
                 return true;
             }
