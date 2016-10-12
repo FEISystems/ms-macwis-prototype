@@ -7,7 +7,7 @@
             return lists.slice(start);
         };
     });
-    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log, $timeout) {
+    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log, $timeout, $window) {
         /**************************Model datapoints******************** */
         var model = this;
         model.title = "Provider Search";
@@ -324,22 +324,29 @@
         };
         model.$onInit = function () {
             macwis.stickyFooter('.sticky-footer');
-            function setSearchCollapse() {
-                var mobileSearchCollapse = $('.panel-body');
-                if ($(window).innerWidth() <= 755) {
-                    mobileSearchCollapse.removeClass('in');
-                } else {
-                    mobileSearchCollapse.addClass('in');
-                };
-            };
-            setSearchCollapse();
-            $(window).resize(function () {
-                setSearchCollapse();
+            // function setSearchCollapse() {
+            //     var mobileSearchCollapse = $('.panel-body');
+            //     if ($(window).innerWidth() <= 755) {
+            //         mobileSearchCollapse.removeClass('in');
+            //     } else {
+            //         mobileSearchCollapse.addClass('in');
+            //     };
+            // };
+            // setSearchCollapse()
+            $scope.mobileSearchCollapse = $window.innerWidth <= 755;
+
+
+        };
+
+        model.$postLink = function() {
+
+            angular.element($window).bind('resize', function(){
+                $scope.mobileSearchCollapse = $window.innerWidth <= 755;
+                $scope.$digest();
             });
         };
 
-
-            /**********************
+        /**********************
          * This method will subscribe to the rendering of the provider search button
          * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
          * then we pre load the search to the results. If there is not a search criteria, then it will load all providers
@@ -388,6 +395,6 @@
     module.component("providerSearch", {
         templateUrl: "areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$rootScope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', controller]
+        controller: ["$scope", "$rootScope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', '$window', controller]
     });
 }())
