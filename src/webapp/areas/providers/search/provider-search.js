@@ -170,6 +170,7 @@
                     googleMapService.getCoordinateByAddress(model.Criteria.address, function (coordinate) {
                         tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distance);
                         model.searchByCriteria(tempProviders);
+                        model.showPagination = (model.filteredProviders.length > 0);                        
                     }, function (error) {
                         $log.error(error);
                     });
@@ -186,8 +187,7 @@
                 tempProviders = model.AllProviders;
                 model.searchByCriteria(tempProviders);
             }
-            model.showPagination = (model.filteredProviders.length > model.listsPerPage);
-            console.dir(model.showPagination);
+            model.showPagination = (model.filteredProviders.length > 0);            
         };
         model.searchByCriteria = function (tempProviders) {
 
@@ -208,12 +208,14 @@
                         }
                     }
                     provider.selectedForPrint = false;
+                    
                     var match = (nameFound &&
                         (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType == provider.ProviderType)) &&
                         (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() == provider.PhysicalCity.toLowerCase())) &&
                         (!model.Criteria.County || (model.Criteria.County && model.Criteria.County == provider.CountyNumber)) &&
                         (model.Criteria.Rate == undefined || model.Criteria.Rate == null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
-                        (!model.Criteria.address || (model.Criteria.address == provider.PhysicalZipCode)) &&
+                        //we added the model.Criteria.distance will be filtered above if distance is in play
+                        (model.Criteria.distance || !model.Criteria.address || (model.Criteria.address == provider.PhysicalZipCode)) &&
                         (!model.Criteria.Age || (model.Criteria.Age &&
                         dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
                         dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
