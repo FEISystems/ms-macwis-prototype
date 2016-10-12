@@ -7,7 +7,7 @@ FEi has sustained Capability Maturity Model Integration (CMMI) Level 3 certifica
 
 #   II.	Documentation
 ##  A.	Description of the Project
-The purpose of this project is to show FEi’s capability to provide Agile software development services. Our Agile approach is illustrated in <LINK> RMF Linked Files | Agile Scrum Process Diagram | Agile_Development_Scrum_Process_Diagram.PNG. We have developed a working prototype to demonstrate our technical aptitude in design, development, and a repeatable process. The prototype was created to allow Mississippi caseworkers or parents to select the best child care provider for a child. It is presented as an alternative to the MDHS Search Child Care Provider form page.
+The purpose of this project is to show FEi’s capability to provide Agile software development services. Our Agile approach is illustrated in [Agile Scrum Process]. We have developed a working prototype to demonstrate our technical aptitude in design, development, and a repeatable process. The prototype was created to allow Mississippi caseworkers or parents to select the best child care provider for a child. It is presented as an alternative to the MDHS Search Child Care Provider form page.
 In addition to the requirements provided in the solicitation, the FEi team has enhanced the prototype with additional requirements and features that should help the parents and caseworkers in their search. These additional functions were based on the recorded Q&As with Mississippi caseworkers, as well as our own team research and interviews with parents and additional Subject Matter Experts (SMEs) in the child care and child welfare field. The additional functions are described below.
 
 ##  B.	List of Artifacts Used to Create Prototype
