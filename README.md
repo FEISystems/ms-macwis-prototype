@@ -2,6 +2,7 @@
 FEi Systems (**FEi**), a leading Information Technology (IT), services, and analysis organization headquartered in Columbia, MD, is pleased to respond to the Mississippi Department of Information Technology Services (ITS), Solicitation Number 3717: *“Establishment of a Qualified Vendor Pool for Agile Development Services.”*
 
 FEi has applied Agile software solution development for many large federal and state projects; for example, FEi implemented the Long-Term Services and Supports (LTSS) for the Division of Medicaid in Mississippi, and systems for the Maryland’s Department of Juvenile Justice. In addition, FEi provided analysis and recommendations for the restructuring of Maine’s SACWIS system platform, interviewing over 300 community providers and caseworkers in the process. 
+
 FEi has sustained Capability Maturity Model Integration (CMMI) Level 3 certification for the last five years, and we are ISO/IEC 20000-1:2011 certified. These certifications are a testament to our organizational maturity.
 
 #   II.	Documentation
