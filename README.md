@@ -3,7 +3,7 @@
 #   I.	Introduction
 FEi Systems (**FEi**), a leading Information Technology (IT), services, and analysis organization headquartered in Columbia, MD, is pleased to respond to the Mississippi Department of Information Technology Services (ITS), Solicitation Number 3717: *“Establishment of a Qualified Vendor Pool for Agile Development Services.”*
 
-FEi has applied Agile software solution development for many large federal and state projects, including implemented the Long-Term Services and Supports (LTSS) System for the Division of Medicaid in Mississippi and systems for the Maryland’s Department of Juvenile Justice. In addition, FEi provided analysis and recommendations for the restructuring of Maine’s SACWIS system platform, interviewing over 300 community providers and caseworkers in the process. 
+FEi has applied Agile software solution development for many large federal and state projects, including implementation of the Long-Term Services and Supports (LTSS) System for the Division of Medicaid in Mississippi and systems for the Maryland’s Department of Juvenile Justice. In addition, FEi provided analysis and recommendations for the restructuring of Maine’s SACWIS system platform, interviewing over 300 community providers and caseworkers in the process. 
 
 FEi has sustained Capability Maturity Model Integration (CMMI) Level 3 certification for the last five years, and we are ISO/IEC 20000-1:2011 certified. These certifications are a testament to our organizational maturity.
 
@@ -22,7 +22,7 @@ Our team relied on the following artifacts to create the prototype:
 *	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria, see [User Stories](./artifacts/User Stories/User_Stories.pdf).
 *	**Definition of Done:** We used a checklist for the definition of done, see [Definition of Done Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf).
 *	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included in [Meeting Notes](./artifacts/Meeting Notes).
-*	**Frameworks and Libraries Used:** A description of the prototype frameworks and libraries used and why they were employed is located in the [Architecture and Frameworks Section](#c--architecture-and-frameworks). The prototype framework and libraries are included in this [repository](https://github.com/FEISystems/ms-macwis-prototype). 
+*	**Open Technologies:** A description of the open technologies used, including tools, prototype frameworks and libraries used and why they were employed is located in the [Architecture and Frameworks Section](#c--open-technologies). The prototype framework and libraries are included in this [repository](https://github.com/FEISystems/ms-macwis-prototype). 
 *	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format), which are shown in the [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx).
 *	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found in the [Data Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf).
 
@@ -60,8 +60,8 @@ The prototype components are described in detail in [Section VII: Release Notes]
 During the planning stage – Sprint 0, we analyzed the RFP requirements and identified the roles and skillsets needed to complete the prototype. We assembled a multi-disciplinary team based on the requirements of the project and Agile methodology, as described below. The team worked as a single unit with daily stand-up meetings, frequent touchpoints, and demos. The overall project team worked seamlessly to perform the following functions and responsibilities:
 
 1.	**Leadership, Product Definition, and Requirements –** As the leader of the team, the Product Owner (PO) (Labor Category: Product Manager) was responsible for defining the scope, prioritizing the work items, and ensuring completeness of the work items. The Scrum Master (Labor Category: Delivery Manager) fostered an Agile team environment by demonstrating Scrum tools and techniques. The Delivery Manager facilitated the development process by removing any impediments identified by the team members and asking each member what they completed yesterday and what they will perform today. The Business Analyst wrote all user stories and acceptance criteria.  
-2.	**Visual and Frontend Development –** The Technical Architect, Visual Designer, Interaction Designers, and Frontend Web Developers were responsible for designing the entire user experience, information architecture, journey maps, wireframes, and style guides, as well as ensure working end-to-end functionality is robust and satisfies the product requirements.
-3.	**Backend Development  –** The Backend Development includes database design (such as augmenting the sample data provided by the State), implementation of the search functions, and other ancillary functions (e.g., showing provider details), and printing results. 
+2.	**Visual and Frontend Development –** The Technical Architect, Visual Designer, Interaction Designers, and Frontend Web Developers were responsible for designing the entire user experience, information architecture, journey maps, wireframes, and style guides, as well as ensuring working end-to-end functionality is robust and satisfies the product requirements.
+3.	**Backend Web Development  –** The Backend Web Developer performs database design (such as augmenting the sample data provided by the State), implementation of the search functions, and other ancillary functions (e.g., showing provider details), and printing results. 
 
 The FEi team collaborated daily, using the Kanban board (see the screenshot below), to assess progress and assign work items. The Continuous Integration (CI) process established also helped with team interaction and with team (and work) integration, so that issues were resolved in a timely manner. 
 
@@ -95,16 +95,18 @@ The table provided in [Roles and Responsibilities](./artifacts/Roles and Respons
 
 ##  C.	Level of Effort (Proprietary)
 Per the Vendor Challenge Section 4.2.1 instructions, FEi has provided the hourly rate and total number of hours for each labor category proposed to complete the prototype separately in the document, *“FEi, MS Section X - Cost Information Submission, RFP No. 3717.PDF”*. We proposed 468 hours to complete the prototype. The labor categories and hours for each category used to complete the prototype are shown below:
-    *   Agile Coach – 24 hours
-    *   Product Manager – 36 hours
-    *   Delivery Manager – 40 hours
-    *   Business Analyst – 52 hours 
-    *   Technical Architect – 32 hours
-    *	Backend Web Developer – 132 hours
-    *	Frontend Web Developer – 20 hours
-    *	Visual Designer – 104 hours 
-    *	Interaction Designer / User Researcher / Usability Tester – 28 hours 
-    Total Hours - 468
+
+*   Agile Coach – 24 hours
+*   Product Manager – 36 hours
+*   Delivery Manager – 40 hours
+*   Business Analyst – 52 hours 
+*   Technical Architect – 32 hours
+*	Backend Web Developer – 132 hours
+*	Frontend Web Developer – 20 hours
+*	Visual Designer – 104 hours 
+*	Interaction Designer / User Researcher / Usability Tester – 28 hours
+
+Total Hours - 468
 
 
 #   IV.	Research and Discovery
@@ -123,7 +125,7 @@ In addition to the information gathered from the Caseworker Q&A, our team reache
 
 Gary brings over 10 years of experience consulting with child welfare systems and programs in multiple states. Additionally, he has over five years of experience working with child care systems, programs, and policies in Ohio. Liz has more than 25 years of experience in the field of human services. Her background includes direct practice and program development and management, policy analysis, legal advocacy, research, and training. She has an in-depth knowledge of foster care and adoption practice and policy, public benefits law, and special education law. 
 
-It is worth noting that the interviews with Gary and Liz did not just consist of discussions about the topic, but rather the team demonstrated a functioning system at that time and obtained valuable feedback that was then translated into additional requirements used to enhance the prototype. Notes, findings, and ideas for enhancement from the interviews can be found in [Meeting Notes](./artifacts/Meeting Notes/User_Interviews_Notes.PDF).
+It is worth noting that the interviews with Gary and Liz did not just consist of discussions about the topic, but rather the team demonstrated a functioning system at that time and obtained valuable feedback that was then translated into additional requirements used to enhance the prototype. Notes, findings, and ideas for enhancement from the interviews can be found in [Meeting Notes](./artifacts/Meeting Notes/User_Interviews_Notes.pdf).
 
 **Parent Perspective**
 
@@ -132,7 +134,7 @@ Similarly, our team reached out to a network of parents to test the prototype an
 1.	Hours of operation
 2.	Days of operation
 
-FEi conducted an interview with Kathleen on October 3, 2016. She is a step-mother and project manager with the Maryland Department of Juvenile Services, where she collaborates with the Maryland Department of Human Resources to share provider resources. She previously researched the child welfare and juvenile justice systems, and advised as to the state provider directory that serves both child serving agencies. Notes from the interview can be found in [Meeting Notes](./artifacts/Meeting Notes/User_Interviews_Notes.PDF).
+FEi conducted an interview with Kathleen on October 3, 2016. She is a step-mother and project manager with the Maryland Department of Juvenile Services, where she collaborates with the Maryland Department of Human Resources to share provider resources. She previously researched the child welfare and juvenile justice systems, and advised as to the state provider directory that serves both child serving agencies. Notes from the interview can be found in [Meeting Notes](./artifacts/Meeting Notes/User_Interviews_Notes.pdf).
 
 **User Survey**
 
@@ -146,7 +148,7 @@ We distributed the link to FEi employees and encouraged forwarding to extended n
 4.	Please describe one feature that will help us improve your search experience.
 
 ##  B.	User Survey Findings 
-FEi’s user survey findings are summarized in [Survey_Results](./artifacts/Survey Results/Survey_Results.PDF).
+FEi’s user survey findings are summarized in [Survey_Results](./artifacts/Survey Results/Survey_Results.pdf).
 
 ##  C.	Research Methods – System
 We also completed research to tailor the system to Mississippi. For instance, we examined the Mississippi Child Care license, [How to Get a Child Care License](./artifacts/Research Documents/HOW-TO-GET-A-CHILD-CARE-LICENSE_2.pdf), application to make assumptions about available data points for the prototype. Based on the application packet, we determined it was feasible to incorporate hours and days of operation into the prototype. 
