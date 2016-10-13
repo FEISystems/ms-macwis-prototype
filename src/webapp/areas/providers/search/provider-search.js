@@ -38,7 +38,8 @@
         model.AllProviders = providerService.getAllProviders();
         model.SortByes = dataService.getSortTypes();
         model.Distances = dataService.getDistances();
-
+        model.SelectAllCheckboxes = false;
+        model.itemsToPrint =[];
         model.Criteria.Rate = model.Rates[0].Id;
 
         /************************Paging functionality************ */
@@ -110,18 +111,31 @@
         };
 
         /****************** *Print functionality **************/
-        
+        model.selectAllProviderToPrint = function ($event) {
+            model.itemsToPrint = $filter("paging")(model.filteredProviders, 10);
+            model.itemsToPrint = $filter("limitTo")(model.filteredProviders, 10);
+            angular.forEach(model.itemsToPrint, function(e)
+            {
+                e.selectedForPrint  = model.SelectAllCheckboxes;
+            })
+        };
+
+        model.checkClicked =function(provider) {
+            if (provider.selectedForPrint)
+                model.itemsToPrint.push(provider);
+            else model.itemsToPrint.splice(model.itemsToPrint.indexOf(provider),1);
+        };
+
         model.printprovider = function () {
             var htmlcode = '';
-            var itemsToPrint = [];
+           // var itemsToPrint = [];
+           // angular.forEach(model.filteredProviders, function (provider) {
+              //  if (provider.selectedForPrint)
+                  //  itemsToPrint.push(provider);
+           // });
 
-            angular.forEach(model.filteredProviders, function (provider) {
-                if (provider.selectedForPrint) 
-                    itemsToPrint.push(provider);
-            });
-
-            if (itemsToPrint.length > 0) {
-                angular.forEach(itemsToPrint, function (provider) {
+            if (model.itemsToPrint.length > 0) {
+                angular.forEach(model.itemsToPrint, function (provider) {
                    // var TerValue = value.split(',')[16].split(':')[1].replace(/\"/g, "") == "true" ? "Yes" : "No";
 
                     htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> " + "<div class='col-xs-offset-1'> " +

@@ -1,4 +1,4 @@
-﻿﻿
+﻿﻿﻿﻿
 <standard-layout>
     <search-layout>
         <search-panel>
@@ -230,6 +230,9 @@
             <script>
                 $(document).ready(function () {
                     // Toggle icons for collapse states
+                    $("#selectallcheck").on('click', function () {
+                        $('#checkboxes input[type="checkbox"]').prop('checked', this.checked);
+                    });
                     $('.criteriaButton').on('click', function () {
                         var span = $(this).children();
                         if ($(span).hasClass('glyphicon-plus')) {
@@ -305,15 +308,19 @@
                     <table id="searchResults" class="table table-condensed table-responsive" summary="Provider Search Results">
                         <thead ng-hide="true"></thead>
                         <tbody>
-
-                        <!--<tr><td><div class="col-xs-12">-->
-                        <!--<label id="lblSelect" style="display: none;">Select Providers</label>-->
-                        <!--</div></td></tr>-->
+                        <tr >
+                            <td class="col-xs-1 printSelect">
+                                <div>
+                                    <input type="checkbox" id="selectallcheck" ng-model = "model.SelectAllCheckboxes"
+                                           ng-click="model.selectAllProviderToPrint($event)"/>
+                                    <label for="selectallcheck" class="sr-only">Add to Print List</label>
+                                </div>
+                            </td></tr>
                         <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
                             <td class="col-xs-1 printSelect" ng-hide="false">
                                 <div id="checkboxes">
-                                    <input type="checkbox" id={{provider.Id}}
-                                           ng-model="provider.selectedForPrint"/>
+                                    <input type="checkbox" id={{provider.Id}} ng-model="provider.selectedForPrint"
+                                           ng-click="model.checkClicked(provider)"/>
                                     <label for="{{provider.Id}}" class="sr-only">Add {{provider.ProviderName}} to Print List</label>
                                 </div>
                             </td>
