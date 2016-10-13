@@ -3,7 +3,7 @@
 #   I.	Introduction
 FEi Systems (**FEi**), a leading Information Technology (IT), services, and analysis organization headquartered in Columbia, MD, is pleased to respond to the Mississippi Department of Information Technology Services (ITS), Solicitation Number 3717: *“Establishment of a Qualified Vendor Pool for Agile Development Services.”*
 
-FEi has applied Agile software solution development for many large federal and state projects; for example, FEi implemented the Long-Term Services and Supports (LTSS) for the Division of Medicaid in Mississippi, and systems for the Maryland’s Department of Juvenile Justice. In addition, FEi provided analysis and recommendations for the restructuring of Maine’s SACWIS system platform, interviewing over 300 community providers and caseworkers in the process. 
+FEi has applied Agile software solution development for many large federal and state projects, including implemented the Long-Term Services and Supports (LTSS) System for the Division of Medicaid in Mississippi and systems for the Maryland’s Department of Juvenile Justice. In addition, FEi provided analysis and recommendations for the restructuring of Maine’s SACWIS system platform, interviewing over 300 community providers and caseworkers in the process. 
 
 FEi has sustained Capability Maturity Model Integration (CMMI) Level 3 certification for the last five years, and we are ISO/IEC 20000-1:2011 certified. These certifications are a testament to our organizational maturity.
 
@@ -15,7 +15,7 @@ The purpose of this project is to show FEi’s capability to provide Agile softw
 Our team relied on the following artifacts to create the prototype:
 
 *	**Staffing Plan:** Greater detail about the team and roles can be found in [Section III. Team Structure](#iii----team-structure). 
-*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint activities is included in the [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf).
+*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of the sprint activities is included in the [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf).
 *	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in [Section IV. Research and Discovery](#iv-research-and-discovery).
 *	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in [Section V. Design](#v--design).
 *	**Wireframes:** Design notes and Wireframes can be found [here](./artifacts/Wireframes).
@@ -57,11 +57,11 @@ The prototype components are described in detail in [Section VII: Release Notes]
 
 #   III.	Team Structure
 ##  A.	Composition
-During the planning stage – Sprint 0, we analyzed the RFP requirements and identified the roles and skillsets needed to complete the prototype. We assembled a multi-disciplinary team based on the requirements of the project and Agile methodology, as described below. The team worked as a single unit with daily stand-up meetings, frequent touchpoints, and demos. The overall project team was divided into the following functional teams to seamlessly perform like functions and responsibilities:
+During the planning stage – Sprint 0, we analyzed the RFP requirements and identified the roles and skillsets needed to complete the prototype. We assembled a multi-disciplinary team based on the requirements of the project and Agile methodology, as described below. The team worked as a single unit with daily stand-up meetings, frequent touchpoints, and demos. The overall project team worked seamlessly to perform the following functions and responsibilities:
 
-1.	**Leadership, Product Definition, and Requirements Team –** This team consisted of the Product Owner (PO) (Labor Category: Product Manager), Scrum Master (Labor Category: Delivery Manager), Agile Coach, Business Analyst, and Technical Writer. As the leader of the team, the PO was responsible for defining the scope, prioritizing the work items, and ensuring completeness of the work items. The Scrum Master fostered an Agile team environment by demonstrating Scrum tools and techniques. The Delivery Manager facilitated the development process by removing any impediments identified by the team members and asking each member what they completed yesterday and what they will perform today. 
-2.	**Visual and Frontend Development Team –** This team consisted of the Technical Architect, Visual Designer, Interaction Designers, and Frontend Web Developers, and was responsible for designing the entire user experience, information architecture, journey maps, wireframes, and style guides. This team worked closely with the PO and the rest of the Requirements Team, and the Backend Development Team to ensure working end-to-end functionality that is robust and satisfies the product requirements.
-3.	**Backend Development Team –** This team consisted of Backend Web Developers that performed database design (including augmenting the sample data provided by the State), created the search functions, and other ancillary functions (e.g., showing provider details), and printing results. This team also worked closely with the Requirements Team and the Visual and Frontend Team to ensure a working end-to-end functionality that is robust and satisfies the product requirements.
+1.	**Leadership, Product Definition, and Requirements –** As the leader of the team, the Product Owner (PO) (Labor Category: Product Manager) was responsible for defining the scope, prioritizing the work items, and ensuring completeness of the work items. The Scrum Master (Labor Category: Delivery Manager) fostered an Agile team environment by demonstrating Scrum tools and techniques. The Delivery Manager facilitated the development process by removing any impediments identified by the team members and asking each member what they completed yesterday and what they will perform today. The Business Analyst wrote all user stories and acceptance criteria.  
+2.	**Visual and Frontend Development –** The Technical Architect, Visual Designer, Interaction Designers, and Frontend Web Developers were responsible for designing the entire user experience, information architecture, journey maps, wireframes, and style guides, as well as ensure working end-to-end functionality is robust and satisfies the product requirements.
+3.	**Backend Development  –** The Backend Development includes database design (such as augmenting the sample data provided by the State), implementation of the search functions, and other ancillary functions (e.g., showing provider details), and printing results. 
 
 The FEi team collaborated daily, using the Kanban board (see the screenshot below), to assess progress and assign work items. The Continuous Integration (CI) process established also helped with team interaction and with team (and work) integration, so that issues were resolved in a timely manner. 
 
@@ -73,7 +73,7 @@ When bugs were found, the team immediately created issues and assigned them to t
 
 This model was designed to optimize flexibility, creativity, and productivity. Our PO, Hatem Ghafir, was responsible for building and managing the Product Backlog and had the authority and overall responsibility for delivering the project. 
 
-Our Scrum Master (Agile Coach), James Tan, ensured that the Scrum Team adhered to the principles, practices, and rules that make Agile methodology so successful by developing clear lines of escalation within the organization and engaging stakeholders. 
+Our Agile Coach, James Tan, ensured that the Scrum Team adhered to the principles, practices, and rules that make Agile methodology so successful by developing clear lines of escalation within the organization and engaging stakeholders. 
 
 Our team, which was self-organizing and cross-functional for optimized efficiency and effectiveness, included the following focus areas: 
 
@@ -82,11 +82,10 @@ Our team, which was self-organizing and cross-functional for optimized efficienc
     *	Agile Coach – James Tan 
     *	Delivery Manager (Scrum Master) – Lisa Lin-Freeman 
     *	Business Analyst – Chris Gordon
-    *	Technical Writer – Claire Reinken 
 
 *	**Development** 
     *   Technical Architect – James Tan
-    *   Visual Designer – Luis Najera
+    *   Visual Designers – Luis Najera and Claire Reinken
     *   Interaction Designers – Ludwing Najera, Christian Heyd, and John Jilek
     *   Frontend Web Developers – Luis Najera
     *   Backend Web Developers - Xiang Zhang, Bhavani Reddy, and Terry Boswell 
@@ -95,7 +94,18 @@ Our team, which was self-organizing and cross-functional for optimized efficienc
 The table provided in [Roles and Responsibilities](./artifacts/Roles and Responsibilities/Roles_and_Responsibilities.pdf) outlines the roles and responsibilities for key positions in the project team. These roles provide the broad leadership in all technical and management disciplines required for this project.
 
 ##  C.	Level of Effort (Proprietary)
-Per the Vendor Challenge Section 4.2.1 instructions, FEi has provided the hourly rate and total number of hours for each labor category proposed to complete the prototype separately in the document, *“FEi, MS Section X - Cost Information Submission, RFP No. 3717.PDF”*. We proposed 468 hours to complete the prototype.
+Per the Vendor Challenge Section 4.2.1 instructions, FEi has provided the hourly rate and total number of hours for each labor category proposed to complete the prototype separately in the document, *“FEi, MS Section X - Cost Information Submission, RFP No. 3717.PDF”*. We proposed 468 hours to complete the prototype. The labor categories and hours for each category used to complete the prototype are shown below:
+    *   Agile Coach – 24 hours
+    *   Product Manager – 36 hours
+    *   Delivery Manager – 40 hours
+    *   Business Analyst – 52 hours 
+    *   Technical Architect – 32 hours
+    *	Backend Web Developer – 132 hours
+    *	Frontend Web Developer – 20 hours
+    *	Visual Designer – 104 hours 
+    *	Interaction Designer / User Researcher / Usability Tester – 28 hours 
+    Total Hours - 468
+
 
 #   IV.	Research and Discovery
 ##  A.	Research Methods – User Perspective
@@ -103,7 +113,7 @@ FEi’s research and discovery efforts were designed to better understand the ne
 
 **Caseworker Perspective**
 
-The Requirements Team, including FEi’s PO and Business Analyst, analyzed the needs expressed by caseworkers during the Caseworker Q&A session held as part of this procurement on Friday, September 9, 2016. The recorded call was transcribed, see [Mississippi Caseworker Q&A Transcript](./artifacts/Research Documents/Mississippi_Caseworker_Q&A_Transcript.pdf). Our team reviewed the transcription and highlighted themes that emerged throughout the call. Caseworkers expressed particular interest in several features and improvements to the current search portal. Our team’s prototype incorporates the following enhancements:
+FEi’s PO and Business Analyst, analyzed the needs expressed by caseworkers during the Caseworker Q&A session held as part of this procurement on Friday, September 9, 2016. The recorded call was transcribed, see [Mississippi Caseworker Q&A Transcript](./artifacts/Research Documents/Mississippi_Caseworker_Q&A_Transcript.pdf). Our team reviewed the transcription and highlighted themes that emerged throughout the call. Caseworkers expressed particular interest in several features and improvements to the current search portal. Our team’s prototype incorporates the following enhancements:
 
 1.  Geographic searches/ability to search by radius
 2.  Advanced search capabilities to narrow down providers
@@ -190,7 +200,7 @@ To ensure compliance without incurring refactoring costs, our team weaves Sectio
 
 We tested the prototype using a JAWS 16 screen reader. At the conclusion of Section 508 testing, our team compiled a detailed findings report, detailing a ‘scorecard’ of compliance, see [Section 508 Compliance](./artifacts/Section 508 Compliance/Section_508_Compliance_Scorecard.pdf). For each non-compliance issue, we documented our recommendations for remediation, including follow up timelines and testing procedures to verify that compliance problems have been sufficiently resolved. Our team worked closely with development to ensure that the reasons for non-compliance are understood, and we put into place best practices and processes for validating Section 508 compliance early on in the development process. 
 ##  C.	Responsive Design
-Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see [Section VI-A. Responsive Web Design](##a-responsive-web-design).
+Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see [Section VI-A. Responsive Web Design](#a-responsive-web-design).
 
 ##  D.	Consistency
 We ensured the design was applied consistently throughout the prototype site pages (Home Page and Search Results). We also took special care to ensure simple and easy to understand language was used.
