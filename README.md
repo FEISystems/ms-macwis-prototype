@@ -240,51 +240,8 @@ The screenshot below shows the CI process with log details.
 IMAGE
 
 ##  F.	Installation Instructions
-**Installing the 'Web Server for Chrome' Chrome Extension**
-1.	Open Google Chrome and Navigate to https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb.
+Please refer to the [following documentation](./artifacts/Prototype_Installation_Instructions.pdf) for installation instructions.
 
-2.	Select '+ Add to Chrome' and select the 'Add app' button from the pop-up.
-
-IMAGE
-
-IMAGE
-
-
-3.	The Extension/App should now be installed.
-
-**Setup and Run the Prototype Locally**
-1.	Download and save the prototype from https://github.com/FEISystems/ms-macwis-prototype/.
-    2.  a.	Extract all files and take note of the directory where the 'ms-macwis-prototype-master' folder was extracted.
- 
-
-IMAGE
-
-  
-
-2.	Open Chrome Apps 'chrome://apps/' and Run the 'Web Server for Chrome' app. 
-a.	(See Instructions below for installing this Chrome App/Extension).
-
-3.	Select 'ms-macwis-prototype-master\src\webapp' as the folder for the Web Server.
-a.	Note: This is in the Prototype folder was downloaded.
- 
- 
-4.	Check the 'Automatically show index.html' option.
-
-IMAGES
-
-5.	Navigate to the site by type 'http://127.0.0.1:8887' in any internet browser.
-
-**How to Build and Deploy to Another Environment With Node.Js Supported (Development)**
-
-This prototype can run on any web server or http server, such as Apache, IIS. For development environment with Node.js, here are the detailed step. You will need
-•	Github account
-•	install Node.js from https://nodejs.org
-And then
-git clone https://github.com/FEISystems/ms-macwis-prototype.git
-cd ms-macwis-prototype
-npm install http-server -g
-http-server ./src/webapp
-If you prefer to run it in apache http server, can also copy all files from src/webapp to the root web folder.
 ##  G.	License
 *	Apache 2.0
 
