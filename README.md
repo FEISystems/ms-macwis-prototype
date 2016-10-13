@@ -16,16 +16,16 @@ In addition to the requirements provided in the solicitation, the FEi team has e
 Our team relied on the following artifacts to create the prototype:
 
 *	**Staffing Plan:** Greater detail about the team and roles can be found in [Section III. Team Structure](#iii----team-structure) 
-*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint schedule and activities are included | [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf)
-*	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in section [Section IV. Research and Discovery](#iv-research-and-discovery)
-*	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in section [Section V. Design](#v--design)
-*	**Wireframes:** Design notes and Wireframes can be found | [Wireframes](./artifacts/Wireframes)
-*	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria | [User Stories](./artifacts/User Stories/User_Stories.pdf)
-*	**Definition of Done:** We used a checklist for the definition of done | [Definition of Done Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf)
-*	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included | [Meeting Notes](./artifacts/Meeting Notes)
-*	**Frameworks and Libraries Used:** A description of the prototype frameworks and libraries used and why they were employed is located in [Architecture and Frameworks Section](#c--architecture-and-frameworks). The prototype framework and libraries are included in GitHub, <LINK to GitHub location>. 
-*	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format) are shown | [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx)
-*	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found | [Data_Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf)
+*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint schedule and activities are included in the [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf)
+*	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in [Section IV. Research and Discovery](#iv-research-and-discovery)
+*	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in [Section V. Design](#v--design)
+*	**Wireframes:** Design notes and Wireframes can be found [here](./artifacts/Wireframes)
+*	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria, see [User Stories](./artifacts/User Stories/User_Stories.pdf)
+*	**Definition of Done:** We used a checklist for the definition of done, see [Definition of Done Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf)
+*	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included in the [Meeting Notes](./artifacts/Meeting Notes)
+*	**Frameworks and Libraries Used:** A description of the prototype frameworks and libraries used and why they were employed is located in the [Architecture and Frameworks Section](#c--architecture-and-frameworks). The prototype framework and libraries are included in this [repository](https://github.com/FEISystems/ms-macwis-prototype). 
+*	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format) are shown in the [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx)
+*	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found in the [Data Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf)
 
 ##  C.	Functional Description of Prototype Components
 Based on our research and the SME interviews that we conducted, the needs and the level of expertise of the two types of prototype users, caseworkers and parents, will vary. 
@@ -81,8 +81,8 @@ Our team, which was self-organizing and cross-functional for optimized efficienc
 
 *	**Leadership, Product Definition, and Requirements Team**
     *	Product Owner (Product Manager) – Hatem Ghafir
-    *	Agile Coach – James Tan 
-    *	Delivery Manager (Scrum Master) – Lisa Lin-Freeman 
+    *	Agile Coach (Scrum Master) – James Tan 
+    *	Delivery Manager – Lisa Lin-Freeman 
     *	Business Analyst – Chris Gordon
     *	Technical Writer – Claire Reinken 
 
@@ -192,7 +192,7 @@ To ensure compliance without incurring refactoring costs, our team weaves Sectio
     *	Content that is accessible when displayed on hover
     *	Visual focus that moves with keyboard navigation
 
-We tested the prototype using a JAWS 16 screen reader. At the conclusion of Section 508 testing, our team compiled a detailed findings report, detailing a ‘scorecard’ of compliance, see [Section 508 Compliance](./artifacts/Section 508 Compliance/Section_508_Compliance_Scorecard.pdf) For each non-compliance issue, we documented our recommendations for remediation, including follow up timelines and testing procedures to verify that compliance problems have been sufficiently resolved. Our team worked closely with development to ensure that the reasons for non-compliance are understood, and we put into place best practices and processes for validating Section 508 compliance early on in the development process. 
+We tested the prototype using a JAWS 16 screen reader. At the conclusion of Section 508 testing, our team compiled a detailed findings report, detailing a ‘scorecard’ of compliance, see [Section 508 Compliance](./artifacts/Section 508 Compliance/Section_508_Compliance_Scorecard.pdf). For each non-compliance issue, we documented our recommendations for remediation, including follow up timelines and testing procedures to verify that compliance problems have been sufficiently resolved. Our team worked closely with development to ensure that the reasons for non-compliance are understood, and we put into place best practices and processes for validating Section 508 compliance early on in the development process. 
 ##  C.	Responsive Design
 Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see <LINK VI.A Response Web Design>.
 
@@ -215,22 +215,29 @@ Our Frontend Web Developers initially created wireframes and screen mockups, see
 
 The prototype has been tested using the following browsers: Internet Explorer 11, Google Chrome v53.0.2785.143, and Safari. In addition, the use of responsive web design desktop allows web pages to be viewed in response to the size of the device. FEi tested the prototype using the following devices: and operating systems: PC (Windows 7 OS), Surface Pro (Windows 10), iPad Air (iOS9), Samsung Galaxy Tab, and iPhone 6 (iOS9).
 
-##  B.	Technologies
-FEi’s prototype uses modern, open technologies, and we used Agile (Scrum) processes to manage, design, develop, test, and deploy the prototype. The following standards and guidance are used or referred to in this prototype.
-*	Bootstrap Framework, see http://getbootstrap.com/2.3.2/components.html, that follows responsive web design with Accessibility out of the box
-*	US Digital Services Playbook
-*	18F Open Source Style Guide
+##  B.	Guidance and Standards
+The following standards and guidance are used or referred to in this prototype.
+*	[US Web Design Standards](https://standards.usa.gov/) that follows Responsive Web Design with Accessibility
+*	[US Digital Services Playbook](https://playbook.cio.gov/)
+*	[18F Open Source Style Guide](https://pages.18f.gov/open-source-guide/)
 
-##  C.	Architecture and Frameworks
-Based on the initial research, we decided to follow our practice to use Model-View-Controller (MVC) architecture, with Model-View-Model-View (MVVM) in the front-end. The frameworks we used in this project are:
+##  C.	Open Technologies 
+FEi’s prototype uses modern, open technologies, and we used Agile (Scrum) processes to manage, design, develop, test, and deploy the prototype. Based on the initial research, we decided to follow our practice to use Model-View-Controller (MVC) architecture, with Model-View-Model-View (MVVM) in the front-end. 
+
+The frameworks we used in this project are:
 *	*Front-End/Presentation Layer: HTML5/JS/Bootstrap.* This is a very widely-used framework that is consistent with the US Style Guide. Bootstrap offers many advantages, such as responsiveness, customization support, consistency, and speed of development.
 *	*Front-End/Service Layer: AngularJS.* This framework offers very strong support for MVMV, and it integrates very well with the Bootstrap framework. AngularJS is very widely used and offers many advantages, such as providing structure for JavaScript, templating support, and modular development.
 
-##  D.	Unit Testing
- We used Jasmine [Link] to write unit tests for Angular-based Applications with Bootstrap blocks. Our unit tests can be found in <LINK RMF Linked Files | Test Cases | Test_Cases.xlxs>.
+The development environment is also based on open source technologies, such as 
+*   [Github.com](http://github.com) for source code repository, issue tracking and project management.
+*   [Git CLI Tool](https://git-scm.com/) as the client git tool for source code management.
+*   [Visual Studio Code](https://code.visualstudio.com/) for code editing an debug, including this readme.MD. VS Code can run on Linux, Windows and OSX and it is integrated to support git.
 
-The screenshot below shows Unit Test Runner results (failure).
-IMAGE
+##  D.	Unit Testing
+As part of our development standard practice, we always treat unit testing as part of code and overall quality control. For this prototype, we used [Jasmine](http://jasmine.github.io/) as the Unit Test Framework for Angular-based Applications with Bootstrap blocks. Our unit tests can be found in the [Test Cases](./artifacts/Test Cases/Test_Cases.xlxs).
+
+The screenshot below shows Unit Test Runner results.
+![Unit Test Results](./artifacts/_images/Unit_Test_Runner.png?raw=true "Unit Test Results")
 
 ##  E.	Deployment
 ### Continuous Integration (CI) for Live Demo Site
