@@ -15,15 +15,15 @@ In addition to the requirements provided in the solicitation, the FEi team has e
 ##  B.	List of Artifacts Used to Create Prototype
 Our team relied on the following artifacts to create the prototype:
 
-*	**Staffing Plan:** Greater detail about the team and roles can be found in [Section III - Team Structure](#iii----team-structure) 
+*	**Staffing Plan:** Greater detail about the team and roles can be found in [Section III. Team Structure](#iii----team-structure) 
 *	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint schedule and activities are included | [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf)
-*	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in section <LINK to Section IV> IV. Research and Discovery.
-*	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in section <LINK to Section V> V. Design. 
+*	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in section [Section IV. Research and Discovery](#iv-research-and-discovery)
+*	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in section [Section V. Design](#v--design)
 *	**Wireframes:** Design notes and Wireframes can be found | [Wireframes](./artifacts/Wireframes)
 *	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria | [User Stories](./artifacts/User Stories/User_Stories.pdf)
 *	**Definition of Done:** We used a checklist for the definition of done | [Definition of Done Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf)
 *	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included | [Meeting Notes](./artifacts/Meeting Notes)
-*	**Frameworks and Libraries Used:** A description of the prototype frameworks and libraries used and why they were employed is located in <LINK Architecture and Frameworks Section>. The prototype framework and libraries are included in GitHub, <LINK to GitHub location>. 
+*	**Frameworks and Libraries Used:** A description of the prototype frameworks and libraries used and why they were employed is located in [Architecture and Frameworks Section](#c--architecture-and-frameworks). The prototype framework and libraries are included in GitHub, <LINK to GitHub location>. 
 *	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format) are shown | [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx)
 *	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found | [Data_Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf)
 
@@ -54,7 +54,7 @@ Mississippi may choose to enhance the prototype’s Home Page by adding text to 
 
 The footer of the home page includes an email address to report any site issues. For more information, see Section VIII <LINK to VIII. Reporting Prototype and Documentation Bugs>.
 
-The prototype components are described in detail in Section VII <LINK to VII. Release Notes>.
+The prototype components are described in detail in [Section VII: Release Notes](#vii----release-notes--version-10).
 
 #   III.	Team Structure
 ##  A.	Composition
@@ -96,14 +96,14 @@ Our team, which was self-organizing and cross-functional for optimized efficienc
     *   Backend Web Developers: Xiang Zhang, Bhavani Reddy, and Terry Boswell 
 
 ##  B.	Roles and Responsibilities 
-The table provided in <LINK | RMF Linked Files | Roles_and_Responsibilities | Roles_and_Responsibilities.PDF> outlines the roles and responsibilities for key positions in the project team. These roles provide the broad leadership in all technical and management disciplines required for this project.
+The table provided in [Roles and Responsibilities](./artifacts/Roles and Responsibilities/Roles_and_Responsibilities.pdf) outlines the roles and responsibilities for key positions in the project team. These roles provide the broad leadership in all technical and management disciplines required for this project.
 
 ##  C.	Level of Effort (Proprietary)
 Per the Vendor Challenge Section 4.2.1 instructions, FEi has provided the hourly rate and total number of hours for each labor category proposed to complete the prototype separately in the document, *“FEi, MS Section X - Cost Information Submission, RFP No. 3717.PDF”*. The total number of hours proposed to complete the prototype is 468.
 
 #   IV.	Research and Discovery
 ##  A.	Research Methods – User Perspective
-FEi’s research and discovery efforts were designed to better understand the needs of prospective users of the child care provider search portal. Our approach focused on systematic data collection to apply revisions that were incorporated throughout several iterations of the application development process. Throughout the process, we employed methods that were qualitative, including user interviews <LINK RMF Linked Files | Meeting Notes | User_Interviews_Notes.PDF> as well as quantitative, including a user survey <LINK RMF Linked Files | Survey Results | Survery_Results.PDF>, to gain insights into goals, needs, and typical behavior from caseworkers and parents. User stories were created based on FEi’s research and discovery findings that listed the tasks the user was trying to accomplish; for more information see <LINK RMF Linked Files | User Stories | User_Stories.PDF>. 
+FEi’s research and discovery efforts were designed to better understand the needs of prospective users of the child care provider search portal. Our approach focused on systematic data collection to apply revisions that were incorporated throughout several iterations of the application development process. Throughout the process, we employed methods that were qualitative, including [User_Interviews_Notes](./artifacts/Meeting Notes/User_Interviews_Notes.pdf) as well as quantitative, including a [Survey Results](./artifacts/Survey Results/Survey_Results.pdf), to gain insights into goals, needs, and typical behavior from caseworkers and parents. User stories were created based on FEi’s research and discovery findings that listed the tasks the user was trying to accomplish; for more information see [User Stories](./artifacts/User Stories/User_Stories.pdf). 
 
 **Caseworker Perspective**
 
