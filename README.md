@@ -66,12 +66,11 @@ During the planning stage – Sprint 0, we analyzed the RFP requirements and ide
 
 The FEi team collaborated daily, using the Kanban board (see screenshot below), to assess progress and assign work items. The Continuous Integration (CI) process established also helped with team interaction and with team (and work) integration, so that issues would be resolved in a timely manner. 
 
-IMAGE
+![Kanban Board](./artifacts/_images/Kanban_Board.png?raw=true "Kanban Board")
 
 When bugs were found, the team immediately created issues and assigned them to the right team member, or the assignment was made during the stand-up meeting the next day. A screenshot for the “Issues” page in GitHub is shown below.
 
-IMAGE
-
+![Issue Page](./artifacts/_images/Issues_Page.png?raw=true "Issue Management")
 
 This model was designed to optimize flexibility, creativity, and productivity. Our PO, Hatem Ghafir, was responsible for building and managing the Product Backlog and had the authority and overall responsibility for delivering the project. 
 
@@ -244,7 +243,7 @@ The screenshot below shows Unit Test Runner results.
 MS Azure provides simple CI that can deploy a project from GitHub to Azure App Service. For facilitate quick builds, we used this capability in Sprints 1 and 2, and then switched to TeamCity, a comprehensive integration build platform that we configured for this prototype, for Sprint 3. The configuration includes plug-ins for the Unit Test Framework used.
 
 The screenshot below shows the CI process with log details.
-IMAGE
+![CI Monitor](./artifacts/_images/CI.png?raw=true "CI Process with Monitoring")
 
 ##  F.	Installation Instructions
 Please refer to the [following documentation](./artifacts/Prototype_Installation_Instructions.pdf) for installation instructions.
