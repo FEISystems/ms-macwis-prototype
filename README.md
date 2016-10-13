@@ -9,23 +9,22 @@ FEi has sustained Capability Maturity Model Integration (CMMI) Level 3 certifica
 
 #   II.	Documentation
 ##  A.	Description of the Project
-The purpose of this project is to show FEi’s capability to provide Agile software development services. Our Agile approach is illustrated in the [Agile Development Scrum Process Diagram](./artifacts/Agile Scrum Process Diagram/Agile_Development_Scrum_Process_Diagram.png). We have developed a working prototype to demonstrate our technical aptitude in design, development, and a repeatable process. The prototype was created to allow Mississippi caseworkers or parents to select the best child care provider for a child. It is presented as an alternative to the MDHS Search Child Care Provider form page.
-In addition to the requirements provided in the solicitation, the FEi team has enhanced the prototype with additional requirements and features that should help the parents and caseworkers in their search. These additional functions were based on the recorded Q&As with Mississippi caseworkers, as well as our own team research and interviews with parents and additional Subject Matter Experts (SMEs) in the child care and child welfare field. The additional functions are described below.
+The purpose of this project is to show FEi’s capability to provide Agile software development services. Our Agile approach is illustrated in the [Agile Development Scrum Process Diagram](./artifacts/Agile Scrum Process Diagram/Agile_Development_Scrum_Process_Diagram.png). We present a working prototype to demonstrate our technical aptitude in design, development, and a repeatable process. The prototype was created to allow Mississippi caseworkers or parents to select the best child care provider for a child. It is presented as an alternative to the MDHS Search Child Care Provider form page. In addition to the solicitation requirements, the FEi team enhanced the prototype with added functionality to help prospective users in their search. These enhancements were based on feedback gathered from the recorded Mississippi caseworker Q&A’s, as well as our own team research and interviews with parents and additional Subject Matter Experts (SMEs) in the child care and child welfare field. Our approach is detailed in the remainder of the document.
 
 ##  B.	List of Artifacts Used to Create Prototype
 Our team relied on the following artifacts to create the prototype:
 
-*	**Staffing Plan:** Greater detail about the team and roles can be found in [Section III. Team Structure](#iii----team-structure) 
-*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint schedule and activities are included in the [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf)
-*	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in [Section IV. Research and Discovery](#iv-research-and-discovery)
-*	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in [Section V. Design](#v--design)
-*	**Wireframes:** Design notes and Wireframes can be found [here](./artifacts/Wireframes)
-*	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria, see [User Stories](./artifacts/User Stories/User_Stories.pdf)
-*	**Definition of Done:** We used a checklist for the definition of done, see [Definition of Done Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf)
-*	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included in the [Meeting Notes](./artifacts/Meeting Notes)
+*	**Staffing Plan:** Greater detail about the team and roles can be found in [Section III. Team Structure](#iii----team-structure). 
+*	**Sprint Schedule:** After an initial planning sprint (Sprint 0), we conducted three one-week sprints. A summary of sprint activities is included in the [Sprint Schedule](./artifacts/Sprint Schedule/Sprint_Schedule.pdf).
+*	**Research and Discovery:** We gathered feedback from prospective system users to enhance the prototype. The research and discovery phase is described in greater detail in [Section IV. Research and Discovery](#iv-research-and-discovery).
+*	**Design Notes/Specifications:** We followed Bootstrap design and U.S. Digital Service playbook guidelines. The process is described in greater detail in [Section V. Design](#v--design).
+*	**Wireframes:** Design notes and Wireframes can be found [here](./artifacts/Wireframes).
+*	**User Stories and Acceptance Criteria:** We expanded the vendor challenge user story to include additional scenarios and for each user story, we developed acceptance criteria, see [User Stories](./artifacts/User Stories/User_Stories.pdf).
+*	**Definition of Done:** We used a checklist for the definition of done, see [Definition of Done Checklist](./artifacts/Definition of Done Checklist/Definition_of_Done_Checklist.pdf).
+*	**Meeting Notes:** In addition to daily meetings, notes from several Design, Development, and User Interview meetings are included in [Meeting Notes](./artifacts/Meeting Notes).
 *	**Frameworks and Libraries Used:** A description of the prototype frameworks and libraries used and why they were employed is located in the [Architecture and Frameworks Section](#c--architecture-and-frameworks). The prototype framework and libraries are included in this [repository](https://github.com/FEISystems/ms-macwis-prototype). 
-*	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format) are shown in the [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx)
-*	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found in the [Data Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf)
+*	**Test Scripts and Cases:** Quality Assurance (QA) activities included creating test cases (actors, preconditions, and test steps) as well as test scripts (actions, expected results, and test results in a Pass/Fail format), which are shown in the [Test Cases](./artifacts/Test Cases/Test_Cases.xlsx).
+*	**Data Assumptions:** We enhanced the vendor challenge dataset by adding columns for data requested by both caseworkers and users interviewed during the research phase. The type of data added was based on what would be feasible to obtain from information provided in a child care license per the Mississippi State Department of Health’s Guide, “How to Get a Child Care License.” Mock data was added for illustration purposes. More detail can be found in the [Data Assumptions](./artifacts/Data Assumptions/Data_Assumptions.pdf).
 
 ##  C.	Functional Description of Prototype Components
 Based on our research and the SME interviews that we conducted, the needs and the level of expertise of the two types of prototype users, caseworkers and parents, will vary. 
@@ -46,13 +45,13 @@ A prominent “Advanced Search” button directs the user to additional search c
 *	Child Care Provided for the Following Genders
 *	Serves Special Behavioral Needs
 *	Serves Special Medical Needs
-*	Accepts USFA Food Programs
+*	Accepts USDA Food Programs
 
-Once the search is executed from the home page or using the advanced search feature, the “Search Results” will display providers that have been filtered by the search criteria entered. 
+Once the search is executed from the Home Page or using the advanced search feature, the “Search Results” will display providers that have been filtered by the search criteria entered. 
 
 Mississippi may choose to enhance the prototype’s Home Page by adding text to describe additional programs, services, hints, and guidelines for how to choose the most suitable child care provider. The current prototype provides descriptions of Licensed Child Care Centers, Licensed Family Child Care Homes, and Registered Family Child Care Homes. It also includes links to the Mississippi Department of Human Services to provide additional resources for parents (http://www.mdhs.state.ms.us/early-childhood-care-development/for-parents/) and information on choosing a child care provider (http://www.msdh.state.ms.us/msdhsite/_static/41%2C0%2C81.html). 
 
-The footer of the home page includes an email address to report any site issues. For more information, see [Section VIII. Reporting Prototype and Documentation Bugs](#viii----reporting-prototype-or-documentation-bugs).
+The footer of the Home Page includes an email address to report any site issues. For more information, see [Section VIII. Reporting Prototype and Documentation Bugs](#viii----reporting-prototype-or-documentation-bugs).
 
 The prototype components are described in detail in [Section VII: Release Notes](#vii----release-notes--version-10).
 
@@ -64,7 +63,7 @@ During the planning stage – Sprint 0, we analyzed the RFP requirements and ide
 2.	**Visual and Frontend Development Team –** This team consisted of the Technical Architect, Visual Designer, Interaction Designers, and Frontend Web Developers, and was responsible for designing the entire user experience, information architecture, journey maps, wireframes, and style guides. This team worked closely with the PO and the rest of the Requirements Team, and the Backend Development Team to ensure working end-to-end functionality that is robust and satisfies the product requirements.
 3.	**Backend Development Team –** This team consisted of Backend Web Developers that performed database design (including augmenting the sample data provided by the State), created the search functions, and other ancillary functions (e.g., showing provider details), and printing results. This team also worked closely with the Requirements Team and the Visual and Frontend Team to ensure a working end-to-end functionality that is robust and satisfies the product requirements.
 
-The FEi team collaborated daily, using the Kanban board (see screenshot below), to assess progress and assign work items. The Continuous Integration (CI) process established also helped with team interaction and with team (and work) integration, so that issues would be resolved in a timely manner. 
+The FEi team collaborated daily, using the Kanban board (see the screenshot below), to assess progress and assign work items. The Continuous Integration (CI) process established also helped with team interaction and with team (and work) integration, so that issues were resolved in a timely manner. 
 
 ![Kanban Board](./artifacts/_images/Kanban_Board.png?raw=true "Kanban Board")
 
@@ -76,29 +75,27 @@ This model was designed to optimize flexibility, creativity, and productivity. O
 
 Our Scrum Master (Agile Coach), James Tan, ensured that the Scrum Team adhered to the principles, practices, and rules that make Agile methodology so successful by developing clear lines of escalation within the organization and engaging stakeholders. 
 
-Our team, which was self-organizing and cross-functional for optimized efficiency and effectiveness, included the following: 
+Our team, which was self-organizing and cross-functional for optimized efficiency and effectiveness, included the following focus areas: 
 
-*	**Leadership, Product Definition, and Requirements Team**
+*	**Leadership, Product Definition, and Requirements**
     *	Product Owner (Product Manager) – Hatem Ghafir
-    *	Agile Coach (Scrum Master) – James Tan 
-    *	Delivery Manager – Lisa Lin-Freeman 
+    *	Agile Coach – James Tan 
+    *	Delivery Manager (Scrum Master) – Lisa Lin-Freeman 
     *	Business Analyst – Chris Gordon
     *	Technical Writer – Claire Reinken 
 
-*	**Visual and Frontend Development Team** 
+*	**Development** 
     *   Technical Architect – James Tan
     *   Visual Designer – Luis Najera
     *   Interaction Designers – Ludwing Najera, Christian Heyd, and John Jilek
     *   Frontend Web Developers – Luis Najera
-
-*   **Backend Development Team**
-    *   Backend Web Developers: Xiang Zhang, Bhavani Reddy, and Terry Boswell 
+    *   Backend Web Developers - Xiang Zhang, Bhavani Reddy, and Terry Boswell 
 
 ##  B.	Roles and Responsibilities 
 The table provided in [Roles and Responsibilities](./artifacts/Roles and Responsibilities/Roles_and_Responsibilities.pdf) outlines the roles and responsibilities for key positions in the project team. These roles provide the broad leadership in all technical and management disciplines required for this project.
 
 ##  C.	Level of Effort (Proprietary)
-Per the Vendor Challenge Section 4.2.1 instructions, FEi has provided the hourly rate and total number of hours for each labor category proposed to complete the prototype separately in the document, *“FEi, MS Section X - Cost Information Submission, RFP No. 3717.PDF”*. The total number of hours proposed to complete the prototype is 468.
+Per the Vendor Challenge Section 4.2.1 instructions, FEi has provided the hourly rate and total number of hours for each labor category proposed to complete the prototype separately in the document, *“FEi, MS Section X - Cost Information Submission, RFP No. 3717.PDF”*. We proposed 468 hours to complete the prototype.
 
 #   IV.	Research and Discovery
 ##  A.	Research Methods – User Perspective
@@ -106,7 +103,7 @@ FEi’s research and discovery efforts were designed to better understand the ne
 
 **Caseworker Perspective**
 
-The Requirements Team, including FEi’s PO and Business Analyst, analyzed the needs expressed by caseworkers during the Caseworker Q&A session held as part of this procurement on Friday, September 9, 2016. The recorded call was transcribed, [Research Document 6](./artifacts/Research Documents/Mississippi_Caseworker_Q&A_Transcript.pdf). Our team reviewed the transcription and highlighted themes that emerged throughout the call. Caseworkers expressed particular interest in several features and improvements to the current search portal. Our team’s prototype incorporates the following enhancements:
+The Requirements Team, including FEi’s PO and Business Analyst, analyzed the needs expressed by caseworkers during the Caseworker Q&A session held as part of this procurement on Friday, September 9, 2016. The recorded call was transcribed, see [Mississippi Caseworker Q&A Transcript](./artifacts/Research Documents/Mississippi_Caseworker_Q&A_Transcript.pdf). Our team reviewed the transcription and highlighted themes that emerged throughout the call. Caseworkers expressed particular interest in several features and improvements to the current search portal. Our team’s prototype incorporates the following enhancements:
 
 1.  Geographic searches/ability to search by radius
 2.  Advanced search capabilities to narrow down providers
@@ -116,7 +113,7 @@ In addition to the information gathered from the Caseworker Q&A, our team reache
 
 Gary brings over 10 years of experience consulting with child welfare systems and programs in multiple states. Additionally, he has over five years of experience working with child care systems, programs, and policies in Ohio. Liz has more than 25 years of experience in the field of human services. Her background includes direct practice and program development and management, policy analysis, legal advocacy, research, and training. She has an in-depth knowledge of foster care and adoption practice and policy, public benefits law, and special education law. 
 
-It is worth noting that the interviews with Gary and Liz did not just consist of discussions about the topic, but rather the team demonstrated a functioning system at that time and obtained valuable feedback that was then translated into additional requirements used to enhance the prototype. Notes, findings, and ideas for enhancement from the interviews can be found in <LINK RMF Linked Files | Meeting Notes | User_Interviews_Notes.PDF>.
+It is worth noting that the interviews with Gary and Liz did not just consist of discussions about the topic, but rather the team demonstrated a functioning system at that time and obtained valuable feedback that was then translated into additional requirements used to enhance the prototype. Notes, findings, and ideas for enhancement from the interviews can be found in [Meeting Notes](./artifacts/Meeting Notes/User_Interviews_Notes.PDF).
 
 **Parent Perspective**
 
@@ -125,11 +122,11 @@ Similarly, our team reached out to a network of parents to test the prototype an
 1.	Hours of operation
 2.	Days of operation
 
-FEi conducted an interview with Kathleen on October 3, 2016. She is a step-mother and project manager with the Maryland Department of Juvenile Services, where she collaborates with the Maryland Department of Human Resources to share provider resources. She previously researched the child welfare and juvenile justice systems, and advised as to the state provider directory that serves both child serving agencies. Notes from the interview can be found in <LINK RMF Linked Files | Meeting Notes | User_Interviews_Notes.PDF>.
+FEi conducted an interview with Kathleen on October 3, 2016. She is a step-mother and project manager with the Maryland Department of Juvenile Services, where she collaborates with the Maryland Department of Human Resources to share provider resources. She previously researched the child welfare and juvenile justice systems, and advised as to the state provider directory that serves both child serving agencies. Notes from the interview can be found in [Meeting Notes](./artifacts/Meeting Notes/User_Interviews_Notes.PDF).
 
 **User Survey**
 
-In addition to the interviews, we fielded a brief online survey to gather usability feedback. The survey can be found: https://www.surveymonkey.com/r/7X2G2CJ.
+In addition to the interviews, we fielded a brief online survey to gather usability feedback.
 
 We distributed the link to FEi employees and encouraged forwarding to extended networks. We also gathered feedback by posting the link on a local parent group in Facebook. The survey contained a link to the prototype and asked the following questions:
 
@@ -139,29 +136,29 @@ We distributed the link to FEi employees and encouraged forwarding to extended n
 4.	Please describe one feature that will help us improve your search experience.
 
 ##  B.	User Survey Findings 
-FEi’s user survey findings are summarized in <LINK | RMF Linked Files | Survey_Results | Survey_Results.PDF>.
+FEi’s user survey findings are summarized in [Survey_Results](./artifacts/Survey Results/Survey_Results.PDF).
 
 ##  C.	Research Methods – System
-We also completed research to tailor the system to Mississippi. For instance, we examined the Mississippi Child Care license, [Research Document 1](./artifacts/Research Documents/HOW-TO-GET-A-CHILD-CARE-LICENSE_2.pdf), application to make assumptions about available data points for the prototype. Based on the application packet, we determined it was feasible to incorporate hours and days of operation into the prototype. 
+We also completed research to tailor the system to Mississippi. For instance, we examined the Mississippi Child Care license, [How to Get a Child Care License](./artifacts/Research Documents/HOW-TO-GET-A-CHILD-CARE-LICENSE_2.pdf), application to make assumptions about available data points for the prototype. Based on the application packet, we determined it was feasible to incorporate hours and days of operation into the prototype. 
 
-Similarly, we reviewed the state licensing regulations to identify the target age groups served by centers, [Research Document 4](./artifacts/Research Documents/MS_License_Regulations.pdf). To better understand what the star quality ratings mean, we reviewed the Mississippi Quality Stars Brochure, [Research Document 5](./artifacts/Research Documents/MS_Quality_Stars_Brochure.pdf)
+Similarly, we reviewed the state licensing regulations to identify the target age groups served by centers, [Regulations Governing Licensure of Child Care Facilities](./artifacts/Research Documents/MS_License_Regulations.pdf). To better understand what the star quality ratings mean, we reviewed the Mississippi Quality Stars Brochure, see [MS Quality Stars Brochure](./artifacts/Research Documents/MS_Quality_Stars_Brochure.pdf)
 
-Additionally, to gain a better understanding of the procurement approach, we completed research about 18F, [Research Document 2](./artifacts/Research Documents/ISM_Conference_About_18F.pdf). 
+Additionally, to gain a better understanding of the procurement approach, we completed research about 18F, see [ISM Conference About 18F](./artifacts/Research Documents/ISM_Conference_About_18F.pdf). 
 
 #   V.	Design
 ##  A.	Design Guide
 ### Understanding Users’ Needs and Human-Centered Design
-As mentioned in Section IV <LINK to Section VI. Research and Discovery>, we used the following techniques:
+As mentioned in [Section IV](#iv-research-and-discovery), we used the following techniques:
 *	*User Interviews:* While not in-person, the Q&A recorded webinars with the Mississippi social workers provided our team with an excellent source of information. In addition, we conducted one-on-one sessions with users as an important component of our human-centered design process. By engaging with former caseworkers and parents, we were able to gain more insight into what content to present and how to present it. To gain a better understanding of a parent’s needs, we also conducted an interview with a parent who also has years of experience working in the juvenile services area.
 *	*User Survey:* In order to also gain quantitative input, we conducted an online survey with parents in our community. With 15 respondents, we gained additional input.
-*	*Concept Validation:* In all our interviews and our survey, we gave the users access to the functioning system at that time in order to obtain concrete feedback, and not just present sketches that are sometimes difficult to envision with average users. We solicited feedback, and made necessary changes.
+*	*Concept Validation:* In all our interviews and our survey, we gave the users access to the functioning system at that time in order to obtain concrete feedback and not just present sketches that are sometimes difficult to envision with average users. We solicited feedback, and made necessary changes.
 
 **User Interface (UI) Style Guide –** Style Guides were used to facilitate consistency in look and feel, as well as to streamline handoffs between design and development. To maximize efficiency, we kept the style guide simple and functional, and subsequent improvements were made based on meetings between team members. In our implementation, FEi used Bootstrap, a widely-used open source UI framework, because it has a web-based style guide that facilitated our Agile approach. Our Interaction Designer reduced the time to implementation by providing UI components and the Style Guide to meet the needs of our project. 
 
 For more information on bootstrap style guides, see http://getbootstrap.com/2.3.2/components.html. 
 
 ### US Digital Services Playbook
-We also followed the principles outlined in the US Digital Services Playbook. A summary of our adoption by play can be found here | [Digital Services Play Checklist](./artifacts/Digital Services Play Checklist/Digital_Services_Playbook.pdf). 
+We also followed the principles outlined in the US Digital Services Playbook. A summary of our adoption by play can be found here [Digital Services Play Checklist](./artifacts/Digital Services Play Checklist/Digital_Services_Playbook.pdf). 
 
 ##  B.	Accessibility Best Practices
 
@@ -193,7 +190,7 @@ To ensure compliance without incurring refactoring costs, our team weaves Sectio
 
 We tested the prototype using a JAWS 16 screen reader. At the conclusion of Section 508 testing, our team compiled a detailed findings report, detailing a ‘scorecard’ of compliance, see [Section 508 Compliance](./artifacts/Section 508 Compliance/Section_508_Compliance_Scorecard.pdf). For each non-compliance issue, we documented our recommendations for remediation, including follow up timelines and testing procedures to verify that compliance problems have been sufficiently resolved. Our team worked closely with development to ensure that the reasons for non-compliance are understood, and we put into place best practices and processes for validating Section 508 compliance early on in the development process. 
 ##  C.	Responsive Design
-Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see <LINK VI.A Response Web Design>.
+Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see [Section VI-A. Responsive Web Design](##a-responsive-web-design).
 
 ##  D.	Consistency
 We ensured the design was applied consistently throughout the prototype site pages (Home Page and Search Results). We also took special care to ensure simple and easy to understand language was used.
@@ -210,7 +207,7 @@ For the deployment, Azure has built-in support to be integrated with GitHub and 
 The prototype can be accessed at http://msmacwis.azurewebsites.net. 
 
 ##  A.	Responsive Web Design
-Our Frontend Web Developers initially created wireframes and screen mockups, see <LINK RMF Linked Files | Wireframes>, and discussed the view of web components and layout in different types of devices. Once the initial wireframes were completed, the team developed the interactive code with selected technologies and framework (Bootstrap and AngularJS), and tested using different types of devices, such as PC, Phones, and Tablets; we also used browser built-in tools to simulate devices. The use of the Bootstrap framework allowed our frontend code to be fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs.
+Our Frontend Web Developers initially created wireframes and screen mockups, see [Wireframes](./artifacts/Wireframes), and discussed the view of web components and layout in different types of devices. Once the initial wireframes were completed, the team developed the interactive code with selected technologies and framework (Bootstrap and AngularJS), and tested using different types of devices, such as PC, Phones, and Tablets; we also used browser built-in tools to simulate devices. The use of the Bootstrap framework allowed our frontend code to be fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs.
 
 The prototype has been tested using the following browsers: Internet Explorer 11, Google Chrome v53.0.2785.143, and Safari. In addition, the use of responsive web design desktop allows web pages to be viewed in response to the size of the device. FEi tested the prototype using the following devices: and operating systems: PC (Windows 7 OS), Surface Pro (Windows 10), iPad Air (iOS9), Samsung Galaxy Tab, and iPhone 6 (iOS9).
 
@@ -229,8 +226,8 @@ The frameworks we used in this project are:
 
 The development environment is also based on open source technologies, such as 
 *   [Github.com](http://github.com) for source code repository, issue tracking and project management.
-*   [Git CLI Tool](https://git-scm.com/) as the client git tool for source code management.
-*   [Visual Studio Code](https://code.visualstudio.com/) for code editing an debug, including this readme.MD. VS Code can run on Linux, Windows and OSX and it is integrated to support git.
+*   [Git CLI Tool](https://git-scm.com/) as the client Git tool for source code management.
+*   [Visual Studio Code](https://code.visualstudio.com/) for code editing an debug, including this readme.MD. VS Code can run on Linux, Windows and OSX and it is integrated to support Git.
 
 ##  D.	Unit Testing
 As part of our development standard practice, we always treat unit testing as part of code and overall quality control. For this prototype, we used [Jasmine](http://jasmine.github.io/) as the Unit Test Framework for Angular-based Applications with Bootstrap blocks. Our unit tests can be found in the [Test Cases](./artifacts/Test Cases/Test_Cases.xlxs).
@@ -309,5 +306,5 @@ The Google language tool bar on the upper right corner enables users to view sea
 We anticipated that users may want to print the providers they have identified during the search. To print selected providers, select the checkbox next to the desired provider and click “Print Selected” button
 
 #  VIII.	Reporting Prototype or Documentation Bugs
-Issues can be reported to MS.bugreport@feisystems.com . This information is included as a footer in the Home Page of the prototype.
+Issues can be reported to MS.bugreport@feisystems.com. This information is included as a footer in the Home Page of the prototype.
 
