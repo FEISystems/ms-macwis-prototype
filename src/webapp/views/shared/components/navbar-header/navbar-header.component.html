@@ -1,42 +1,72 @@
-﻿<link rel='stylesheet' type="text/css" href="views/shared/components/navbar-header/navbar-header.component.css" />
+﻿
+<style type="text/css">
+    .logo {
+        width: auto;
+        height: 45px;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        background-color: #FCFCFC;
+    }
+    .skiptranslate ~ .container-fluid .navbar-fixed-top {
+        top: 40px;
+    }
+
+    .skiptranslate[style="display: none;"] ~ .container-fluid .navbar-fixed-top {
+        top: 0px;
+    }
+
+</style>
 
 <!-- Fixed navbar -->
 <header id="navbar">
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>-->
-                <a ng-link="['Home']" class="navbar-brand">{{model.brandName}}</a>
+            <div class="navbar-header col-xs-6">
+                <a ng-link="['Home']" class="navbar-brand"><img src="content/macwis/mdhs_logo.png"
+                                                                alt="{{model.brandName}}" class="logo"></a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
+            <div class="navbar-content  col-xs-6">
+                <div id="google_translate_element" class="pull-right" style="margin-top: 10px;"></div>
+                <script type="text/javascript">
+                    function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({
+                            pageLanguage: 'en',
+                            includedLanguages: 'ar,de,el,en,es,fr,it,iw,ja,ko,pl,pt,ru,sv,tl,uk,vi,zh-CN,zh-TW',
+                            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                        }, 'google_translate_element');
+                    }
+                </script>
+                <script type="text/javascript"
+                        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </div>
+            <!--<div id="navbar" class="navbar-collapse collapse">-->
 
-                <!-- Fixed navbar -->
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a ng-link="['Home']" class="navbar-brand">{{model.brandName}}</a>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <div class="navbar-content clearfix" ng-show="model.showNavMenu === true">
-                                <ul class="nav navbar-top-links pull-left" ng-repeat="menuItem in menuItems">
-                                    <li ng-class="{open: model.activeClass('{{menuItem.path}}')}"><a ng-link="{{menuItem.link}}">{{menuItem.name}}</a></li>
-                                </ul>
-                            </div>
-                        </div><!--/.nav-collapse -->
-                    </div>
-                </nav>
-            </div><!--/.nav-collapse -->
+            <!--&lt;!&ndash; Fixed navbar &ndash;&gt;-->
+            <!--<nav class="navbar navbar-default navbar-fixed-top">-->
+            <!--<div class="container-fluid">-->
+            <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+            <!--data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a ng-link="['Home']" class="navbar-brand"><img src="content/macwis/mdhs_logo.png"-->
+            <!--alt="{{model.brandName}}" class="logo"></a>-->
+            <!--</div>-->
+            <!--<div id="navbar" class="navbar-collapse collapse">-->
+            <!--<div class="navbar-content clearfix" ng-show="model.showNavMenu === true">-->
+            <!--<ul class="nav navbar-top-links pull-left" ng-repeat="menuItem in menuItems">-->
+            <!--<li ng-class="{open: model.activeClass('{{menuItem.path}}')}"><a-->
+            <!--ng-link="{{menuItem.link}}">{{menuItem.name}}</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+            <!--</div>&lt;!&ndash;/.nav-collapse &ndash;&gt;-->
+            <!--</div>-->
+            <!--</nav>-->
+            <!--</div>&lt;!&ndash;/.nav-collapse &ndash;&gt;-->
         </div>
-    </nav>
+    </div>
 </header>

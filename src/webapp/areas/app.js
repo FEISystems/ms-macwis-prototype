@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
-    var module = angular.module("macwisWebApp", ['ui.bootstrap', "ngComponentRouter"]);
-
+    var module = angular.module("macwisWebApp", ['ui.bootstrap', "ngComponentRouter", 'ngAnimate']);
+    window.document.title = 'MS Prototype';
     module.value("$routerRootComponent", "macwisWebApp");
 
     var controller = function (roleService) {
@@ -31,7 +31,22 @@
     ]
     });
 
+    module.directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngEnter);
+                    });
+    
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+
 }());
+
 
 function getSrv(name, element) {
     element = element || '*[ng-app]';
@@ -45,3 +60,10 @@ if (!String.prototype.startsWith) {
       return this.substr(position, searchString.length) === searchString;
   };
 }
+
+if (!String.prototype.toTitleCase) {
+    String.prototype.toTitleCase = function(){
+      return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  };
+}
+

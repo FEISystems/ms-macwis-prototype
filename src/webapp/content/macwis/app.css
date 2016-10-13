@@ -1,8 +1,23 @@
+.dark-bg-border-focus :focus,
+.dark-bg-border-focus button:focus,
+.dark-bg-border-focus .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+.dark-bg-border-focus input[type="radio"]:focus,
+.dark-bg-border-focus input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
+}
 body .no-padding {
   padding: 0 !important;
 }
 body a:hover {
   cursor: pointer;
+}
+body .label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 body > div.container-fluid {
   padding: 0;
@@ -11,7 +26,7 @@ body > div.container-fluid > div.col-xs-12 {
   padding: 0 0 25px 0;
 }
 body div#resultsPageContainer {
-  padding: 20px 15px 0 0;
+  padding: 0 15px 0 0;
   height: 100%;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter {
@@ -20,12 +35,12 @@ body div#resultsPageContainer div#searchPanelContainerOuter {
   position: fixed;
   height: 100%;
   margin-top: -20px;
+  top: 70px;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
   height: 100%;
   padding-left: 10px;
   position: relative;
-  left: -10px;
   top: 0;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel {
@@ -45,8 +60,7 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
   font-size: 28px;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
-  max-height: 830px !important;
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
 }
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body legend button {
   color: white;
@@ -65,15 +79,57 @@ body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelConta
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body label {
   color: white;
 }
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body label a {
+  color: white;
+  text-decoration: underline;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.row div.col-xs-12 p {
+  color: white;
+  font-size: 16px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.col-xs-12.col-sm-6.col-md-6.col-lg-6.zip {
+  padding-left: 0 !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.col-xs-12.col-sm-6.col-md-6.col-lg-6.zip div.form-group {
+  padding-top: 20px;
+  margin-bottom: 0 !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body #locationCriteria div.col-xs-12.col-sm-6.col-md-6.col-lg-6:last-of-type {
+  padding-right: 0;
+}
 body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer {
   background: #6498AD;
+  padding: 0 15px;
 }
-body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer .reset {
-  color: #000 !important;
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row {
+  padding: 10px 0 5px 0;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row div.col-xs-12 div.pull-right button.btn.btn-success {
+  padding: 8px 35px;
+  font-weight: bold;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row div.col-xs-12 div.pull-right button.btn.reset {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+  padding: 8px 12px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-footer div.row div.col-xs-12 div.pull-right button.btn.reset span.glyphicon {
+  font-size: 11px;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer :focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer button:focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer input[type="radio"]:focus,
+body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
 }
 body div#resultsPageContainer div#resultsPanelContainer {
   overflow-x: hidden;
-  padding: 15px 5px 0 0;
+  padding: 15px 10px 0 0;
   margin-left: 25.75%;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row div.pull-left h2 {
@@ -93,28 +149,42 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row di
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults {
   border: none;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr {
-  border-bottom: 1px solid #ccc;
-}
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td {
   border: none;
   padding: 0;
   display: inline-block;
 }
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td span.label {
+  white-space: normal;
+  text-align: left;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect {
+  display: table-cell;
+  vertical-align: top;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes {
+  height: 100%;
+  padding-top: 35px;
+  display: block;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes input {
+  width: 20px;
+  height: 20px;
+  margin-left: 40%;
+  margin-top: 0;
+  display: block;
+}
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection {
-  padding-top: 20px;
-  padding-bottom: 8px;
+  padding-top: 25px;
+  padding-bottom: 0;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerNameSection div.providerName strong {
-  font-size: 22px;
+  font-size: 24px;
   color: #6498AD;
   display: inline-block;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating {
-  padding: 3px 0 0 0;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating label {
-  font-size: 18px;
+  padding: 3px 0 5px 0;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.starRating div {
   display: inline-block;
@@ -123,27 +193,29 @@ body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row ta
   padding-bottom: 6px;
   padding-right: 1px;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div {
-  padding: 0;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row {
+  padding-left: 8px;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div {
-  margin: 8px 0;
-  font-size: 15px;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
+  margin: 0;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div strong {
-  font-size: 16px;
-}
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div div span {
-  font-size: 15px;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerInfo div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 div.row {
+  padding-bottom: 15px;
 }
 body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails {
   padding-bottom: 15px;
 }
-body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails a.btn {
-  background: #6498AD;
-  color: white;
-  border: 1px solid #ccc;
-  text-shadow: none;
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row {
+  padding-bottom: 10px;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row button {
+  background: transparent;
+}
+body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr:nth-child(even) {
+  background: #F7F7F7;
+}
+body div#resultsPageContainer div#resultsPanelContainer .result-pagination label {
+  font-weight: normal;
 }
 body .searchTab {
   background: #4d7e91 !important;
@@ -193,6 +265,15 @@ body #homeSearch div[role="tabpanel"] h2 {
 body #homeSearch label {
   font-size: 130%;
 }
+body :focus,
+body button:focus,
+body .form-control:focus {
+  border: 2px solid #16e9ff !important;
+}
+body input[type="radio"]:focus,
+body input[type="checkbox"]:focus {
+  outline: 5px auto #16e9ff;
+}
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1200px) {
   body div#resultsPageContainer div#resultsPanelContainer {
@@ -210,29 +291,164 @@ body #homeSearch label {
   body > div.container-fluid {
     padding: 0;
   }
-  body div#resultsPageContainer {
+  body > div.container-fluid div#resultsPageContainer {
     padding: 0;
   }
-  body div#resultsPageContainer div#resultsPanelContainer,
-  body div#resultsPageContainer div#searchPanelContainer {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer,
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainer {
     padding: 0px;
   }
-  body div#resultsPageContainer div#resultsPanelContainer {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer {
+    padding-top: 20px;
     margin-left: 0;
   }
-  body div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row {
     padding: 0 15px;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter {
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.printSelect div#checkboxes input {
+    margin-left: 20%;
+  }
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row {
+    padding: 0;
+  }
+  body > div.container-fluid div#resultsPageContainer div#resultsPanelContainer div.col-xs-12 div.row table#searchResults tr td.providerDetails div.row div.col-xs-12.col-sm-4.col-md-4.col-lg-4 {
+    padding-left: 15px !important;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter {
     padding-top: 10px;
     position: static;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer {
+    padding-left: 0;
     position: static;
     padding-top: 20px;
   }
-  body div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel .panel-body {
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel {
     overflow: visible !important;
     max-height: none !important;
+    position: static;
+    padding-bottom: 0 !important;
   }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel button.btn.btn-default.visible-xs.navbar-toggle {
+    color: white;
+    margin: -15px 0 0 0;
+    display: inline-block;
+    text-shadow: none;
+    background: transparent;
+    border: 1px solid white;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel button.btn.btn-default.visible-xs.navbar-toggle span.glyphicon {
+    font-size: 11px;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel .panel-body {
+    position: static;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    bottom: 90px;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel div.sticky-footer.panel-footer {
+    position: static !important;
+    left: 0px !important;
+    right: 0px !important;
+    display: none;
+    margin: 0px !important;
+    padding: 0 15px;
+  }
+  body > div.container-fluid div#resultsPageContainer div#searchPanelContainerOuter div#searchPanelContainer form div.panel.search-panel div.sticky-footer.panel-footer div.row {
+    padding: 15px 0 0 0;
+  }
+}
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-track-piece {
+  border: 8px;
+  border-color: black;
+}
+*::-webkit-scrollbar:vertical {
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+*::-webkit-scrollbar:vertical:corner-present {
+  border-bottom-width: 0;
+}
+*::-webkit-scrollbar-thumb:vertical {
+  background: rgba(255, 255, 255, 0.55);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  max-width: 4px;
+  min-height: 20px;
+}
+*::-webkit-scrollbar-track-piece:vertical:start {
+  margin-top: 0px !important;
+}
+*::-webkit-scrollbar-track-piece:vertical:start {
+  margin-bottom: 0px !important;
+}
+*::-webkit-scrollbar:horizontal {
+  border: 2px solid transparent;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+*::-webkit-scrollbar:horizontal:corner-present {
+  border-bottom-width: 0;
+}
+*::-webkit-scrollbar-thumb:horizontal {
+  background: rgba(255, 255, 255, 0.55);
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  max-height: 4px;
+  min-width: 20px;
+}
+*::-webkit-scrollbar-track-piece:horizontal:start {
+  margin-left: 0px !important;
+}
+*::-webkit-scrollbar-track-piece:horizontal:start {
+  margin-right: 0px !important;
+}
+.search-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.search-panel .panel-body {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  bottom: 90px;
+}
+.search-panel .sticky-footer {
+  position: absolute !important;
+  left: 0px !important;
+  right: 0px !important;
+  display: none;
+  margin: 0px !important;
+}
+#searchResults span {
+  font-size: 120%;
+  color: #555555;
+  font-weight: bold;
+}
+#searchResults .control-label {
+  font-size: 100%;
+  color: #6d6d6d;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+#searchResults .data-element {
+  display: block;
+}
+#searchResults .form-group {
+  margin-bottom: 10px;
 }

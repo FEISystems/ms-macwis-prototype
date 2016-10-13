@@ -75,11 +75,9 @@
             var result = null;
             switch (id) {
             case 1:
-                result = true;
-                break;
+                return "Yes";
             case 2:
-                result = false;
-                break;
+                return "No";
             default:
                 console.log("can't get CanTakeBehavioralChildren by id: " + id);
                 break;
@@ -452,27 +450,27 @@
             return [
             {
                 "Id": 0,
-                "Name": "Not Rated"
+                "Name": "Show All"
             },
             {
                 "Id": 1,
-                "Name": "Low"
+                "Name": "1 Stars or greater"
             },
             {
                 "Id": 2,
-                "Name": "Average"
+                "Name": "2 Stars or greater"
             },
             {
                 "Id": 3,
-                "Name": "Good"
+                "Name": "3 Stars or greater"
             },
             {
                 "Id": 4,
-                "Name": "Very Good"
+                "Name": "4 Stars or greater"
             },
             {
                 "Id": 5,
-                "Name": "Excellent"
+                "Name": "5 Stars"
             }
         ];
         };
@@ -481,11 +479,11 @@
             return [
                 {
                     "Id": "Boy",
-                    "Name": "Boy"
+                    "Name": "Boy Only"
                 },
                 {
                     "Id": "Girl",
-                    "Name": "Girl"
+                    "Name": "Girl Only"
                 },
                 {
                     "Id": "Both",
@@ -496,6 +494,10 @@
 
         var getSortTypes = function(){
             return [
+                {
+                    "Id": "QualityRating",
+                    "Name": "Quality Star Rating"
+                },
                 {
                     "Id": "ProviderName",
                     "Name": "Provider Name"
@@ -510,14 +512,51 @@
                 },
                 {
                     "Id": "CountyName",
-                    "Name": "County Name"
+                    "Name": "County"
+                }
+
+            ];
+        }
+        var getDistances = function(){
+            return [
+                {
+                    Id: "5",
+                    Name: "5 Miles"
                 },
                 {
-                    "Id": "QualityRating",
-                    "Name": "Rate"
+                    Id: "10",
+                    Name: "10 Miles"
+                },{
+                    Id: "25",
+                    Name: "25 Miles"
+                },{
+                    Id: "50",
+                    Name: "50 Miles"
                 }
             ];
         }
+
+        var titleCaseData = function(data, property)
+        {
+            var results = [];
+            function toTitleCase(str)
+            {
+                return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+            }
+        
+            $.each(data, function(index, value) {
+                if (property)
+                {
+                    value[property] = toTitleCase(value[property]);
+                    results.push(value);
+                }
+                else
+                    results.push(toTitleCase(value));                
+            })
+            return results;
+        }
+
+
         return {
             ages: ages,
             getAgeById: getAgeById,
@@ -528,7 +567,9 @@
             getCities: getCities,
             getRates: getRates,
             getGenders: getGenders,
-            getSortTypes: getSortTypes
+            getSortTypes: getSortTypes,
+            getDistances: getDistances,
+            titleCaseData: titleCaseData
         };
     };
 

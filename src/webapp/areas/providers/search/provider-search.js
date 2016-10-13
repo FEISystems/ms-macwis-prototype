@@ -7,23 +7,29 @@
             return lists.slice(start);
         };
     });
-    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService) {
-        //init start
+    var controller = function ($scope, $rootScope, providerService, dataService, queueService, googleMapService, $log, $timeout, $window) {
+        /**************************Model datapoints******************** */
         var model = this;
         model.title = "Provider Search";
         model.Criteria = {};
-        model.sortData = { up: true };
+        model.sortData = {
+            up: true
+        };
         model.provider = {};
         model.filteredProviders = [];
         // init end
 
-        model.showProviderDetails = false;
-
-        
-        
-        
+        // model.locationCollapsed = function () {
+        //     $scope.isCollapsed = true
+        // };
         model.Cities = dataService.getCities();
         model.Counties = dataService.getCounties();
+        model.selected = [];
+        model.showProviderDetails = false;
+        model.isRendered = false;
+        /***********************Model Metadata******************** */
+        model.Cities = dataService.titleCaseData(dataService.getCities());
+        model.Counties = dataService.titleCaseData(dataService.getCounties(), "Name");
         model.ProviderTypes = dataService.getProviderTypes();
         model.Rates = dataService.getRates();
         model.Ages = dataService.ages;
@@ -31,161 +37,44 @@
         model.CanTakeBehavioralChildrens = dataService.canTakeBehavioralChildrenes;
         model.AllProviders = providerService.getAllProviders();
         model.SortByes = dataService.getSortTypes();
-        model.showDetails = function (provider) {
-            model.showProviderDetails = true;
-            model.provider = provider;
-        };
+        model.Distances = dataService.getDistances();
 
-        model.clickOk = function (provider) {
-            model.showProviderDetails = false;
-        };
+        model.Criteria.Rate = model.Rates[0].Id;
 
-        $scope.printprovider=function () {
-            debugger;
-            var selected = [];
-            var htmlcode='';
-            debugger
-            $('div#checkboxes input[type=checkbox]').each(function() {
-                if ($(this).is(":checked")) {
-                    selected.push($(this).attr('id'));
-                }
-            });
-
-
-            $.each(selected,function (index,value) {
-                var TerValue=value.split(',')[16].split(':')[1].replace(/\"/g, "")=="true"?"Yes":"No";
-                htmlcode =htmlcode+ "<table><tr><div class='modal-body pad-no'><div class='row'> <div class='col-xs-offset-1'> <div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> "+value.split(',')[1].split(':')[1].replace(/\"/g, "")+"</p></div>"+
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  "+value.split(',')[4].split(':')[1].replace(/\"/g, "")+"</p> </div>"+
-                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  "+value.split(',')[10].split(':')[1].replace(/\"/g, "")+"</p><p class='ng-binding'> <strong>City: </strong>"+value.split(',')[6].split(':')[1].replace(/\"/g, "")+" </p><p class='ng-binding'><strong>Quality Star Rating: </strong>   Excellent  </p>  "+
-                    "<p class='ng-binding'><strong>License Type: </strong>   "+value.split(',')[2].split(':')[1].replace(/\"/g, "")+" </p>"+
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===true' class='ng-hide'><strong>Accepts subsidized child care: </strong>"+ TerValue +"</p>" +
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>"+
-                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>"+
-                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  "+value.split(',')[9].split(':')[1].replace(/\"/g, "")+"</p>"+
-                    "<p class='ng-binding'><strong>Zip Code: </strong> "+value.split(',')[7].split(':')[1].replace(/\"/g, "")+"</p>"+
-                    "    <p class='ng-binding'><strong>Provider Capacity: </strong> "+value.split(',')[5].split(':')[1].replace(/\"/g, "")+"</p>"+
-                    "<p class='ng-binding'><strong>Age Range: </strong> "+value.split(',')[13].split(':')[1].replace(/\"/g, "")+" to "+value.split(',')[14].split(':')[1].replace(/\"/g, "")+"  </p>"+
-                    "<p class='ng-binding'><strong>Gender: </strong> "+value.split(',')[15].split(':')[1].replace(/\"/g, "")+" </p></div></div></div></div></tr></table><hr/>";
-
-            });
-            // htmlcode=htmlcode+'</table>';
-            if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
-                var popupWin = window.open('', '_blank', 'width=3000,height=3000');
-                popupWin.document.open();
-                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
-                popupWin.document.close();
-            }
-            else
-            {
-                return false;
-            }
-
-        };
-
-
-
-        model.search = function() {
-            model.filteredProviders = [];
-            var tempProviders = [];
-            model.sortData = { up: false, sortField: "QualityRating" };
-            if (model.Criteria.address && model.Criteria.distince) {
-                googleMapService.getCoordinateByAddress(model.Criteria.address, function(coordinate) {
-                    tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distince);
-                    model.searchByCriteria(tempProviders);
-                }, function(error) {
-                    alert(error);
-                });
-            } else {
-                tempProviders = model.AllProviders;
-                model.searchByCriteria(tempProviders);
-            };
-            model.setPage = function(num) {
-                if (num === -1) {
-                    if (isNaN($("#GoPage").val()))
-                        num = 0;
-                    else if ($("#GoPage").val() <= model.pages)
-                        num = $("#GoPage").val() - 1;
-                    else num = model.pages - 1;
-                }
-                if (num < 0)
+        /************************Paging functionality************ */
+        model.setPage = function (num) {
+            if (num === -1) {
+                if (isNaN($("#GoPage").val()))
                     num = 0;
-                model.currentPage = num;
-                model.InitPages();
-            };
-
-            model.prevPage = function() {
-                if (model.currentPage > 0) {
-                    model.currentPage--;
-                }
-                model.InitPages();
-            };
-            model.nextPage = function() {
-                if (model.currentPage < model.pages - 1) {
-                    model.currentPage++;
-                }
-                model.InitPages();
-            };
-            model.firstPage = function() {
-                model.currentPage = 0;
-                model.InitPages();
-            };
-
-            model.lastPage = function() {
-                model.currentPage = model.pages - 1;
-                model.InitPages();
-            };
-
+                else if ($("#GoPage").val() <= model.pages)
+                    num = $("#GoPage").val() - 1;
+                else num = model.pages - 1;
+            }
+            if (num < 0)
+                num = 0;
+            model.currentPage = num;
+            model.InitPages();
         };
 
-        model.searchByCriteria = function(tempProviders) {
-
-            if (!model.Criteria || model.Criteria.ProviderName ||
-                model.Criteria.ProviderType || model.Criteria.City || model.Criteria.County ||
-                (model.Criteria.Rate || model.Criteria.Rate === 0) ||
-                model.Criteria.Age || model.Criteria.Gender || model.Criteria.CanTakeBehavioralChildren) {
-                angular.forEach(tempProviders, function (provider) {
-                    var nameFound = true;
-                    if (model.Criteria.ProviderName) {
-                        var inputName = model.Criteria.ProviderName.toLowerCase();
-                        var providerName = provider.ProviderName.toLowerCase();
-                        var results = providerName.search(inputName);
-                        if (results >= 0) {
-                            nameFound = true;
-                        } else {
-                            nameFound = false;
-                        }
-                    }
-                    if (nameFound &&
-                    (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType === provider.ProviderType)) &&
-                    (!model.Criteria.City || (model.Criteria.City && model.Criteria.City === provider.PhysicalCity)) &&
-                    (!model.Criteria.County || (model.Criteria.County && model.Criteria.County === provider.CountyNumber)) &&
-                    (model.Criteria.Rate === undefined || model.Criteria.Rate === null || model.Criteria.Rate === provider.QualityRating) &&
-                    (!model.Criteria.Age || (model.Criteria.Age
-                        && dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge
-                        && dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
-                    (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender === provider.Gender)) &&
-                    (!model.Criteria.CanTakeBehavioralChildren ||
-                    (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) === provider.CanTakeChildrenWithBehavioralProblems))) {
-                        model.filteredProviders.push(provider);
-                    }
-                });
-            } else {
-                model.filteredProviders = tempProviders;
-            };
-            model.sort();
-
-            if (model.filteredProviders.length > 0)
-                $(".result-pagination").show();
-               $("#lblSelect").show();
+        model.prevPage = function () {
+            if (model.currentPage > 0) {
+                model.currentPage--;
+            }
+            model.InitPages();
+        };
+        model.nextPage = function () {
+            if (model.currentPage < model.pages - 1) {
+                model.currentPage++;
+            }
+            model.InitPages();
+        };
+        model.firstPage = function () {
             model.currentPage = 0;
-            model.listsPerPage = model.ItemsPerPageList[0];
-            model.providersCount = model.filteredProviders.length;
-            if ($("#selectPerPage option:selected").text()) {
-                model.currentPage = 0;
-                model.pages = Math.ceil(model.providersCount / $("#selectPerPage option:selected").text());
-            } else
-                model.pages = Math.ceil(model.providersCount / model.listsPerPage);
-            model.pageNum = [];
+            model.InitPages();
+        };
+
+        model.lastPage = function () {
+            model.currentPage = model.pages - 1;
             model.InitPages();
         };
         model.InitPages = function () {
@@ -206,6 +95,7 @@
                 }
             }
         };
+
         model.ChangeDisplayNums = function () {
             if ($("#selectPerPage option:selected").text()) {
                 model.currentPage = 0;
@@ -218,6 +108,151 @@
         model.clear = function () {
             model.Criteria = {};
         };
+
+        /****************** *Print functionality **************/
+        
+        model.printprovider = function () {
+            var htmlcode = '';
+            var itemsToPrint = [];
+
+            angular.forEach(model.filteredProviders, function (provider) {
+                if (provider.selectedForPrint) 
+                    itemsToPrint.push(provider);
+            });
+
+            if (itemsToPrint.length > 0) {
+                angular.forEach(itemsToPrint, function (provider) {
+                   // var TerValue = value.split(',')[16].split(':')[1].replace(/\"/g, "") == "true" ? "Yes" : "No";
+
+                    htmlcode = htmlcode + "<table><tr><div class='modal-body pad-no'><div class='row'> " + "<div class='col-xs-offset-1'> " +
+                        "<div class='col-md-12'><p class='ng-binding'><strong>Provider Name: </strong> " + provider.ProviderName + "</p></div>" +
+
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Provider Type: </strong>  " + provider.ProviderType + "</p>" +
+                    "<p class='ng-binding'><strong>Hours of Operation: </strong>  " + provider.HoursofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Days of Operation:: </strong>  " + provider.DaysofOperation  +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Medical Needs: </strong>  " +  provider.CanTakeChildrenWithMedicalProblems  +"</p> " +
+                    "<p class='ng-binding'><strong>Children with Behavioral Needs: </strong>  " + provider.CanTakeChildrenWithBehavioralProblems +"</p> " +
+                    "<p class='ng-binding'><strong>USDA Food Program: </strong>  " + provider.USDAFoodPrograms  + "</p></div>" +
+
+                    "<div class='col-xs-4'><p class='ng-binding'><strong>Phone#: </strong>  " + provider.PhoneNumber + "</p><p class='ng-binding'> <strong>City: </strong>" + provider.PhysicalCity.toTitleCase() + " </p><p class='ng-binding'><strong>Quality Star Rating: </strong>" + provider.QualityRating +  "</p>  " +
+                    "<p class='ng-binding'><strong>License Type: </strong>   " + provider.LicenseType.toTitleCase() + " </p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems===false' class=''></p>" +
+                    "<p ng-show='provider.CanTakeChildrenWithBehavioralProblems!==false&amp;&amp; provider.CanTakeChildrenWithBehavioralProblems!==true' class='ng-binding ng-hide'></p>  </div>" +
+                    " <div class='col-xs-4'><p class='ng-binding'><strong>County: </strong>  " + provider.CountyName.toTitleCase() + "</p>" +
+                    "<p class='ng-binding'><strong>Zip Code: </strong> " + provider.PhysicalZipCode + "</p>" +
+                    "    <p class='ng-binding'><strong>Provider Capacity: </strong> " + provider.ProviderCapacity + "</p>" +
+                    "<p class='ng-binding'><strong>Age Range: </strong> " + provider.MinAge + " to " + provider.MaxAge + "  </p>" +
+                    "<p class='ng-binding'><strong>Gender: </strong> " + provider.Gender + " </p></div></div></div></div></tr></table><hr/>";
+
+                });
+                // htmlcode=htmlcode+'</table>'; if ($('div#checkboxes input[type=checkbox]').is(":checked")) {
+                var popupWin = window.open('', '_blank', 'width=3000,height=3000');
+                popupWin.document.open();
+                popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="scripts/vendor/bootstrap-3.3.7-dist/css/bootstrap.css" /></head><body onload="window.print()">' + htmlcode + '</body></html>');
+                popupWin.document.close();
+            }
+            else {
+                return false;
+            }
+
+        };
+
+        /*****************Sorting and searching functionality**********************/
+        model.search = function () {
+            model.filteredProviders = [];
+            var tempProviders = [];
+            model.sortData = {
+                up: false,
+                sortField: "QualityRating"
+            };
+            if (model.Criteria.address) {
+                if (!isNaN(model.Criteria.distance) && model.Criteria.distance > 0) {
+                    googleMapService.getCoordinateByAddress(model.Criteria.address, function (coordinate) {
+                        tempProviders = providerService.getProvidersByDistince(coordinate.lat, coordinate.lng, model.Criteria.distance);
+                        model.searchByCriteria(tempProviders);
+                        model.showPagination = (model.filteredProviders.length > 0);                        
+                    }, function (error) {
+                        $log.error(error);
+                    });
+                }
+                else {
+                    angular.forEach(model.AllProviders, function (provider) {
+                        if (provider.PhysicalZipCode == model.Criteria.address) {
+                            tempProviders.push(provider);
+                        }
+                    });
+                    model.searchByCriteria(tempProviders);
+                }
+            } else {
+                tempProviders = model.AllProviders;
+                model.searchByCriteria(tempProviders);
+            }
+            model.showPagination = (model.filteredProviders.length > 0);            
+        };
+        model.searchByCriteria = function (tempProviders) {
+
+            if (!model.Criteria || model.Criteria.ProviderName ||
+                model.Criteria.ProviderType || model.Criteria.City || model.Criteria.County ||
+                (model.Criteria.Rate || model.Criteria.Rate === 0) ||
+                model.Criteria.Age || model.Criteria.Gender || model.Criteria.CanTakeBehavioralChildren || model.Criteria.address) {
+                angular.forEach(tempProviders, function (provider) {
+                    var nameFound = true;
+                    if (model.Criteria.ProviderName) {
+                        var inputName = model.Criteria.ProviderName.toLowerCase();
+                        var providerName = provider.ProviderName.toLowerCase();
+                        var results = providerName.search(inputName);
+                        if (results >= 0) {
+                            nameFound = true;
+                        } else {
+                            nameFound = false;
+                        }
+                    }
+                    provider.selectedForPrint = false;
+                    
+                    var match = (nameFound &&
+                        (!model.Criteria.ProviderType || (model.Criteria.ProviderType && model.Criteria.ProviderType == provider.ProviderType)) &&
+                        (!model.Criteria.City || (model.Criteria.City && model.Criteria.City.toLowerCase() == provider.PhysicalCity.toLowerCase())) &&
+                        (!model.Criteria.County || (model.Criteria.County && model.Criteria.County == provider.CountyNumber)) &&
+                        (model.Criteria.Rate == undefined || model.Criteria.Rate == null || (model.Criteria.Rate * 1) <= provider.QualityRating) &&
+                        //we added the model.Criteria.distance will be filtered above if distance is in play
+                        (model.Criteria.distance || !model.Criteria.address || (model.Criteria.address == provider.PhysicalZipCode)) &&
+                        (!model.Criteria.Age || (model.Criteria.Age &&
+                        dataService.getAgeById(model.Criteria.Age) && dataService.getAgeById(model.Criteria.Age)[0] >= provider.MinAge &&
+                        dataService.getAgeById(model.Criteria.Age)[1] <= provider.MaxAge)) &&
+                        (!model.Criteria.Gender || (model.Criteria.Gender && model.Criteria.Gender.toLowerCase() == provider.Gender.toLowerCase())) &&
+                        (!model.Criteria.CanTakeBehavioralChildren ||
+                        (model.Criteria.CanTakeBehavioralChildren && dataService.getCanTakeBehavioralChildrenById(model.Criteria.CanTakeBehavioralChildren) == provider.CanTakeChildrenWithBehavioralProblems))
+                        &&
+                        (!model.Criteria.ServesSpecialMedicalNeeds ||
+                        (model.Criteria.ServesSpecialMedicalNeeds && model.Criteria.ServesSpecialMedicalNeeds == provider.CanTakeChildrenWithMedicalProblems)) &&
+                        (!model.Criteria.AcceptsUSDAFoodProgram || (
+                         model.Criteria.AcceptsUSDAFoodProgram && model.Criteria.AcceptsUSDAFoodProgram == provider.USDAFoodPrograms   
+                        )));
+                        if (match)
+                            model.filteredProviders.push(provider);
+                        
+                });
+            } else {
+                model.filteredProviders = tempProviders;
+            }
+            ;
+            model.sort();
+
+            // if (model.filteredProviders.length > 0)
+            //     $(".result-pagination").show();
+            $("#lblSelect").show();
+            model.currentPage = 0;
+            model.listsPerPage = model.ItemsPerPageList[0];
+            model.providersCount = model.filteredProviders.length;
+            if ($("#selectPerPage option:selected").text()) {
+                model.currentPage = 0;
+                model.pages = Math.ceil(model.providersCount / $("#selectPerPage option:selected").text());
+            } else
+                model.pages = Math.ceil(model.providersCount / model.listsPerPage);
+            model.pageNum = [];
+            model.InitPages();
+        };
+
         model.sort = function () {
             if (model.sortData && model.sortData.sortField && model.filteredProviders) {
                 if (model.sortData.sortField === "QualityRating") {
@@ -231,46 +266,137 @@
             }
             model.ChangeDisplayNums();
         };
+
+        /*****************General page logic**********************/
+        model.showDetails = function (provider) {
+            model.showProviderDetails = true;
+            model.provider = provider;
+        };
+
+        model.clickOk = function (provider) {
+            model.showProviderDetails = false;
+        };
+
+
         model.up = function () {
             model.sortData.up = !model.sortData.up;
             model.filteredProviders = _.reverse(model.filteredProviders);
         };
-        
-        $scope.$watch(function() { return angular.element("#providerSearchButton").is(':visible') }, function() {
-            var criteria = queueService.getMsg('homeSearchCriteria');
-            if (!criteria)
+
+        model.onKeyPress = function(e){
+            if (e && e.originalEvent && e.originalEvent.code == "Enter")
             {
+                model.search();
+            }
+        }
+
+        // Toggle icons for collapse states
+        // Set search panels to open/close on page load
+        $scope.isCollapsed = true;
+        $scope.locationCollapsed = true;
+        $scope.advancedOptionsCollapsed = true;
+
+        model.toggleSearchMenu = function($event){
+            var span = $($event.currentTarget).find('.glyphicon');
+            if($(span).hasClass('glyphicon-chevron-down')) {
+                $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                $($event.currentTarget).find('.searchToggle').html(' Hide Menu');
+            } else {
+                $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                $($event.currentTarget).find('.searchToggle').html(' Show Menu');
+            }
+        }
+        model.toggleSearchPanels = function($event){
+            var span = $($event.currentTarget).children();
+            if ($(span).hasClass('glyphicon-plus')) {
+                $(span).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+            } else {
+                $(span).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+            }
+        };
+        model.toggleProviderDetails = function($event) {
+            var span = $($event.currentTarget).find(".glyphicon");
+            if ($(span).hasClass('glyphicon-chevron-down')) {
+                $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                $($event.currentTarget).find('.toggleProviderInfo').html("show less");
+            } else {
+                $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                $($event.currentTarget).find('.toggleProviderInfo').html("show more");
+            }
+        };
+        model.$onInit = function () {
+            macwis.stickyFooter('.sticky-footer');
+            // function setSearchCollapse() {
+            //     var mobileSearchCollapse = $('.panel-body');
+            //     if ($(window).innerWidth() <= 755) {
+            //         mobileSearchCollapse.removeClass('in');
+            //     } else {
+            //         mobileSearchCollapse.addClass('in');
+            //     };
+            // };
+            // setSearchCollapse()
+            $scope.mobileSearchCollapse = $window.innerWidth <= 755;
+
+
+        };
+
+        model.$postLink = function() {
+
+            angular.element($window).bind('resize', function(){
+                $scope.mobileSearchCollapse = $window.innerWidth <= 755;
+                $scope.$digest();
+            });
+        };
+
+        /**********************
+         * This method will subscribe to the rendering of the provider search button
+         * The reason is to detect when the page is rendered. If there is a search criteria in the queue service
+         * then we pre load the search to the results. If there is not a search criteria, then it will load all providers
+         */
+        $scope.$watch(function () {
+            return angular.element("#providerSearchButton").is(':visible')
+        }, function () {
+            if (model.isRendered)
+                return;
+            model.isRendered = true;
+            var criteria = queueService.getMsg('homeSearchCriteria');
+            
+            if (!criteria || !criteria.rate)
+                $('#starRating_none').prop('checked', true);
+            
+            if (!criteria) {
                 model.search();
                 return;
             }
-            
+
             var criteriaFromHomePage = {
-                ProviderName : criteria.providerName,
-                ProviderType : criteria.providerType,
-                City : criteria.city,
-                County : criteria.county,
-                Rate : criteria.rate,
+                ProviderName: criteria.providerName,
+                ProviderType: criteria.providerType,
+                City: criteria.city,
+                County: criteria.county,
+                Rate: criteria.rate,
                 address: criteria.zipCode,
-                distince : criteria.radius,
-                providerName : criteria.ProviderName
+                distince: criteria.radius,
+                providerName: criteria.ProviderName
             };
             model.Criteria.ProviderType = criteria.providerType;
             model.Criteria.ProviderName = criteria.providerName;
             model.Criteria.City = criteria.city;
             model.Criteria.County = criteria.county;
             model.Criteria.Rate = criteria.rate;
-            model.Criteria.Address = criteria.zipCode;
+            if (!model.Criteria.Rate)
+                model.Criteria.Rate = 0;
+            model.Criteria.address = criteria.zipCode;
             model.Criteria.distince = criteria.radius;
-
             queueService.setMsg('homeSearchCriteria', null);
             model.search();
-            
+
         });
     };
 
     module.component("providerSearch", {
-        templateUrl: "Areas/providers/search/provider-search.html",
+        templateUrl: "areas/providers/search/provider-search.html",
         controllerAs: "model",
-        controller: ["$scope", "$scope", "providerService","dataService", 'queueService', 'googleMapService',controller]
+        controller: ["$scope", "$rootScope", "providerService", "dataService", 'queueService', 'googleMapService', '$log', '$timeout', '$window', controller]
     });
 }())

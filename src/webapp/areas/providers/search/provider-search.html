@@ -1,49 +1,43 @@
-﻿<standard-layout>
+﻿﻿
+<standard-layout>
     <search-layout>
         <search-panel>
             <form name="searchForm">
-                <div class="panel">
+                <div class="panel search-panel">
                     <div class="panel-heading">
-                        <h1>{{title}}</h1>
+                        <span class="pull-right">
+                            <button type="button" class="btn btn-default visible-xs navbar-toggle" ng-click="model.toggleSearchMenu($event); mobileSearchCollapse = !mobileSearchCollapse">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                <span class="searchToggle">Show Menu</span>
+                            </button>
+                        </span>
+                        <h1>{{model.title}}</h1>
+
                     </div>
 
-                    <div class="panel-body">
+                    <div class="panel-body" id="searchBody" uib-collapse="mobileSearchCollapse">
 
                         <!-- PROVIDER SEARCH OPTIONS -->
-                        <legend><button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#providerCriteria">Search by Provider <span class="glyphicon glyphicon-plus pull-right"></span></button></legend>
-                        <div class="collapse" id="providerCriteria">
-                            <div class="form-group">
-                                <label for="providerName">Provider Name:</label>
-                                <input type="text" id="providerName" class="form-control" ng-model="model.Criteria.ProviderName">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="providerType">Provider Type:</label>
-                                <select id="providerType" class="form-control" ng-model="model.Criteria.ProviderType"
-                                        ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes">
-                                    <option value=""></option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                            <label for="starRating">Quality Star Rating:</label>
-                            <select id="starRating" class="form-control" ng-model="model.Criteria.Rate"
-                                    ng-options="rate.Id as rate.Name for rate in model.Rates">
-                                <option value=""></option>
-                            </select>
-                            <hr style="border-color: #ffffff">
-                        </div>
-                        </div>
-                        <!-- LOCATION SEARCH OPTIONS -->
-
-
                         <fieldset>
                             <legend>
-                                <button aria-expanded="false" class="btn-block criteriaButton" data-toggle="collapse" data-target="#locationCriteria">Search by Location
-                                    <span class="glyphicon glyphicon-plus pull-right"></span>
-                                </button>
+                                <button class="btn-block" ng-click="model.toggleSearchPanels($event); providerCollapsed = !providerCollapsed">
+                                    Search by Provider <span class="glyphicon glyphicon-minus pull-right"></span></button>
                             </legend>
-                            <div class="collapse" id="locationCriteria">
+                            <div uib-collapse="providerCollapsed" class="in" id="providerCriteria">
+                                <div class="form-group">
+                                    <label for="providerName">Provider Name:</label>
+                                    <input type="text" id="providerName" class="form-control"
+                                           ng-model="model.Criteria.ProviderName" ng-keypress="model.onKeyPress($event)">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="providerType">Provider Type:</label>
+                                    <select id="providerType" class="form-control" ng-model="model.Criteria.ProviderType"
+                                            ng-options="providerType.Id as providerType.Name for providerType in model.ProviderTypes">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="city">City:</label>
                                     <select id="city" class="form-control" ng-model="model.Criteria.City"
@@ -57,68 +51,176 @@
                                             ng-options="county.Id as county.Name for county in model.Counties">
                                         <option value=""></option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="zipCode">Zip Code:</label>
-                                    <input id="zipCode" type="text" ng-minlength="5" class="form-control" ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" name="address">
-                                    <div class="error" style="color: red" ng-show="{{'searchForm.address.$invalid '}}">
-                                        Please enter a valid zip code
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                <label for="searchRadius">Distance(miles):</label>
-                                <input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">
-                                <div class="error" style="color: red" ng-show="{{'searchForm.distance.$invalid '}}">
-                                    Please enter a numeric value
 
                                 </div>
-                                <hr style="border-color: #ffffff">
-                            </div>
+                                <div class="form-group">
+                                    <span style="display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: bold; color: white "><a
+                                            class="label"
+                                            style="text-decoration: underline; color: white; font-size: 14px; padding-left: 0;"
+                                            href="http://earlyyearsnetwork.msucares.com/system/files/website/quality-stars-brochure.pdf{{hash}}"
+                                            target="_blank">Quality Star Rating Equal or Greater:</a>
+                                        <span style="display: block;font-size:12px;font-style:italic;">(Click for Description)</span> </span><br>
+                                    <label for="starRating_none">
+                                        <input id="starRating_none" type="radio" ng-model="model.Criteria.Rate"
+                                               value="{{model.Rates[0].Id}}">
+                                        Show All
+                                    </label><br/>
+
+                                    <input id="starRating" type="radio" ng-model="model.Criteria.Rate"
+                                                        value="{{model.Rates[5].Id}}">
+                                    <label>
+                                        <span class="sr-only">Five star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true">
+                                    </label><br/>
+
+                                    <input id="starRating_two" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[4].Id}}">
+                                    <label for="starRating_two">
+                                        <span class="sr-only">Two star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                    </label><br/>
+                                    <input id="starRating_three" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[3].Id}}">
+                                    <label for="starRating_three">
+                                        <span class="sr-only">Three star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                    </label><br/>
+                                    <input id="starRating_four" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[2].Id}}">
+                                    <label for="starRating_four">
+                                        <span class="sr-only">Four star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img
+                                            src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                    </label><br/>
+                                    <input id="starRating_five" type="radio" ng-model="model.Criteria.Rate"
+                                           value="{{model.Rates[1].Id}}">
+                                    <label for="starRating_five">
+                                        <span class="sr-only">Five star rating</span>
+                                        <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                            src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                    </label><br/>
+                                </div>
+
                             </div>
                         </fieldset>
+                        <!-- LOCATION SEARCH OPTIONS -->
 
-
-
-                        <!-- ADVANCED SEARCH OPTIONS -->
                         <fieldset>
                             <legend>
-                                <button class="btn-block criteriaButton" data-toggle="collapse" data-target="#advancedCriteria" aria-expanded="false">Advanced Search Options
+                                <button ng-model="model.locationCollapsed"
+                                        ng-click="model.toggleSearchPanels($event); locationCollapsed = !locationCollapsed"
+                                        class="btn-block ">Search by Distance
                                     <span class="glyphicon glyphicon-plus pull-right"></span>
                                 </button>
                             </legend>
-                            <div class="collapse" id="advancedCriteria">
+                            <div id="locationCriteria" uib-collapse="locationCollapsed">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p style="font-style: italic">Enter zip code to find providers within the distance selected.</p>
+                                    </div>
+                                </div>
+                                <div class="row" id="searchRadiusCriteria">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-group" style="">
+                                            <label for="zipCode">Zip Code:</label>
+                                            <input id="zipCode" type="text" ng-minlength="5" class="form-control"
+                                                   ng-pattern="/^\d{5}(?:[-\s]*\d{4})?$/" ng-model="model.Criteria.address" ng-keypress="model.onKeyPress($event)"
+                                                   name="address">
+                                            <div class="error" style="color: red"
+                                                 ng-show="{{'searchForm.address.$invalid '}}">
+                                                Please enter a valid zip code
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="searchRadius">Within Distance of Zip Code:</label>
+                                            <!--<input id="searchRadius" type="number" min="0" class="form-control" ng-model="model.Criteria.distance" name="distance">-->
+                                            <select id="searchRadius" class="form-control"
+                                                    ng-model="model.Criteria.distance"
+                                                    ng-options="distance.Id as distance.Name for distance in model.Distances">
+                                                <option value=""></option>
+                                            </select>
+                                            <div class="error" style="color: red"
+                                                 ng-show="{{'searchForm.distance.$invalid '}}">
+                                                Please enter a numeric value
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                        </fieldset>
+                        <!-- ADVANCED SEARCH OPTIONS -->
+                        <fieldset>
+                            <legend>
+                                <button class="btn-block"
+                                        ng-click="model.toggleSearchPanels($event); advancedOptionsCollapsed = !advancedOptionsCollapsed">Advanced Search
+                                    Options
+                                    <span class="glyphicon glyphicon-plus pull-right"></span>
+                                </button>
+                            </legend>
+                            <div uib-collapse="advancedOptionsCollapsed" id="advancedCriteria">
                                 <div class="form-group">
-                                    <label for="ageRange">Age Ranges:</label>
+                                    <label for="ageRange">Age Served:</label>
                                     <select id="ageRange" class="form-control" ng-model="model.Criteria.Age"
                                             ng-options="age.Id as age.Name for age in model.Ages">
                                         <option value=""></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="gendersAccepted">Genders Accepted:</label>
+                                    <label for="gendersAccepted">Child Care Provided for the Following Genders:</label>
                                     <select id="gendersAccepted" class="form-control" ng-model="model.Criteria.Gender"
                                             ng-options="gender.Id as gender.Name for gender in model.Genderes">
                                         <option value=""></option>
                                     </select>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="acceptsSubsidized">Accepts subsidized child care:</label>
-
-                                    <select id="acceptsSubsidized" class="form-control" ng-model="model.Criteria.CanTakeBehavioralChildren"
+                                    <label for="behavioralNeeds">Serves Special Behavioral Needs:</label>
+                                    <select id="behavioralNeeds" class="form-control" ng-model="model.Criteria.CanTakeBehavioralChildren"
                                             ng-options="canTakeBehavioralChildren.Id as canTakeBehavioralChildren.Name for canTakeBehavioralChildren in model.CanTakeBehavioralChildrens">
                                         <option value=""></option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="medicalNeeds">Serves Special Medical Needs:</label>
+                                    <select id="medicalNeeds" class="form-control" ng-model="model.Criteria.ServesSpecialMedicalNeeds">
+                                        <option value=""></option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="acceptsUSDA">Accepts USDA Food Program:</label>
+
+                                    <select id="acceptsUSDA" class="form-control" ng-model="model.Criteria.AcceptsUSDAFoodProgram">
+                                        <option value=""></option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
                                     </select>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
-                    <div class="panel-footer">
+
+                    <div class="panel-footer sticky-footer">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="pull-right">
-                                    <button class="btn btn-success" type="submit" ng-click="model.search()">Search</button>
-                                    <button class="btn reset" ng-click="model.clear()" style="color: black">Reset</button>
+                                    <button class="btn btn-success" type="submit" ng-click="model.search()">
+                                        <span class="glyphicon glyphicon-search"></span> Search
+                                    </button>
+                                    <button class="btn reset" ng-click="model.clear()">
+                                        <span class="glyphicon glyphicon-remove"></span> Reset
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -126,10 +228,9 @@
                 </div>
             </form>
             <script>
-                $(document).ready(function() {
-                   $('.collapse').collapse('hide');
-
-                    $('.criteriaButton').on('click', function() {
+                $(document).ready(function () {
+                    // Toggle icons for collapse states
+                    $('.criteriaButton').on('click', function () {
                         var span = $(this).children();
                         if ($(span).hasClass('glyphicon-plus')) {
                             $(span).removeClass('glyphicon-plus').addClass('glyphicon-minus');
@@ -137,6 +238,20 @@
                             $(span).removeClass('glyphicon-minus').addClass('glyphicon-plus');
                         }
                     });
+
+                    $('.expandDetails').on('click', function () {
+                        var span = $(this).find(".glyphicon");
+                        if ($(span).hasClass('glyphicon-chevron-down')) {
+                            $(span).removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                            $(this).find('.toggleProviderInfo').html("show less");
+                        } else {
+                            $(span).removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                            $(this).find('.toggleProviderInfo').html("show more");
+                        }
+                    });
+
+                    macwis.stickyFooter('.sticky-footer');
+
                 });
             </script>
         </search-panel>
@@ -161,99 +276,244 @@
                                     </span>
                                 </div>
                             </div>
-                            <select id="sortControl" class="form-control" ng-model="model.sortData.sortField" ng-change="model.sort()"
+                            <select id="sortControl" class="form-control" ng-model="model.sortData.sortField"
+                                    ng-change="model.sort()"
                                     ng-options="sortBy.Id as sortBy.Name for sortBy in model.SortByes">
                             </select>
-
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <hr style="margin-top: 0">
-                    <div class="result-pagination" style="display: none; margin: 10px 0 20px 0;">
-                        <div ng-if="model.filteredProviders.length>0" style="float: left;">Showing {{model.currentPage==0 ? 1:(model.currentPage)*model.listsPerPage+1}} to {{(model.currentPage!=pages-1)?(model.currentPage+1)*model.listsPerPage:model.providersCount}} of {{model.providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
-                        <div ng-if="model.filteredProviders.length===0"  style="float: left;">No Data Found</div>
-                        <div class="step prevLink" style="float: left;" ng-if="model.filteredProviders.length>0">
-                            Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="model.ChangeDisplayNums()" ng-model="model.listsPerPage" ng-options="item as item for item in model.ItemsPerPageList"></select>&nbsp;&nbsp;entries&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <div class="result-pagination">
+                        <div ng-if="model.showPagination" style="float: left;padding-top: 5px;">Showing
+                            {{model.currentPage==0 ? 1:(model.currentPage)*model.listsPerPage+1}} to
+                            {{(model.currentPage!=pages-1)?(model.currentPage+1)*model.listsPerPage:model.providersCount}}
+                            of {{model.providersCount}} entries&nbsp;&nbsp;|&nbsp;&nbsp; </div>
+                        <div ng-if="model.showPagination" style="float: left;padding-top: 5px;">No Data Found</div>
+                        <div class="step prevLink" style="float: left;padding-top: 5px;" ng-if="model.showPagination">
+                            Show&nbsp;&nbsp;<select id="selectPerPage" ng-change="model.ChangeDisplayNums()"
+                                                    ng-model="model.listsPerPage"
+                                                    ng-options="item as item for item in model.ItemsPerPageList"></select>&nbsp;&nbsp;
+                            <label class="ui-helper-hidden-accessible" for="selectPerPage">Show number of Entries</label>
+                            <span aria-hidden="true">entries</span>&nbsp;&nbsp;|&nbsp;&nbsp;
                         </div>
-                        <div style="float: left; " ng-if="model.filteredProviders.length>0">
-                            <input id="GoPage" type="text" style="width: 35px; height: 23px;" />
-                            <input type="button" value="GO" style="width: 35px; height: 20px; font-size: 11px;" ng-click="model.setPage(-1)" />
-
-                        </div>
-                        <div style="float: left;" ng-hide="false" >
-                        <input type="button" value="PRINT SELECTED"  style="width: 120px; height: 20px; font-size: 11px; margin-left: 300px"
-                                ng-click="printprovider()" />
-
+                        <div style="float: left;">
+                            <button class="btn btn-default" type="button" value="PRINT SELECTED"
+                                   ng-click="model.printprovider()">Print Selected</button>
                         </div>
                     </div>
-                    <table id="searchResults" class="table table-condensed table-responsive">
+                    <table id="searchResults" class="table table-condensed table-responsive" summary="Provider Search Results">
                         <thead ng-hide="true"></thead>
-
                         <tbody>
-                        <tr><td><div class="col-xs-12">
 
-                        </div></td></tr>
-                        <tr><td><div class="col-xs-12">
-                            <label id="lblSelect" style="display: none;">Select Providers</label>
-                        </div></td></tr>
-                            <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
-                                <td class="col-xs-1" ng-hide="false">
-                                    <div id="checkboxes">
-                                        <div style="font-size: 200%; color: darkred; line-height:10em;">
-                                            <input type="checkbox" style="width:20px;height:20px; margin-left: 40%; margin-top: 20px; display: block" id={{provider}} />
+                        <!--<tr><td><div class="col-xs-12">-->
+                        <!--<label id="lblSelect" style="display: none;">Select Providers</label>-->
+                        <!--</div></td></tr>-->
+                        <tr ng-repeat="provider in model.filteredProviders| paging:model.currentPage*model.listsPerPage | limitTo:model.listsPerPage">
+                            <td class="col-xs-1 printSelect" ng-hide="false">
+                                <div id="checkboxes">
+                                    <input type="checkbox" id={{provider.Id}}
+                                           ng-model="provider.selectedForPrint"/>
+                                    <label for="{{provider.Id}}" class="sr-only">Add {{provider.ProviderName}} to Print List</label>
+                                </div>
+                            </td>
+                            <td class="col-xs-11  providerNameSection">
+                                <div class="providerName">
+                                    <strong>{{provider.ProviderName}}</strong>
+                                    <i ng-if="provider.Distance">
+                                        &nbsp;({{provider.Distance}} away)
+                                    </i>
+                                </div>
+                            </td>
+                            <td class="col-xs-11 starRating">
+                                <span class="label sr-only">Quality Star Rating:</span>
+                                <div ng-if="provider.QualityRating===1">
+                                    <span class="sr-only">One star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true" /><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="1Star not selected" aria-hidden="true">
+                                </div>
+                                <div ng-if="provider.QualityRating===2">
+                                    <span class="sr-only">Two star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star"  aria-hidden="true"/> <img
+                                        src="content/macwis/knewstuff.png" alt="Selected Star"  aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                </div>
+                                <div ng-if="provider.QualityRating===3">
+                                    <span class="sr-only">Three star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Selected Star" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                </div>
+                                <div ng-if="provider.QualityRating===4">
+                                    <span class="sr-only">Four star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img
+                                        src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                </div>
+                                <div ng-if="provider.QualityRating===5">
+                                    <span class="sr-only">Five star rating</span>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/> <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                    <img src="content/macwis/knewstuff.png" alt="Selected Star" aria-hidden="true"/>
+                                </div>
+                                <div ng-if="provider.QualityRating===0">
+                                    <span class="sr-only">Zero star rating</span>
+                                    <img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true"><img
+                                        src="content/macwis/14_star.png" alt="Star not selected" aria-hidden="true">
+                                </div>
+                            </td>
+                            <td class="col-xs-11 col-sm-12 col-md-12 col-lg-12 providerInfo">
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                                        <div class="row">
+                                            <span class="fa fa-map-marker"></span>&nbsp;&nbsp;
+                                            <span class="label sr-only">County: </span>
+                                            <span class="">{{provider.CountyName.toTitleCase()}}&nbsp;County,&nbsp;</span>
+                                            <span class="label sr-only">City: </span>
+                                            <span class="">{{provider.PhysicalCity.toTitleCase()}}&nbsp;</span>
+                                            <span class="label sr-only">State: </span>
+                                            <span class="">MS&nbsp;</span>
+                                            <span class="label sr-only">Zip Code:</span>
+                                            <span class="">{{provider.PhysicalZipCode}}</span><br>
+                                            <span class="fa fa-phone"></span>&nbsp;&nbsp;
+                                            <span class="label sr-only">Phone: </span>
+                                            <span class="">{{provider.PhoneNumber}}</span>
+
                                         </div>
                                     </div>
-                                </td>
-                                <td class="col-xs-11  providerNameSection">
-                                    <div class="providerName">
-                                        <strong>{{provider.ProviderName}}</strong>
-                                    </div>
-                                </td>
-                                <td class="col-xs-11 col-xs-offset-1 starRating">
-                                    <label>Quality Star Rating:</label>
-                                    <div ng-if="provider.QualityRating===1">
-                                        <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
-                                    </div>
-                                    <div ng-if="provider.QualityRating===2">
-                                        <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
-                                    </div>
-                                    <div ng-if="provider.QualityRating===3">
-                                        <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
-                                    </div>
-                                    <div ng-if="provider.QualityRating===4">
-                                        <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /><img src="content/macwis/14_star.png">
-                                    </div>
-                                    <div ng-if="provider.QualityRating===5">
-                                        <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" /> <img src="content/macwis/knewstuff.png" />
-                                    </div>
-                                    <div ng-if="provider.QualityRating===0">
-                                        <img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png"><img src="content/macwis/14_star.png">
-                                    </div>
-                                </td>
-                                <td class="col-xs-11 col-xs-offset-1 col-sm-7 col-sm-offset-1 col-md-7 col-md-offset-1 col-lg-9 col-lg-offset-1 providerInfo">
-                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                        <div><strong>Type: </strong><span>{{provider.ProviderTypeDescription}}</span></div>
-                                        <div><strong>Phone: </strong><span>{{provider.PhoneNumber}}</span></div>
-                                        <div><strong>City: </strong><span>{{provider.PhysicalCity}}</span></div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                        <div ng-if="provider.Distance"><strong>Distance: </strong><span>{{provider.Distance}}</span></div>
-                                        <div><strong>County: </strong><span>{{provider.CountyName}}</span></div>
-                                        <div><strong>Capacity: </strong><span>{{provider.ProviderCapacity}}</span></div>
-                                    </div>
-                                </td>
 
-                                <td class="col-xs-12 col-sm-4 col-md-4 col-lg-2 providerDetails">
-                                    <a class="btn btn-default btn-lg btn-block" ng-click="model.showDetails(provider)">Provider Details</a>
-                                </td>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                        <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Provider Type:
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <span class="data-element">{{provider.ProviderTypeDescription}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Age Served:
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <span class="data-element">{{provider.MinAge}}&nbsp;yrs&nbsp;-&nbsp;{{provider.MaxAge}}&nbsp;yrs&nbsp;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div uib-collapse="isCollapsed" class="viewMore">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
-                            </tr>
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Hours of Operation:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.HoursofOperation}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Days of Operation:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.DaysofOperation}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Capacity:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.ProviderCapacity}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Licensed/Unlicensed:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.LicenseType.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                               Child Care Provided for the Following Genders:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.Gender}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Serves Special Behavioral Needs:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithBehavioralProblems.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Serves Special Medical Needs:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.CanTakeChildrenWithMedicalProblems.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row form-group">
+                                            <span class="col-sm-6 control-label">
+                                                Accepts USDA Food Program:
+                                            </span>
+                                                <div class="col-sm-6">
+                                                    <span class="data-element">{{provider.USDAFoodPrograms.toTitleCase()}}</span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <!-- Enable to show popup if needed -->
+                            <!--<td class="col-xs-12 col-sm-4 col-md-4 col-lg-2">-->
+                            <!--<a class="btn btn-default btn-lg btn-block" ng-click="model.showDetails(provider)">Provider Details</a>-->
+                            <!--</td>-->
+
+                            <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 providerDetails">
+
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
+                                        <button class="btn" ng-click="model.toggleProviderDetails($event); isCollapsed = !isCollapsed">
+                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                            <span class="toggleProviderInfo" style="font-weight: normal">show more</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
                         </tbody>
                     </table>
                     <!--</div>-->
 
-                    <!--<div class="result-pagination" style="display: none;">Showing {{currentPage==0 ? 1:(currentPage)*listsPerPage+1}} to {{(currentPage!=pages-1)?(currentPage+1)*listsPerPage:providersCount}} of {{providersCount}} entries</div>-->
-                    <div class="result-pagination" style="display: none; text-align: center;">
+                    <div class="result-pagination" style="text-align: center;" ng-show="model.showPagination">
 
                         <!--Pagination with disabled and active states-->
                         <!--===================================================-->
@@ -266,11 +526,17 @@
                             <input type="button" value="GO" ng-click="setPage(-1)" />
                         </div>-->
                         <ul class="pagination" style="margin-top: 30px;">
-                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.firstPage()"><<<</a></li>
-                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.prevPage()">Previous</a></li>
-                            <li ng-class="{true:'active',false:''}[num==model.currentPage]" ng-repeat="num in model.pageNum"><a href="javascript:void(0)" ng-click="model.setPage(num)">{{num+1}}</a></li>
-                            <li><a href="javascript:void(0)" class="step nextLink" ng-click="model.nextPage()">Next</a></li>
-                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.lastPage()">>>></a></li>
+                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.firstPage()"><<<</a>
+                            </li>
+                            <li><a href="javascript:void(0)" class="step prevLink"
+                                   ng-click="model.prevPage()">Previous</a></li>
+                            <li ng-class="{true:'active',false:''}[num==model.currentPage]"
+                                ng-repeat="num in model.pageNum"><a href="javascript:void(0)"
+                                                                    ng-click="model.setPage(num)">{{num+1}}</a></li>
+                            <li><a href="javascript:void(0)" class="step nextLink" ng-click="model.nextPage()">Next</a>
+                            </li>
+                            <li><a href="javascript:void(0)" class="step prevLink" ng-click="model.lastPage()">>>></a>
+                            </li>
                         </ul>
 
                         <div>
@@ -283,18 +549,19 @@
                 <div ng-show="model.showProviderDetails">
                     <div>
                         <style type="text/css">
-                            .modal-backdrop
-                            {
+                            .modal-backdrop {
                                 background: rgba(0, 0, 0, 0.7);
                             }
                         </style>
                         <div class="modal-backdrop" style="height: 995px;"></div>
-                        <div class="modal fade in" aria-hidden="false" role="dialog" style="display: block; overflow: scroll;">
+                        <div class="modal fade in" aria-hidden="false" role="dialog"
+                             style="display: block; overflow: scroll;">
                             <div class="modal-dialog modal-lg modal-xlg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h3 class="modal-title">Provider Details</h3>
-                                        <button type="button" class="close btn btn-default" aria-label="Close" ng-click="model.clickOk()"><i class="fa fa-close"></i></button>
+                                        <button type="button" class="close btn btn-default" aria-label="Close"
+                                                ng-click="model.clickOk()"><i class="fa fa-close"></i></button>
                                     </div>
                                     <div class="modal-body pad-no">
                                         <div class="container-fluid pad-no">
@@ -306,15 +573,13 @@
                                                         <strong>Provider Name: </strong>{{model.provider.ProviderName}}
                                                     </p>
                                                     <p>
-                                                        <strong>Provider Type: </strong> {{model.provider.ProviderTypeDescription}}
+                                                        <strong>Provider Type: </strong>
+                                                        {{model.provider.ProviderTypeDescription}}
                                                     </p>
                                                     <p>
                                                         <strong>Phone#: </strong>{{model.provider.PhoneNumber}}
                                                     </p>
-                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===true">
 
-                                                        <strong>Accepts subsidized child care: </strong>Yes
-                                                    </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
@@ -326,10 +591,7 @@
                                                     <p>
                                                         <strong>License Type: </strong>{{model.provider.LicenseType}}
                                                     </p>
-                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems===false">
 
-                                                        <strong>Accepts subsidized child care: </strong>No
-                                                    </p>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-4">
                                                     <p>
@@ -339,7 +601,8 @@
                                                         <strong>Zip Code: </strong>{{model.provider.PhysicalZipCode}}
                                                     </p>
                                                     <p>
-                                                        <strong>Provider Capacity: </strong> {{model.provider.ProviderCapacity}}
+                                                        <strong>Provider Capacity: </strong>
+                                                        {{model.provider.ProviderCapacity}}
                                                     </p>
                                                     <p>
                                                         <strong>Age Range: </strong>{{model.provider.MinAge}}-{{model.provider.MaxAge}}
@@ -349,17 +612,16 @@
                                                     </p>
 
 
-                                                    <p ng-show="model.provider.CanTakeChildrenWithBehavioralProblems!==false&& model.provider.CanTakeChildrenWithBehavioralProblems!==true">
 
-                                                        <strong>Accepts subsidized child care: </strong>{{model.provider.CanTakeChildrenWithBehavioralProblems}}
-                                                    </p>
                                                 </div>
 
                                             </div>
 
                                         </div>
                                         <div class="modal-footer">
-                                            <button id="providerSearchButton" class="btn btn-default pull-right" type="button" ng-click="model.clickOk()">Close</button>
+                                            <button id="providerSearchButton" class="btn btn-default pull-right"
+                                                    type="button" ng-click="model.clickOk()">Close
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

@@ -19,7 +19,7 @@
     };
 
     module.component('providerDetails', {
-        templateUrl: 'Areas/providers/provider/provider-details.component.html',
+        templateUrl: 'areas/providers/provider/provider-details.component.html',
         controllerAs: 'model',
         controller: ['roleService', controller],
         bindings: {

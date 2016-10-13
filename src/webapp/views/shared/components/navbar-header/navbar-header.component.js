@@ -26,21 +26,7 @@
     //if (model.role == 'isasadmin' || model.role == 'provideradmin') {
 
         $scope.menuItems = [
-            {
-                'name': 'Home',
-                'link': ['Home'],
-                'path': 'home'
-            },
-            {
-                'name': 'Find Providers',
-                'link': ['ProviderSearch'],
-                'path': 'providers'
-            },
-            {
-                'name': 'Help',
-                'link': ['Help'],
-                'path': 'help'
-            }
+            
         ];
 
 
