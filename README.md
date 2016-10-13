@@ -249,7 +249,7 @@ The screenshot below shows the CI process with log details.
 Please refer to the [following documentation](./artifacts/Prototype_Installation_Instructions.pdf) for installation instructions.
 
 ##  G.	License
-*	Apache 2.0
+*	[Apache License 2.0] (http://www.apache.org/licenses/LICENSE-2.0)
 
 #   VII.	Release Notes – Version 1.0
 The prototype consists of two pages, the ‘Home Page’ and a ‘Search Results’ page. 
