@@ -7,6 +7,8 @@ FEi has applied Agile software solution development for many large federal and s
 
 FEi has sustained Capability Maturity Model Integration (CMMI) Level 3 certification for the last five years, and we are ISO/IEC 20000-1:2011 certified. These certifications are a testament to our organizational maturity.
 
+The prototype can be accessed at http://msmacwis.azurewebsites.net. 
+
 #   II.	Documentation
 ##  A.	Description of the Project
 The purpose of this project is to show FEi’s capability to provide Agile software development services. Our Agile approach is illustrated in the [Agile Development Scrum Process Diagram](./artifacts/Agile Scrum Process Diagram/Agile_Development_Scrum_Process_Diagram.png). We present a working prototype to demonstrate our technical aptitude in design, development, and a repeatable process. The prototype was created to allow Mississippi caseworkers or parents to select the best child care provider for a child. It is presented as an alternative to the MDHS Search Child Care Provider form page. In addition to the solicitation requirements, the FEi team enhanced the prototype with added functionality to help prospective users in their search. These enhancements were based on feedback gathered from the recorded Mississippi caseworker Q&A’s, as well as our own team research and interviews with parents and additional Subject Matter Experts (SMEs) in the child care and child welfare field. Our approach is detailed in the remainder of the document.
@@ -202,7 +204,7 @@ To ensure compliance without incurring refactoring costs, our team weaves Sectio
 
 We tested the prototype using a JAWS 16 screen reader. At the conclusion of Section 508 testing, our team compiled a detailed findings report, detailing a ‘scorecard’ of compliance, see [Section 508 Compliance](./artifacts/Section 508 Compliance/Section_508_Compliance_Scorecard.pdf). For each non-compliance issue, we documented our recommendations for remediation, including follow up timelines and testing procedures to verify that compliance problems have been sufficiently resolved. Our team worked closely with development to ensure that the reasons for non-compliance are understood, and we put into place best practices and processes for validating Section 508 compliance early on in the development process. 
 ##  C.	Responsive Design
-Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see [Section VI-A. Responsive Web Design](#a-responsive-web-design).
+Our frontend code is fully responsive and tested across multiple browsers and device sizes, as well as to support accessibility needs. For more information, see Section VI-A. Responsive Web Design.
 
 ##  D.	Consistency
 We ensured the design was applied consistently throughout the prototype site pages (Home Page and Search Results). We also took special care to ensure simple and easy to understand language was used.
@@ -315,7 +317,7 @@ Search results are presented in alternating white and gray shading to simplify d
 The Google language tool bar on the upper right corner enables users to view search results in other languages. This is an initial attempt to address the language preferences expressed in the caseworker Q&A, specifically English, Spanish, and Vietnamese.
 
 **Print**
-We anticipated that users may want to print the providers they have identified during the search. To print selected providers, select the checkbox next to the desired provider and click “Print Selected” button
+We anticipated that users may want to print the providers they have identified during the search. To print selected providers, select the checkbox next to the desired provider and click “Print Selected” button.
 
 #  VIII.	Reporting Prototype or Documentation Bugs
 Issues can be reported to MS.bugreport@feisystems.com. This information is included as a footer in the Home Page of the prototype.
